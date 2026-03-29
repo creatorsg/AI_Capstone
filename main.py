@@ -33,6 +33,18 @@ def get_db():
     finally:
         db.close()
 
+
+@app.post("/chat/")
+def chat_with_ai(child_id: int, question: str):
+    
+    return {
+        "child_id": child_id,
+        "question": question,
+        "answer": "안녕하세요! 아이의 데이터를 분석하여 답변을 준비 중입니다. (임시 응답)",
+        "status": "success"
+    }
+
+
 @app.post("/children/")
 def create_child(name: str, gender: str, birth_date: date, db: Session = Depends(get_db)):
     new_child = models.Child(name=name, gender=gender, birth_date=birth_date)
