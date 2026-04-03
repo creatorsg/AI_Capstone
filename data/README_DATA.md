@@ -49,7 +49,7 @@
 | `data4_geocoded_national_vaccine_hospitals_final.json` | 예방접종 병원 |
 | `data5_welfare_childcare_kb.json` | 복지서비스 |
 | `data6_childcare_facilities.json` | 아이돌봄센터 |
-| `data7_childcare_auto_kb.json` | 육아상식 크롤링 |
+| `data7_childcare_auto_kb.json` | 육아상식 월령별 성장 및 돌보기 |
 
 ---
 
@@ -80,7 +80,7 @@
 
 - `data3_vaccine_final_knowledge_base.json` — 예방접종 상세 지식
 - `data5_welfare_childcare_kb.json` — 복지서비스 요약
-- `data7_childcare_auto_kb.json` — 아이사랑포털 육아상식 크롤링
+- `data7_childcare_auto_kb.json` — 아이사랑포털 육아상식 월령별 성장 및 돌보기
 
 ---
 
