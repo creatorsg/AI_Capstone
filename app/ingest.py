@@ -28,6 +28,30 @@ def load_documents()
     return docs
 
 
+def load_curated_cards():
+    cards = [
+        {
+            "content": "24개월 아이는 두 단어 문장을 시도할 수 있습니다...",
+            "metadata": {
+                "category": "development",
+                "topic": "language",
+                "age_group": "24-36m",
+                "source": "curated"
+            }
+        },
+        {
+            "content": "아이에게 열이 있을 때는 체온, 지속 시간, 처짐 여부를 확인하세요...",
+            "metadata": {
+                "category": "medical_basic",
+                "topic": "fever",
+                "age_group": "all",
+                "source": "curated"
+            }
+        },
+    ]
+    return cards
+
+
 def main()
     documents = load_documents()
     if not documents
