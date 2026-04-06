@@ -1,0 +1,4228 @@
+[
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강남구가족센터",
+        "content": "강남구가족센터은(는) 서울 강남구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-3414-2830입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "강남구",
+            "phone": "02-3414-2830",
+            "fax": "070-7469-2840",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.07775424267719,
+                    37.49404467683226
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강동구가족센터",
+        "content": "강동구가족센터은(는) 서울 강동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-476-0027입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "강동구",
+            "phone": "02-476-0027",
+            "fax": "02-471-0954",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.14434676784754,
+                    37.551260574150874
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강북구가족센터",
+        "content": "강북구가족센터은(는) 서울 강북구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-987-2567입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "강북구",
+            "phone": "02-987-2567",
+            "fax": "070-7469-2568",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.02967728820009,
+                    37.63772404404768
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강서구건강가정지원센터",
+        "content": "강서구건강가정지원센터은(는) 서울 강서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-2606-2034입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "강서구",
+            "phone": "02-2606-2034",
+            "fax": "02-2606-2044",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.84139043651645,
+                    37.55784207891379
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "관악구가족센터",
+        "content": "관악구가족센터은(는) 서울 관악구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-883-9395입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "관악구",
+            "phone": "02-883-9395",
+            "fax": "02-883-9320",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.944872268956,
+                    37.4675965710995
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "광진구가족센터",
+        "content": "광진구가족센터은(는) 서울 광진구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-458-0183입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "광진구",
+            "phone": "02-458-0183",
+            "fax": "02-458-0185",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.08992891070606,
+                    37.54716816503001
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "구로구가족센터",
+        "content": "구로구가족센터은(는) 서울 구로구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-830-0456입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "구로구",
+            "phone": "02-830-0456",
+            "fax": "02-830-0438",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.8897180850707,
+                    37.48253274714113
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "금천구가족센터",
+        "content": "금천구가족센터은(는) 서울 금천구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-803-7747(내선3)입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "금천구",
+            "phone": "02-803-7747(내선3)",
+            "fax": "02-803-7746",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.898144267901,
+                    37.4753457549614
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "노원구가족센터",
+        "content": "노원구가족센터은(는) 서울 노원구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-979-3501입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "노원구",
+            "phone": "02-979-3501",
+            "fax": "02-979-3504",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.07265454055,
+                    37.6225048708108
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "도봉구가족센터",
+        "content": "도봉구가족센터은(는) 서울 도봉구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-995-6800입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "도봉구",
+            "phone": "02-995-6800",
+            "fax": "02-995-6014",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.0384278320559,
+                    37.6541617688321
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "동대문구가족센터",
+        "content": "동대문구가족센터은(는) 서울 동대문구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-957-0756입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "동대문구",
+            "phone": "02-957-0756",
+            "fax": "070-7469-0766",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.034047729908,
+                    37.5718136391311
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "동작구아이돌봄지원사업",
+        "content": "동작구아이돌봄지원사업은(는) 서울 동작구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-6294-3532입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "동작구",
+            "phone": "02-6294-3532",
+            "fax": "02-599-3277"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "마포구가족센터",
+        "content": "마포구가족센터은(는) 서울 마포구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-3142-5482입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "마포구",
+            "phone": "02-3142-5482",
+            "fax": "070-7469-5477",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.91124788862305,
+                    37.54913863808177
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "서대문구아이돌봄지원센터",
+        "content": "서대문구아이돌봄지원센터은(는) 서울 서대문구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-322-7554입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "서대문구",
+            "phone": "02-322-7554",
+            "fax": "02-722-7533"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "서초구가족센터",
+        "content": "서초구가족센터은(는) 서울 서초구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-576-2854입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "서초구",
+            "phone": "02-576-2854",
+            "fax": "02-576-2881",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.99898811316656,
+                    37.480337094570956
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "성동구가족센터",
+        "content": "성동구가족센터은(는) 서울 성동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-3395-9446입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "성동구",
+            "phone": "02-3395-9446",
+            "fax": "070-7469-9543",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.031135901633,
+                    37.565479543013
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "성북구가족센터",
+        "content": "성북구가족센터은(는) 서울 성북구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-921-1663입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "성북구",
+            "phone": "02-921-1663",
+            "fax": "02-2179-8649",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.0359210031869,
+                    37.59034111800092
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "송파구가족센터",
+        "content": "송파구가족센터은(는) 서울 송파구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-430-3844입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "송파구",
+            "phone": "02-430-3844",
+            "fax": "070-7469-3844",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.148693304299,
+                    37.497007673578
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "양천구가족센터",
+        "content": "양천구가족센터은(는) 서울 양천구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-2065-0848입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "양천구",
+            "phone": "02-2065-0848",
+            "fax": "02-2065-3425",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.8450752918031,
+                    37.51800747800114
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영등포구가족센터",
+        "content": "영등포구가족센터은(는) 서울 영등포구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-846-5432입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "영등포구",
+            "phone": "02-846-5432",
+            "fax": "02-2678-2195",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.92144534432894,
+                    37.51112721177526
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "용산구가족센터",
+        "content": "용산구가족센터은(는) 서울 용산구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-797-9186입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "용산구",
+            "phone": "02-797-9186",
+            "fax": "02-797-9189",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.000269278522,
+                    37.5348569089684
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "은평구가족센터",
+        "content": "은평구가족센터은(는) 서울 은평구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-376-3752입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "은평구",
+            "phone": "02-376-3752",
+            "fax": "02-376-3750",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.92963720267187,
+                    37.6042702502772
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "종로구가족센터",
+        "content": "종로구가족센터은(는) 서울 종로구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-764-3523입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "종로구",
+            "phone": "02-764-3523",
+            "fax": "02-764-4854",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.01322187064167,
+                    37.57368196715185
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "중구가족센터",
+        "content": "중구가족센터은(는) 서울 중구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-2279-3890입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "중구",
+            "phone": "02-2279-3890",
+            "fax": "02-2279-3898",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.02285264110027,
+                    37.565074186695895
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "중랑구아이돌봄지원센터",
+        "content": "중랑구아이돌봄지원센터은(는) 서울 중랑구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-435-4147입니다.",
+        "metadata": {
+            "city": "서울",
+            "district": "중랑구",
+            "phone": "02-435-4147",
+            "fax": "070-7469-0211",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.0850810713791,
+                    37.60087283448685
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "낙동종합사회복지관",
+        "content": "낙동종합사회복지관은(는) 부산 강서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-714-0590입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "강서구",
+            "phone": "051-714-0590",
+            "fax": "051-714-0598",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.902824248155,
+                    35.119735917487
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "금정구가족센터",
+        "content": "금정구가족센터은(는) 부산 금정구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-532-0077입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "금정구",
+            "phone": "051-532-0077",
+            "fax": "051-513-2132",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.092062616905,
+                    35.2621920066423
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "기장군가족센터",
+        "content": "기장군가족센터은(는) 부산 기장군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-792-4891입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "기장군",
+            "phone": "051-792-4891",
+            "fax": "051-724-0419",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.213756632743,
+                    35.2359784987349
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "남구종합사회복지관",
+        "content": "남구종합사회복지관은(는) 부산 남구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-647-3644입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "남구",
+            "phone": "051-647-3644",
+            "fax": "051-647-3656",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.07492136855453,
+                    35.12761961448454
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부산동구가족센터",
+        "content": "부산동구가족센터은(는) 부산 동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-603-0233입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "동구",
+            "phone": "051-603-0233",
+            "fax": "051-603-0222",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.0404889794594,
+                    35.12178540515651
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "동래구가족센터",
+        "content": "동래구가족센터은(는) 부산 동래구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-503-3530입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "동래구",
+            "phone": "051-503-3530",
+            "fax": "051-506-5767",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.05733298074242,
+                    35.198982496432734
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부산진구건강가정지원센터",
+        "content": "부산진구건강가정지원센터은(는) 부산 부산진구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-802-1441입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "부산진구",
+            "phone": "051-802-1441",
+            "fax": "051-802-2904",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.03273396279,
+                    35.1595702294363
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사회복지법인공덕향",
+        "content": "사회복지법인공덕향은(는) 부산 북구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-362-0121입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "북구",
+            "phone": "051-362-0121",
+            "fax": "051-363-3382",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.019724342336,
+                    35.2673614671268
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사상구가족센터",
+        "content": "사상구가족센터은(는) 부산 사상구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-314-1279입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "사상구",
+            "phone": "051-314-1279",
+            "fax": "051-328-0043",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.994867897013,
+                    35.1475618131586
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사하구가족센터",
+        "content": "사하구가족센터은(는) 부산 사하구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-202-2983입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "사하구",
+            "phone": "051-202-2983",
+            "fax": "051-202-2984",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.95764364017023,
+                    35.10315494514847
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부산서구가족센터",
+        "content": "부산서구가족센터은(는) 부산 서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-241-6252입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "서구",
+            "phone": "051-241-6252",
+            "fax": "051-241-4200",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.022052905985,
+                    35.0963298755138
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "수영구가족센터",
+        "content": "수영구가족센터은(는) 부산 수영구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-758-6187입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "수영구",
+            "phone": "051-758-6187",
+            "fax": "051-955-3072",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.1085144095038,
+                    35.14585303220862
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "연제구가족센터",
+        "content": "연제구가족센터은(는) 부산 연제구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-851-7006입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "연제구",
+            "phone": "051-851-7006",
+            "fax": "051-851-8376",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.0863965165982,
+                    35.18366106173655
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영도구가족센터",
+        "content": "영도구가족센터은(는) 부산 영도구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-414-9609입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "영도구",
+            "phone": "051-414-9609",
+            "fax": "051-414-9608",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.046465264155,
+                    35.0865136806567
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "해운대구건강가정지원센터",
+        "content": "해운대구건강가정지원센터은(는) 부산 해운대구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 051-782-0099입니다.",
+        "metadata": {
+            "city": "부산",
+            "district": "해운대구",
+            "phone": "051-782-0099",
+            "fax": "051-782-7321",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.15438073986257,
+                    35.16149356825558
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구군위군가족센터",
+        "content": "대구군위군가족센터은(는) 대구 군위군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 070-7404-1141입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "군위군",
+            "phone": "070-7404-1141",
+            "fax": "054-383-2512",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.5664388985543,
+                    36.231390644461726
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구남구가족센터",
+        "content": "대구남구가족센터은(는) 대구 남구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-475-2326입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "남구",
+            "phone": "053-475-2326",
+            "fax": "053-475-2346",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.59457010788338,
+                    35.84175498429814
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구달서구가족센터",
+        "content": "대구달서구가족센터은(는) 대구 달서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-639-1513입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "달서구",
+            "phone": "053-639-1513",
+            "fax": "053-593-1513",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.54957142321655,
+                    35.84293674509752
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구달성군가족센터",
+        "content": "대구달성군가족센터은(는) 대구 달성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-636-5665입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "달성군",
+            "phone": "053-636-5665",
+            "fax": "053-615-4373",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.457215231979,
+                    35.691192657528184
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구동구가족센터",
+        "content": "대구동구가족센터은(는) 대구 동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-961-2292입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "동구",
+            "phone": "053-961-2292",
+            "fax": "053-961-2204",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.71763559844402,
+                    35.86563078858013
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구북구가족센터",
+        "content": "대구북구가족센터은(는) 대구 북구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-327-2298입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "북구",
+            "phone": "053-327-2298",
+            "fax": "053-327-2995",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.55787252810964,
+                    35.937341506549224
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구서구가족센터",
+        "content": "대구서구가족센터은(는) 대구 서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-355-8043입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "서구",
+            "phone": "053-355-8043",
+            "fax": "053-355-8044",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.55855526022364,
+                    35.88686868554222
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구수성구가족센터",
+        "content": "대구수성구가족센터은(는) 대구 수성구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-795-4200입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "수성구",
+            "phone": "053-795-4200",
+            "fax": "070-7500-4503",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.618130247086,
+                    35.8391781077417
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대구중구가족센터",
+        "content": "대구중구가족센터은(는) 대구 중구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-431-1238입니다.",
+        "metadata": {
+            "city": "대구",
+            "district": "중구",
+            "phone": "053-431-1238",
+            "fax": "053-431-1231",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.582289717405,
+                    35.8614235778378
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강화군가족센터",
+        "content": "강화군가족센터은(는) 인천 강화군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-933-8005입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "강화군",
+            "phone": "032-933-8005",
+            "fax": "032-934-0982",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.484478799891,
+                    37.7482538860686
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "계양구가족센터",
+        "content": "계양구가족센터은(는) 인천 계양구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-547-1015입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "계양구",
+            "phone": "032-547-1015",
+            "fax": "032-552-1015",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.72699223131039,
+                    37.54736523656441
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "인천남동구가족센터",
+        "content": "인천남동구가족센터은(는) 인천 남동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-466-8177입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "남동구",
+            "phone": "032-466-8177",
+            "fax": "032-467-3913",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.69731653401745,
+                    37.45081079345011
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "인천동구가족센터",
+        "content": "인천동구가족센터은(는) 인천 동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 070-7438-4903입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "동구",
+            "phone": "070-7438-4903",
+            "fax": "032-761-4173",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.635642585249,
+                    37.4765406975301
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "미추홀구아이돌봄센터",
+        "content": "미추홀구아이돌봄센터은(는) 인천 미추홀구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-875-2995입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "미추홀구",
+            "phone": "032-875-2995",
+            "fax": "032-875-2998",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.643217940015,
+                    37.4587797486869
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부평구건강가정지원센터",
+        "content": "부평구건강가정지원센터은(는) 인천 부평구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-508-0166입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "부평구",
+            "phone": "032-508-0166",
+            "fax": "0503-8379-2707",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.715853399442,
+                    37.4994517267383
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "인천서구가족센터",
+        "content": "인천서구가족센터은(는) 인천 서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-265-2621입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "서구",
+            "phone": "032-265-2621",
+            "fax": "032-265-2627",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.68586607021611,
+                    37.55252389850528
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "연수구가족센터",
+        "content": "연수구가족센터은(는) 인천 연수구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-851-2733입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "연수구",
+            "phone": "032-851-2733",
+            "fax": "032-851-2729",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.6767195014036,
+                    37.41298669411806
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "인천중구가족센터",
+        "content": "인천중구가족센터은(는) 인천 중구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-763-4821입니다.",
+        "metadata": {
+            "city": "인천",
+            "district": "중구",
+            "phone": "032-763-4821",
+            "fax": "032-765-6921",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.5047103506616,
+                    37.49066780434497
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사단법인 광주디아코니아",
+        "content": "사단법인 광주디아코니아은(는) 광주 광산구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 062-959-9336입니다.",
+        "metadata": {
+            "city": "광주",
+            "district": "광산구",
+            "phone": "062-959-9336",
+            "fax": "062-955-9005"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사단법인 그루터기",
+        "content": "사단법인 그루터기은(는) 광주 남구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 062-671-4147입니다.",
+        "metadata": {
+            "city": "광주",
+            "district": "남구",
+            "phone": "062-671-4147",
+            "fax": "062-671-4144"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "동구아이돌봄지원센터",
+        "content": "동구아이돌봄지원센터은(는) 광주 동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 062-234-5801입니다.",
+        "metadata": {
+            "city": "광주",
+            "district": "동구",
+            "phone": "062-234-5801",
+            "fax": "062-233-1965"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "광주북구가족센터",
+        "content": "광주북구가족센터은(는) 광주 북구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 062-461-1335입니다.",
+        "metadata": {
+            "city": "광주",
+            "district": "북구",
+            "phone": "062-461-1335",
+            "fax": "062-461-1338",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.876415944833,
+                    35.1930815677567
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "광주서구가족센터",
+        "content": "광주서구가족센터은(는) 광주 서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 062-369-0075입니다.",
+        "metadata": {
+            "city": "광주",
+            "district": "서구",
+            "phone": "062-369-0075",
+            "fax": "062-351-4147",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.90049146447863,
+                    35.15311232558593
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대덕구가족센터",
+        "content": "대덕구가족센터은(는) 대전 대덕구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 042-628-4269입니다.",
+        "metadata": {
+            "city": "대전",
+            "district": "대덕구",
+            "phone": "042-628-4269",
+            "fax": "042-639-2667",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.43342893327072,
+                    36.45288009583594
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "무지개사회적협동조합",
+        "content": "무지개사회적협동조합은(는) 대전 동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 042-631-1100입니다.",
+        "metadata": {
+            "city": "대전",
+            "district": "동구",
+            "phone": "042-631-1100",
+            "fax": "0504-375-7995"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대전서구가족센터",
+        "content": "대전서구가족센터은(는) 대전 서구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 042-585-5704입니다.",
+        "metadata": {
+            "city": "대전",
+            "district": "서구",
+            "phone": "042-585-5704",
+            "fax": "070-4850-8490",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.36701467080127,
+                    36.305887484302566
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대전광역시가족센터",
+        "content": "대전광역시가족센터은(는) 대전 유성구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 042-252-9993입니다.",
+        "metadata": {
+            "city": "대전",
+            "district": "유성구",
+            "phone": "042-252-9993",
+            "fax": "042-933-9986",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.39443818561712,
+                    36.426508556098696
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "대전중구다문화가족지원센터",
+        "content": "대전중구다문화가족지원센터은(는) 대전 중구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 042-345-4566입니다.",
+        "metadata": {
+            "city": "대전",
+            "district": "중구",
+            "phone": "042-345-4566",
+            "fax": "042-252-4566",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.426445506416,
+                    36.3234128504029
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울산남구아이돌봄지원센터",
+        "content": "울산남구아이돌봄지원센터은(는) 울산 남구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 052-275-1239입니다.",
+        "metadata": {
+            "city": "울산",
+            "district": "남구",
+            "phone": "052-275-1239",
+            "fax": "052-222-8099",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.255207122557,
+                    35.5515524818434
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울산동구아이돌봄지원센터",
+        "content": "울산동구아이돌봄지원센터은(는) 울산 동구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 052-201-7901입니다.",
+        "metadata": {
+            "city": "울산",
+            "district": "동구",
+            "phone": "052-201-7901",
+            "fax": "052-201-7902",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.411092329215,
+                    35.4856777189847
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울산북구가족센터",
+        "content": "울산북구가족센터은(는) 울산 북구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 052-267-3390입니다.",
+        "metadata": {
+            "city": "울산",
+            "district": "북구",
+            "phone": "052-267-3390",
+            "fax": "052)286-0026",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.35261700079252,
+                    35.629566443984885
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울주군아이돌봄지원센터",
+        "content": "울주군아이돌봄지원센터은(는) 울산 울주군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 052-263-2009입니다.",
+        "metadata": {
+            "city": "울산",
+            "district": "울주군",
+            "phone": "052-263-2009",
+            "fax": "052-256-3090",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.28636809375175,
+                    35.40933155131802
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울산중구아이돌봄지원센터",
+        "content": "울산중구아이돌봄지원센터은(는) 울산 중구 지역의 아이돌봄서비스 제공기관입니다. 연락처는 052-212-3315입니다.",
+        "metadata": {
+            "city": "울산",
+            "district": "중구",
+            "phone": "052-212-3315",
+            "fax": "052-212-3316",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.3444119644493,
+                    35.569889640195555
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "재단법인 세종시사회서비스원",
+        "content": "재단법인 세종시사회서비스원은(는) 세종 세종시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 044-850-8145입니다.",
+        "metadata": {
+            "city": "세종",
+            "district": "세종시",
+            "phone": "044-850-8145",
+            "fax": "044-864-1840"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "가평군가족센터",
+        "content": "가평군가족센터은(는) 경기 가평군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 070-7510-5870입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "가평군",
+            "phone": "070-7510-5870",
+            "fax": "031-582-9903",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.51396497244498,
+                    37.831262746195776
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "고양시건강가정지원센터",
+        "content": "고양시건강가정지원센터은(는) 경기 고양시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-969-4064입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "고양시",
+            "phone": "031-969-4064",
+            "fax": "031-969-0049",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.74524257468202,
+                    37.67791483106116
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "과천시가족센터",
+        "content": "과천시가족센터은(는) 경기 과천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-507-0073입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "과천시",
+            "phone": "02-507-0073",
+            "fax": "02-503-0004",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.99271757410703,
+                    37.43611067540884
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "광명시가족센터",
+        "content": "광명시가족센터은(는) 경기 광명시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 02-2625-0365입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "광명시",
+            "phone": "02-2625-0365",
+            "fax": "02-2684-0453",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.86523567920464,
+                    37.47858617016439
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "광주시가족센터",
+        "content": "광주시가족센터은(는) 경기 광주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-763-1253입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "광주시",
+            "phone": "031-763-1253",
+            "fax": "031-798-7139",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.255358034677,
+                    37.4167903148617
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "구리시가족센터",
+        "content": "구리시가족센터은(는) 경기 구리시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-551-3133입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "구리시",
+            "phone": "031-551-3133",
+            "fax": "031-556-3149",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.12896187154368,
+                    37.595330694991674
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "군포시 가족센터",
+        "content": "군포시 가족센터은(는) 경기 군포시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-392-1816입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "군포시",
+            "phone": "031-392-1816",
+            "fax": "031-392-1813",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.93376335987202,
+                    37.335875113833175
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "김포시가족센터",
+        "content": "김포시가족센터은(는) 경기 김포시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-996-5922입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "김포시",
+            "phone": "031-996-5922",
+            "fax": "031-996-5924",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.582052187224,
+                    37.6490894387451
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "남양주시가족센터",
+        "content": "남양주시가족센터은(는) 경기 남양주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-554-8211입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "남양주시",
+            "phone": "031-554-8211",
+            "fax": "031-556-8216",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.17088932149363,
+                    37.608886883050864
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "동두천시가족센터",
+        "content": "동두천시가족센터은(는) 경기 동두천 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-863-3363입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "동두천",
+            "phone": "031-863-3363",
+            "fax": "031-863-3805",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.053377704294,
+                    37.9040056868629
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부천시건강가정지원센터",
+        "content": "부천시건강가정지원센터은(는) 경기 부천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 032-326-4212입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "부천시",
+            "phone": "032-326-4212",
+            "fax": "032-326-4219",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.7539240430058,
+                    37.49446270749322
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "성남시가족센터",
+        "content": "성남시가족센터은(는) 경기 성남시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-752-9327입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "성남시",
+            "phone": "031-752-9327",
+            "fax": "031-755-5335",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.136094771526,
+                    37.4410367887308
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "수원시건강가정지원센터",
+        "content": "수원시건강가정지원센터은(는) 경기 수원시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-245-1319입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "수원시",
+            "phone": "031-245-1319",
+            "fax": "031-245-0292",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.01452207576382,
+                    37.272895029436064
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "시흥시가족센터",
+        "content": "시흥시가족센터은(는) 경기 시흥시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-317-4516입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "시흥시",
+            "phone": "031-317-4516",
+            "fax": "031-317-4511",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.74954071382717,
+                    37.34734462320622
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "시흥작은자리 아이돌봄지원센터",
+        "content": "시흥작은자리 아이돌봄지원센터은(는) 경기 시흥시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-313-1165입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "시흥시",
+            "phone": "031-313-1165",
+            "fax": "031-313-1164"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "안산시건강가정지원센터",
+        "content": "안산시건강가정지원센터은(는) 경기 안산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-501-0033입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "안산시",
+            "phone": "031-501-0033",
+            "fax": "031-501-7982",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.82938508460279,
+                    37.314238680197796
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "안성시가족센터 ",
+        "content": "안성시가족센터 은(는) 경기 안성시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-674-0130입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "안성시",
+            "phone": "031-674-0130",
+            "fax": "031-673-9335",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.25632193208041,
+                    37.0055716508967
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "안양시가족센터",
+        "content": "안양시가족센터은(는) 경기 안양시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-8045-5473입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "안양시",
+            "phone": "031-8045-5473",
+            "fax": "031-8045-4855",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.95051386506803,
+                    37.39248400656747
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "양주시가족센터",
+        "content": "양주시가족센터은(는) 경기 양주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-848-5605입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "양주시",
+            "phone": "031-848-5605",
+            "fax": "031-858-5684",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.046758060094,
+                    37.8216832518839
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "양평군가족센터",
+        "content": "양평군가족센터은(는) 경기 양평군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-775-5955입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "양평군",
+            "phone": "031-775-5955",
+            "fax": "031-775-5956",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.50556693399605,
+                    37.495860871138284
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "여주시가족센터",
+        "content": "여주시가족센터은(는) 경기 여주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-886-0322입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "여주시",
+            "phone": "031-886-0322",
+            "fax": "031-886-0323",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.636294925388,
+                    37.292361799436
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "연천군가족센터",
+        "content": "연천군가족센터은(는) 경기 연천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-835-0911입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "연천군",
+            "phone": "031-835-0911",
+            "fax": "031-835-0095",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.06716034508,
+                    38.0306844157499
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "오산시가족센터",
+        "content": "오산시가족센터은(는) 경기 오산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-378-9765입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "오산시",
+            "phone": "031-378-9765",
+            "fax": "031-378-9767",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.06537377338243,
+                    37.156257729610516
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "용인시가족센터",
+        "content": "용인시가족센터은(는) 경기 용인시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 070-7477-8551입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "용인시",
+            "phone": "070-7477-8551",
+            "fax": "070-7469-7136",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.074327926331,
+                    37.2996568593317
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "의왕시가족센터",
+        "content": "의왕시가족센터은(는) 경기 의왕시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-689-5576입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "의왕시",
+            "phone": "031-689-5576",
+            "fax": "031-429-8993",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.97141292756531,
+                    37.35513439344924
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "의정부시가족센터",
+        "content": "의정부시가족센터은(는) 경기 의정부시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-878-7216입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "의정부시",
+            "phone": "031-878-7216",
+            "fax": "031-8787891",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.038940078982,
+                    37.7365991184893
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "이천시가족센터",
+        "content": "이천시가족센터은(는) 경기 이천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-635-0881입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "이천시",
+            "phone": "031-635-0881",
+            "fax": "031-633-4959",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.44161674469534,
+                    37.27795507006946
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "파주시가족센터",
+        "content": "파주시가족센터은(는) 경기 파주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-949-9163입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "파주시",
+            "phone": "031-949-9163",
+            "fax": "031-624-5631",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.779300806252,
+                    37.7568256644641
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "평택시가족센터",
+        "content": "평택시가족센터은(는) 경기 평택시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-692-7740입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "평택시",
+            "phone": "031-692-7740",
+            "fax": "031-615-3996",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.066133681418,
+                    37.0657155600445
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "포천시여성새로일하기센터",
+        "content": "포천시여성새로일하기센터은(는) 경기 포천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-531-8144입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "포천시",
+            "phone": "031-531-8144",
+            "fax": "031-531-8145",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.198298144197,
+                    37.8904510136314
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "하남시가족센터",
+        "content": "하남시가족센터은(는) 경기 하남시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-793-2993입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "하남시",
+            "phone": "031-793-2993",
+            "fax": "031-795-2969",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.20895301325524,
+                    37.543701859556926
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "화성시가족센터",
+        "content": "화성시가족센터은(는) 경기 화성시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 031-352-0305입니다.",
+        "metadata": {
+            "city": "경기",
+            "district": "화성시",
+            "phone": "031-352-0305",
+            "fax": "031-352-1217",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.90878086287044,
+                    37.132107561889285
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강릉시어린이집연합회",
+        "content": "강릉시어린이집연합회은(는) 강원 강릉시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-655-4385입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "강릉시",
+            "phone": "033-655-4385",
+            "fax": "033-655-7385"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "고성군가족센터",
+        "content": "고성군가족센터은(는) 강원 고성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-681-9335입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "고성군",
+            "phone": "033-681-9335",
+            "fax": "033-681-9391",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.464202855361,
+                    38.3801815473744
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "동해시가족센터",
+        "content": "동해시가족센터은(는) 강원 동해시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-535-4555입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "동해시",
+            "phone": "033-535-4555",
+            "fax": "033-535-8379",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.11398167023364,
+                    37.52695245546302
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "삼척시가족센터",
+        "content": "삼척시가족센터은(는) 강원 삼척시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-575-5006입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "삼척시",
+            "phone": "033-575-5006",
+            "fax": "033-576-0763",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.16544887131354,
+                    37.442704478037406
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "속초시가족센터",
+        "content": "속초시가족센터은(는) 강원 속초시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-637-2952입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "속초시",
+            "phone": "033-637-2952",
+            "fax": "033-638-3524",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.5803455024003,
+                    38.197615845106824
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "양구군가족센터",
+        "content": "양구군가족센터은(는) 강원 양구군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-480-2444입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "양구군",
+            "phone": "033-480-2444",
+            "fax": "033-480-2419",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.98454622579736,
+                    38.09854243897472
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "양양군가족센터",
+        "content": "양양군가족센터은(는) 강원 양양군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-673-0021입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "양양군",
+            "phone": "033-673-0021",
+            "fax": "033-673-0080",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.6151662503393,
+                    38.0709410664513
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영월군가족센터",
+        "content": "영월군가족센터은(는) 강원 영월군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-375-8402입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "영월군",
+            "phone": "033-375-8402",
+            "fax": "033-372-4790",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.46667399580514,
+                    37.17888917564636
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "원주시가족센터",
+        "content": "원주시가족센터은(는) 강원 원주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-747-6012입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "원주시",
+            "phone": "033-747-6012",
+            "fax": "033-747-6017",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.9416910050581,
+                    37.32038161883136
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "인제군가족센터",
+        "content": "인제군가족센터은(는) 강원 인제군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-462-3660입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "인제군",
+            "phone": "033-462-3660",
+            "fax": "033-462-0036",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.16486567995472,
+                    38.06130143178356
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "정선군가족센터",
+        "content": "정선군가족센터은(는) 강원 정선군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-563-3123입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "정선군",
+            "phone": "033-563-3123",
+            "fax": "033-562-3495",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.67281079942697,
+                    37.38127754645165
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "철원군가족센터",
+        "content": "철원군가족센터은(는) 강원 철원군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-452-7754입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "철원군",
+            "phone": "033-452-7754",
+            "fax": "033-452-7795",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.30729462544018,
+                    38.1592585434579
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사)동부디아코니아",
+        "content": "사)동부디아코니아은(는) 강원 춘천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-252-1003입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "춘천시",
+            "phone": "033-252-1003",
+            "fax": "033-242-0044"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "태백시가족센터",
+        "content": "태백시가족센터은(는) 강원 태백시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 070-4103-4006입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "태백시",
+            "phone": "070-4103-4006",
+            "fax": "033-554-4007",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.98491530500496,
+                    37.16420027548037
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "평창군가족센터 ",
+        "content": "평창군가족센터 은(는) 강원 평창군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-332-0311입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "평창군",
+            "phone": "033-332-0311",
+            "fax": "033-332-2067",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.394887598133,
+                    37.3687298732508
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "홍천군가족센터",
+        "content": "홍천군가족센터은(는) 강원 홍천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-432-1935입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "홍천군",
+            "phone": "033-432-1935",
+            "fax": "033-433-1910",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.8834406029938,
+                    37.69138298461824
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강원화천지역자활센터",
+        "content": "강원화천지역자활센터은(는) 강원 화천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-442-1994입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "화천군",
+            "phone": "033-442-1994",
+            "fax": "033-442-0406",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.705221384095,
+                    38.1117418833355
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "횡성군가족센터",
+        "content": "횡성군가족센터은(는) 강원 횡성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 033-344-3460입니다.",
+        "metadata": {
+            "city": "강원",
+            "district": "횡성군",
+            "phone": "033-344-3460",
+            "fax": "033-344-3413",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.98511367584975,
+                    37.48815195856399
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "괴산군가족센터",
+        "content": "괴산군가족센터은(는) 충북 괴산군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-833-1079입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "괴산군",
+            "phone": "043-833-1079",
+            "fax": "043-832-1814",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.789832774621,
+                    36.8077236937503
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "단양군가족센터",
+        "content": "단양군가족센터은(는) 충북 단양군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-421-6203입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "단양군",
+            "phone": "043-421-6203",
+            "fax": "043-420-6202",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.36329946426,
+                    36.9869451171295
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "보은군가족센터",
+        "content": "보은군가족센터은(는) 충북 보은군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-544-5427입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "보은군",
+            "phone": "043-544-5427",
+            "fax": "043-544-5424",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.723569096321,
+                    36.4878349914301
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영동군가족센터",
+        "content": "영동군가족센터은(는) 충북 영동군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-745-3883입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "영동군",
+            "phone": "043-745-3883",
+            "fax": "043-744-4977",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.7709895424535,
+                    36.17589912354917
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "옥천군가족센터",
+        "content": "옥천군가족센터은(는) 충북 옥천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-733-1918입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "옥천군",
+            "phone": "043-733-1918",
+            "fax": "043-733-1917",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.56719279842098,
+                    36.30161782785996
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "음성군가족센터",
+        "content": "음성군가족센터은(는) 충북 음성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-873-8779입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "음성군",
+            "phone": "043-873-8779",
+            "fax": "043-873-3800",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.691948979967,
+                    36.9314539787901
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "제천시가족센터",
+        "content": "제천시가족센터은(는) 충북 제천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-645-9995입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "제천시",
+            "phone": "043-645-9995",
+            "fax": "043-652-0067",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.2037376400766,
+                    37.11619365552233
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "증평군여성단체협의회",
+        "content": "증평군여성단체협의회은(는) 충북 증평군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-836-0497입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "증평군",
+            "phone": "043-836-0497",
+            "fax": "043-836-3863"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "진천군가족센터",
+        "content": "진천군가족센터은(는) 충북 진천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-537-5434입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "진천군",
+            "phone": "043-537-5434",
+            "fax": "043-537-5436",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.533279747689,
+                    36.9019436715003
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "청주시가족센터",
+        "content": "청주시가족센터은(는) 충북 청주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-264-1817입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "청주시",
+            "phone": "043-264-1817",
+            "fax": "043-223-5250",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.48935941191732,
+                    36.62399007709358
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "충주시가족센터",
+        "content": "충주시가족센터은(는) 충북 충주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 043-854-2253입니다.",
+        "metadata": {
+            "city": "충북",
+            "district": "충주시",
+            "phone": "043-854-2253",
+            "fax": "043-857-5963",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.92801159854409,
+                    36.970845825795855
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "계룡시가족센터",
+        "content": "계룡시가족센터은(는) 충남 계룡시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 042-551-1130입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "계룡시",
+            "phone": "042-551-1130",
+            "fax": "042-551-1144",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.242265291735,
+                    36.288911593618
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "(사)공주대교육나눔",
+        "content": "(사)공주대교육나눔은(는) 충남 공주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-856-0887입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "공주시",
+            "phone": "041-856-0887",
+            "fax": "041-850-6022"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "금산군청",
+        "content": "금산군청은(는) 충남 금산군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-750-4114입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "금산군",
+            "phone": "041-750-4114",
+            "fax": "041-751-6108",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.487974555923,
+                    36.1088634037258
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "논산시청",
+        "content": "논산시청은(는) 충남 논산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-746-5884입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "논산시",
+            "phone": "041-746-5884",
+            "fax": "041-746-5869",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.09873246517816,
+                    36.18718180375547
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "당진시가족센터",
+        "content": "당진시가족센터은(는) 충남 당진시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-360-3213입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "당진시",
+            "phone": "041-360-3213",
+            "fax": "041-358-3674",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.643671036285,
+                    36.891751563854
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "보령시가족센터",
+        "content": "보령시가족센터은(는) 충남 보령시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-930-2816입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "보령시",
+            "phone": "041-930-2816",
+            "fax": "041-936-8596",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.61254369388199,
+                    36.33909721363799
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부여군청",
+        "content": "부여군청은(는) 충남 부여군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-830-2922입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "부여군",
+            "phone": "041-830-2922",
+            "fax": "041-833-1328",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.90977170080116,
+                    36.275762814639755
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "서산시가족센터",
+        "content": "서산시가족센터은(는) 충남 서산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-664-3079입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "서산시",
+            "phone": "041-664-3079",
+            "fax": "041-666-0155",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.46096811192922,
+                    36.770737966020015
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "서천군가족센터",
+        "content": "서천군가족센터은(는) 충남 서천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-953-3660입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "서천군",
+            "phone": "041-953-3660",
+            "fax": "041-953-1912",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.701169887239,
+                    36.0777220083592
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "아산시가족센터",
+        "content": "아산시가족센터은(는) 충남 아산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-548-9772입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "아산시",
+            "phone": "041-548-9772",
+            "fax": "041-547-9772",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.998656778906,
+                    36.7838105613138
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "예산군가족센터",
+        "content": "예산군가족센터은(는) 충남 예산군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-339-8389입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "예산군",
+            "phone": "041-339-8389",
+            "fax": "041-339-7909",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.83260218531821,
+                    36.68709346259283
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "천안시건강가정지원센터",
+        "content": "천안시건강가정지원센터은(는) 충남 천안시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-620-9331입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "천안시",
+            "phone": "041-620-9331",
+            "fax": "041-622-8913",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.13789453657856,
+                    36.82686503906637
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "청양군가족센터",
+        "content": "청양군가족센터은(는) 충남 청양군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-944-2334입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "청양군",
+            "phone": "041-944-2334",
+            "fax": "041-944-2331",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.80003505751431,
+                    36.45174494873563
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "태안군가족센터",
+        "content": "태안군가족센터은(는) 충남 태안군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-670-0109입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "태안군",
+            "phone": "041-670-0109",
+            "fax": "041-675-0197",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.30859123785118,
+                    36.75596491730476
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "홍성군가족센터",
+        "content": "홍성군가족센터은(는) 충남 홍성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 041-631-7432입니다.",
+        "metadata": {
+            "city": "충남",
+            "district": "홍성군",
+            "phone": "041-631-7432",
+            "fax": "041-634-0902",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.65841655220099,
+                    36.60175347000811
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "고창군청 인재양성과",
+        "content": "고창군청 인재양성과은(는) 전북 고창군  지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-560-8086입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "고창군 ",
+            "phone": "063-560-8086",
+            "fax": "063-560-8089"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "군산시가족센터",
+        "content": "군산시가족센터은(는) 전북 군산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-443-2514입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "군산시",
+            "phone": "063-443-2514",
+            "fax": "063-443-5203",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.73076286690335,
+                    35.98185660968711
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "김제시가족센터",
+        "content": "김제시가족센터은(는) 전북 김제시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-544-6838입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "김제시",
+            "phone": "063-544-6838",
+            "fax": "063-545-2846",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.89488351521447,
+                    35.81313752137892
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "남원시가족센터",
+        "content": "남원시가족센터은(는) 전북 남원시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-635-6700입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "남원시",
+            "phone": "063-635-6700",
+            "fax": "063-635-6702",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.3870340068607,
+                    35.40948121874076
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "무주군가족센터",
+        "content": "무주군가족센터은(는) 전북 무주군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-322-1130입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "무주군",
+            "phone": "063-322-1130",
+            "fax": "063-322-1106",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.66440751608754,
+                    36.003768733535196
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "부안군청 교육청소년과",
+        "content": "부안군청 교육청소년과은(는) 전북 부안군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-580-4850입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "부안군",
+            "phone": "063-580-4850",
+            "fax": "063-580-4555"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "순창군가족센터",
+        "content": "순창군가족센터은(는) 전북 순창군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-652-4438입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "순창군",
+            "phone": "063-652-4438",
+            "fax": "063-652-3840",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.14894216565315,
+                    35.37703905523976
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "완주군가족센터",
+        "content": "완주군가족센터은(는) 전북 완주군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-262-0379입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "완주군",
+            "phone": "063-262-0379",
+            "fax": "063-261-1035",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.15850124455547,
+                    35.906016281791835
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "익산시가족센터",
+        "content": "익산시가족센터은(는) 전북 익산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-838-6048입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "익산시",
+            "phone": "063-838-6048",
+            "fax": "063-838-6047",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.94133792653925,
+                    35.95488639240644
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "임실군가족센터",
+        "content": "임실군가족센터은(는) 전북 임실군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-642-1839입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "임실군",
+            "phone": "063-642-1839",
+            "fax": "063-640-4639",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.273958438241,
+                    35.6092879607612
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "장수군자원봉사센터",
+        "content": "장수군자원봉사센터은(는) 전북 장수군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-351-5019입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "장수군",
+            "phone": "063-351-5019",
+            "fax": "063-351-5016",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.519837942597,
+                    35.6468364574856
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "전주시가족센터",
+        "content": "전주시가족센터은(는) 전북 전주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-231-0285입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "전주시",
+            "phone": "063-231-0285",
+            "fax": "063-231-0186",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.1395833007541,
+                    35.830660784205
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "정읍시가족센터",
+        "content": "정읍시가족센터은(는) 전북 정읍시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-535-1282입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "정읍시",
+            "phone": "063-535-1282",
+            "fax": "063-531-0311",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.85298715416569,
+                    35.56763736226423
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "진안군가족센터",
+        "content": "진안군가족센터은(는) 전북 진안군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 063-433-0746입니다.",
+        "metadata": {
+            "city": "전북",
+            "district": "진안군",
+            "phone": "063-433-0746",
+            "fax": "063-433-2999",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.42434956266547,
+                    35.790236580399416
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "강진군가족센터",
+        "content": "강진군가족센터은(는) 전남 강진군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-433-9004입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "강진군",
+            "phone": "061-433-9004",
+            "fax": "061-433-6201",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.771809024392,
+                    34.6446915819135
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "고흥군가족센터",
+        "content": "고흥군가족센터은(는) 전남 고흥군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-835-5964입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "고흥군",
+            "phone": "061-835-5964",
+            "fax": "061-835-5399",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.279433506134,
+                    34.601698234187836
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "곡성군가족센터",
+        "content": "곡성군가족센터은(는) 전남 곡성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-362-5422입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "곡성군",
+            "phone": "061-362-5422",
+            "fax": "061-362-5412",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.2894813598661,
+                    35.28316740793087
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "광양YMCA",
+        "content": "광양YMCA은(는) 전남 광양시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-761-5300입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "광양시",
+            "phone": "061-761-5300",
+            "fax": "061-761-5299",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.697097230205,
+                    34.9452931683223
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "구례군새마을회",
+        "content": "구례군새마을회은(는) 전남 구례군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-782-2514입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "구례군",
+            "phone": "061-782-2514",
+            "fax": "061-783-9308",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.460235067153,
+                    35.2126224401317
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "나주시아이돌보미지원센터",
+        "content": "나주시아이돌보미지원센터은(는) 전남 나주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-331-3582입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "나주시",
+            "phone": "061-331-3582",
+            "fax": "061-331-3584",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.712303824754,
+                    35.0156307776512
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "담양군여성단체협의회",
+        "content": "담양군여성단체협의회은(는) 전남 담양군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-381-1821입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "담양군",
+            "phone": "061-381-1821",
+            "fax": "061-381-1821",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.980744798899,
+                    35.3247069961627
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "목포시가족센터",
+        "content": "목포시가족센터은(는) 전남 목포시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-247-2314~5입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "목포시",
+            "phone": "061-247-2314~5",
+            "fax": "061-279-2315",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.38817881316857,
+                    34.789005316568264
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "무안군가족센터",
+        "content": "무안군가족센터은(는) 전남 무안군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-454-4887입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "무안군",
+            "phone": "061-454-4887",
+            "fax": "061-452-4788",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.47235226962138,
+                    34.986739916859044
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "보성종합사회복지관",
+        "content": "보성종합사회복지관은(는) 전남 보성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-852-9848입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "보성군",
+            "phone": "061-852-9848",
+            "fax": "061-852-9847",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.083362581198,
+                    34.770553468347
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "순천시 YWCA",
+        "content": "순천시 YWCA은(는) 전남 순천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-743-6100입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "순천시",
+            "phone": "061-743-6100",
+            "fax": "061-744-7991",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.483115084463,
+                    34.9512758233544
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "신안군가족센터",
+        "content": "신안군가족센터은(는) 전남 신안군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-240-8705입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "신안군",
+            "phone": "061-240-8705",
+            "fax": "061-240-8709",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.31243312979832,
+                    34.866263557736254
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "여수시가족센터",
+        "content": "여수시가족센터은(는) 전남 여수시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-692-4175입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "여수시",
+            "phone": "061-692-4175",
+            "fax": "061-692-4177",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.67530932228797,
+                    34.75961767523027
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영광지역자활센터",
+        "content": "영광지역자활센터은(는) 전남 영광군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-351-2055입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "영광군",
+            "phone": "061-351-2055",
+            "fax": "061-351-2054",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.512643220999,
+                    35.2756026221169
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영암군가족센터",
+        "content": "영암군가족센터은(는) 전남 영암군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-463-2929입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "영암군",
+            "phone": "061-463-2929",
+            "fax": "061-462-2929",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.47231912024365,
+                    34.751741207823606
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "완도군가족센터",
+        "content": "완도군가족센터은(는) 전남 완도군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-552-6900입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "완도군",
+            "phone": "061-552-6900",
+            "fax": "061-555-5445",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.74205942515391,
+                    34.32492080406577
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "장성군가족센터",
+        "content": "장성군가족센터은(는) 전남 장성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-392-0211입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "장성군",
+            "phone": "061-392-0211",
+            "fax": "061-393-5422",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.78730477915829,
+                    35.306049504043926
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "장흥지역자활센터",
+        "content": "장흥지역자활센터은(는) 전남 장흥군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-862-0852입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "장흥군",
+            "phone": "061-862-0852",
+            "fax": "061-864-0027",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.906084958163,
+                    34.6739707933544
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "진도군가족센터",
+        "content": "진도군가족센터은(는) 전남 진도군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-543-9994입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "진도군",
+            "phone": "061-543-9994",
+            "fax": "061-544-9903",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.27113741151352,
+                    34.4800779271959
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사단법인나비뜰동산",
+        "content": "사단법인나비뜰동산은(는) 전남 함평군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-322-6339입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "함평군",
+            "phone": "061-322-6339",
+            "fax": "061-324-6338"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "해남군가족센터",
+        "content": "해남군가족센터은(는) 전남 해남군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-534-0216입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "해남군",
+            "phone": "061-534-0216",
+            "fax": "061-534-0016",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.59457724256943,
+                    34.57489471601866
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "화순군아이돌봄지원센터",
+        "content": "화순군아이돌봄지원센터은(는) 전남 화순군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 061-375-6800입니다.",
+        "metadata": {
+            "city": "전남",
+            "district": "화순군",
+            "phone": "061-375-6800",
+            "fax": "061-375-6783",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.98668247217,
+                    35.0630139155248
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "경산시가족센터",
+        "content": "경산시가족센터은(는) 경북 경산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 053-814-3222입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "경산시",
+            "phone": "053-814-3222",
+            "fax": "053-814-8378",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.728429958657,
+                    35.8203690981968
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "가경사회서비스지원센터",
+        "content": "가경사회서비스지원센터은(는) 경북 경주시A 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-701-2511입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "경주시A",
+            "phone": "054-701-2511",
+            "fax": "054-701-0421"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "위덕대학교 아이돌봄지원센터",
+        "content": "위덕대학교 아이돌봄지원센터은(는) 경북 경주시B 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-621-1070입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "경주시B",
+            "phone": "054-621-1070",
+            "fax": "054-621-1072"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "고령군여성단체협의회",
+        "content": "고령군여성단체협의회은(는) 경북 고령군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-950-6215입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "고령군",
+            "phone": "054-950-6215",
+            "fax": "054-950-6349"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "구미아이돌봄지원센터",
+        "content": "구미아이돌봄지원센터은(는) 경북 구미시A 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-457-0544입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "구미시A",
+            "phone": "054-457-0544",
+            "fax": "054-465-1124"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "구미강동아이돌봄지원센터",
+        "content": "구미강동아이돌봄지원센터은(는) 경북 구미시B 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-472-6601입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "구미시B",
+            "phone": "054-472-6601",
+            "fax": "054-472-6602"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "김천시 더푸름 아이돌봄지원센터",
+        "content": "김천시 더푸름 아이돌봄지원센터은(는) 경북 김천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-431-5475입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "김천시",
+            "phone": "054-431-5475",
+            "fax": "054-434-7076"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "문경시가족센터",
+        "content": "문경시가족센터은(는) 경북 문경시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-555-2514입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "문경시",
+            "phone": "054-555-2514",
+            "fax": "054-554-5592",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.20216678959082,
+                    36.60906691830899
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "봉화군가족센터",
+        "content": "봉화군가족센터은(는) 경북 봉화군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-674-1771입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "봉화군",
+            "phone": "054-674-1771",
+            "fax": "054-673-9022",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.73902418968675,
+                    36.88884313888149
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "상주시가족센터",
+        "content": "상주시가족센터은(는) 경북 상주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-532-2208입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "상주시",
+            "phone": "054-532-2208",
+            "fax": "054-536-0637",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.1591547936701,
+                    36.4003380577254
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "성주군가족센터",
+        "content": "성주군가족센터은(는) 경북 성주군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-982-9815입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "성주군",
+            "phone": "054-982-9815",
+            "fax": "054-982-9840",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.28547920897316,
+                    35.91695743459324
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "안동시가족센터",
+        "content": "안동시가족센터은(는) 경북 안동시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-823-1245입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "안동시",
+            "phone": "054-823-1245",
+            "fax": "054-859-9875",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.69868653487904,
+                    36.56786719186035
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영덕군가족센터",
+        "content": "영덕군가족센터은(는) 경북 영덕군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-730-7382입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "영덕군",
+            "phone": "054-730-7382",
+            "fax": "054-730-6659",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.3620405330025,
+                    36.4200583290327
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영양군다문화가족지원센터",
+        "content": "영양군다문화가족지원센터은(는) 경북 영양군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-682-5434입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "영양군",
+            "phone": "054-682-5434",
+            "fax": "054-683-5433",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.116451820665,
+                    36.6610036772732
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영주시가족센터",
+        "content": "영주시가족센터은(는) 경북 영주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-638-5431입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "영주시",
+            "phone": "054-638-5431",
+            "fax": "054-635-5431",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.61902314616924,
+                    36.81915636666347
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "영천시가족센터",
+        "content": "영천시가족센터은(는) 경북 영천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-334-2442입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "영천시",
+            "phone": "054-334-2442",
+            "fax": "054-334-2662",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.93987106093977,
+                    35.96039935895676
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "예천군가족센터",
+        "content": "예천군가족센터은(는) 경북 예천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-652-2514입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "예천군",
+            "phone": "054-652-2514",
+            "fax": "054-652-4321",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.47333396928173,
+                    36.57726428772196
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울릉군가족센터",
+        "content": "울릉군가족센터은(는) 경북 울릉군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-791-1205입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "울릉군",
+            "phone": "054-791-1205",
+            "fax": "054-791-9936",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    130.908904186111,
+                    37.4936286419211
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "울진군가족센터",
+        "content": "울진군가족센터은(는) 경북 울진군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-781-0328입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "울진군",
+            "phone": "054-781-0328",
+            "fax": "054-783-8980",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.39504657958847,
+                    36.99107770130115
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "의성군가족센터",
+        "content": "의성군가족센터은(는) 경북 의성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-832-5449입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "의성군",
+            "phone": "054-832-5449",
+            "fax": "054-832-5442",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.69482702575212,
+                    36.355922840068146
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "청도군가족센터",
+        "content": "청도군가족센터은(는) 경북 청도군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-373-8133입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "청도군",
+            "phone": "054-373-8133",
+            "fax": "054-373-8135",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.717986409838,
+                    35.6482922498577
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "청송군가족센터",
+        "content": "청송군가족센터은(는) 경북 청송군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-870-6794입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "청송군",
+            "phone": "054-870-6794",
+            "fax": "054-870-6799",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.05893815542854,
+                    36.429937634834296
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "칠곡군가족센터",
+        "content": "칠곡군가족센터은(는) 경북 칠곡군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-975-0840입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "칠곡군",
+            "phone": "054-975-0840",
+            "fax": "054-975-0835",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.41947851470496,
+                    35.991523240854676
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "포항시가족센터",
+        "content": "포항시가족센터은(는) 경북 포항시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 054-244-9009입니다.",
+        "metadata": {
+            "city": "경북",
+            "district": "포항시",
+            "phone": "054-244-9009",
+            "fax": "070-7198-1496",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.375965571602,
+                    36.044292802816905
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "거제시여성인력개발센터",
+        "content": "거제시여성인력개발센터은(는) 경남 거제시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-636-2059입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "거제시",
+            "phone": "055-636-2059",
+            "fax": "055-637-8148",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.619298658366,
+                    34.8843316821391
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "거창군가족센터",
+        "content": "거창군가족센터은(는) 경남 거창군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-944-1365입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "거창군",
+            "phone": "055-944-1365",
+            "fax": "055-945-1364",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.910035128604,
+                    35.6825709309808
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "경남돌봄지원센터 사회적협동조합",
+        "content": "경남돌봄지원센터 사회적협동조합은(는) 경남 고성군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-672-6644입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "고성군",
+            "phone": "055-672-6644",
+            "fax": "055-674-0004",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.32096589934864,
+                    34.97671830050224
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "김해시가족센터",
+        "content": "김해시가족센터은(는) 경남 김해시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-329-6343입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "김해시",
+            "phone": "055-329-6343",
+            "fax": "055-329-6357",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.873394213231,
+                    35.2278331352001
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "남해여성회",
+        "content": "남해여성회은(는) 경남 남해군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-864-6615입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "남해군",
+            "phone": "055-864-6615",
+            "fax": "055-864-6620",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.89651618970113,
+                    34.838066124598924
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "밀양시가족센터",
+        "content": "밀양시가족센터은(는) 경남 밀양시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-351-4408입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "밀양시",
+            "phone": "055-351-4408",
+            "fax": "055-351-4410",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.76780291426576,
+                    35.47587862054265
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "(사)사천YWCA",
+        "content": "(사)사천YWCA은(는) 경남 사천시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-832-4422입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "사천시",
+            "phone": "055-832-4422",
+            "fax": "055-833-9987",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.076699763956,
+                    34.9316695016012
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "산청군가족센터",
+        "content": "산청군가족센터은(는) 경남 산청군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-972-1038입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "산청군",
+            "phone": "055-972-1038",
+            "fax": "055-972-1028",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.87314037119697,
+                    35.40895881958896
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "양산시 여성복지센터",
+        "content": "양산시 여성복지센터은(는) 경남 양산시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-392-4793입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "양산시",
+            "phone": "055-392-4793",
+            "fax": "055-372-0026",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    129.00346710546893,
+                    35.322488764844735
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "의령군가족센터",
+        "content": "의령군가족센터은(는) 경남 의령군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-574-2514입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "의령군",
+            "phone": "055-574-2514",
+            "fax": "055-573-5995",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.26024689925026,
+                    35.32003132641388
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "진주시가족센터",
+        "content": "진주시가족센터은(는) 경남 진주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-749-5446입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "진주시",
+            "phone": "055-749-5446",
+            "fax": "055-749-5448",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.075606197533,
+                    35.199129460504
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사단법인 창녕모람",
+        "content": "사단법인 창녕모람은(는) 경남 창녕군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-533-1367입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "창녕군",
+            "phone": "055-533-1367",
+            "fax": "055-521-1368"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사회적경제플랫폼협동조합",
+        "content": "사회적경제플랫폼협동조합은(는) 경남 창원시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-283-3226입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "창원시",
+            "phone": "055-283-3226",
+            "fax": "055-283-7226"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "경남행복한교육 사회적협동조합",
+        "content": "경남행복한교육 사회적협동조합은(는) 경남 창원시마산 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-231-5868입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "창원시마산",
+            "phone": "055-231-5868",
+            "fax": "055-606-5868"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "사회적협동조합 위드교육문화센터",
+        "content": "사회적협동조합 위드교육문화센터은(는) 경남 창원시진해 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-551-4436입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "창원시진해",
+            "phone": "055-551-4436",
+            "fax": "055-551-4470"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "통영시가족센터",
+        "content": "통영시가족센터은(는) 경남 통영시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-640-7921입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "통영시",
+            "phone": "055-640-7921",
+            "fax": "055-649-1217",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.420501884387,
+                    34.8759244562191
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "경남하동지역자활센터",
+        "content": "경남하동지역자활센터은(는) 경남 하동군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055)884-6955입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "하동군",
+            "phone": "055)884-6955",
+            "fax": "055-884-6957",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.74740007637946,
+                    35.07179411075454
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "함안군청",
+        "content": "함안군청은(는) 경남 함안군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-585-2381입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "함안군",
+            "phone": "055-585-2381",
+            "fax": "055-580-2359",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    128.40649860398642,
+                    35.272427598185715
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "함양군가족센터",
+        "content": "함양군가족센터은(는) 경남 함양군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-962-7013입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "함양군",
+            "phone": "055-962-7013",
+            "fax": "055-962-2058",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    127.7272545639358,
+                    35.52340316974657
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "합천군여성단체협의회",
+        "content": "합천군여성단체협의회은(는) 경남 합천군 지역의 아이돌봄서비스 제공기관입니다. 연락처는 055-930-4518입니다.",
+        "metadata": {
+            "city": "경남",
+            "district": "합천군",
+            "phone": "055-930-4518",
+            "fax": "055-930-4519"
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "서귀포시가족센터",
+        "content": "서귀포시가족센터은(는) 제주 서귀포시  지역의 아이돌봄서비스 제공기관입니다. 연락처는 064-732-6485입니다.",
+        "metadata": {
+            "city": "제주",
+            "district": "서귀포시 ",
+            "phone": "064-732-6485",
+            "fax": "064-733-9878",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.51322422785346,
+                    33.24991028765288
+                ]
+            }
+        }
+    },
+    {
+        "data_type": "facility_location",
+        "category": "아이돌봄서비스",
+        "title": "제주시가족센터",
+        "content": "제주시가족센터은(는) 제주 제주시 지역의 아이돌봄서비스 제공기관입니다. 연락처는 064-725-9005입니다.",
+        "metadata": {
+            "city": "제주",
+            "district": "제주시",
+            "phone": "064-725-9005",
+            "fax": "064-725-8006",
+            "location": {
+                "type": "Point",
+                "coordinates": [
+                    126.528163714995,
+                    33.5016325515057
+                ]
+            }
+        }
+    }
+]

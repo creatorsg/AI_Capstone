@@ -1,0 +1,1346 @@
+[
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "아이돌봄 서비스",
+        "content": "아이돌봄 서비스은(는) 여성가족부에서 주관하는 서비스입니다. 맞벌이를 하거나 갑자기 아이를 돌볼 수 없는 일이 생겼을 때 육아 도우미가 방문하여 12세 이하 자녀의 양육을 도와줍니다. 관련 문의는 아이돌봄 지원사업1577-8136로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000024",
+            "department": "여성가족부",
+            "contact": "아이돌봄 지원사업1577-8136",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "공동육아나눔터 운영",
+        "content": "공동육아나눔터 운영은(는) 여성가족부에서 주관하는 서비스입니다. 육아 공간 및 돌봄 프로그램 제공, 이웃 간 자녀 돌봄 품앗이 활동 지원을 통해 양육 부담을 경감하고 돌봄친화적 분위기를 조성합니다. 관련 문의는 공동육아나눔터(전국 가족센터(건강가정지원센터))1577-9337로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000028&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000028",
+            "department": "여성가족부",
+            "contact": "공동육아나눔터(전국 가족센터(건강가정지원센터))1577-9337",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000028&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "육아종합지원서비스 제공",
+        "content": "육아종합지원서비스 제공은(는) 교육부에서 주관하는 서비스입니다. 영유아와 부모를 위한 종합적인 육아종합서비스를 제공하는 육아종합지원센터 운영비를 지원합니다. 관련 문의는 중앙육아종합지원센터 센터지원팀02-6901-0202로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000030&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000030",
+            "department": "교육부",
+            "contact": "중앙육아종합지원센터 센터지원팀02-6901-0202",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000030&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "실종아동 등 보호 및 지원",
+        "content": "실종아동 등 보호 및 지원은(는) 보건복지부에서 주관하는 서비스입니다. 아동 및 장애인(지적·자폐성·정신)의 실종예방 교육 및 홍보, 장기실종 가족지원을 통해 가족해체를 예방합니다. 관련 문의는 실종아동전문기관02-777-0182로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000032&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000032",
+            "department": "보건복지부",
+            "contact": "실종아동전문기관02-777-0182",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000032&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "시간제보육 지원",
+        "content": "시간제보육 지원은(는) 교육부에서 주관하는 서비스입니다. 가정 양육 시에도 필요한 때에 필요한 만큼 이용할 수 있는 보육 서비스를 제공하여 자녀 양육에 대한 부담을 경감하고 부모의 보육 서비스 선택권을 보장합니다. 관련 문의는 시간제보육 상담1661-9361로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000037&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000037",
+            "department": "교육부",
+            "contact": "시간제보육 상담1661-9361",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000037&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "선천성대사이상 검사 및 환아관리",
+        "content": "선천성대사이상 검사 및 환아관리은(는) 보건복지부에서 주관하는 서비스입니다. 선천성대사이상의 유무를 조기에 발견·치료함으로써 장애발생을 사전에 예방하여 영유아의 건강 증진을 도모합니다. 관련 문의는 보건복지부 콜센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000040&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000040",
+            "department": "보건복지부",
+            "contact": "보건복지부 콜센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000040&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "의료급여 임신.출산진료비지원",
+        "content": "의료급여 임신.출산진료비지원은(는) 보건복지부에서 주관하는 서비스입니다. 임신 또는 출산한 의료급여 수급자와 2세미만 자녀에게 의료비를 지원하여 저소득층 국민보건 향상과 사회복지 증진에 기여합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000061",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "발달장애인 부모상담지원사업",
+        "content": "발달장애인 부모상담지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 발달장애인 부모에게 발달장애인의 양육과 부양에 따른 심리적 부담 완화 및 가족기능 향상 도모를 위한 전문 심리상담을 지원합니다. 관련 문의는 보건복지상담센터129 사회서비스전자바우처1566-3232로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000064&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000064",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 사회서비스전자바우처1566-3232",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000064&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "스포츠강좌이용권",
+        "content": "스포츠강좌이용권은(는) 문화체육관광부에서 주관하는 서비스입니다. 저소득층 유청소년에게 지속적인 스포츠 활동 기회를 보장하여  체력향상과 건전한 여가활동을 지원합니다. 관련 문의는 스포츠강좌이용권 상담 및 문의(국민체육진흥공단)1551-0078로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000076&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000076",
+            "department": "문화체육관광부",
+            "contact": "스포츠강좌이용권 상담 및 문의(국민체육진흥공단)1551-0078",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000076&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년특별지원",
+        "content": "청소년특별지원은(는) 여성가족부에서 주관하는 서비스입니다. 보호자가 없거나, 실질적으로 보호자의 보호를 받지 못하는 사회, 경제적으로 어려움이 있는 위기청소년이 올바르게 성장하고 안정된 생활을 할 수 있도록 지원합니다. 관련 문의는 여성가족부02-2100-6000로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000078&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000078",
+            "department": "여성가족부",
+            "contact": "여성가족부02-2100-6000",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000078&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "(북한이탈주민) 탈북청소년 교육지원",
+        "content": "(북한이탈주민) 탈북청소년 교육지원은(는) 통일부에서 주관하는 서비스입니다. 탈북청소년의 학교생활 적응 지원을 통해 대한민국의 건강한 구성원으로 자립할 수 있도록 지원합니다. 관련 문의는 북한이탈주민 종합상담 콜센터1577-6635 북한이탈주민지원재단 교육지원부02-3215-5793 통일부 정착지원과02-2100-5786로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000086&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000086",
+            "department": "통일부",
+            "contact": "북한이탈주민 종합상담 콜센터1577-6635 북한이탈주민지원재단 교육지원부02-3215-5793 통일부 정착지원과02-2100-5786",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000086&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "다함께 돌봄 사업",
+        "content": "다함께 돌봄 사업은(는) 보건복지부에서 주관하는 서비스입니다. 지역 중심의 맞춤형 돌봄 서비스를 제공하여 돌봄사각지대를 해소하고 맞벌이 가구 등의 육아부담을 경감합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000089&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000089",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000089&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "한부모가족복지시설 지원",
+        "content": "한부모가족복지시설 지원은(는) 여성가족부에서 주관하는 서비스입니다. 저소득 무주택 한부모가족의 안정을 위해 일정기간동안 한부모가족복지시설에 거주할 수 있도록 지원합니다. 관련 문의는 가족상담전화1644-6621(내선2번) 강원특별자치도 여성청소년가족과033-249-2698 경기도 가족다문화과031-8008-3356 경상남도 여성가족과055-211-5245 경상남도 여성가족과055-211-5245 광주광역시 여성가족과062-613-2291 대구광역시 여성가족과053-803-6723 대전광역시 여성가족청소년과042-270-3167 부산광역시 여성가족과051-888-1601 서울특별시 가족담당관02-2133-6547 울산광역시 여성가족청소년과052-229-3483 인천광역시 인구가족과032-440-2872 전라남도 여성가족정책관061-286-5944 전북특별자치도 여성가족과063-280-2522 제주특별자치도 복지정책과064-710-2874 충청남도 여성가족정책관041-635-2042 충청북도 양성평등가족정책관043-220-3934로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000091&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000091",
+            "department": "여성가족부",
+            "contact": "가족상담전화1644-6621(내선2번) 강원특별자치도 여성청소년가족과033-249-2698 경기도 가족다문화과031-8008-3356 경상남도 여성가족과055-211-5245 경상남도 여성가족과055-211-5245 광주광역시 여성가족과062-613-2291 대구광역시 여성가족과053-803-6723 대전광역시 여성가족청소년과042-270-3167 부산광역시 여성가족과051-888-1601 서울특별시 가족담당관02-2133-6547 울산광역시 여성가족청소년과052-229-3483 인천광역시 인구가족과032-440-2872 전라남도 여성가족정책관061-286-5944 전북특별자치도 여성가족과063-280-2522 제주특별자치도 복지정책과064-710-2874 충청남도 여성가족정책관041-635-2042 충청북도 양성평등가족정책관043-220-3934",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000091&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년복지시설 운영 지원",
+        "content": "청소년복지시설 운영 지원은(는) 여성가족부에서 주관하는 서비스입니다. 가정 밖 청소년을 보호하고 상담, 교육문화활동 지원을 통해 비행, 탈선을 예방하여 가정복귀와 사회적응을 돕습니다. 관련 문의는 청소년 상담전화1388 한국청소년상담복지개발원051-662-3230로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000751&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000751",
+            "department": "여성가족부",
+            "contact": "청소년 상담전화1388 한국청소년상담복지개발원051-662-3230",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000751&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "여성청소년 생리용품 지원",
+        "content": "여성청소년 생리용품 지원은(는) 여성가족부에서 주관하는 서비스입니다. 취약계층 여성청소년 대상 생리용품 지원을 통해 여성 청소년의 건강한 성장을 지원합니다. 관련 문의는 BC카드 1899-4651 KB국민카드1599-7900 거주지 관할 읍면동 주민센터 롯데카드1899-4282 사회서비스전자바우처1566-3232 삼성카드1566-3336 신한카드1544-8868로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000781&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000781",
+            "department": "여성가족부",
+            "contact": "BC카드 1899-4651 KB국민카드1599-7900 거주지 관할 읍면동 주민센터 롯데카드1899-4282 사회서비스전자바우처1566-3232 삼성카드1566-3336 신한카드1544-8868",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000781&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "입양숙려기간 모자지원사업",
+        "content": "입양숙려기간 모자지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 미혼·이혼 한부모가 출산 전후 정서적으로 불안정한 상태로 입양에  동의하는 것을 방지하고 입양과 양육에 대하여 충분히 고려할 기회를 제공합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000807&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000807",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000807&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "다문화가족 지원사업",
+        "content": "다문화가족 지원사업은(는) 여성가족부에서 주관하는 서비스입니다. 다문화가족의 안정적인 정착과 가족생활을 지원하기 위해 가족교육/상담/한국어 문화프로그램, 자녀지원, 직업교육 등 서비스를 제공합니다. 관련 문의는 다누리콜센터1577-1366 여성가족부02-2100-6000로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000837&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000837",
+            "department": "여성가족부",
+            "contact": "다누리콜센터1577-1366 여성가족부02-2100-6000",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000837&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "고용보험 미적용자 출산급여 지원",
+        "content": "고용보험 미적용자 출산급여 지원은(는) 고용노동부에서 주관하는 서비스입니다. 소득활동을 하고 있으나 고용보험의 '출산전후휴가급여'를 지원받지 못하는 출산여성에게 출산급여를 지원합니다. 관련 문의는 고용노동부 고객상담센터1350로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000838&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000838",
+            "department": "고용노동부",
+            "contact": "고용노동부 고객상담센터1350",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000838&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "보육교직원 인건비 지원",
+        "content": "보육교직원 인건비 지원은(는) 교육부에서 주관하는 서비스입니다. 국공립, 사회복지법인, 법인 단체 등 어린이집 및 취약보육서비스를 제공하는 보육교직원 인건비 지원을 통해 안정적 보육서비스를 제공합니다. 관련 문의는 교육부 민원 전화 상담실02-6222-6060로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000842&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000842",
+            "department": "교육부",
+            "contact": "교육부 민원 전화 상담실02-6222-6060",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000842&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "학교 밖 청소년 지원",
+        "content": "학교 밖 청소년 지원은(는) 여성가족부에서 주관하는 서비스입니다. 학교 밖 청소년의 개인적 수요와 특성을 고려한 상담, 교육, 직업체험 및 취업, 자립지원 프로그램을 제공하여 건강한 사회구성원으로 성장하도록 지원합니다. 관련 문의는 학교 밖 청소년지원센터 홈페이지로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000948&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00000948",
+            "department": "여성가족부",
+            "contact": "학교 밖 청소년지원센터 홈페이지",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000948&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "장애아동입양 양육보조금",
+        "content": "장애아동입양 양육보조금은(는) 보건복지부에서 주관하는 서비스입니다. 장애 아동을 입양한 가정에 양육보조금을 지원하여 장애아동의 국내입양 활성화 및 건전육성을 도모합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001021&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001021",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001021&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "장애아보육료지원",
+        "content": "장애아보육료지원은(는) 교육부에서 주관하는 서비스입니다. 어린이집 이용 장애아동에 대한 보육료 지원을 통해 부모의 자녀양육 부담경감 및 원활한 경제활동을 지원합니다. 관련 문의는 교육부 민원 전화 상담실02-6222-6060로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001067&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001067",
+            "department": "교육부",
+            "contact": "교육부 민원 전화 상담실02-6222-6060",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001067&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "한부모가족 아동양육비 지원",
+        "content": "한부모가족 아동양육비 지원은(는) 여성가족부에서 주관하는 서비스입니다. 저소득 한부모가족 및 조손가족이 가족의 기능을 유지하고 안정된 생활을 할 수 있도록 아동 양육비를 지원합니다. 관련 문의는 여성가족부02-2100-6000 한부모가족상담전화1577-4206로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001068&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001068",
+            "department": "여성가족부",
+            "contact": "여성가족부02-2100-6000 한부모가족상담전화1577-4206",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001068&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "특별현금급여(가족요양비)",
+        "content": "특별현금급여(가족요양비)은(는) 보건복지부에서 주관하는 서비스입니다. 가족등으로부터 방문요양에 상당한 장기요양급여를 받은 때 수급자에게 특별현금급여를 지급합니다. 관련 문의는 국민건강보험공단 장기요양보험1577-1000로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001086&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001086",
+            "department": "보건복지부",
+            "contact": "국민건강보험공단 장기요양보험1577-1000",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001086&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "고위험 임산부 의료비 지원",
+        "content": "고위험 임산부 의료비 지원은(는) 보건복지부에서 주관하는 서비스입니다. 고위험 임신의 적정 치료와 관리에 필요한 진료비를 지원하여 경제적 부담을 줄이고, 건강한 출산을 보장합니다. 관련 문의는 보건복지부 콜센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001088&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001088",
+            "department": "보건복지부",
+            "contact": "보건복지부 콜센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001088&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "국가유공자의료급여증발급",
+        "content": "국가유공자의료급여증발급은(는) 국가보훈부에서 주관하는 서비스입니다. 저소득 국가유공자와 가족들의 의료비 부담 경감을 위해 국가유공자 의료급여증을 발급합니다. 관련 문의는 국가보훈부 상담센터1577-0606로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001091&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001091",
+            "department": "국가보훈부",
+            "contact": "국가보훈부 상담센터1577-0606",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001091&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "독거노인·장애인 응급안전안심서비스",
+        "content": "독거노인·장애인 응급안전안심서비스은(는) 보건복지부에서 주관하는 서비스입니다. 안전의 사각지대에 있는 노인과 장애인이 응급상황을 인지하고 응급상황에 대처할 수 있도록 안전대책을 마련하여 지역사회 예방적 돌봄을 지원합니다. 관련 문의는 보건복지부 콜센터129 한국사회보장정보원 사례관리정보부02-6360-5497로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001093&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001093",
+            "department": "보건복지부",
+            "contact": "보건복지부 콜센터129 한국사회보장정보원 사례관리정보부02-6360-5497",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001093&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "어린이집지원(교사근무환경개선비,교사겸직원장지원비)",
+        "content": "어린이집지원(교사근무환경개선비,교사겸직원장지원비)은(는) 교육부에서 주관하는 서비스입니다. 어린이집 보육교사와 교사를 겸직하는 원장의 근로여건개선을 위해 근무환경 개선비를 지원합니다. 관련 문의는 교육부 민원 전화 상담실02-6222-6060로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001094&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001094",
+            "department": "교육부",
+            "contact": "교육부 민원 전화 상담실02-6222-6060",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001094&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "온가족보듬사업",
+        "content": "온가족보듬사업은(는) 여성가족부에서 주관하는 서비스입니다. 취약가족 및 긴급·위기가족이 가족 기능을 회복하고 정서적, 경제적 자립역량을 강화할 수 있도록 합니다. 관련 문의는 한국건강가정진흥원 가족센터협력부02-3479-7716로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001098&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001098",
+            "department": "여성가족부",
+            "contact": "한국건강가정진흥원 가족센터협력부02-3479-7716",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001098&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "폭력피해여성 주거지원 사업",
+        "content": "폭력피해여성 주거지원 사업은(는) 여성가족부에서 주관하는 서비스입니다. 가정폭력, 성폭력 등 폭력피해자들의 자립을 지원하고 사회 적응 여건을 조성하고자, 폭력 피해여성과 그 가족들이 공동으로 생활할 수 있는 주거 공간을 제공합니다. 관련 문의는 여성긴급전화1366로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001101",
+            "department": "여성가족부",
+            "contact": "여성긴급전화1366",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "한부모가족자녀 교육비 지원",
+        "content": "한부모가족자녀 교육비 지원은(는) 교육부에서 주관하는 서비스입니다. 한부모가족보호대상자에게 고교비(학비)를 지원합니다. 관련 문의는 교육비 원클릭 신청 시스템 상담센터1544-9654로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001104&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001104",
+            "department": "교육부",
+            "contact": "교육비 원클릭 신청 시스템 상담센터1544-9654",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001104&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "가정폭력피해자 치료회복 프로그램 및 의료비지원",
+        "content": "가정폭력피해자 치료회복 프로그램 및 의료비지원은(는) 여성가족부에서 주관하는 서비스입니다. 가정폭력피해자 및 동반가족의 정신적, 육체적 회복을 위한 프로그램을 제공하고 의료비를 지원합니다. 관련 문의는 각 지방자치단체각 기관 120 센터 여성긴급전화1366로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001105",
+            "department": "여성가족부",
+            "contact": "각 지방자치단체각 기관 120 센터 여성긴급전화1366",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "지역아동센터 지원",
+        "content": "지역아동센터 지원은(는) 보건복지부에서 주관하는 서비스입니다. 방과후 돌봄이 필요한 지역사회 아동의 건전육성을 위하여 보호·교육, 건전한 놀이와 오락의 제공, 보호자와 지역사회의 연계 등 종합적인 복지서비스를 제공합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001107&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001107",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001107&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년한부모 아동양육 및 자립지원",
+        "content": "청소년한부모 아동양육 및 자립지원은(는) 여성가족부에서 주관하는 서비스입니다. 청소년한부모 가정의 자녀 양육환경을 개선하고 자립기반 마련을 지원합니다. 관련 문의는 가족상담전화1577-4206 여성가족부02-2100-6000로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001109&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001109",
+            "department": "여성가족부",
+            "contact": "가족상담전화1577-4206 여성가족부02-2100-6000",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001109&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "이주배경 청소년 지원",
+        "content": "이주배경 청소년 지원은(는) 여성가족부에서 주관하는 서비스입니다. 다문화가족의 청소년과 국내로 이주해 온 청소년들이 우리 사회에 잘 적응할 수 있도록 상담과 진로지원 프로그램 등을 실시합니다. 관련 문의는 이주배경청소년지원센터02-733-7587로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001114&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001114",
+            "department": "여성가족부",
+            "contact": "이주배경청소년지원센터02-733-7587",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001114&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "고등학교 무상교육",
+        "content": "고등학교 무상교육은(는) 교육부에서 주관하는 서비스입니다. 초·중·고 교육의 공공성을 강화하고, 학생·학부모의 교육비 부담을 덜어드립니다. 관련 문의는 교육부02-6222-6060로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001118&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001118",
+            "department": "교육부",
+            "contact": "교육부02-6222-6060",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001118&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "장애입양아동 의료비지원",
+        "content": "장애입양아동 의료비지원은(는) 보건복지부에서 주관하는 서비스입니다. 장애아동을 입양한 국내입양가정에 의료비를 지원하여 장애아동의 국내입양 활성화 및 건전육성을 도모합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001121&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001121",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001121&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "국가보훈대상자 지원(수업료면제)",
+        "content": "국가보훈대상자 지원(수업료면제)은(는) 국가보훈부에서 주관하는 서비스입니다. 국가유공자와 그 유족 또는 가족이 교육기관에서 필요한 교육을 받음으로써 건전한 사회인으로 자립할 수 있도록 교육비를 지원합니다. 관련 문의는 국가보훈부 상담센터1577-0606로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001131&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001131",
+            "department": "국가보훈부",
+            "contact": "국가보훈부 상담센터1577-0606",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001131&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "권역재활병원 공공재활프로그램 운영지원",
+        "content": "권역재활병원 공공재활프로그램 운영지원은(는) 보건복지부에서 주관하는 서비스입니다. 권역재활병원의 사회복귀, 방문재활, 장애아동 재활 등 공공재활프로그램 활성화를 통해 장애발생 후 입원기간을 단축하여 효과적 재활치료와 성공적인 사회복귀 도모  관련 문의는 보건복지부 장애인건강과044-202-3191/3193로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001134&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001134",
+            "department": "보건복지부",
+            "contact": "보건복지부 장애인건강과044-202-3191/3193",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001134&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "해산급여",
+        "content": "해산급여은(는) 보건복지부에서 주관하는 서비스입니다. 수급자 가구의 조산 및 분만전과 분만후의 출산에 필요한 조치와 보호를 위해 해산비를 지급합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001135&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001135",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001135&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "성매매 피해아동청소년 통합지원",
+        "content": "성매매 피해아동청소년 통합지원은(는) 여성가족부에서 주관하는 서비스입니다. 성매매 피해아동·청소년에게 피해를 입은 때부터 성인이 될 때까지 종합서비스를 제공하여 청소년의 원활한 사회복귀를 지원합니다. 관련 문의는 중앙센터(한국여성인권진흥원)02-6363-8405로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001139&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001139",
+            "department": "여성가족부",
+            "contact": "중앙센터(한국여성인권진흥원)02-6363-8405",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001139&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "방과후보육료지원",
+        "content": "방과후보육료지원은(는) 교육부에서 주관하는 서비스입니다. 어린이집을 이용하는 12세 이하 취학아동에 대한 방과후 보육료를 지원하여 양육의 부담을 줄이고 원활한 경제활동을 돕습니다. 관련 문의는 교육부02-6222-6060 아이사랑 헬프데스크1566-3232(단축번호 1번)로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001140&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001140",
+            "department": "교육부",
+            "contact": "교육부02-6222-6060 아이사랑 헬프데스크1566-3232(단축번호 1번)",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001140&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "지역사회 청소년통합지원체계(청소년안전망)",
+        "content": "지역사회 청소년통합지원체계(청소년안전망)은(는) 여성가족부에서 주관하는 서비스입니다. 학업중단, 가출, 인터넷 중독 등 위기에 처한 청소년의  건강한 성장과 복지증진을 위해 상담·보호·교육·자립 등 맞춤형 서비스를 제공합니다. 관련 문의는 여성가족부 청소년자립지원과02-2100-6277로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001141&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001141",
+            "department": "여성가족부",
+            "contact": "여성가족부 청소년자립지원과02-2100-6277",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001141&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "디지털미디어 피해 청소년 회복 지원 사업(청소년 인터넷·스마트폰 과의존 치료비 지원)",
+        "content": "디지털미디어 피해 청소년 회복 지원 사업(청소년 인터넷·스마트폰 과의존 치료비 지원)은(는) 여성가족부에서 주관하는 서비스입니다. 급격한 미디어 환경의 변화와 청소년의 매체이용 증가로 인한 사이버도박, 인터넷?스마트폰 과의존 등의 디지털미디어 역기능으로부터 청소년을 보호합니다. 관련 문의는 한국청소년상담복지개발원051-662-3230 헬프콜 청소년전화1388로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001145&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001145",
+            "department": "여성가족부",
+            "contact": "한국청소년상담복지개발원051-662-3230 헬프콜 청소년전화1388",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001145&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "시설 퇴소청소년 자립지원수당 지급",
+        "content": "시설 퇴소청소년 자립지원수당 지급은(는) 여성가족부에서 주관하는 서비스입니다. 청소년쉼터 퇴소 및 청소년자립지원관 사례관리 중 또는 사례관리가 종료된 청소년에게 자립지원수당을 지급하여 안정적인 자립기반 마련을 지원합니다. 관련 문의는 청소년 상담전화1388 (휴대전화 : 지역번호+1388)로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001146&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001146",
+            "department": "여성가족부",
+            "contact": "청소년 상담전화1388 (휴대전화 : 지역번호+1388)",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001146&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "그 밖의 연장형 보육료 등 지원",
+        "content": "그 밖의 연장형 보육료 등 지원은(는) 교육부에서 주관하는 서비스입니다. 그 밖의 연장형 어린이집(야간연장, 휴일, 24시 등)을 이용하는 영유아에 대하여 보육료를 지원함으로써  부모의 자녀양육 부담을 덜고 원활한 경제활동을 돕습니다. 관련 문의는 교육부02-6222-6060 아이사랑 헬프데스크1566-3232(단축번호 1번) 아이사랑보육포털1661-9361로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001147&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001147",
+            "department": "교육부",
+            "contact": "교육부02-6222-6060 아이사랑 헬프데스크1566-3232(단축번호 1번) 아이사랑보육포털1661-9361",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001147&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "근로·자녀장려금",
+        "content": "근로·자녀장려금은(는) 기획재정부에서 주관하는 서비스입니다. 소득이 적어 생활이 어려운 자영업자 또는 근로자 가구에 근로장려금과 자녀장려금을 지급하여 근로 의욕을 더하고 소득과 자녀양육비를 지원합니다. 관련 문의는 국세청 근로장려세제126로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001148&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001148",
+            "department": "기획재정부",
+            "contact": "국세청 근로장려세제126",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001148&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "발달장애인 가족휴식지원사업",
+        "content": "발달장애인 가족휴식지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 발달장애인 가족의 양육부담을 경감하고 가족의 정서적 안정을 돕기 위해 휴식, 여가, 교육, 상담 서비스를 제공합니다. 관련 문의는 보건복지부 콜센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001150&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001150",
+            "department": "보건복지부",
+            "contact": "보건복지부 콜센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001150&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "입원 및 격리치료명령 결핵환자 부양가족생활보호비 지원",
+        "content": "입원 및 격리치료명령 결핵환자 부양가족생활보호비 지원은(는) 질병관리청에서 주관하는 서비스입니다. 결핵예방법에 따라 입원 및 격리치료 명령을 받은 결핵환자의 격리기간 동안 발생한 소득상실을 보전하기 위해 환자 본인 또는 그 부양가족에게 생활보호비를 지급합니다. 관련 문의는 질병관리청 콜센터1339로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001159&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001159",
+            "department": "질병관리청",
+            "contact": "질병관리청 콜센터1339",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001159&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "표준모자보건수첩 제공",
+        "content": "표준모자보건수첩 제공은(는) 보건복지부에서 주관하는 서비스입니다. 표준모자보건수첩 보급으로 임신부터 영유아기까지 각종 검사 및 건강관리 안내, 예방접종, 검진(검사) 등 건강기록 유지, 양육에 대한 필수·객관적 정보 제공으로 모성과 영유아의 건강증진을 도모합니다. 관련 문의는 보건복지부 콜센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001161&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001161",
+            "department": "보건복지부",
+            "contact": "보건복지부 콜센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001161&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "직장어린이집 설치 지원",
+        "content": "직장어린이집 설치 지원은(는) 고용노동부에서 주관하는 서비스입니다. 근로자의 육아부담 완화와 여성의 경제활동 참여 촉진 및 직장어린이집 운영의 내실화를 도모합니다. 관련 문의는 근로복지공단 직장보육지원센터02-2670-0410~9로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001163&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001163",
+            "department": "고용노동부",
+            "contact": "근로복지공단 직장보육지원센터02-2670-0410~9",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001163&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "아동수당 지급",
+        "content": "아동수당 지급은(는) 보건복지부에서 주관하는 서비스입니다. 아동 양육에 따른 경제적 부담을 경감하고 건강한 성장 환경을 조성함으로써 아동의 기본적 권리와 복지를 증진합니다. 관련 문의는 보건복지부상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001171&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001171",
+            "department": "보건복지부",
+            "contact": "보건복지부상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001171&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "국립특수학교 및 국립부설학교 특수학급 지원",
+        "content": "국립특수학교 및 국립부설학교 특수학급 지원은(는) 교육부에서 주관하는 서비스입니다. 국립특수학교(급)의 특수교육 지원인력 배치, 돌봄교실 운영 및 특수교육대상자의 방과후학교 경비를 지원하여 장애학생의 학습권을 보장합니다. 관련 문의는 교육부 특수교육정책과044-203-6569로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001173&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001173",
+            "department": "교육부",
+            "contact": "교육부 특수교육정책과044-203-6569",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001173&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "자립준비청년 자립수당 지급",
+        "content": "자립준비청년 자립수당 지급은(는) 보건복지부에서 주관하는 서비스입니다. 자립준비청년(보호종료아동)에게 자립수당을 지급하여 보호종료 후 경제적 부담을 완화하고 복지향상을 통해 안정적 사회정착 및 성공적 자립을 지원합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001175&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001175",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001175&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년 발달장애인 방과후활동서비스",
+        "content": "청소년 발달장애인 방과후활동서비스은(는) 보건복지부에서 주관하는 서비스입니다. 만 6세 이상~만 18세 미만의 청소년 발달장애인이 방과후에도 돌봄을 지원받을 수 있도록 방과후활동 이용권을 지급합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001178&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001178",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001178&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "학대피해아동 쉼터 설치 및 운영",
+        "content": "학대피해아동 쉼터 설치 및 운영은(는) 보건복지부에서 주관하는 서비스입니다. 학대피해아동에게 보호와 치료, 양육서비스 등을 제공함으로써 심신의 회복과 원가정 복귀를 지원합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001180&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001180",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001180&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "중앙노인돌봄지원기관 운영지원",
+        "content": "중앙노인돌봄지원기관 운영지원은(는) 보건복지부에서 주관하는 서비스입니다. 중앙노인돌봄지원기관 수탁운영 법인을 지원하여 노인맞춤돌봄서비스 등의 원활한 추진을 도모합니다. 관련 문의는 독거노인종합지원센터1661-2129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001181&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001181",
+            "department": "보건복지부",
+            "contact": "독거노인종합지원센터1661-2129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001181&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "다문화보육료지원",
+        "content": "다문화보육료지원은(는) 교육부에서 주관하는 서비스입니다. 어린이집을 이용하는 다문화 가정의 영유아 자녀에게 보육료를 지원하여 부모의 양육에 대한 부담을 덜고, 부모가 원활한 경제활동을 할 수 있도록 돕습니다. 관련 문의는 교육부 민원 전화 상담실02-6222-6060로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001183&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001183",
+            "department": "교육부",
+            "contact": "교육부 민원 전화 상담실02-6222-6060",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001183&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "암환자의료비지원",
+        "content": "암환자의료비지원은(는) 보건복지부에서 주관하는 서비스입니다. 저소득층 암환자 및 소아·아동 암환자에 대한 의료비를 지원하여 경제적 부담을 완화하고 치료접근성을 높입니다. 관련 문의는 국가암센터 암환자의료비사업 담당자031-920-2029, 2045 보건복지부 질병정책과044-202-2513 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001184&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001184",
+            "department": "보건복지부",
+            "contact": "국가암센터 암환자의료비사업 담당자031-920-2029, 2045 보건복지부 질병정책과044-202-2513 보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001184&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "의료급여수급권자 영유아건강검진비 지원",
+        "content": "의료급여수급권자 영유아건강검진비 지원은(는) 보건복지부에서 주관하는 서비스입니다. 의료급여수급권자 영유아 대상 연령별 건강검진을 통해 영유아의 성장·발달 사항을 추적 관리하고 건강증진을 도모합니다. 관련 문의는 국민건강보험공단1577-1000 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001185&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001185",
+            "department": "보건복지부",
+            "contact": "국민건강보험공단1577-1000 보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001185&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "가족센터(건강가정지원센터)운영",
+        "content": "가족센터(건강가정지원센터)운영은(는) 여성가족부에서 주관하는 서비스입니다. 지역주민의 특성을 고려한 맞춤형 가족지원서비스를 제공하여 가족의 안정성 강화 및 가족관계 증진을 돕습니다. 관련 문의는 전국 가족센터(건강가정지원센터)1577-9337로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001186&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001186",
+            "department": "여성가족부",
+            "contact": "전국 가족센터(건강가정지원센터)1577-9337",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001186&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "산모·신생아 건강관리 지원사업",
+        "content": "산모·신생아 건강관리 지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 출산가정에 건강관리사를 파견하여 산후관리를 지원함으로써 산모와 신생아의 건강을 증진하고 출산가정의 경제적 부담 경감을 지원합니다. 관련 문의는 보건복지상담센터129 사회서비스전자바우처1566-3232로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00001188",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 사회서비스전자바우처1566-3232",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "정신건강복지센터 운영",
+        "content": "정신건강복지센터 운영은(는) 보건복지부에서 주관하는 서비스입니다. 일반인은 물론 아동&middot;청소년에게 발생할 수 있는 정신건강문제의 예방, 조기발견 및 상담, 치료, 재활을 통해 사회복귀를 도모합니다. 관련 문의는 24시간 자살예방상담전화109 대한정신건강의학과의사회02-3446-3153 보건복지상담센터129 시도 및 시군구 정신건강복지센터 담당부서  한국자살예방협회02-413-0892~3 한국정신건강전문요원협회02-712-0386로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003169",
+            "department": "보건복지부",
+            "contact": "24시간 자살예방상담전화109 대한정신건강의학과의사회02-3446-3153 보건복지상담센터129 시도 및 시군구 정신건강복지센터 담당부서  한국자살예방협회02-413-0892~3 한국정신건강전문요원협회02-712-0386",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "결혼이민자 통번역 서비스",
+        "content": "결혼이민자 통번역 서비스은(는) 여성가족부에서 주관하는 서비스입니다. 입국초기의 결혼이민자와 다문화가족이 생활 속에서 의사소통에 불편함이 없도록 통역과 번역 서비스를 지원하며 통·번역 인력채용 등으로 자립을 돕습니다. 관련 문의는 다누리콜센터1577-1366로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003175&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003175",
+            "department": "여성가족부",
+            "contact": "다누리콜센터1577-1366",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003175&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년치료재활센터 운영",
+        "content": "청소년치료재활센터 운영은(는) 여성가족부에서 주관하는 서비스입니다. 정서, 행동에 어려움을 겪는 만 9~18세 청소년을 대상으로 종합적, 전문적 치유재활 서비스를 제공하는 거주형 기관을 운영합니다. 관련 문의는 국립대구청소년디딤센터053-665-6900 국립중앙청소년디딤센터031-333-1900로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003185&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003185",
+            "department": "여성가족부",
+            "contact": "국립대구청소년디딤센터053-665-6900 국립중앙청소년디딤센터031-333-1900",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003185&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "양육비 이행 원스톱 종합서비스",
+        "content": "양육비 이행 원스톱 종합서비스은(는) 여성가족부에서 주관하는 서비스입니다. 양육비를 받지 못해 어려움을 겪고 있는 미혼, 이혼 한부모가 양육비를 원활하게 지급받을 수 있도록 지원합니다. 관련 문의는 양육비이행관리원1644-6621로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003186&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003186",
+            "department": "여성가족부",
+            "contact": "양육비이행관리원1644-6621",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003186&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "노인맞춤돌봄서비스",
+        "content": "노인맞춤돌봄서비스은(는) 보건복지부에서 주관하는 서비스입니다. 일상생활 영위가 어려운 취약노인에게 적절한 돌봄서비스를 제공하여 안정적인 노후생활 보장, 노인의 기능·건강 유지 및 악화 예방을 지원합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003191&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003191",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003191&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "다문화가족 방문교육 서비스",
+        "content": "다문화가족 방문교육 서비스은(는) 여성가족부에서 주관하는 서비스입니다. 집합교육 참여가 어려운 다문화 가정에 방문하여 한국어 교육, 부모 교육, 자녀생활 교육을 제공하고 다문화 가족의 정착과 자녀양육을 돕습니다. 관련 문의는 다누리콜센터1577-1366 한국건강가정진흥원02-3479-7600로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003192&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003192",
+            "department": "여성가족부",
+            "contact": "다누리콜센터1577-1366 한국건강가정진흥원02-3479-7600",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003192&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "발달재활서비스",
+        "content": "발달재활서비스은(는) 보건복지부에서 주관하는 서비스입니다. 성장기 정신적, 감각적 장애아동의 인지, 의사소통, 적응행동, 감각, 운동 등의 기능향상과 행동발달을 위한 재활서비스를 지원하고, 관련 정보를 제공합니다. 관련 문의는 보건복지상담센터129 사회서비스전자바우처1566-3232로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003195&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003195",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 사회서비스전자바우처1566-3232",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003195&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "장애아동수당",
+        "content": "장애아동수당은(는) 보건복지부에서 주관하는 서비스입니다. 장애로 인하여 생활이 어려운 장애아동이 보다 편안한 생활을 할 수 있도록 지원합니다. 관련 문의는 보건복지상담센터129 전국 읍·면·동 주민센터전국 읍·면·동 주민센터로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003198&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003198",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 전국 읍·면·동 주민센터전국 읍·면·동 주민센터",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003198&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년동반자프로그램 운영",
+        "content": "청소년동반자프로그램 운영은(는) 여성가족부에서 주관하는 서비스입니다. 위기 청소년을 대상으로 전문가가 찾아가서 심층상담을 하고, 청소년 동반자 프로그램을 통해 심리적·정서적 지지를 얻을 수 있도록 지원합니다. 관련 문의는 여성가족부 청소년자립지원과02-2100-6276 여성가족부 청소년자립지원과02-2100-6280 청소년1388(청소년상담전화)1388(지역번호+1388)로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003200&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003200",
+            "department": "여성가족부",
+            "contact": "여성가족부 청소년자립지원과02-2100-6276 여성가족부 청소년자립지원과02-2100-6280 청소년1388(청소년상담전화)1388(지역번호+1388)",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003200&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년상담1388 온라인상담 ",
+        "content": "청소년상담1388 온라인상담 은(는) 여성가족부에서 주관하는 서비스입니다. 청소년이 언제 어디서나 편리하게 이용할 수 있는 사이버 상담 제공으로 폭력, 중독, 자살, 우울 등 청소년 문제 해결을 지원합니다. 관련 문의는 청소년1388(청소년상담전화)1388(지역번호+1388) 한국청소년상담복지개발원051-662-3230로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003204&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003204",
+            "department": "여성가족부",
+            "contact": "청소년1388(청소년상담전화)1388(지역번호+1388) 한국청소년상담복지개발원051-662-3230",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003204&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "납북피해자 지원",
+        "content": "납북피해자 지원은(는) 통일부에서 주관하는 서비스입니다. 전후 납북자 가족 및 귀환 납북자에 대한 주거 지원을 통해  납북으로 인한 고통 경감 및 권익향상을 도모합니다. 관련 문의는 통일부 납북자대책팀02-2100-5595 한국토지주택공사031-738-7114로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003212&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003212",
+            "department": "통일부",
+            "contact": "통일부 납북자대책팀02-2100-5595 한국토지주택공사031-738-7114",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003212&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "인플루엔자 국가예방접종 지원사업",
+        "content": "인플루엔자 국가예방접종 지원사업은(는) 질병관리청에서 주관하는 서비스입니다. 어르신, 임신부 및 어린이의 인플루엔자 접종률 향상과 질병부담 감소를 위해 인플루엔자 예방접종을 국가에서 지원합니다. 관련 문의는 질병관리청 1339 콜센터국번없이 1339 질병관리청 예방접종관리과043-719-8398~8399로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003213&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003213",
+            "department": "질병관리청",
+            "contact": "질병관리청 1339 콜센터국번없이 1339 질병관리청 예방접종관리과043-719-8398~8399",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003213&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "재해위로금지급",
+        "content": "재해위로금지급은(는) 국가보훈부에서 주관하는 서비스입니다. 자연재해로 인명, 재산상 피해를 입은 국가유공자 등 보훈가족을 위로하고 재해복구의지를 고취시키기 위하여 재해위로금을 지급합니다. 관련 문의는 보훈상담센터1577-0606로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003214&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003214",
+            "department": "국가보훈부",
+            "contact": "보훈상담센터1577-0606",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003214&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "경계선지능아동 맞춤형 사례관리서비스",
+        "content": "경계선지능아동 맞춤형 사례관리서비스은(는) 보건복지부에서 주관하는 서비스입니다. 경계선지능아동에 특화된 자립지원서비스를 제공하고 전문인력을 양성하여 경계선지능아동의 자립능력 향상을 도모합니다. 관련 문의는 보건복지상담센터129 아동권리보장원(경계선지능아동 사례관리 담당)02-6454-8500로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003223&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003223",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 아동권리보장원(경계선지능아동 사례관리 담당)02-6454-8500",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003223&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "출산육아기 고용안정장려금",
+        "content": "출산육아기 고용안정장려금은(는) 고용노동부에서 주관하는 서비스입니다. 출산전후휴가, 유산·사산 휴가, 육아휴직, 육아기 근로시간 단축 등을 부여(허용)한 사업주에게 장려금, 대체인력 인건비 등을 지원합니다. 관련 문의는 고용노동부 고객상담센터1350로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003224&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003224",
+            "department": "고용노동부",
+            "contact": "고용노동부 고객상담센터1350",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003224&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "환경보건이용권",
+        "content": "환경보건이용권은(는) 환경부에서 주관하는 서비스입니다. 환경보건이용권(10만원 상당 포인트)을 통해 기초생활수급자 13세 미만 어린이에게 환경성질환 예방용품, 청소서비스, 건강체험, 진료비 지원 및 실내환경 유해인자 진단·컨설팅 등 지원합니다. 관련 문의는 환경보건이용권 콜센터1544-0331로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003225&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003225",
+            "department": "환경부",
+            "contact": "환경보건이용권 콜센터1544-0331",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003225&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "모성보호육아지원(출산전후휴가(유산ㆍ사산휴가 포함) 급여, 육아휴직등 급여)",
+        "content": "모성보호육아지원(출산전후휴가(유산ㆍ사산휴가 포함) 급여, 육아휴직등 급여)은(는) 고용노동부에서 주관하는 서비스입니다. 출산전후 휴가급여, 육아휴직급여, 난임치료휴가급여 등의 지급을 통해 일과 가정의 양립을 지원하고 모성보호를 도모합니다. 관련 문의는 고용노동부 고객상담센터1350로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003226&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003226",
+            "department": "고용노동부",
+            "contact": "고용노동부 고객상담센터1350",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003226&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "입양아동 양육수당 지원",
+        "content": "입양아동 양육수당 지원은(는) 보건복지부에서 주관하는 서비스입니다. 입양아동 양육수당 지원을 통해 입양가정의 경제적 부담을 완화하여 국내입양 활성화 및 아동의 건전한 육성을 도모합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003235&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003235",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003235&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년상담1388 전화상담 ",
+        "content": "청소년상담1388 전화상담 은(는) 여성가족부에서 주관하는 서비스입니다. 365일 24시간 연중 상시 이용가능한 비대면 청소년상담채널 운영으로 청소년 고민해소 지원 및 위기청소년을 조기발견합니다. 관련 문의는 시도 및 시군구 청소년상담복지센터051-662-3120 청소년1388(청소년 상담센터)1388(지역번호+1388)로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003236&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003236",
+            "department": "여성가족부",
+            "contact": "시도 및 시군구 청소년상담복지센터051-662-3120 청소년1388(청소년 상담센터)1388(지역번호+1388)",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003236&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년산모 임신·출산 의료비 지원",
+        "content": "청소년산모 임신·출산 의료비 지원은(는) 보건복지부에서 주관하는 서비스입니다. 청소년산모에게 임신 및 출산에 필요한 의료비를 지원하여 청소년산모와 태아의 건강증진을 돕습니다. 관련 문의는 보건복지상담센터129 사회서비스바우처1566-3232로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003246&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003246",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 사회서비스바우처1566-3232",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003246&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "영유아보육료 지원",
+        "content": "영유아보육료 지원은(는) 교육부에서 주관하는 서비스입니다. 어린이집 이용 영유아에 대한 보육료 지원을 통해 부모의 자녀양육 부담경감 및 원활한 경제활동을 지원합니다. 관련 문의는 교육부02-6222-6060로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003250&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003250",
+            "department": "교육부",
+            "contact": "교육부02-6222-6060",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003250&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "가정양육수당 지원사업",
+        "content": "가정양육수당 지원사업은(는) 교육부에서 주관하는 서비스입니다. 가정에서 아이를 돌보는 가정 양육 시, 부모의 자녀 양육에 대한 부담을 줄이고 보육 서비스에 대한 선택권을 보장합니다. 관련 문의는 교육부 민원 전화 상담실02-6222-6060 복지로로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003253&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003253",
+            "department": "교육부",
+            "contact": "교육부 민원 전화 상담실02-6222-6060 복지로",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003253&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년방과후아카데미운영지원",
+        "content": "청소년방과후아카데미운영지원은(는) 여성가족부에서 주관하는 서비스입니다. 방과후 돌봄이 필요한 취약계층 청소년에게 체험활동, 학습지원, 급식, 상담 등 종합서비스 제공을 통한 건강한 성장과 자립을 지원합니다. 관련 문의는 청소년방과후아카데미운영지원단02-330-2892~2895로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003254",
+            "department": "여성가족부",
+            "contact": "청소년방과후아카데미운영지원단02-330-2892~2895",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "아동발달지원계좌(디딤씨앗통장)지원",
+        "content": "아동발달지원계좌(디딤씨앗통장)지원은(는) 보건복지부에서 주관하는 서비스입니다. 취약계층 아동의 사회진출 시 학자금?취업?창업?주거마련 등에 소요되는 초기비용 마련을 위한 자산형성을 지원합니다. 관련 문의는 보건복지상담센터129 아동권리보장원02-6454-8500로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003258&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003258",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 아동권리보장원02-6454-8500",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003258&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "장애아가족양육지원",
+        "content": "장애아가족양육지원은(는) 보건복지부에서 주관하는 서비스입니다. 장애아동 가족의 일상적인 돌봄 부담을 경감하고 보호자의 사회활동을 돕기 위하여 돌봄 및 일시적 휴식지원 서비스를 제공합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003262&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003262",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003262&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "가정위탁아동 상해보험료 지원",
+        "content": "가정위탁아동 상해보험료 지원은(는) 보건복지부에서 주관하는 서비스입니다. 가정위탁아동에 대해 상해보험을 가입하여 아동의 보호를 증진하고 위탁가정의 심리적, 경제적 부담을 완화합니다. 관련 문의는 가정위탁지원센터1577-1406로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003268&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003268",
+            "department": "보건복지부",
+            "contact": "가정위탁지원센터1577-1406",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003268&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "입양·가정위탁아동 심리치료 지원",
+        "content": "입양·가정위탁아동 심리치료 지원은(는) 보건복지부에서 주관하는 서비스입니다. 국내입양, 가정위탁아동 중 과잉행동장애(ADHD), 정서불안장애 등으로 인해 상담, 치료가 필요한 아동의 심리정서 검사, 치료비를 지원합니다. 관련 문의는 가정위탁지원센터1577-1406 아동권리보장원02-6283-0200로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003270&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003270",
+            "department": "보건복지부",
+            "contact": "가정위탁지원센터1577-1406 아동권리보장원02-6283-0200",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003270&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "의사상자지원",
+        "content": "의사상자지원은(는) 보건복지부에서 주관하는 서비스입니다. 본인의 직무와는 상관없이 타인의 생명이나 신체 또는 재산을 구하다가 사망하거나 부상을 입은 사람, 그 유족 또는 가족을 예우하고 지원합니다. 관련 문의는 보건복지부 사회서비스자원과044-202-3255 보건복지부 콜센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003272&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003272",
+            "department": "보건복지부",
+            "contact": "보건복지부 사회서비스자원과044-202-3255 보건복지부 콜센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003272&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "여성장애인 출산비용지원",
+        "content": "여성장애인 출산비용지원은(는) 보건복지부에서 주관하는 서비스입니다. 임신과 출산에 대한 비용이 추가로 발생하는 여성장애인에게 출산비용을 지원하여 경제적 부담을 경감하고 모성권 보호에 기여합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003278&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003278",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003278&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "언어발달지원사업",
+        "content": "언어발달지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 장애인 부모의 자녀에게 필요한 언어발달지원서비스를 제공하여 아동의 건강한 성장을 지원합니다. 관련 문의는 보건복지상담센터129 사회서비스 전자바우처15266-3232로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003279&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003279",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 사회서비스 전자바우처15266-3232",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003279&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "다문화가족 자녀 언어발달지원서비스",
+        "content": "다문화가족 자녀 언어발달지원서비스은(는) 여성가족부에서 주관하는 서비스입니다. 다문화가정의 자녀가 건강한 사회구성원, 글로벌 인재로 성장할 수 있도록 체계적인 언어발달을 돕습니다. 관련 문의는 다누리콜센터1577-1366로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003282&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003282",
+            "department": "여성가족부",
+            "contact": "다누리콜센터1577-1366",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003282&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "아동통합서비스지원(드림스타트사업)",
+        "content": "아동통합서비스지원(드림스타트사업)은(는) 보건복지부에서 주관하는 서비스입니다. 취약계층 아동에게 맞춤형 통합서비스를 제공하여 아동의 건강한 성장과 발달을 도모합니다. 관련 문의는 보건복지상담센터129 아동권리보장원 발달지원부(드림스타트 담당)02-6454-8500로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003283&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00003283",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 아동권리보장원 발달지원부(드림스타트 담당)02-6454-8500",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003283&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "국민연금 출산크레딧",
+        "content": "국민연금 출산크레딧은(는) 보건복지부에서 주관하는 서비스입니다. 출산에 대해 연금 가입기간을 추가로 인정하여 출산 친화 환경을 조성하고 여성의 연금 수급 기회를 확대합니다. 관련 문의는 국민연금공단1355로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004647&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00004647",
+            "department": "보건복지부",
+            "contact": "국민연금공단1355",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004647&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "(산재근로자)케어센터지원",
+        "content": "(산재근로자)케어센터지원은(는) 고용노동부에서 주관하는 서비스입니다. 고령·중증의 산재장해인 대상 전문적 간병서비스 제공으로 안정된 생활 유지와 가족 간병부담 완화를 지원합니다. 관련 문의는 경기케어센터031-359-0515 태백케어센터033-580-5262로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004648&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00004648",
+            "department": "고용노동부",
+            "contact": "경기케어센터031-359-0515 태백케어센터033-580-5262",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004648&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "행복주택 공급",
+        "content": "행복주택 공급은(는) 국토교통부에서 주관하는 서비스입니다. 청년, (예비)신혼부부, 한부모가족, 대학생 등 젊은층의 주거 안정을 위해  대중교통이 편리하거나 직주근접이 가능한 부지에 주변 시세보다 저렴하게 공공임대주택을 공급합니다. 관련 문의는 SH공사 홈페이지1600-3456 국토교통부1599-0001 한국토지주택공사1600-1004로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004649&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00004649",
+            "department": "국토교통부",
+            "contact": "SH공사 홈페이지1600-3456 국토교통부1599-0001 한국토지주택공사1600-1004",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004649&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년성문화센터설치운영",
+        "content": "청소년성문화센터설치운영은(는) 여성가족부에서 주관하는 서비스입니다. 아동ㆍ청소년이 다양한 도구와 매체를 활용하여 자기 주도적으로 학습할 수 있는 상설 성교육 공간을 구축, 운영합니다. 관련 문의는 강릉시청소년성문화센터033-655-1318 강원이동형청소년성문화센터033-255-6651 강원특별자치도청소년성문화센터033-255-6651 경기도이동형청소년성문화센터031-475-3253 경기도청소년성문화센터031-475-3253 경기북부이동형청소년성문화센터031-954-8050 경기북부청소년성문화센터031-954-8050 경남이동형청소년성문화센터055-711-1341 경남이동형청소년성문화센터055-711-1341 경북이동형청소년성문화센터054-858-7179 경상북도북부청소년성문화센터054-858-7179 경상북도청소년성문화센터054-436-0218 광산구청소년성문화센터062-972-7955 광주광역시청소년성문화센터062-522-1388 광진청소년성문화센터02-2204-3170 군산시청소년성문화센터063-463-1230 늘함께청소년성문화센터051-558-1224 대구아름청소년성문화센터053-657-1388 대구청소년성문화센터053-653-7755 대전광역시청소년성문화센터042-222-8847 동작청소년성문화센터02-823-7942 드림청소년성문화센터02-2051-1375 목포시청소년성문화센터061-272-1318 부산광역시청소년성문화센터051-303-9622 부천시청소년성문화센터032-663-1318 부평구청소년성문화센터032-500-2252 서귀포시청소년성문화센터064-760-6451 성북청소년성문화센터02-2207-7480 송파청소년성문화센터02-3012-1318 수원시청소년성문화센터031-251-1590 순천시청소년성문화센터061-745-0222 아하!청소년성문화센터02-2677-9220 안양시청소년성문화센터(이동형)031-360-3088 여성가족부 아동청소년성보호과 청소년성문화센터 담당02-2100-6403 여수시청소년성문화센터070-7733-1320 용인시청소년성문화센터031-548-1318 울산시청소년성문화센터052-256-1318 원주시청소년성문화센터033-745-1318 은평청소년성문화센터02-6380-7480 익산시청소년성문화센터063-834-1399 인천광역시청소년성문화센터032-446-1318 전라남도청소년성문화센터061-554-1318 전주시청소년성문화센터063-251-1318 정읍시청소년성문화센터063-532-1388 제주시청소년성문화센터064-728-3486 창동청소년성문화센터02-950-9651 창원시청소년성문화센터055-716-0311 충남이동형청소년성문화센터041-337-1585 충주시청소년청소년성문화센터043-856-7816 충청남도청소년성문화센터041-592-1388 충청남도홍성청소년성문화센터041-406-7000 충청북도이동형청소년성문화센터043-258-8001 충청북도청소년성문화센터043-258-8001 탄생의신비관이동형청소년성문화센터이동형1) 051-508-1308, 이동형2) 051-508-1802 탄생의신비관청소년성문화센터051-508-1808 포항청소년성문화센터054-240-9184 화성시청소년성문화센터031-8015-3900로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004650&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00004650",
+            "department": "여성가족부",
+            "contact": "강릉시청소년성문화센터033-655-1318 강원이동형청소년성문화센터033-255-6651 강원특별자치도청소년성문화센터033-255-6651 경기도이동형청소년성문화센터031-475-3253 경기도청소년성문화센터031-475-3253 경기북부이동형청소년성문화센터031-954-8050 경기북부청소년성문화센터031-954-8050 경남이동형청소년성문화센터055-711-1341 경남이동형청소년성문화센터055-711-1341 경북이동형청소년성문화센터054-858-7179 경상북도북부청소년성문화센터054-858-7179 경상북도청소년성문화센터054-436-0218 광산구청소년성문화센터062-972-7955 광주광역시청소년성문화센터062-522-1388 광진청소년성문화센터02-2204-3170 군산시청소년성문화센터063-463-1230 늘함께청소년성문화센터051-558-1224 대구아름청소년성문화센터053-657-1388 대구청소년성문화센터053-653-7755 대전광역시청소년성문화센터042-222-8847 동작청소년성문화센터02-823-7942 드림청소년성문화센터02-2051-1375 목포시청소년성문화센터061-272-1318 부산광역시청소년성문화센터051-303-9622 부천시청소년성문화센터032-663-1318 부평구청소년성문화센터032-500-2252 서귀포시청소년성문화센터064-760-6451 성북청소년성문화센터02-2207-7480 송파청소년성문화센터02-3012-1318 수원시청소년성문화센터031-251-1590 순천시청소년성문화센터061-745-0222 아하!청소년성문화센터02-2677-9220 안양시청소년성문화센터(이동형)031-360-3088 여성가족부 아동청소년성보호과 청소년성문화센터 담당02-2100-6403 여수시청소년성문화센터070-7733-1320 용인시청소년성문화센터031-548-1318 울산시청소년성문화센터052-256-1318 원주시청소년성문화센터033-745-1318 은평청소년성문화센터02-6380-7480 익산시청소년성문화센터063-834-1399 인천광역시청소년성문화센터032-446-1318 전라남도청소년성문화센터061-554-1318 전주시청소년성문화센터063-251-1318 정읍시청소년성문화센터063-532-1388 제주시청소년성문화센터064-728-3486 창동청소년성문화센터02-950-9651 창원시청소년성문화센터055-716-0311 충남이동형청소년성문화센터041-337-1585 충주시청소년청소년성문화센터043-856-7816 충청남도청소년성문화센터041-592-1388 충청남도홍성청소년성문화센터041-406-7000 충청북도이동형청소년성문화센터043-258-8001 충청북도청소년성문화센터043-258-8001 탄생의신비관이동형청소년성문화센터이동형1) 051-508-1308, 이동형2) 051-508-1802 탄생의신비관청소년성문화센터051-508-1808 포항청소년성문화센터054-240-9184 화성시청소년성문화센터031-8015-3900",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004650&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "첫만남이용권",
+        "content": "첫만남이용권은(는) 보건복지부에서 주관하는 서비스입니다. 출생 아동에게 200만원 이상의 첫만남 이용권을 지급하여 생애초기 아동양육에 따른 경제적 부담을 경감합니다. 관련 문의는 보건복지상담센터129 사회서비스 전자바우처1566-3232로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004656&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00004656",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129 사회서비스 전자바우처1566-3232",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004656&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "부모급여 지원",
+        "content": "부모급여 지원은(는) 보건복지부에서 주관하는 서비스입니다. 영아기 집중돌봄을 두텁게 지원하여 출산 및 양육으로 인한 경제적 부담을 줄여드립니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004657&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00004657",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004657&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "청소년부모 아동양육비 지원사업",
+        "content": "청소년부모 아동양육비 지원사업은(는) 여성가족부에서 주관하는 서비스입니다. 저소득 청소년부모 가구에 아동양육비를 지원하여 자녀양육 부담을 경감하고 생활의 안정을 도모합니다. 관련 문의는 한부모가족상담전화1577-4206로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005023&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005023",
+            "department": "여성가족부",
+            "contact": "한부모가족상담전화1577-4206",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005023&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "발달장애인 긴급돌봄사업",
+        "content": "발달장애인 긴급돌봄사업은(는) 보건복지부에서 주관하는 서비스입니다. 보호자의 긴급한 상황(입원, 경조사, 심리적 소진 등)으로 긴급돌봄이 필요한 발달장애인에게 일시적 돌봄을 지원합니다. 관련 문의는 광역지방자치단체(시.도)시.도청 장애인 관련 부서 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005031&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005031",
+            "department": "보건복지부",
+            "contact": "광역지방자치단체(시.도)시.도청 장애인 관련 부서 보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005031&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "전문아동보호비 지원",
+        "content": "전문아동보호비 지원은(는) 보건복지부에서 주관하는 서비스입니다. 위기아동 가정보호 및 전문가정위탁 시 양육의 전문성을 갖춘 보호가정에서 전문적인 보호가 이루어질 수 있도록 비용을 지원합니다. 관련 문의는 가정위탁지원센터1577-1406 아동권리보장원02-6454-8500로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005032&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005032",
+            "department": "보건복지부",
+            "contact": "가정위탁지원센터1577-1406 아동권리보장원02-6454-8500",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005032&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "아동용품구입비 지원",
+        "content": "아동용품구입비 지원은(는) 보건복지부에서 주관하는 서비스입니다. 위기아동 가정보호 및 전문가정위탁 사업에 참여하는 가정에 아동 보호에 필요한 물품 구입을 위한 비용을 지원합니다. 관련 문의는 가정위탁지원센터1577-1406 아동권리보장원02-6454-8500로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005033&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005033",
+            "department": "보건복지부",
+            "contact": "가정위탁지원센터1577-1406 아동권리보장원02-6454-8500",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005033&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "일상돌봄 서비스 사업",
+        "content": "일상돌봄 서비스 사업은(는) 보건복지부에서 주관하는 서비스입니다. 일상생활에 돌봄이 필요한 중장년과 가족돌봄청년에게 일상생활의 어려움을 해소할 수 있도록 맞춤형 사회서비스를 통합 제공합니다. 관련 문의는 강원특별자치도 복지정책과033-249-3697 경기도 복지사업과031-8008-5218 경상남도 복지정책과055-211-4833 경상북도 사회복지과054-880-3738 광주광역시 돌봄정책과062-613-3224 대구광역시 복지정책과053-803-6931 대전광역시 복지정책과042-270-4624 보건복지부 사회서비스사업과044-202-3226 부산광역시 복지정책과051-888-3151 서울특별시 복지정책과02-2133-7346 울산광역시 복지정책과052-229-3426 인천광역시 복지정책과032-440-1552 전라남도 사회복지과061-286-5741 전북특별자치도 사회복지과063-280-4676 제주특별자치도 복지정책과064-710-2862 충청남도 복지보육정책과041-635-4281 충청북도 복지정책과043-220-3014로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005411&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005411",
+            "department": "보건복지부",
+            "contact": "강원특별자치도 복지정책과033-249-3697 경기도 복지사업과031-8008-5218 경상남도 복지정책과055-211-4833 경상북도 사회복지과054-880-3738 광주광역시 돌봄정책과062-613-3224 대구광역시 복지정책과053-803-6931 대전광역시 복지정책과042-270-4624 보건복지부 사회서비스사업과044-202-3226 부산광역시 복지정책과051-888-3151 서울특별시 복지정책과02-2133-7346 울산광역시 복지정책과052-229-3426 인천광역시 복지정책과032-440-1552 전라남도 사회복지과061-286-5741 전북특별자치도 사회복지과063-280-4676 제주특별자치도 복지정책과064-710-2862 충청남도 복지보육정책과041-635-4281 충청북도 복지정책과043-220-3014",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005411&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "긴급돌봄 지원사업",
+        "content": "긴급돌봄 지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 질병, 부상, 주 돌봄자의 갑작스러운 부재(사망, 입원 등) 등에 대응해 돌봄 공백을 신속히 보완해 국민의 돌봄불안을 해소합니다.  관련 문의는 긴급돌봄 서비스 대표번호1522-0365 보건복지부 사회서비스사업과044-202-3221 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005442&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005442",
+            "department": "보건복지부",
+            "contact": "긴급돌봄 서비스 대표번호1522-0365 보건복지부 사회서비스사업과044-202-3221 보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005442&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "자립준비청년(보호종료아동) 자립정착금 지원",
+        "content": "자립준비청년(보호종료아동) 자립정착금 지원은(는) 보건복지부에서 주관하는 서비스입니다. 아동복지시설 및 가정위탁보호아동이 퇴소 또는 위탁종료 시 경제적 지원을 통해 안정적인 사회정착을 도모합니다. 관련 문의는 보건복지부 보건복지부 콜센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005445&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005445",
+            "department": "보건복지부",
+            "contact": "보건복지부 보건복지부 콜센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005445&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "다문화가족 자녀 교육활동비 지원",
+        "content": "다문화가족 자녀 교육활동비 지원은(는) 여성가족부에서 주관하는 서비스입니다. 학교 적응이나 학습에 어려움을 겪는 저소득 다문화 자녀에게 학력격차 해소를 위한 교육활동비를 지원합니다. 관련 문의는 다누리콜센터1577-1366 여성가족부 다문화가족과02-2100-6369로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005448&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005448",
+            "department": "여성가족부",
+            "contact": "다누리콜센터1577-1366 여성가족부 다문화가족과02-2100-6369",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005448&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "아가와 엄마를 위한 무료 공익보험(우체국대한민국 엄마보험)",
+        "content": "아가와 엄마를 위한 무료 공익보험(우체국대한민국 엄마보험)은(는) 과학기술정보통신부에서 주관하는 서비스입니다. 자녀의 희귀질환과 엄마의 임신질환을 보장하는 공익보험으로 별도의 조건없이 국가(우체국)에서 보험료 전액을 지원합니다.  관련 문의는 우체국보험 고객센터1599-0100로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005631&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005631",
+            "department": "과학기술정보통신부",
+            "contact": "우체국보험 고객센터1599-0100",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005631&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "양육비 선지급",
+        "content": "양육비 선지급은(는) 여성가족부에서 주관하는 서비스입니다. 한부모가족 등의 안정적인 자녀 양육환경 조성을 위해 국가가 먼저 양육비를 지급하고, 추후 양육비 채무자에게 회수하는 사업입니다. 관련 문의는 양육비이행관리원1644-6621로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005856&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005856",
+            "department": "여성가족부",
+            "contact": "양육비이행관리원1644-6621",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005856&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "임신 사전건강관리 지원사업",
+        "content": "임신 사전건강관리 지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 임신 및 출산에 장애가 될 수 있는 건강위험요인의 조기 발견 기회를 제공하고, 임신전 건강관리를 위한 의료.보건학적 지원을 통해 건강한 임신 출산 환경을 조성합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005858&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005858",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005858&wlfareInfoReldBztpCd=01"
+        }
+    },
+    {
+        "data_type": "knowledge_base",
+        "category": "복지서비스",
+        "title": "냉동난자 사용 보조생식술 지원사업",
+        "content": "냉동난자 사용 보조생식술 지원사업은(는) 보건복지부에서 주관하는 서비스입니다. 가임력 보존을 목적으로 냉동한 난자를 임신·출산을 위해 사용할 경우, 보조생식술 비용 일부를 지원하여 임신출산을 지원합니다. 관련 문의는 보건복지상담센터129로 하시면 되며, 상세 내용은 https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005859&wlfareInfoReldBztpCd=01에서 확인할 수 있습니다.",
+        "metadata": {
+            "service_id": "WLF00005859",
+            "department": "보건복지부",
+            "contact": "보건복지상담센터129",
+            "url": "https://www.bokjiro.go.kr/ssis-tbu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00005859&wlfareInfoReldBztpCd=01"
+        }
+    }
+]
