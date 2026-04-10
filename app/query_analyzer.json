@@ -1,6 +1,0 @@
-{
-  "intent": "medical_basic",
-  "topic": "fever",
-  "risk_level": "low",
-  "needs_clarification": true
-}
