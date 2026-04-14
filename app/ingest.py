@@ -14,11 +14,7 @@ from curated_docs import CURATED_DOCS
 
 load_dotenv()
 
-<<<<<<< HEAD
-DATA_DIR = Path("data_test/raw")
-=======
 DATA_DIR = Path("data/raw")
->>>>>>> 8a805e4 (refactoring)
 PERSIST_DIR = "chroma_db"
 COLLECTION_NAME = "parenting_docs"
 

@@ -15,7 +15,7 @@ from prompts import (
 
 load_dotenv()
 
-PERSIST_DIR = "chroma_db"
+PERSIST_DIR = "../chroma_db"
 COLLECTION_NAME = "parenting_docs"
 
 
