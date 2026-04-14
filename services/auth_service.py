@@ -10,8 +10,8 @@ from typing import Optional
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+import bcrypt as _bcrypt
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 
 from database import get_db
@@ -23,9 +23,6 @@ ALGORITHM         = os.getenv("JWT_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXP  = int(os.getenv("ACCESS_TOKEN_EXP", "30"))    # 분
 REFRESH_TOKEN_EXP = int(os.getenv("REFRESH_TOKEN_EXP", "7"))    # 일
 
-# bcrypt 컨텍스트
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
 # Bearer 토큰 추출기
 bearer_scheme = HTTPBearer()
 
@@ -34,12 +31,12 @@ bearer_scheme = HTTPBearer()
 
 def hash_password(plain_password: str) -> str:
     """평문 비밀번호 → bcrypt 해시"""
-    return pwd_context.hash(plain_password)
+    return _bcrypt.hashpw(plain_password.encode("utf-8"), _bcrypt.gensalt()).decode("utf-8")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """입력 비밀번호와 저장된 해시 비교"""
-    return pwd_context.verify(plain_password, hashed_password)
+    return _bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
 
 
 # JWT 토큰 생성
