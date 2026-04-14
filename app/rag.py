@@ -4,6 +4,9 @@ import json
 from datetime import date
 from dotenv import load_dotenv
 
+import json
+from datetime import date
+
 from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
@@ -12,11 +15,13 @@ from prompts import (
     QUERY_REWRITE_PROMPT,
     ANSWER_PROMPT,
 )
+from vector_config import (
+    FACILITY_COLLECTION_NAME,
+    KNOWLEDGE_COLLECTION_NAME,
+    PERSIST_DIR,
+)
 
 load_dotenv()
-
-PERSIST_DIR = "../chroma_db"
-COLLECTION_NAME = "parenting_docs"
 
 
 # ---------------------------
@@ -31,11 +36,11 @@ def get_embeddings():
     return OpenAIEmbeddings()
 
 
-def get_vectorstore():
+def get_vectorstore(collection_name: str):
     return Chroma(
-        collection_name=COLLECTION_NAME,
+        collection_name=collection_name,
         embedding_function=get_embeddings(),
-        persist_directory=PERSIST_DIR,
+        persist_directory=str(PERSIST_DIR),
     )
 
 
@@ -189,7 +194,10 @@ def normalize_risk_level(question: str, analysis: dict) -> str:
 # ---------------------------
 
 def get_retriever(intent: str):
-    vectorstore = get_vectorstore()
+    collection_name = (
+        FACILITY_COLLECTION_NAME if intent == "hospital_locator" else KNOWLEDGE_COLLECTION_NAME
+    )
+    vectorstore = get_vectorstore(collection_name)
 
     # Chroma filter는 너무 복잡하게 잡기보다 category 기준부터 안정적으로
     if intent == "development":
@@ -211,6 +219,10 @@ def get_retriever(intent: str):
     elif intent == "policy":
         return vectorstore.as_retriever(
             search_kwargs={"k": 5, "filter": {"category": "policy"}}
+        )
+    elif intent == "hospital_locator":
+        return vectorstore.as_retriever(
+            search_kwargs={"k": 5, "filter": {"category": "hospital_locator"}}
         )
     else:
         return vectorstore.as_retriever(search_kwargs={"k": 5})
