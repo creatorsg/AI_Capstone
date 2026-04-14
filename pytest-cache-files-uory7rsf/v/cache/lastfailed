@@ -1,0 +1,9 @@
+{
+  "tests/test_hospitals.py::TestStaticNearby::test_nearby_invalid_category": true,
+  "tests/test_hospitals.py::TestStaticSearch::test_search_returns_list": true,
+  "tests/test_hospitals.py::TestStaticSearch::test_search_missing_keyword": true,
+  "tests/test_hospitals.py::TestStaticSearch::test_search_empty_result": true,
+  "tests/test_hospitals.py::TestStaticStatus::test_status_has_files_field": true,
+  "tests/test_welfare.py::TestWelfareList::test_list_is_array": true,
+  "tests/test_welfare.py::TestWelfareStatus::test_status_has_count_field": true
+}

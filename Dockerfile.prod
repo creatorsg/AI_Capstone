@@ -1,0 +1,37 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Dockerfile.prod - 프로덕션 전용 (AWS EC2 / ECS 배포)
+#
+# 개발 Dockerfile 과의 차이점:
+#   - --reload 없이 실행 (운영 환경 안정성)
+#   - 소스 코드 볼륨 마운트 없음 (이미지 내부에 포함)
+#   - gunicorn + uvicorn worker 조합으로 멀티프로세스 지원
+#
+# 빌드: docker build -f Dockerfile.prod -t kids-chatbot-api:prod .
+# ──────────────────────────────────────────────────────────────────────────────
+
+FROM python:3.11-slim
+
+# 시스템 패키지
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir gunicorn
+
+COPY . .
+
+EXPOSE 8000
+
+# gunicorn + uvicorn worker (CPU 코어 수 × 2 + 1 권장, t3.small: 2코어 → 5)
+# --timeout 120: AI 응답 생성 시 타임아웃 여유 확보
+CMD ["gunicorn", "main:app", \
+     "-k", "uvicorn.workers.UvicornWorker", \
+     "--workers", "3", \
+     "--bind", "0.0.0.0:8000", \
+     "--timeout", "120", \
+     "--access-logfile", "-", \
+     "--error-logfile", "-"]

@@ -1,15 +1,43 @@
-version: '3.8'
-
 services:
+
+  # ─── PostgreSQL DB ──────────────────────────────────────────────────────────
   db:
     image: postgres:15
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: kids_app
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ─── FastAPI 백엔드 서버 ──────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    restart: always
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy    # DB 준비 완료 후 앱 시작
+    environment:
+      # Docker 컨테이너 내부에서는 localhost 대신 서비스명(db)을 호스트로 사용
+      MY_APP_DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    volumes:
+      - .:/app    # 로컬 코드 변경 실시간 반영 (개발 환경용)
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
