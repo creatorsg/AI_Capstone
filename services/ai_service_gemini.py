@@ -27,7 +27,7 @@ def get_ai_response_gemini(
     if not api_key:
         raise ValueError("GEMINI_API_KEY 가 설정되지 않았습니다. .env 파일을 확인하세요.")
 
-    model_name = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
+    model_name = os.getenv("GEMINI_MODEL", "gemini-flash-latest")
 
     # RAG 문서 검색 (context/child_info 기반 관련 문서 조회)
     age_months = context.get("age_months")

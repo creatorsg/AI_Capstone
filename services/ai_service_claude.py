@@ -30,10 +30,11 @@ def get_ai_response_claude(
     model_name  = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
     max_tokens  = int(os.getenv("CLAUDE_MAX_TOKENS", "1024"))
 
-    # RAG 문서 검색 (context/child_info 기반 관련 문서 조회)
+    # RAG 문서 검색 (child_info + context 기반 관련 문서 조회)
     age_months = context.get("age_months")
     retrieved_docs = retrieve_relevant_docs(
         query=question,
+        child_info=child_info,                                  # 전체 아이 정보 전달
         child_age_months=int(age_months) if age_months else None,
     )
 
