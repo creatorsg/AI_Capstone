@@ -289,67 +289,6 @@ def load_curated_documents() -> list[Document]:
     return docs
 
 
-def split_raw_documents(raw_docs: list[Document]) -> list[Document]:
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=120,
-    )
-
-    split_docs = splitter.split_documents(raw_docs)
-
-    for i, doc in enumerate(split_docs):
-        doc.metadata["chunk_id"] = make_chunk_id(doc.page_content, doc.metadata)
-        doc.metadata["chunk_index"] = i
-
-    return split_docs
-
-
-def prepare_documents() -> list[Document]:
-    raw_docs = load_raw_documents()
-    curated_docs = load_curated_documents()
-
-    split_raw = split_raw_documents(raw_docs)
-
-    for doc in curated_docs:
-        doc.metadata["chunk_id"] = make_chunk_id(doc.page_content, doc.metadata)
-        doc.metadata["chunk_index"] = 0
-
-    all_docs = curated_docs + split_raw
-
-    # 단순 중복 제거
-    seen = set()
-    deduped = []
-    for doc in all_docs:
-        cid = doc.metadata["chunk_id"]
-        if cid not in seen:
-            seen.add(cid)
-            deduped.append(doc)
-
-    return deduped
-
-
-def main():
-    documents = prepare_documents()
-
-    if not documents:
-        print("No documents found.")
-        return
-
-    embeddings = OpenAIEmbeddings()
-
-    vectorstore = Chroma(
-        collection_name=COLLECTION_NAME,
-        embedding_function=embeddings,
-        persist_directory=PERSIST_DIR,
-    )
-
-    # 재실행 시 중복 적재를 피하려면 reset_collection 고려 가능
-    vectorstore.add_documents(documents)
-
-    print(f"Ingested {len(documents)} documents/chunks into {PERSIST_DIR}")
-    return docs
-
-
 def split_knowledge_documents(raw_docs: list[Document]) -> list[Document]:
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,

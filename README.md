@@ -7,7 +7,7 @@ HansungUniversity AI_Capstone
 * 가상환경 실행: .venv\Scripts\Activate.ps1
 	* 실행 오류시 다음 입력 후 재실행: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 * 필요 라이브러리 다운: pip install -r requirements.txt
-* 챗봇 실행: streamlit run main.py
+* 챗봇 실행: streamlit run app/main.py
 
 ## 폴더 설명
 * APP 폴더: 소스코드

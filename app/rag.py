@@ -28,12 +28,12 @@ load_dotenv()
 # LLM / Embeddings
 # ---------------------------
 
-def get_llm(model: str = "gpt-4o-mini"):
+def get_llm(model: str = "gpt-5.4-mini"):
     return ChatOpenAI(model=model, temperature=0)
 
 
-def get_embeddings():
-    return OpenAIEmbeddings()
+def get_embeddings(model: str = "text-embedding-3-small"):
+    return OpenAIEmbeddings(model = model)
 
 
 def get_vectorstore(collection_name: str):
