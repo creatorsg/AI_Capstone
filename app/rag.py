@@ -4,9 +4,6 @@ import json
 from datetime import date
 from dotenv import load_dotenv
 
-import json
-from datetime import date
-
 from langchain_chroma import Chroma
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
@@ -15,13 +12,11 @@ from prompts import (
     QUERY_REWRITE_PROMPT,
     ANSWER_PROMPT,
 )
-from vector_config import (
-    FACILITY_COLLECTION_NAME,
-    KNOWLEDGE_COLLECTION_NAME,
-    PERSIST_DIR,
-)
 
 load_dotenv()
+
+PERSIST_DIR = "../chroma_db"
+COLLECTION_NAME = "parenting_docs"
 
 
 # ---------------------------
@@ -32,15 +27,20 @@ def get_llm(model: str = "gpt-5.4-mini"):
     return ChatOpenAI(model=model, temperature=0)
 
 
+<<<<<<< HEAD
 def get_embeddings(model: str = "text-embedding-3-small"):
     return OpenAIEmbeddings(model = model)
+=======
+def get_embeddings():
+    return OpenAIEmbeddings(model = "text-embedding-3-large")
+>>>>>>> b72b586 (chore: ignore chroma_db directory)
 
 
-def get_vectorstore(collection_name: str):
+def get_vectorstore():
     return Chroma(
-        collection_name=collection_name,
+        collection_name=COLLECTION_NAME,
         embedding_function=get_embeddings(),
-        persist_directory=str(PERSIST_DIR),
+        persist_directory=PERSIST_DIR,
     )
 
 
@@ -124,6 +124,7 @@ def format_recent_logs(recent_logs: dict | None) -> str:
 
 # ---------------------------
 # Query analysis
+# Rule-based + LLM-based hybrid approach
 # ---------------------------
 
 def analyze_query(question: str) -> dict:
@@ -166,7 +167,7 @@ def rewrite_query(question: str, child_profile: dict | None, analysis: dict) -> 
 # ---------------------------
 
 HIGH_RISK_KEYWORDS = [
-    "경련", "숨을 못", "호흡이", "의식", "축 처", "축 처짐", "반응이 없다",
+    "경련", "숨을 못", "숨 못", "호흡이", "의식", "축 처", "축 처짐", "반응이 없다",
     "반응이 없", "반복 구토", "탈수", "피가", "발달 퇴행", "퇴행"
 ]
 
@@ -193,11 +194,9 @@ def normalize_risk_level(question: str, analysis: dict) -> str:
 # Retriever routing
 # ---------------------------
 
+# query에 해당하는 카테고리가 있다면, category 필터를 적용해서 검색
 def get_retriever(intent: str):
-    collection_name = (
-        FACILITY_COLLECTION_NAME if intent == "hospital_locator" else KNOWLEDGE_COLLECTION_NAME
-    )
-    vectorstore = get_vectorstore(collection_name)
+    vectorstore = get_vectorstore()
 
     # Chroma filter는 너무 복잡하게 잡기보다 category 기준부터 안정적으로
     if intent == "development":
@@ -220,10 +219,6 @@ def get_retriever(intent: str):
         return vectorstore.as_retriever(
             search_kwargs={"k": 5, "filter": {"category": "policy"}}
         )
-    elif intent == "hospital_locator":
-        return vectorstore.as_retriever(
-            search_kwargs={"k": 5, "filter": {"category": "hospital_locator"}}
-        )
     else:
         return vectorstore.as_retriever(search_kwargs={"k": 5})
 
@@ -232,6 +227,7 @@ def get_retriever(intent: str):
 # Simple reranking
 # ---------------------------
 
+# 문서의 metadata 기반 중요도 부여
 def simple_rerank(docs, intent: str, topic: str | None = None, age_group: str | None = None):
     rescored = []
 
@@ -258,6 +254,7 @@ def simple_rerank(docs, intent: str, topic: str | None = None, age_group: str | 
 # Generation
 # ---------------------------
 
+# retrieval한 문서들을 하나의 context로 묶어서 prompt에 넣기
 def build_context(docs) -> str:
     return "\n\n".join(
         [
