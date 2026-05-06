@@ -27,13 +27,8 @@ def get_llm(model: str = "gpt-5.4-mini"):
     return ChatOpenAI(model=model, temperature=0)
 
 
-<<<<<<< HEAD
-def get_embeddings(model: str = "text-embedding-3-small"):
-    return OpenAIEmbeddings(model = model)
-=======
 def get_embeddings():
     return OpenAIEmbeddings(model = "text-embedding-3-large")
->>>>>>> b72b586 (chore: ignore chroma_db directory)
 
 
 def get_vectorstore():
