@@ -14,9 +14,11 @@ from prompts import (
     get_answer_prompt,
 )
 from vector_config import (
-    PERSIST_DIR,
-    KNOWLEDGE_COLLECTION_NAME,
+    EMBEDDING_MODEL,
     FACILITY_COLLECTION_NAME,
+    KNOWLEDGE_COLLECTION_NAME,
+    MANIFEST_PATH,
+    PERSIST_DIR,
 )
 
 load_dotenv()
@@ -24,6 +26,42 @@ load_dotenv()
 DEFAULT_MODEL = "gpt-5.4-mini"
 DEFAULT_K = 6
 DEFAULT_TOP_K = 4
+
+
+# ---------------------------
+# Embedding model guard
+# ---------------------------
+
+_embedding_checked = False
+
+
+def _check_embedding_model() -> None:
+    """DB 생성 시 사용한 임베딩 모델과 현재 코드의 모델이 일치하는지 확인한다."""
+    global _embedding_checked
+    if _embedding_checked:
+        return
+    _embedding_checked = True
+
+    if not MANIFEST_PATH.exists():
+        import warnings
+        warnings.warn(
+            f"[RAG] {MANIFEST_PATH} 없음 — 임베딩 모델 일치 여부 미확인.\n"
+            "ingest.py를 실행하면 매니페스트가 자동 생성됩니다.",
+            stacklevel=3,
+        )
+        return
+
+    with MANIFEST_PATH.open(encoding="utf-8") as f:
+        manifest = json.load(f)
+
+    stored = manifest.get("embedding_model")
+    if stored != EMBEDDING_MODEL:
+        raise RuntimeError(
+            f"임베딩 모델 불일치 — 검색 결과가 완전히 잘못됩니다.\n"
+            f"  DB에 저장된 모델 : {stored}\n"
+            f"  현재 코드 모델   : {EMBEDDING_MODEL}\n"
+            f"  해결: chroma_db/ 를 삭제하고 ingest.py를 다시 실행하세요."
+        )
 
 
 # ---------------------------
@@ -35,10 +73,11 @@ def get_llm(model: str = DEFAULT_MODEL, temperature: float = 0.0):
 
 
 def get_embeddings():
-    return OpenAIEmbeddings(model="text-embedding-3-large")
+    return OpenAIEmbeddings(model=EMBEDDING_MODEL)
 
 
 def get_vectorstore(collection_name: str):
+    _check_embedding_model()
     return Chroma(
         collection_name=collection_name,
         embedding_function=get_embeddings(),

@@ -3,6 +3,7 @@
 import json
 import hashlib
 import re
+from datetime import datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -14,8 +15,10 @@ from langchain_openai import OpenAIEmbeddings
 from curated_docs import CURATED_DOCS
 from vector_config import (
     DATA_DIR,
+    EMBEDDING_MODEL,
     FACILITY_COLLECTION_NAME,
     KNOWLEDGE_COLLECTION_NAME,
+    MANIFEST_PATH,
     PERSIST_DIR,
 )
 
@@ -359,7 +362,7 @@ def prepare_documents() -> tuple[list[Document], list[Document]]:
 def get_vectorstore(collection_name: str) -> Chroma:
     return Chroma(
         collection_name=collection_name,
-        embedding_function=OpenAIEmbeddings(),
+        embedding_function=OpenAIEmbeddings(model=EMBEDDING_MODEL),
         persist_directory=str(PERSIST_DIR),
     )
 
@@ -376,6 +379,21 @@ def upsert_documents(collection_name: str, documents: list[Document]) -> None:
         vectorstore.add_documents(batch, ids=ids)
 
 
+def write_manifest(knowledge_count: int, facility_count: int) -> None:
+    manifest = {
+        "embedding_model": EMBEDDING_MODEL,
+        "ingested_at": datetime.now().isoformat(),
+        "collections": {
+            KNOWLEDGE_COLLECTION_NAME: {"doc_count": knowledge_count},
+            FACILITY_COLLECTION_NAME: {"doc_count": facility_count},
+        },
+    }
+    MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with MANIFEST_PATH.open("w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+    print(f"매니페스트 저장: {MANIFEST_PATH}")
+
+
 def main():
     knowledge_docs, facility_docs = prepare_documents()
 
@@ -385,6 +403,7 @@ def main():
 
     upsert_documents(KNOWLEDGE_COLLECTION_NAME, knowledge_docs)
     upsert_documents(FACILITY_COLLECTION_NAME, facility_docs)
+    write_manifest(len(knowledge_docs), len(facility_docs))
 
     print(
         f"Ingested {len(knowledge_docs)} knowledge docs into {KNOWLEDGE_COLLECTION_NAME} "
