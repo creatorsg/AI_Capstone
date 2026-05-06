@@ -96,6 +96,3 @@ def get_ai_response(
             "context_collected": context,
         }
 
-
-# re-export (routers/chat.py 의 기존 import 유지)
-__all__ = ["get_ai_response", "get_pending_field"]

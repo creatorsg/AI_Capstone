@@ -17,7 +17,8 @@ from models.chat import ChatHistory, ConversationSession
 from models.child import Child, ChildProfile
 from models.user import User
 from schemas.chat import ChatMessageRequest, ChatMessageResponse
-from services.ai_service import get_ai_response, get_pending_field
+from services.ai_service import get_ai_response
+from services.ai_common import get_pending_field
 from services.auth_service import get_current_user, verify_child_ownership
 
 router = APIRouter(
