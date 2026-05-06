@@ -9,6 +9,7 @@ class ChatHistory(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     child_id = Column(Integer, ForeignKey("children.id"), nullable=True)
+    session_id = Column(String(36), nullable=True, index=True)  # 세션 연결 (0006 마이그레이션)
     question = Column(Text, nullable=False)   # 원본 질문
     answer = Column(Text, nullable=True)      # GPT 최종 답변
     context = Column(JSON, default=dict)      # 수집된 맥락 (기록용)

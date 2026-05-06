@@ -75,7 +75,7 @@ jobs:
       - name: Run tests
         env:
           MY_APP_DATABASE_URL: postgresql://testuser:testpass@localhost:5432/testdb
-          SECRET_KEY: test-secret-key-for-ci
+          JWT_SECRET_KEY: test-secret-key-for-ci
           AI_PROVIDER: mock        # CI에서는 실제 AI API 호출 방지
         run: |
           # tests/ 디렉토리가 있으면 실행, 없으면 스킵

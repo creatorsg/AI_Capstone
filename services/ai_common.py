@@ -155,5 +155,14 @@ def build_rag_prompt(
 
     parts = [f"사용자 질문: {question}", f"\n수집된 맥락:\n{context_str}"]
 
-    # 운영시간 실제 데이터가 있으면 최우선으로 주입
-    if hours
+    if hours_context:
+        parts.append(f"\n운영시간 정보:\n{hours_context}")
+
+    if retrieved_docs:
+        docs_str = "\n\n".join(
+            f"[참고 문서 {i+1}]\n{doc}" for i, doc in enumerate(retrieved_docs)
+        )
+        parts.append(f"\n관련 육아 정보:\n{docs_str}")
+
+    parts.append("\n위 정보를 바탕으로 답변해주세요.")
+    return "\n".join(parts)

@@ -1,7 +1,7 @@
 # 팀원 브랜치 통합 가이드
 
 > 담당: 인선 (Backend & Infrastructure)  
-> 최종 수정: 2026-04-11
+> 최종 수정: 2026-05-06
 
 ---
 
@@ -9,9 +9,10 @@
 
 | 팀원 | 브랜치 | 담당 영역 | 통합 상태 |
 |------|--------|-----------|-----------|
-| 인선 | `inseon` | Backend API + 인프라 | ✅ 기준 브랜치 |
-| juhyeong | `juhyeong` | RAG (ChromaDB 기반 문서 검색) | ⏳ stub 연결 완료, 코드 완성 대기 |
-| jaehwi | `jaehwi` | 정적 데이터 7종 JSON 생성 | ⏳ JSON 파일 수동 배치 필요 |
+| 인선 | `inseon` | Backend API + 인프라 | 완료 - 기준 브랜치 |
+| juhyeong | `juhyeong` | RAG (ChromaDB 기반 문서 검색) | 완료 - services/rag/ 에 통합 완료 |
+| jaehwi | `jaehwi` | 정적 데이터 8종 JSON 생성 | 완료 - data1~data8 모두 data/ 에 배치 완료 |
+| byeongchan | `byeongchan` | React Native 프론트엔드 | 진행중 - Config.ts IP 하드코딩 -> 환경변수화 필요 |
 
 ---
 
@@ -181,4 +182,104 @@ alembic upgrade head
 # 이후 모델 변경 시
 alembic revision --autogenerate -m "변경 내용 설명"
 alembic upgrade head
+```
+
+---
+
+## 6. AWS 배포 가이드 (EC2 + ECR + GitHub Actions)
+
+### 아키텍처 구성
+
+```
+GitHub inseon 브랜치 push
+    └── GitHub Actions CI/CD (.github/workflows/deploy.yml)
+          ├── pytest 자동 실행
+          ├── Docker 이미지 빌드 → ECR 푸시
+          └── EC2 SSH 접속 → docker-compose.prod.yml 재시작
+                └── EC2 인스턴스
+                      ├── nginx (80/443) ← SSL: Let's Encrypt
+                      ├── FastAPI (8000, 내부)
+                      └── RDS PostgreSQL (외부 연결)
+```
+
+### 6-1. AWS 사전 세팅
+
+```bash
+# 1. ECR 레포지토리 생성
+aws ecr create-repository --repository-name kids-chatbot-api --region ap-northeast-2
+
+# 2. EC2 인스턴스 생성 (권장: t3.medium, Ubuntu 22.04)
+#    - 보안그룹: 80, 443, 22(SSH) 인바운드 허용
+#    - IAM Role: AmazonEC2ContainerRegistryReadOnly 정책 부여
+
+# 3. EC2에 Docker 설치
+sudo apt update && sudo apt install -y docker.io docker-compose
+sudo usermod -aG docker ubuntu
+
+# 4. RDS PostgreSQL 생성 (또는 EC2 내 로컬 PostgreSQL 사용)
+#    - 엔진: PostgreSQL 15
+#    - 보안그룹: EC2 보안그룹에서만 5432 접근 허용
+```
+
+### 6-2. GitHub Secrets 설정
+
+GitHub 레포 → Settings → Secrets and variables → Actions → **New repository secret**
+
+| Secret 이름 | 값 | 설명 |
+|---|---|---|
+| `AWS_ACCESS_KEY_ID` | AKIA... | IAM 사용자 Access Key |
+| `AWS_SECRET_ACCESS_KEY` | ... | IAM 사용자 Secret Key |
+| `AWS_REGION` | `ap-northeast-2` | 서울 리전 |
+| `ECR_REPOSITORY` | `kids-chatbot-api` | ECR 레포 이름 |
+| `EC2_HOST` | `13.xxx.xxx.xxx` | EC2 퍼블릭 IP |
+| `EC2_USERNAME` | `ubuntu` | EC2 SSH 사용자명 |
+| `EC2_SSH_KEY` | (PEM 파일 전체 내용) | EC2 접속 키 |
+| `ENV_PROD_FILE` | (.env.prod 파일 전체 내용) | 운영 환경변수 |
+
+### 6-3. nginx 도메인 설정
+
+`nginx/nginx.conf` 의 `your-domain.com` 을 실제 도메인으로 변경:
+
+```bash
+# 예시: sed 로 일괄 치환
+sed -i 's/your-domain.com/api.yourdomain.com/g' nginx/nginx.conf
+```
+
+### 6-4. SSL 인증서 최초 발급 (EC2에서 직접 실행)
+
+```bash
+cd ~/app
+# HTTP만 열어서 도전 수신 가능하도록 nginx 먼저 실행
+docker-compose -f docker-compose.prod.yml up -d nginx
+
+# Certbot 인증서 발급
+docker-compose -f docker-compose.prod.yml run --rm certbot certonly \
+  --webroot -w /var/www/certbot \
+  -d api.yourdomain.com \
+  --email your-email@example.com \
+  --agree-tos --no-eff-email
+
+# 전체 서비스 재시작
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### 6-5. 배포 확인 체크리스트
+
+- [ ] `https://api.yourdomain.com/` → `{"status": "FastAPI is Running!"}`
+- [ ] `https://api.yourdomain.com/db-check` → `{"db_status": "Connected!"}`
+- [ ] `https://api.yourdomain.com/docs` → Swagger UI 접근
+- [ ] `https://api.yourdomain.com/hospitals/static/status` → data1~data8 모두 `exists: true`
+- [ ] GitHub Actions → 최신 워크플로우 성공 확인
+- [ ] inseon 브랜치 push 시 자동 배포 트리거 확인
+
+### 6-6. byeongchan 프론트엔드 연동 시
+
+`src/constants/Config.ts` 의 `API_BASE_URL` 을 배포된 URL로 변경 필요:
+
+```typescript
+// 변경 전 (로컬 개발용)
+export const API_BASE_URL = 'http://192.168.123.109:8000';
+
+// 변경 후 (운영)
+export const API_BASE_URL = 'https://api.yourdomain.com';
 ```

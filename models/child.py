@@ -72,4 +72,10 @@ class ChildProfile(Base):
     playfab_id        = Column(String, unique=True, index=True, nullable=True)
     real_name         = Column(String(50), nullable=False)
     emergency_address = Column(String, nullable=True)
-    blood_type        = Column(String(5), nullable=True)   
+    blood_type        = Column(String(5), nullable=True)
+    medical_notes     = Column(Text, nullable=True)      # 알레르기 상세, 특이사항
+
+    child = relationship(
+        "Child",
+        back_populates="profile",
+    )

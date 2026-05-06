@@ -102,6 +102,8 @@ def build_rag_prompt(
             f"관련 육아 정보:\n{docs_str}\n\n"
             "위 정보를 바탕으로 답변해주세요."
         )
+    # RAG 문서 없을 때: 질문 + 맥락만으로 프롬프트 구성
     return (
         f"사용자 질문: {question}\n\n"
-        f"�
+        f"수집된 맥락:\n{context_str}"
+    )

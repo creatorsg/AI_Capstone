@@ -125,4 +125,13 @@ class ChildProfileUpdate(BaseModel):
 
 
 class ChildProfileResponse(BaseModel):
-    """아이 민감정�
+    """아이 민감 개인정보 응답 스키마"""
+    id:               int
+    child_id:         int
+    playfab_id:       Optional[str] = None
+    real_name:        Optional[str] = None
+    emergency_address:Optional[str] = None
+    blood_type:       Optional[str] = None
+    medical_notes:    Optional[str] = None
+
+    model_config = ConfigDict(from_attributes=True)

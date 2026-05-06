@@ -1,7 +1,7 @@
 """AI 서비스 팩토리 (Claude/Gemini 간 전환 가능)"""
 
 import os
-from typing import Optional
+from typing import Optional, List, Dict
 
 from services.ai_common import (
     check_emergency,
@@ -17,10 +17,19 @@ def get_ai_response(
     question: str,
     context: dict = None,
     child_info: Optional[dict] = None,
-    child_id: Optional[int] = None,        # 하위 호환용 (현재 미사용)
+    child_id: Optional[int] = None,                          # 하위 호환용 (현재 미사용)
+    history: Optional[List[Dict[str, str]]] = None,          # 멀티턴 대화 히스토리
 ) -> dict:
     """
     AI 에게 질문을 보내고 표준 응답 딕셔너리를 반환합니다.
+
+    Args:
+        question   : 현재 사용자 질문
+        context    : 역질문으로 수집된 맥락 (현재 turn)
+        child_info : DB 에서 조회한 아이 프로필 딕셔너리
+        child_id   : 하위 호환용 (현재 미사용)
+        history    : 같은 세션의 직전 turn 들 - [{role, content}, ...]
+                     routers/chat.py 의 get_session_history() 반환값을 그대로 전달
 
     반환 형태:
     {
@@ -63,21 +72,21 @@ def get_ai_response(
     try:
         if provider == "gemini":
             from services.ai_service_gemini import get_ai_response_gemini
+            # Gemini 는 현재 history 미지원 — 추후 확장 가능
             answer = get_ai_response_gemini(question, context, child_info)
         else:
-            # 기본값: Claude
+            # 기본값: Claude (history 멀티턴 지원)
             from services.ai_service_claude import get_ai_response_claude
-            answer = get_ai_response_claude(question, context, child_info)
+            answer = get_ai_response_claude(question, context, child_info, history=history)
 
         return {
-            "answer": answer,
-            "is_emergency": False,
+            "answer":             answer,
+            "is_emergency":       False,
             "needs_more_context": False,
-            "context_collected": context,
+            "context_collected":  context,
         }
 
     except Exception as e:
-        # API 키 미설정 등 설정 오류를 명확히 전달
         error_msg = str(e)
         print(f"[AI Service Error] provider={provider} | {error_msg}")
         return {

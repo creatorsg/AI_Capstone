@@ -290,4 +290,5 @@ def answer_question(
         question=question,
     )
     response = llm.invoke(prompt)
-    answer   = apply_safety_prefix(response.content, risk_le
+    answer   = apply_safety_prefix(response.content, risk_level)
+    return answer
