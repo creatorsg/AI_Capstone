@@ -1,7 +1,7 @@
 # app/curated_docs.py
 
 '''
-curated_docs.py는 현재 사용 중입니다. metadata.py랑 다르게 그냥 삭제하면 app/ingest.py가 바로 깨질 가능성이 큽니다.
+curated_docs.py는 현재 사용 중입니다. 그냥 삭제하면 app/ingest.py가 바로 깨질 가능성이 큽니다.
 
 확인된 흐름은 이렇습니다.
 
