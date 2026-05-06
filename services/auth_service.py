@@ -147,6 +147,29 @@ def get_current_user(
     return user
 
 
+def verify_child_ownership(child_id: int, db: Session, current_user: User) -> None:
+    """
+    child_id 가 현재 로그인 사용자 소유인지 검증합니다.
+
+    raises:
+      404 - 아이 정보를 찾을 수 없을 때
+      403 - 다른 사용자의 아이에 접근할 때
+    """
+    from models.child import Child  # 순환 임포트 방지를 위해 지연 임포트
+
+    child = db.query(Child).filter(Child.id == child_id).first()
+    if child is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="아이 정보를 찾을 수 없습니다.",
+        )
+    if child.user_id is not None and child.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="해당 아이에 대한 접근 권한이 없습니다.",
+        )
+
+
 def get_optional_user(
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(HTTPBearer(auto_error=False)),
     db: Session = Depends(get_db),
