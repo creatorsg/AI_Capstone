@@ -1,5 +1,29 @@
 # app/curated_docs.py
 
+'''
+curated_docs.py는 현재 사용 중입니다. metadata.py랑 다르게 그냥 삭제하면 app/ingest.py가 바로 깨질 가능성이 큽니다.
+
+확인된 흐름은 이렇습니다.
+
+
+app/ingest.py (line 14)
+에서 from curated_docs import CURATED_DOCS로 import함
+
+app/ingest.py (line 275)
+의 load_curated_documents()가 CURATED_DOCS를 LangChain Document로 변환함
+
+app/ingest.py (line 346)
+에서 실제 적재 준비에 포함됨
+
+app/ingest.py (line 353)
+에서 prepared_curated + prepared_knowledge로 실제 지식 문서에 합쳐짐
+결론: 파일만 삭제하면 안 됩니다.
+가짜 데이터셋을 이제 제거하려면 ingest.py에서 curated_docs import, load_curated_documents(), prepared_curated, prepared_curated + prepared_knowledge 부분을 같이 정리해야 합니다.
+
+그리고 한 가지 더 중요합니다: 이미 python app/ingest.py를 돌린 적이 있다면, 이 fake docs가 chroma_db 안에 이미 들어가 있을 수 있어요. 코드에서 제거해도 기존 벡터DB에서는 자동으로 사라지지 않아서, 검색 결과에서 완전히 빼려면 Chroma DB를 비우고 다시 ingest 하는 쪽이 깔끔합니다.
+'''
+
+
 CURATED_DOCS = [
     {
         "title": "24개월 언어 발달",
