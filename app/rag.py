@@ -10,32 +10,39 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from prompts import (
     QUERY_ANALYZER_PROMPT,
     QUERY_REWRITE_PROMPT,
-    ANSWER_PROMPT,
+    format_chat_history,
+    get_answer_prompt,
+)
+from vector_config import (
+    PERSIST_DIR,
+    KNOWLEDGE_COLLECTION_NAME,
+    FACILITY_COLLECTION_NAME,
 )
 
 load_dotenv()
 
-PERSIST_DIR = "../chroma_db"
-COLLECTION_NAME = "parenting_docs"
+DEFAULT_MODEL = "gpt-5.4-mini"
+DEFAULT_K = 6
+DEFAULT_TOP_K = 4
 
 
 # ---------------------------
 # LLM / Embeddings
 # ---------------------------
 
-def get_llm(model: str = "gpt-5.4-mini"):
-    return ChatOpenAI(model=model, temperature=0)
+def get_llm(model: str = DEFAULT_MODEL, temperature: float = 0.0):
+    return ChatOpenAI(model=model, temperature=temperature)
 
 
 def get_embeddings():
-    return OpenAIEmbeddings(model = "text-embedding-3-large")
+    return OpenAIEmbeddings(model="text-embedding-3-large")
 
 
-def get_vectorstore():
+def get_vectorstore(collection_name: str):
     return Chroma(
-        collection_name=COLLECTION_NAME,
+        collection_name=collection_name,
         embedding_function=get_embeddings(),
-        persist_directory=PERSIST_DIR,
+        persist_directory=str(PERSIST_DIR),
     )
 
 
@@ -119,11 +126,10 @@ def format_recent_logs(recent_logs: dict | None) -> str:
 
 # ---------------------------
 # Query analysis
-# Rule-based + LLM-based hybrid approach
 # ---------------------------
 
-def analyze_query(question: str) -> dict:
-    llm = get_llm()
+def analyze_query(question: str, model: str = DEFAULT_MODEL) -> dict:
+    llm = get_llm(model=model)
 
     prompt = QUERY_ANALYZER_PROMPT.format(question=question)
     response = llm.invoke(prompt)
@@ -143,8 +149,13 @@ def analyze_query(question: str) -> dict:
     return parsed
 
 
-def rewrite_query(question: str, child_profile: dict | None, analysis: dict) -> str:
-    llm = get_llm()
+def rewrite_query(
+    question: str,
+    child_profile: dict | None,
+    analysis: dict,
+    model: str = DEFAULT_MODEL,
+) -> str:
+    llm = get_llm(model=model)
 
     child_context = format_child_context(child_profile)
     prompt = QUERY_REWRITE_PROMPT.format(
@@ -187,43 +198,53 @@ def normalize_risk_level(question: str, analysis: dict) -> str:
 
 # ---------------------------
 # Retriever routing
+# hospital_locator는 facility 컬렉션, 나머지는 knowledge 컬렉션 사용
 # ---------------------------
 
-# query에 해당하는 카테고리가 있다면, category 필터를 적용해서 검색
-def get_retriever(intent: str):
-    vectorstore = get_vectorstore()
+def get_retriever(intent: str, k: int = DEFAULT_K):
+    if intent == "hospital_locator":
+        vectorstore = get_vectorstore(FACILITY_COLLECTION_NAME)
+        return vectorstore.as_retriever(search_kwargs={"k": k})
 
-    # Chroma filter는 너무 복잡하게 잡기보다 category 기준부터 안정적으로
-    if intent == "development":
+    vectorstore = get_vectorstore(KNOWLEDGE_COLLECTION_NAME)
+
+    intent_filter_map = {
+        "development": {"category": "development"},
+        "daily_parenting": {"category": "daily_parenting"},
+        "medical_basic": {"category": "medical_basic"},
+        "vaccination": {"category": "vaccination"},
+        "policy": {"category": "policy"},
+    }
+
+    search_filter = intent_filter_map.get(intent)
+    if search_filter:
         return vectorstore.as_retriever(
-            search_kwargs={"k": 6, "filter": {"category": "development"}}
+            search_kwargs={"k": k, "filter": search_filter}
         )
-    elif intent == "daily_parenting":
-        return vectorstore.as_retriever(
-            search_kwargs={"k": 6, "filter": {"category": "daily_parenting"}}
-        )
-    elif intent == "medical_basic":
-        return vectorstore.as_retriever(
-            search_kwargs={"k": 6, "filter": {"category": "medical_basic"}}
-        )
-    elif intent == "vaccination":
-        return vectorstore.as_retriever(
-            search_kwargs={"k": 5, "filter": {"category": "vaccination"}}
-        )
-    elif intent == "policy":
-        return vectorstore.as_retriever(
-            search_kwargs={"k": 5, "filter": {"category": "policy"}}
-        )
-    else:
-        return vectorstore.as_retriever(search_kwargs={"k": 5})
+
+    return vectorstore.as_retriever(search_kwargs={"k": k})
 
 
 # ---------------------------
-# Simple reranking
+# Reranking
 # ---------------------------
 
-# 문서의 metadata 기반 중요도 부여
-def simple_rerank(docs, intent: str, topic: str | None = None, age_group: str | None = None):
+RERANK_WEIGHTS = {
+    "category_match": 3,
+    "topic_match": 2,
+    "age_group_match": 2,
+    "curated_source": 1,
+}
+
+
+def simple_rerank(
+    docs,
+    intent: str,
+    topic: str | None = None,
+    age_group: str | None = None,
+    weights: dict | None = None,
+):
+    w = weights or RERANK_WEIGHTS
     rescored = []
 
     for doc in docs:
@@ -231,13 +252,13 @@ def simple_rerank(docs, intent: str, topic: str | None = None, age_group: str | 
         meta = doc.metadata
 
         if meta.get("category") == intent:
-            score += 3
+            score += w.get("category_match", 3)
         if topic and meta.get("topic") == topic:
-            score += 2
+            score += w.get("topic_match", 2)
         if age_group and meta.get("age_group") == age_group:
-            score += 2
+            score += w.get("age_group_match", 2)
         if meta.get("source") == "curated":
-            score += 1
+            score += w.get("curated_source", 1)
 
         rescored.append((score, doc))
 
@@ -249,7 +270,6 @@ def simple_rerank(docs, intent: str, topic: str | None = None, age_group: str | 
 # Generation
 # ---------------------------
 
-# retrieval한 문서들을 하나의 context로 묶어서 prompt에 넣기
 def build_context(docs) -> str:
     return "\n\n".join(
         [
@@ -277,13 +297,20 @@ def answer_question(
     question: str,
     child_profile: dict | None = None,
     recent_logs: dict | None = None,
+    chat_history: list[dict] | None = None,
+    model: str = DEFAULT_MODEL,
+    temperature: float = 0.0,
+    k: int = DEFAULT_K,
+    top_k: int = DEFAULT_TOP_K,
+    rerank_weights: dict | None = None,
 ):
-    analysis = analyze_query(question)
+    analysis = analyze_query(question, model=model)
     risk_level = normalize_risk_level(question, analysis)
+    intent = analysis.get("intent", "unknown")
 
-    rewritten_query = rewrite_query(question, child_profile, analysis)
+    rewritten_query = rewrite_query(question, child_profile, analysis, model=model)
 
-    retriever = get_retriever(analysis.get("intent", "unknown"))
+    retriever = get_retriever(intent, k=k)
     docs = retriever.invoke(rewritten_query)
 
     age_months = calculate_age_months(child_profile.get("birth_date")) if child_profile else None
@@ -291,22 +318,26 @@ def answer_question(
 
     docs = simple_rerank(
         docs,
-        intent=analysis.get("intent", "unknown"),
+        intent=intent,
         topic=analysis.get("topic"),
         age_group=age_group,
+        weights=rerank_weights,
     )
 
-    top_docs = docs[:4]
+    top_docs = docs[:top_k]
     context = build_context(top_docs)
 
     child_context = format_child_context(child_profile)
     logs_context = format_recent_logs(recent_logs)
+    history_text = format_chat_history(chat_history or [])
 
-    llm = get_llm()
+    llm = get_llm(model=model, temperature=temperature)
+    answer_prompt = get_answer_prompt(intent)
 
-    prompt = ANSWER_PROMPT.format(
+    prompt = answer_prompt.format(
         child_context=child_context,
         recent_logs=logs_context,
+        chat_history=history_text,
         context=context,
         question=question,
     )
@@ -314,9 +345,14 @@ def answer_question(
     answer = apply_safety_prefix(response.content, risk_level)
 
     debug_info = {
-        "analysis": analysis,
+        "intent": intent,
+        "topic": analysis.get("topic"),
         "risk_level": risk_level,
+        "needs_clarification": analysis.get("needs_clarification", False),
         "rewritten_query": rewritten_query,
+        "retrieved_docs_count": len(docs),
+        "top_k_used": top_k,
+        "model": model,
     }
 
     return answer, top_docs, debug_info
