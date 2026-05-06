@@ -1,6 +1,6 @@
 """아이 정보 Pydantic 스키마"""
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 from datetime import date, datetime
 from typing import Optional, List
 
