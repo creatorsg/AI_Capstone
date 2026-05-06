@@ -82,6 +82,7 @@ def evaluate_config(
     keyword_covs = []
     safety_hits = []
     errors = 0
+    details = []
 
     for item in questions:
         try:
@@ -93,21 +94,49 @@ def evaluate_config(
                 top_k=top_k,
                 temperature=temperature,
             )
-        except Exception:
+        except Exception as e:
             errors += 1
+            print(f"    [오류] {item['id']}: {type(e).__name__}: {e}")
+            details.append({
+                "id": item["id"],
+                "question": item["question"],
+                "error": f"{type(e).__name__}: {e}",
+            })
             continue
 
-        intent_hits.append(debug_info["intent"] == item["expected_intent"])
-        risk_hits.append(debug_info["risk_level"] == item["expected_risk_level"])
-        keyword_covs.append(keyword_coverage(answer, item.get("golden_keywords", [])))
-        safety_hits.append(safety_compliance(answer, item["expected_risk_level"]))
+        intent_correct = debug_info["intent"] == item["expected_intent"]
+        risk_correct = debug_info["risk_level"] == item["expected_risk_level"]
+        kw_cov = keyword_coverage(answer, item.get("golden_keywords", []))
+        safe = safety_compliance(answer, item["expected_risk_level"])
+
+        intent_hits.append(intent_correct)
+        risk_hits.append(risk_correct)
+        keyword_covs.append(kw_cov)
+        safety_hits.append(safe)
+
+        details.append({
+            "id": item["id"],
+            "question": item["question"],
+            "answer": answer,
+            "expected_intent": item["expected_intent"],
+            "predicted_intent": debug_info["intent"],
+            "intent_correct": intent_correct,
+            "expected_risk": item["expected_risk_level"],
+            "predicted_risk": debug_info["risk_level"],
+            "risk_correct": risk_correct,
+            "keyword_coverage": round(kw_cov, 3),
+            "safety_compliance": safe,
+            "rewritten_query": debug_info.get("rewritten_query", ""),
+            "retrieved_docs_count": debug_info.get("retrieved_docs_count", 0),
+        })
 
         if delay > 0:
             time.sleep(delay)
 
     n = len(intent_hits)
     if n == 0:
-        return {"error": "모든 질문 실패"}
+        return {"k": k, "top_k": top_k, "temperature": temperature,
+                "error": "모든 질문 실패", "details": details}
 
     return {
         "k": k,
@@ -126,6 +155,7 @@ def evaluate_config(
             + (sum(safety_hits) / n) * 0.15,
             3,
         ),
+        "details": details,
     }
 
 
