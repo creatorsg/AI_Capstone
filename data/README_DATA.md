@@ -40,7 +40,7 @@
 
 ---
 
-## 3. 최종 산출물 (총 7건의 JSON 파일)
+## 3. 최종 산출물 (총 8건의 JSON 파일)
 
 | 파일명 | 설명 |
 |--------|------|
@@ -51,6 +51,7 @@
 | `data5_welfare_childcare_kb.json` | 복지서비스 |
 | `data6_childcare_facilities.json` | 아이돌봄센터 |
 | `data7_childcare_auto_kb.json` | 육아상식 월령별 성장 및 돌보기 |
+| `data8_national_pharmacies_full.json` | 전국 약국 (공공심야약국 포함) |
 
 ---
 
@@ -65,6 +66,7 @@
 | 5 | 한국사회보장정보원_복지서비스정보 | [링크](https://www.data.go.kr/data/15083323/fileData.do) |
 | 6 | 성평등가족부_아이돌봄서비스제공기관 | [링크](https://www.data.go.kr/tcs/dss/selectFileDataDetailView.do?publicDataPk=15063160) |
 | 7 | 아이사랑포털 육아상식 크롤링 | [링크](https://www.childcare.go.kr/?menuno=418) |
+| 8 | 건강보험심사평가원_약국정보서비스 | [링크](https://www.data.go.kr/data/15000576/openapi.do#/tab_layer_detail_function) |
 
 ---
 
@@ -76,6 +78,7 @@
 - `data2_geocoded_night_hospitals.json` — 야간/휴일 소아과
 - `data4_geocoded_national_vaccine_hospitals_final.json` — 예방접종 지정병원
 - `data6_childcare_facilities.json` — 아이돌봄 제공기관
+- `data8_national_pharmacies_full.json` — 전국 약국 (공공심야약국 포함, 운영시간 구조화 데이터 포함)
 
 ### 2. 지식 및 본문 중심 (AI 챗봇 RAG 답변용)
 
