@@ -11,6 +11,7 @@ from langchain_core.documents import Document
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
+from tqdm import tqdm
 
 from curated_docs import CURATED_DOCS
 from vector_config import (
@@ -25,6 +26,8 @@ from vector_config import (
 load_dotenv()
 
 BATCH_SIZE = 500
+CHUNK_SIZE = 800
+CHUNK_OVERLAP = 120
 DEFAULT_AGE_GROUP = "0-60m"
 
 JSON_DATASETS = {
@@ -257,9 +260,13 @@ def load_json_documents() -> tuple[list[Document], list[Document]]:
     for filename, config in JSON_DATASETS.items():
         path = DATA_DIR / filename
         if not path.exists():
+            print(f"  ⚠ 파일 없음, 건너뜀: {filename}")
             continue
 
-        for item in load_json_records(path):
+        records = load_json_records(path)
+        before = len(knowledge_docs) + len(facility_docs)
+
+        for item in records:
             content = str(item.get("content", "")).strip()
             if not content:
                 continue
@@ -271,6 +278,10 @@ def load_json_documents() -> tuple[list[Document], list[Document]]:
                 knowledge_docs.append(document)
             else:
                 facility_docs.append(document)
+
+        added = len(knowledge_docs) + len(facility_docs) - before
+        tag = "knowledge" if config["collection"] == "knowledge" else "facility"
+        print(f"  ✓ {filename}  →  {added}개 ({tag})")
 
     return knowledge_docs, facility_docs
 
@@ -294,8 +305,8 @@ def load_curated_documents() -> list[Document]:
 
 def split_knowledge_documents(raw_docs: list[Document]) -> list[Document]:
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=800,
-        chunk_overlap=120,
+        chunk_size=CHUNK_SIZE,
+        chunk_overlap=CHUNK_OVERLAP,
     )
 
     return splitter.split_documents(raw_docs)
@@ -372,17 +383,30 @@ def upsert_documents(collection_name: str, documents: list[Document]) -> None:
         return
 
     vectorstore = get_vectorstore(collection_name)
+    total_batches = (len(documents) + BATCH_SIZE - 1) // BATCH_SIZE
 
-    for start in range(0, len(documents), BATCH_SIZE):
-        batch = documents[start:start + BATCH_SIZE]
-        ids = [doc.metadata["chunk_id"] for doc in batch]
-        vectorstore.add_documents(batch, ids=ids)
+    with tqdm(
+        total=len(documents),
+        desc=f"  {collection_name}",
+        unit="chunks",
+        ncols=80,
+    ) as bar:
+        for start in range(0, len(documents), BATCH_SIZE):
+            batch = documents[start:start + BATCH_SIZE]
+            ids = [doc.metadata["chunk_id"] for doc in batch]
+            vectorstore.add_documents(batch, ids=ids)
+            bar.update(len(batch))
 
 
 def write_manifest(knowledge_count: int, facility_count: int) -> None:
     manifest = {
         "embedding_model": EMBEDDING_MODEL,
         "ingested_at": datetime.now().isoformat(),
+        "hyperparameters": {
+            "chunk_size": CHUNK_SIZE,
+            "chunk_overlap": CHUNK_OVERLAP,
+            "batch_size": BATCH_SIZE,
+        },
         "collections": {
             KNOWLEDGE_COLLECTION_NAME: {"doc_count": knowledge_count},
             FACILITY_COLLECTION_NAME: {"doc_count": facility_count},
@@ -395,21 +419,56 @@ def write_manifest(knowledge_count: int, facility_count: int) -> None:
 
 
 def main():
-    knowledge_docs, facility_docs = prepare_documents()
+    print("=" * 60)
+    print("RAG 인제스트 시작")
+    print(f"임베딩 모델: {EMBEDDING_MODEL}")
+    print(f"저장 경로:   {PERSIST_DIR}")
+    print("=" * 60)
+
+    # Step 1: JSON 파일 로딩
+    print("\n[1/5] JSON 파일 로딩...")
+    knowledge_docs, facility_docs = load_json_documents()
+    print(f"  → knowledge {len(knowledge_docs)}개 / facility {len(facility_docs)}개 로드 완료")
 
     if not knowledge_docs and not facility_docs:
-        print("No documents found.")
+        print("로드된 문서가 없습니다. data/ 경로를 확인하세요.")
         return
 
-    upsert_documents(KNOWLEDGE_COLLECTION_NAME, knowledge_docs)
-    upsert_documents(FACILITY_COLLECTION_NAME, facility_docs)
-    write_manifest(len(knowledge_docs), len(facility_docs))
+    # Step 2: 큐레이션 문서
+    print("\n[2/5] 큐레이션 문서 로딩...")
+    curated_docs = load_curated_documents()
+    print(f"  → {len(curated_docs)}개")
 
-    print(
-        f"Ingested {len(knowledge_docs)} knowledge docs into {KNOWLEDGE_COLLECTION_NAME} "
-        f"and {len(facility_docs)} facility docs into {FACILITY_COLLECTION_NAME} "
-        f"at {PERSIST_DIR}"
-    )
+    # Step 3: 청킹
+    print(f"\n[3/5] knowledge 문서 청킹 (chunk_size=800, overlap=120)...")
+    split_knowledge = split_knowledge_documents(knowledge_docs)
+    print(f"  → {len(knowledge_docs)}개 → {len(split_knowledge)}개 청크")
+
+    # Step 4: 메타데이터 부착 및 중복 제거
+    print("\n[4/5] 메타데이터 처리 및 중복 제거...")
+    prepared_curated  = attach_chunk_metadata(curated_docs)
+    prepared_knowledge = attach_chunk_metadata(split_knowledge)
+    prepared_facility  = attach_chunk_metadata(facility_docs)
+
+    deduped_knowledge = dedupe_documents(prepared_curated + prepared_knowledge)
+    deduped_facility  = dedupe_documents(prepared_facility)
+
+    print(f"  → knowledge: {len(prepared_curated) + len(prepared_knowledge)}개 → 중복 제거 후 {len(deduped_knowledge)}개")
+    print(f"  → facility:  {len(prepared_facility)}개 → 중복 제거 후 {len(deduped_facility)}개")
+
+    # Step 5: ChromaDB 업로드
+    print(f"\n[5/5] ChromaDB 업로드 (배치 크기: {BATCH_SIZE})...")
+    upsert_documents(KNOWLEDGE_COLLECTION_NAME, deduped_knowledge)
+    upsert_documents(FACILITY_COLLECTION_NAME,  deduped_facility)
+
+    # 매니페스트
+    write_manifest(len(deduped_knowledge), len(deduped_facility))
+
+    print("\n" + "=" * 60)
+    print("인제스트 완료")
+    print(f"  knowledge collection : {len(deduped_knowledge):,}개 청크")
+    print(f"  facility  collection : {len(deduped_facility):,}개 청크")
+    print("=" * 60)
 
 
 if __name__ == "__main__":
