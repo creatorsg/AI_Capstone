@@ -1,0 +1,43 @@
+# CI 전용 경량 의존성 파일
+# 무거운 ML 패키지(chromadb, onnxruntime, langchain 등)를 제외하고
+# 테스트 실행에 필요한 최소 패키지만 포함합니다.
+#
+# rag_service.py  → chromadb를 lazy import + try/except fallback 처리
+# ai_service.py   → get_ai_response 가 테스트에서 mock 처리됨
+# ai_service_claude.py → anthropic 패키지를 함수 내부 lazy import
+# conftest.py     → SQLite in-memory 사용, 실제 DB 연결 불필요
+
+# ── 웹 프레임워크 ────────────────────────────────────────────────
+fastapi
+starlette
+uvicorn[standard]
+httpx
+httptools
+websockets
+
+# ── DB / ORM ─────────────────────────────────────────────────────
+SQLAlchemy
+psycopg2-binary       # CI postgres 서비스 연결용 (테스트는 SQLite 사용)
+alembic
+
+# ── 인증 ─────────────────────────────────────────────────────────
+python-jose[cryptography]
+bcrypt
+
+# ── 데이터 검증 ──────────────────────────────────────────────────
+pydantic[email]
+pydantic-settings
+email-validator
+annotated-types
+
+# ── 유틸리티 ─────────────────────────────────────────────────────
+python-dotenv
+python-dateutil
+requests
+tenacity
+
+# ── 비동기 ───────────────────────────────────────────────────────
+anyio
+sniffio
+aiohttp
+aiosignal
