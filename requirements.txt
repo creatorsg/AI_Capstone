@@ -1,3 +1,4 @@
+alembic==1.18.4
 aiohappyeyeballs==2.6.1
 aiohttp==3.13.5
 aiosignal==1.4.0
@@ -142,4 +143,4 @@ websockets==16.0
 xxhash==3.6.0
 yarl==1.23.0
 zipp==3.23.0
-zstandard==0.25.0
+zs

@@ -84,6 +84,7 @@ def build_rag_prompt(
     question: str,
     context: dict,
     retrieved_docs: list[str],
+    hours_context: str | None = None,
 ) -> str:
     """
     검색된 문서를 포함한 최종 프롬프트를 생성합니다.
@@ -103,5 +104,4 @@ def build_rag_prompt(
         )
     return (
         f"사용자 질문: {question}\n\n"
-        f"수집된 맥락:\n{context_str}"
-    )
+        f"�

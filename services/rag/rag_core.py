@@ -30,12 +30,14 @@ from services.rag.vector_config import (
 # LLM / Embeddings
 # ---------------------------
 
-def get_llm(model: str = "gpt-4o-mini"):
+def get_llm(model: str = "gpt-4.1-mini"):
     return ChatOpenAI(model=model, temperature=0)
 
 
 def get_embeddings():
-    return OpenAIEmbeddings()
+    # text-embedding-3-large: ada-002 대비 성능 향상 (MTEB 기준)
+    # ⚠️  모델 변경 시 기존 chroma_db 삭제 후 ingest.py 재실행 필요
+    return OpenAIEmbeddings(model="text-embedding-3-large")
 
 
 def get_vectorstore(collection_name: str):
@@ -288,11 +290,4 @@ def answer_question(
         question=question,
     )
     response = llm.invoke(prompt)
-    answer   = apply_safety_prefix(response.content, risk_level)
-
-    debug_info = {
-        "analysis":        analysis,
-        "risk_level":      risk_level,
-        "rewritten_query": rewritten_query,
-    }
-    return answer, top_docs, debug_info
+    answer   = apply_safety_prefix(response.content, risk_le

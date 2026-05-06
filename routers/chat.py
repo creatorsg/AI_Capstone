@@ -1,7 +1,15 @@
-"""AI 채팅 API (세션 기반, JWT 인증, 소유권 검증)"""
+"""AI 채팅 API (세션 기반, JWT 인증, 소유권 검증, 멀티턴 history 전달)
 
+세션 모델:
+  - 세션은 "한 대화 스레드" 이며, 여러 턴(Q -> 역질문 -> 최종답변) 을 담을 수 있다.
+  - 사용자가 명시적으로 새 세션을 만들기 전까지 절대 자동 종료되지 않는다.
+  - LLM 호출 시 같은 session 의 직전 N개 turn 을 history 로 함께 전달
+    -> "전에 ~했던가?" 같은 후속 질문을 정확히 이해함.
+"""
+
+import os
 import uuid
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from sqlalchemy.orm import Session
 
 from database import get_db
@@ -10,7 +18,7 @@ from models.child import Child, ChildProfile
 from models.user import User
 from schemas.chat import ChatMessageRequest, ChatMessageResponse
 from services.ai_service import get_ai_response, get_pending_field
-from services.auth_service import get_current_user
+from services.auth_service import get_current_user, verify_child_ownership
 
 router = APIRouter(
     prefix="/chat",
@@ -18,108 +26,124 @@ router = APIRouter(
 )
 
 
-# 소유권 검증 헬퍼
-def _verify_child_owner(child_id: int, db: Session, current_user: User) -> Child:
-    """child_id 가 current_user 소유인지 확인하고 Child 객체를 반환합니다."""
-    child = db.query(Child).filter(Child.id == child_id).first()
-    if not child:
-        raise HTTPException(status_code=404, detail="아이 정보를 찾을 수 없습니다.")
-    if child.user_id is not None and child.user_id != current_user.id:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="접근 권한이 없습니다.",
-        )
-    return child
-
-
 def get_child_info(child_id: int, db: Session) -> dict | None:
-    """
-    아이 정보를 조회해 AI 프롬프트 컨텍스트용 딕셔너리로 반환합니다.
-
-    반환 필드:
-      - name, birth_date, gender
-      - allergies (list), conditions (list), notes   → build_system_prompt 에서 사용
-      - blood_type, medical_notes                     → ChildProfile 에서 조회
-    """
+    """아이 정보를 AI 프롬프트 컨텍스트용 딕셔너리로 반환."""
     child = db.query(Child).filter(Child.id == child_id).first()
-    profile = db.query(ChildProfile).filter(
-        ChildProfile.child_id == child_id
-    ).first()
+    profile = db.query(ChildProfile).filter(ChildProfile.child_id == child_id).first()
 
     if not child and not profile:
         return None
 
     return {
-        # Child 기본 정보
         "name":          child.name if child else None,
         "birth_date":    str(child.birth_date) if child and child.birth_date else None,
         "gender":        child.gender if child else None,
+        "height_cm":     child.height_cm if child else None,
+        "weight_kg":     child.weight_kg if child else None,
         "allergies":     child.allergies if child else [],
         "conditions":    child.conditions if child else [],
         "notes":         child.notes if child else "",
-        # ChildProfile 민감 정보
         "blood_type":    profile.blood_type if profile else None,
         "medical_notes": profile.medical_notes if profile else None,
     }
 
 
-# 채팅 엔드포인트
+def get_session_history(session_id: str, db: Session, max_turns: int = 10) -> list[dict]:
+    """
+    같은 세션의 직전 turn 들을 LLM messages 형태로 반환.
 
-@router.post("/", response_model=ChatMessageResponse, summary="AI 채팅 (세션 기반)")
+    반환 예시:
+        [
+          {"role": "user", "content": "내 아이 이름이 뭐더라"},
+          {"role": "assistant", "content": "인선이 입니다..."},
+          {"role": "user", "content": "그럼 나이는?"},
+          {"role": "assistant", "content": "..."},
+        ]
+
+    오래된 turn 부터 (생성 시각 오름차순) 정렬하여 반환.
+    """
+    rows = (
+        db.query(ChatHistory)
+        .filter(ChatHistory.session_id == session_id)
+        .order_by(ChatHistory.created_at.desc())
+        .limit(max_turns)
+        .all()
+    )
+    # 최신 N개를 가져온 뒤 시간 오름차순으로 뒤집어서 LLM 에 전달
+    rows.reverse()
+
+    messages: list[dict] = []
+    for h in rows:
+        if h.question:
+            messages.append({"role": "user", "content": h.question})
+        if h.answer:
+            messages.append({"role": "assistant", "content": h.answer})
+    return messages
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# 채팅 엔드포인트
+# ─────────────────────────────────────────────────────────────────────────
+
+@router.post("/", response_model=ChatMessageResponse, summary="AI 채팅 (세션 기반, 멀티턴)")
 def chat(
     request: ChatMessageRequest,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
     """
-    세션 기반 대화형 AI 채팅입니다.
+    세션 기반 대화형 AI 채팅 엔드포인트.
 
-    **첫 메시지 (새 대화 시작)**
-    ```json
-    { "child_id": 1, "message": "애가 열이 나요" }
-    ```
+    첫 메시지 (새 대화):
+        { "child_id": 1, "message": "애가 열이 나요" }
 
-    **이후 메시지 (대화 계속)**
-    ```json
-    { "session_id": "반환된-session-id", "message": "38.5도요" }
-    ```
+    이후 메시지 (같은 세션 계속 / 새 질문 모두 가능):
+        { "session_id": "받은-uuid", "message": "38.5도요" }
 
-    서버가 대화 맥락을 자동으로 관리하므로, 프론트는 session_id만 유지하면 됩니다.
-
-    헤더: `Authorization: Bearer <access_token>`
+    같은 session_id 안의 직전 turn 들이 LLM 에 자동으로 전달되어
+    "전에 ~했던가?" 같은 후속 질문이 자연스럽게 이어집니다.
     """
+    max_history_turns = int(os.getenv("CHAT_HISTORY_TURNS", "10"))
 
-    # 기존 세션 이어가기
+    # ── 기존 세션 이어가기 ────────────────────────────────────────────
     if request.session_id:
         session = db.query(ConversationSession).filter(
             ConversationSession.id == request.session_id
         ).first()
         if not session:
-            raise HTTPException(status_code=404, detail="세션을 찾을 수 없습니다. 새 대화를 시작해주세요.")
-        if session.status == "completed":
-            raise HTTPException(status_code=400, detail="이미 완료된 대화입니다. 새 대화를 시작해주세요.")
+            raise HTTPException(
+                status_code=404,
+                detail="세션을 찾을 수 없습니다. 새 대화를 시작해주세요.",
+            )
 
-        # 세션에 child_id 가 있으면 소유권 재확인
-        if session.child_id:
-            _verify_child_owner(session.child_id, db, current_user)
+        if session.child_id is not None:
+            verify_child_ownership(session.child_id, db, current_user)
 
-        # pending_field 가 있으면 현재 메시지가 그 필드의 답변
         if session.pending_field:
+            # 역질문 답변 단계
             context = dict(session.context or {})
             context[session.pending_field] = request.message
             session.context = context
             session.pending_field = None
             db.commit()
 
-        question = session.original_question
-        context = dict(session.context or {})
-        child_id = session.child_id
+            question = session.original_question
+            context = dict(session.context or {})
+            child_id = session.child_id
+        else:
+            # 이번 메시지를 새 turn 의 첫 질문으로
+            session.original_question = request.message
+            session.context = {}
+            db.commit()
 
-    # 새 대화 시작
+            question = request.message
+            context = {}
+            child_id = session.child_id
+
+    # ── 새 대화 시작 ─────────────────────────────────────────────────
     else:
-        # child_id 가 제공된 경우 소유권 검증
-        if request.child_id:
-            _verify_child_owner(request.child_id, db, current_user)
+        if request.child_id is not None:
+            verify_child_ownership(request.child_id, db, current_user)
 
         session = ConversationSession(
             id=str(uuid.uuid4()),
@@ -134,32 +158,39 @@ def chat(
         context = {}
         child_id = request.child_id
 
-    # AI 응답 생성
+    # ── 같은 세션의 직전 history 가져오기 ─────────────────────────────
+    history = get_session_history(session.id, db, max_turns=max_history_turns)
+
+    # ── AI 응답 생성 ─────────────────────────────────────────────────
     child_info = get_child_info(child_id, db) if child_id else None
     result = get_ai_response(
         question=question,
         context=context,
         child_info=child_info,
         child_id=child_id,
+        history=history,
     )
 
-    # 역질문 중이면 pending_field 저장
     if result["needs_more_context"]:
         pending = get_pending_field(question, context)
         session.pending_field = pending
         db.commit()
 
-    # 최종 답변이면 기록 저장 + 세션 완료 처리
     else:
-        session.status = "completed"
-
-        history = ChatHistory(
+        # 최종 답변 - ChatHistory 저장 (session_id 포함)
+        history_row = ChatHistory(
             child_id=child_id,
+            session_id=session.id,
             question=question,
             answer=result["answer"],
             context=result["context_collected"],
         )
-        db.add(history)
+        db.add(history_row)
+
+        # 현재 turn 만 정리 (세션은 active 유지)
+        session.original_question = None
+        session.context = {}
+        session.pending_field = None
         db.commit()
 
     return ChatMessageResponse(
@@ -171,19 +202,59 @@ def chat(
     )
 
 
-@router.get("/history/{child_id}", summary="채팅 기록 조회")
+@router.get("/history/{child_id}", summary="채팅 기록 조회 (아이별, 최신순)")
 def get_chat_history(
     child_id: int,
-    limit: int = 20,
+    limit: int = Query(default=20, ge=1, le=100),
+    offset: int = Query(default=0, ge=0),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
     """아이별 과거 채팅 기록을 최신순으로 반환합니다."""
-    _verify_child_owner(child_id, db, current_user)
+    verify_child_ownership(child_id, db, current_user)
     return (
         db.query(ChatHistory)
         .filter(ChatHistory.child_id == child_id)
         .order_by(ChatHistory.created_at.desc())
+        .offset(offset)
         .limit(limit)
         .all()
     )
+
+
+@router.get("/sessions/{session_id}/history", summary="세션별 대화 기록 조회 (오래된 순)")
+def get_session_chat_history(
+    session_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    한 세션의 모든 turn(Q+A)을 시간 순서대로 반환합니다.
+    프론트엔드의 "이 대화 이어보기" 화면에 사용.
+    """
+    session = db.query(ConversationSession).filter(
+        ConversationSession.id == session_id
+    ).first()
+    if not session:
+        raise HTTPException(status_code=404, detail="세션을 찾을 수 없습니다.")
+
+    # 세션에 child_id 가 있으면 소유권 검증
+    if session.child_id is not None:
+        verify_child_ownership(session.child_id, db, current_user)
+
+    rows = (
+        db.query(ChatHistory)
+        .filter(ChatHistory.session_id == session_id)
+        .order_by(ChatHistory.created_at.asc())
+        .all()
+    )
+    return {
+        "session_id": session_id,
+        "child_id": session.child_id,
+        "status": session.status,
+        "created_at": session.created_at,
+        "turns": [
+            {
+                "id": r.id,
+                "question": r.question,
+               

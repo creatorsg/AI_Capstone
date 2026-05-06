@@ -15,6 +15,8 @@ router = APIRouter(
     tags=["병원 검색"],
 )
 
+HIRA_API_BASE = "http://apis.data.go.kr/B551182/MedicalHolidaysInfo"
+
 # 경로 설정
 _BASE_DIR = Path(__file__).resolve().parent.parent
 _DATA_DIR  = _BASE_DIR / "data"
@@ -77,6 +79,7 @@ def _to_static_response(item: dict, distance_m: Optional[float] = None) -> dict:
         "x":             str(coords[0]) if coords[0] else "",  # 경도
         "y":             str(coords[1]) if coords[1] else "",  # 위도
         "distance":      f"{int(distance_m)}m" if distance_m is not None else "",
+        "ykiho":         meta.get("ykiho", ""),   # 심평원 운영시간 조회용
         "data_source":   "jaehwi_static",
     }
 
@@ -329,8 +332,4 @@ def get_static_data_status():
     return {
         cat: {
             "file": str(path),
-            "exists": path.exists(),
-            "loaded_count": len(_load_static_data(cat)) if path.exists() else 0,
-        }
-        for cat, path in _DATA_FILES.items()
-    }
+            "exists": pa

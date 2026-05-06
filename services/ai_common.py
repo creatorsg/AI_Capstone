@@ -50,6 +50,7 @@ CONTEXT_FIELDS = {
     },
 }
 
+
 TOPIC_KEYWORDS = {
     "fever":  ["열", "발열", "고열", "체온"],
     "crying": ["울어", "운다", "보챔", "보채", "칭얼"],
@@ -103,45 +104,56 @@ def get_pending_field(question: str, context: dict) -> Optional[str]:
 # 프롬프트 생성
 
 def build_system_prompt(child_info: Optional[dict] = None) -> str:
-    """시스템 프롬프트 (AI 역할 + 아이 정보 컨텍스트)"""
+    """시스템 프롬프트 (AI 역할 + 오늘 날짜 + 아이 정보 컨텍스트)"""
+    from datetime import date
+    today_str = date.today().isoformat()
     base = (
         "당신은 초보 부모를 위한 육아 전문 AI 도우미입니다.\n"
+        f"[오늘 날짜] {today_str}  ← 나이/개월 수 계산은 반드시 이 날짜를 기준으로 하세요.\n"
         "다음 원칙을 반드시 따르세요:\n"
         "1. 의학적 단정을 피하고, 항상 '소아과 전문의와 상담을 권장합니다'로 마무리하세요.\n"
         "2. 답변은 친근하고 이해하기 쉬운 언어로 작성하세요.\n"
         "3. 위험 증상이 감지되면 즉시 병원 방문을 권고하세요.\n"
         "4. AI 의 한계를 명시하고 정보를 과신하지 않도록 안내하세요.\n"
-        "5. 모든 답변은 한국어로 작성하세요."
+        "5. 모든 답변은 한국어로 작성하세요.\n"
+        "6. 같은 대화 세션의 직전 메시지들이 messages 로 함께 전달됩니다.\n"
+        "   사용자가 '전에 ~했던가?' 처럼 과거를 물으면 그 messages 만 보고 답하세요.\n"
+        "   이전에 한 적이 없는 일을 한 것처럼 답하지 마세요."
     )
     if child_info:
         allergies  = ", ".join(child_info.get("allergies", [])) or "없음"
         conditions = ", ".join(child_info.get("conditions", [])) or "없음"
+        blood_type    = child_info.get("blood_type") or "미입력"
+        medical_notes = child_info.get("medical_notes") or "없음"
+        height = child_info.get("height_cm")
+        weight = child_info.get("weight_kg")
         child_ctx = (
             f"\n\n[현재 질문하는 아이 정보]\n"
             f"- 이름: {child_info.get('name', '미입력')}\n"
             f"- 생년월일: {child_info.get('birth_date', '미입력')}\n"
             f"- 성별: {child_info.get('gender', '미입력')}\n"
+            f"- 키: {f'{height}cm' if height else '미입력'}\n"
+            f"- 체중: {f'{weight}kg' if weight else '미입력'}\n"
             f"- 알레르기: {allergies}\n"
             f"- 기저질환: {conditions}\n"
+            f"- 혈액형: {blood_type}\n"
+            f"- 의료 특이사항: {medical_notes}\n"
             f"- 보호자 메모: {child_info.get('notes', '없음')}"
         )
         return base + child_ctx
     return base
 
 
-def build_rag_prompt(question: str, context: dict, retrieved_docs: list[str]) -> str:
-    """RAG 문서 + 수집 컨텍스트를 포함한 최종 질문 프롬프트 생성"""
+def build_rag_prompt(
+    question: str,
+    context: dict,
+    retrieved_docs: list[str],
+    hours_context: str | None = None,
+) -> str:
+    """RAG 문서 + 수집 컨텍스트 + 운영시간 데이터를 포함한 최종 질문 프롬프트 생성"""
     context_str = "\n".join(f"- {k}: {v}" for k, v in context.items()) if context else "없음"
 
-    if retrieved_docs:
-        docs_str = "\n\n".join(f"[참고 문서 {i+1}]\n{doc}" for i, doc in enumerate(retrieved_docs))
-        return (
-            f"사용자 질문: {question}\n\n"
-            f"수집된 맥락:\n{context_str}\n\n"
-            f"관련 육아 정보:\n{docs_str}\n\n"
-            "위 정보를 바탕으로 답변해주세요."
-        )
-    return (
-        f"사용자 질문: {question}\n\n"
-        f"수집된 맥락:\n{context_str}"
-    )
+    parts = [f"사용자 질문: {question}", f"\n수집된 맥락:\n{context_str}"]
+
+    # 운영시간 실제 데이터가 있으면 최우선으로 주입
+    if hours
