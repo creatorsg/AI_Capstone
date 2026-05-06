@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eval Results Viewer</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #222535;
+    --border: #2e3148;
+    --accent: #6366f1;
+    --accent2: #818cf8;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --text-dim: #64748b;
+    --green: #22c55e;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --blue: #3b82f6;
+    --purple: #a855f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; }
+
+  /* ── Upload Screen ── */
+  #upload-screen {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh; gap: 24px; padding: 24px;
+  }
+  .upload-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 48px 56px; text-align: center; max-width: 480px; width: 100%;
+  }
+  .upload-card h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .upload-card p { color: var(--text-muted); margin-bottom: 32px; line-height: 1.6; }
+  .upload-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent); color: #fff; border: none; border-radius: 10px;
+    padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .upload-btn:hover { background: var(--accent2); }
+  #file-input { display: none; }
+
+  /* ── Main App ── */
+  #app { display: none; flex-direction: column; height: 100vh; overflow: hidden; }
+
+  /* Header */
+  .header {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0;
+  }
+  .header-title { font-size: 16px; font-weight: 700; color: var(--accent2); }
+  .header-meta { font-size: 12px; color: var(--text-dim); }
+  .header-tabs { display: flex; gap: 4px; margin-left: auto; }
+  .tab-btn {
+    padding: 7px 18px; border-radius: 8px; border: none; cursor: pointer;
+    font-size: 13px; font-weight: 500; background: transparent; color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .tab-btn.active { background: var(--accent); color: #fff; }
+  .tab-btn:hover:not(.active) { background: var(--surface2); color: var(--text); }
+
+  /* Layout */
+  .app-body { display: flex; flex: 1; overflow: hidden; }
+
+  /* Sidebar */
+  .sidebar {
+    width: 280px; flex-shrink: 0; background: var(--surface);
+    border-right: 1px solid var(--border); display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .sidebar-header { padding: 14px 16px; border-bottom: 1px solid var(--border); }
+  .sidebar-header h3 { font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim); }
+  .sidebar-search {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 7px; padding: 7px 10px; color: var(--text); font-size: 13px;
+    margin-top: 10px; outline: none;
+  }
+  .sidebar-search:focus { border-color: var(--accent); }
+  .question-list { overflow-y: auto; flex: 1; padding: 8px; }
+  .question-item {
+    padding: 10px 12px; border-radius: 8px; cursor: pointer; margin-bottom: 4px;
+    border: 1px solid transparent; transition: all 0.15s;
+  }
+  .question-item:hover { background: var(--surface2); border-color: var(--border); }
+  .question-item.active { background: #1e2047; border-color: var(--accent); }
+  .q-id { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .q-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+  .q-badges { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .badge-medical { background: #1e3a5f; color: #60a5fa; }
+  .badge-development { background: #1a3a2e; color: #4ade80; }
+  .badge-vaccination { background: #3a2a1e; color: #fb923c; }
+  .badge-policy { background: #2d1f3d; color: #c084fc; }
+  .badge-daily { background: #2a2a1e; color: #facc15; }
+  .badge-hospital { background: #1e2a3a; color: #38bdf8; }
+  .badge-unknown { background: #2a2a2a; color: #94a3b8; }
+  .badge-high { background: #3b1111; color: #f87171; }
+  .badge-medium { background: #3b2b0a; color: #fbbf24; }
+  .badge-low { background: #0f2d1e; color: #4ade80; }
+
+  /* Main Panel */
+  .main-panel { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* ── Overview Tab ── */
+  #tab-overview { padding: 24px; overflow-y: auto; height: 100%; }
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .stat-card.best { border-color: var(--accent); background: #1a1d3a; }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .stat-value { font-size: 28px; font-weight: 700; }
+  .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .section-title { font-size: 14px; font-weight: 600; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Results Table */
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    padding: 10px 14px; text-align: left; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--text-dim); background: var(--surface2);
+    border-bottom: 1px solid var(--border); cursor: pointer; user-select: none;
+  }
+  th:hover { color: var(--text); }
+  th .sort-icon { margin-left: 4px; opacity: 0.4; }
+  th.sorted .sort-icon { opacity: 1; color: var(--accent2); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  tr.best-row td { background: #1a1d3a; }
+  tr:hover td { background: var(--surface2); }
+  .score-bar { position: relative; height: 6px; background: var(--surface2); border-radius: 3px; width: 80px; overflow: hidden; display: inline-block; vertical-align: middle; margin-left: 6px; }
+  .score-fill { position: absolute; left: 0; top: 0; height: 100%; background: var(--accent); border-radius: 3px; }
+  .score-fill.green { background: var(--green); }
+  .check { color: var(--green); } .cross { color: var(--red); }
+  .best-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px;
+    background: var(--accent); color: #fff; border-radius: 20px; margin-left: 6px;
+  }
+
+  /* ── Compare Tab ── */
+  #tab-compare { display: flex; flex: 1; overflow: hidden; flex-direction: column; }
+  .compare-toolbar {
+    padding: 14px 20px; background: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap; flex-shrink: 0;
+  }
+  .compare-toolbar label { font-size: 12px; color: var(--text-muted); margin-right: 4px; }
+  .param-filter {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .param-chip {
+    padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+    border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .param-chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .param-chip:hover:not(.active) { border-color: var(--accent2); color: var(--text); }
+  .toolbar-sep { width: 1px; height: 28px; background: var(--border); }
+  .select-all-btn {
+    padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 500;
+    border: 1px solid var(--border); background: transparent; color: var(--text-muted);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .select-all-btn:hover { border-color: var(--accent2); color: var(--text); }
+
+  /* Compare Content */
+  .compare-content { flex: 1; overflow-y: auto; padding: 20px; }
+  .question-header {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 16px;
+  }
+  .question-header .q-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .question-header .q-full { font-size: 16px; font-weight: 600; line-height: 1.5; }
+  .question-header .q-meta { margin-top: 10px; display: flex; gap: 8px; align-items: center; }
+
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 16px; }
+  .answer-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; transition: border-color 0.15s;
+  }
+  .answer-card.is-best { border-color: var(--accent); }
+  .card-header {
+    padding: 12px 16px; background: var(--surface2); border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .param-tag { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+  .param-tag span { color: var(--accent2); font-size: 13px; }
+  .card-metrics { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .metric-pill {
+    font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 600;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .metric-pill.good { border-color: #1a4030; color: var(--green); }
+  .metric-pill.warn { border-color: #3a2a0a; color: var(--yellow); }
+  .metric-pill.bad { border-color: #3b1111; color: var(--red); }
+  .card-body { padding: 16px; overflow-y: auto; max-height: 520px; }
+  .answer-text { line-height: 1.75; color: var(--text); font-size: 13.5px; }
+  .answer-text h4 { font-size: 13px; font-weight: 700; color: var(--accent2); margin: 14px 0 6px; }
+  .answer-text strong { color: #c4b5fd; font-weight: 600; }
+  .answer-text ul { padding-left: 20px; margin: 4px 0; }
+  .answer-text li { margin-bottom: 3px; }
+  .answer-text p { margin-bottom: 8px; }
+  .answer-text .highlight-warn {
+    border-left: 3px solid var(--yellow); padding-left: 10px; margin: 10px 0;
+    color: #fde68a; font-size: 13px;
+  }
+  .answer-text .highlight-danger {
+    border-left: 3px solid var(--red); padding-left: 10px; margin: 10px 0;
+    color: #fca5a5; font-size: 13px;
+  }
+  .rewrite-chip {
+    display: inline-block; font-size: 11px; background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 10px; color: var(--text-dim); margin-top: 10px;
+    font-style: italic;
+  }
+  .empty-state { text-align: center; color: var(--text-dim); padding: 60px 20px; }
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-state p { font-size: 15px; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+
+  /* Metric colors */
+  .c-green { color: var(--green); }
+  .c-yellow { color: var(--yellow); }
+  .c-red { color: var(--red); }
+  .c-blue { color: var(--blue); }
+  .c-purple { color: var(--purple); }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .sidebar { width: 240px; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Upload Screen -->
+<div id="upload-screen">
+  <div class="upload-card">
+    <div style="font-size:48px; margin-bottom:16px;">🔍</div>
+    <h1>Eval Results Viewer</h1>
+    <p>튜닝 결과 JSON 파일을 로드해서<br>파라미터 조합별 답변을 비교합니다.</p>
+    <label for="file-input" class="upload-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+      </svg>
+      JSON 파일 열기
+    </label>
+    <input type="file" id="file-input" accept=".json">
+    <p style="margin-top:16px; font-size:12px; color:var(--text-dim);">tune_*.json 파일을 선택하세요</p>
+  </div>
+</div>
+
+<!-- Main App -->
+<div id="app">
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="header-title">Eval Results Viewer</div>
+      <div class="header-meta" id="header-meta">—</div>
+    </div>
+    <div class="header-tabs">
+      <button class="tab-btn active" onclick="showTab('overview')">📊 전체 결과</button>
+      <button class="tab-btn" onclick="showTab('compare')">🔀 답변 비교</button>
+    </div>
+  </div>
+
+  <div class="app-body">
+    <!-- Sidebar (visible in compare tab) -->
+    <div class="sidebar" id="sidebar" style="display:none">
+      <div class="sidebar-header">
+        <h3>질문 목록</h3>
+        <input type="text" class="sidebar-search" id="q-search" placeholder="질문 검색..." oninput="filterQuestions(this.value)">
+      </div>
+      <div class="question-list" id="question-list"></div>
+    </div>
+
+    <!-- Main Panel -->
+    <div class="main-panel">
+      <!-- Overview Tab -->
+      <div id="tab-overview" style="display:block">
+        <div class="stats-grid" id="stats-grid"></div>
+        <div class="section-title">모든 파라미터 조합 결과</div>
+        <div class="table-wrap">
+          <table id="results-table">
+            <thead>
+              <tr>
+                <th onclick="sortTable('idx')">#<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('k')">k<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('top_k')">top_k<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('temperature')">temp<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('composite_score')">종합점수<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('intent_accuracy')">Intent<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('risk_accuracy')">Risk<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('keyword_coverage')">키워드<span class="sort-icon">↕</span></th>
+                <th onclick="sortTable('safety_compliance')">안전<span class="sort-icon">↕</span></th>
+                <th>오류</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Compare Tab -->
+      <div id="tab-compare" style="display:none">
+        <div class="compare-toolbar">
+          <label>k:</label>
+          <div class="param-filter" id="filter-k"></div>
+          <div class="toolbar-sep"></div>
+          <label>top_k:</label>
+          <div class="param-filter" id="filter-topk"></div>
+          <div class="toolbar-sep"></div>
+          <label>temp:</label>
+          <div class="param-filter" id="filter-temp"></div>
+          <div class="toolbar-sep"></div>
+          <button class="select-all-btn" onclick="toggleAllFilters()">전체 선택/해제</button>
+          <span id="active-count" style="font-size:12px; color:var(--text-dim); margin-left:4px;"></span>
+        </div>
+        <div class="compare-content" id="compare-content">
+          <div class="empty-state">
+            <div class="icon">←</div>
+            <p>왼쪽에서 질문을 선택하세요</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let data = null;
+let sortCol = 'composite_score';
+let sortAsc = false;
+let selectedQid = null;
+let activeFilters = { k: new Set(), top_k: new Set(), temperature: new Set() };
+let allVals = { k: [], top_k: [], temperature: [] };
+let allQuestions = [];
+
+// ── File Load ──
+document.getElementById('file-input').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      data = JSON.parse(ev.target.result);
+      initApp(file.name);
+    } catch (err) {
+      alert('JSON 파싱 오류: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
+function initApp(filename) {
+  document.getElementById('upload-screen').style.display = 'none';
+  const app = document.getElementById('app');
+  app.style.display = 'flex';
+
+  const ts = data.timestamp || filename;
+  const cfg = data.config || {};
+  document.getElementById('header-meta').textContent =
+    `${filename}  ·  ${data.all_results.length}가지 조합  ·  질문 ${data.all_results[0].n_evaluated}개`;
+
+  // Extract unique param values
+  allVals.k = [...new Set(data.all_results.map(r => r.k))].sort((a,b)=>a-b);
+  allVals.top_k = [...new Set(data.all_results.map(r => r.top_k))].sort((a,b)=>a-b);
+  allVals.temperature = [...new Set(data.all_results.map(r => r.temperature))].sort((a,b)=>a-b);
+
+  // Default: all active
+  allVals.k.forEach(v => activeFilters.k.add(v));
+  allVals.top_k.forEach(v => activeFilters.top_k.add(v));
+  allVals.temperature.forEach(v => activeFilters.temperature.add(v));
+
+  // Extract questions from first result
+  allQuestions = data.all_results[0].details.map(d => ({
+    id: d.id, question: d.question, expected_intent: d.expected_intent,
+    expected_risk: d.expected_risk
+  }));
+
+  buildOverview();
+  buildFilters();
+  buildQuestionList();
+}
+
+// ── Overview ──
+function buildOverview() {
+  const best = data.best;
+  const grid = document.getElementById('stats-grid');
+  const scoreColor = s => s >= 0.9 ? 'c-green' : s >= 0.7 ? 'c-yellow' : 'c-red';
+
+  grid.innerHTML = `
+    <div class="stat-card best">
+      <div class="stat-label">🏆 Best 파라미터</div>
+      <div class="stat-value" style="font-size:18px; margin-top:4px;">
+        k=${best.k} · top_k=${best.top_k} · temp=${best.temperature}
+      </div>
+      <div class="stat-sub">composite score: <span class="${scoreColor(best.composite_score)}" style="font-weight:700">${(best.composite_score*100).toFixed(1)}%</span></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Intent 정확도</div>
+      <div class="stat-value ${scoreColor(best.intent_accuracy)}">${(best.intent_accuracy*100).toFixed(0)}%</div>
+      <div class="stat-sub">${best.n_evaluated}개 질문 평가</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Risk 정확도</div>
+      <div class="stat-value ${scoreColor(best.risk_accuracy)}">${(best.risk_accuracy*100).toFixed(0)}%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">키워드 커버리지</div>
+      <div class="stat-value ${scoreColor(best.keyword_coverage)}">${(best.keyword_coverage*100).toFixed(1)}%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Safety 준수</div>
+      <div class="stat-value ${scoreColor(best.safety_compliance)}">${(best.safety_compliance*100).toFixed(0)}%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">총 조합 수</div>
+      <div class="stat-value c-blue">${data.all_results.length}</div>
+      <div class="stat-sub">k×top_k×temperature</div>
+    </div>
+  `;
+  renderTable();
+}
+
+function isBestResult(r) {
+  const b = data.best;
+  return r.k === b.k && r.top_k === b.top_k && r.temperature === b.temperature;
+}
+
+function renderTable() {
+  const rows = [...data.all_results].map((r, i) => ({...r, idx: i+1}));
+  rows.sort((a, b) => {
+    let va = a[sortCol], vb = b[sortCol];
+    return sortAsc ? (va > vb ? 1 : -1) : (va < vb ? 1 : -1);
+  });
+
+  const tbody = document.getElementById('table-body');
+  const scoreCell = (v) => {
+    const pct = (v*100).toFixed(1);
+    const cls = v >= 0.9 ? 'green' : v >= 0.7 ? '' : 'bad';
+    return `${pct}% <span class="score-bar"><span class="score-fill ${cls}" style="width:${pct}%"></span></span>`;
+  };
+
+  tbody.innerHTML = rows.map(r => `
+    <tr class="${isBestResult(r) ? 'best-row' : ''}" style="cursor:pointer" onclick="goCompare('${r.id||''}')">
+      <td>${r.idx}</td>
+      <td>${r.k}</td>
+      <td>${r.top_k}</td>
+      <td>${r.temperature}</td>
+      <td>${scoreCell(r.composite_score)} ${isBestResult(r) ? '<span class="best-tag">BEST</span>' : ''}</td>
+      <td>${scoreCell(r.intent_accuracy)}</td>
+      <td>${scoreCell(r.risk_accuracy)}</td>
+      <td>${scoreCell(r.keyword_coverage)}</td>
+      <td>${scoreCell(r.safety_compliance)}</td>
+      <td>${r.errors > 0 ? `<span class="c-red">${r.errors}</span>` : '<span class="c-green">0</span>'}</td>
+    </tr>
+  `).join('');
+
+  // Update sort icons
+  document.querySelectorAll('th').forEach(th => {
+    th.classList.remove('sorted');
+    const span = th.querySelector('.sort-icon');
+    if (!span) return;
+    const key = th.getAttribute('onclick')?.match(/'(\w+)'/)?.[1];
+    if (key === sortCol) {
+      th.classList.add('sorted');
+      span.textContent = sortAsc ? '↑' : '↓';
+    } else {
+      span.textContent = '↕';
+    }
+  });
+}
+
+function sortTable(col) {
+  if (sortCol === col) sortAsc = !sortAsc;
+  else { sortCol = col; sortAsc = false; }
+  renderTable();
+}
+
+function goCompare(id) {
+  showTab('compare');
+}
+
+// ── Compare Tab ──
+function buildFilters() {
+  const mkFilter = (containerId, key, vals) => {
+    const c = document.getElementById(containerId);
+    c.innerHTML = vals.map(v => `
+      <button class="param-chip active" data-key="${key}" data-val="${v}"
+        onclick="toggleFilter('${key}', ${v}, this)">
+        ${key === 'temperature' ? v.toFixed(1) : v}
+      </button>
+    `).join('');
+  };
+  mkFilter('filter-k', 'k', allVals.k);
+  mkFilter('filter-topk', 'top_k', allVals.top_k);
+  mkFilter('filter-temp', 'temperature', allVals.temperature);
+  updateActiveCount();
+}
+
+function toggleFilter(key, val, btn) {
+  if (activeFilters[key].has(val)) {
+    activeFilters[key].delete(val);
+    btn.classList.remove('active');
+  } else {
+    activeFilters[key].add(val);
+    btn.classList.add('active');
+  }
+  updateActiveCount();
+  if (selectedQid) renderCompare(selectedQid);
+}
+
+let allFiltersOn = true;
+function toggleAllFilters() {
+  allFiltersOn = !allFiltersOn;
+  if (allFiltersOn) {
+    allVals.k.forEach(v => activeFilters.k.add(v));
+    allVals.top_k.forEach(v => activeFilters.top_k.add(v));
+    allVals.temperature.forEach(v => activeFilters.temperature.add(v));
+  } else {
+    activeFilters.k.clear(); activeFilters.top_k.clear(); activeFilters.temperature.clear();
+    // Keep best
+    activeFilters.k.add(data.best.k);
+    activeFilters.top_k.add(data.best.top_k);
+    activeFilters.temperature.add(data.best.temperature);
+    allFiltersOn = false;
+  }
+  // Update button states
+  document.querySelectorAll('.param-chip').forEach(btn => {
+    const key = btn.dataset.key;
+    const val = parseFloat(btn.dataset.val);
+    btn.classList.toggle('active', activeFilters[key].has(val));
+  });
+  updateActiveCount();
+  if (selectedQid) renderCompare(selectedQid);
+}
+
+function updateActiveCount() {
+  const total = data.all_results.filter(r =>
+    activeFilters.k.has(r.k) && activeFilters.top_k.has(r.top_k) && activeFilters.temperature.has(r.temperature)
+  ).length;
+  document.getElementById('active-count').textContent = `(${total}가지 조합 표시 중)`;
+}
+
+function buildQuestionList() {
+  renderQuestionList(allQuestions);
+}
+
+function renderQuestionList(qs) {
+  const list = document.getElementById('question-list');
+  list.innerHTML = qs.map(q => `
+    <div class="question-item ${q.id === selectedQid ? 'active' : ''}" onclick="selectQuestion('${q.id}')">
+      <div class="q-id" style="color:${intentColor(q.expected_intent)}">${q.id}</div>
+      <div class="q-text">${escHtml(q.question)}</div>
+      <div class="q-badges">
+        <span class="badge ${intentBadgeClass(q.expected_intent)}">${intentLabel(q.expected_intent)}</span>
+        <span class="badge ${riskBadgeClass(q.expected_risk)}">${q.expected_risk}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterQuestions(query) {
+  const q = query.toLowerCase();
+  const filtered = q ? allQuestions.filter(item =>
+    item.question.toLowerCase().includes(q) || item.id.toLowerCase().includes(q)
+  ) : allQuestions;
+  renderQuestionList(filtered);
+}
+
+function selectQuestion(qid) {
+  selectedQid = qid;
+  document.querySelectorAll('.question-item').forEach(el => {
+    el.classList.toggle('active', el.querySelector('.q-id')?.textContent === qid);
+  });
+  renderCompare(qid);
+}
+
+function renderCompare(qid) {
+  const content = document.getElementById('compare-content');
+  const q = allQuestions.find(q => q.id === qid);
+  if (!q) return;
+
+  const filtered = data.all_results.filter(r =>
+    activeFilters.k.has(r.k) && activeFilters.top_k.has(r.top_k) && activeFilters.temperature.has(r.temperature)
+  );
+
+  if (filtered.length === 0) {
+    content.innerHTML = `<div class="empty-state"><div class="icon">🔧</div><p>표시할 파라미터 조합을 선택하세요</p></div>`;
+    return;
+  }
+
+  const qHeader = `
+    <div class="question-header">
+      <div class="q-label">질문</div>
+      <div class="q-full">${escHtml(q.question)}</div>
+      <div class="q-meta">
+        <span class="badge ${intentBadgeClass(q.expected_intent)}">${intentLabel(q.expected_intent)}</span>
+        <span class="badge ${riskBadgeClass(q.expected_risk)}">risk: ${q.expected_risk}</span>
+        <span style="font-size:12px; color:var(--text-dim); margin-left:4px;">${filtered.length}가지 조합</span>
+      </div>
+    </div>
+  `;
+
+  // Sort: best first, then by composite_score desc
+  const sorted = [...filtered].sort((a, b) => {
+    const aBest = isBestResult(a) ? 1 : 0;
+    const bBest = isBestResult(b) ? 1 : 0;
+    if (aBest !== bBest) return bBest - aBest;
+    return b.composite_score - a.composite_score;
+  });
+
+  const cards = sorted.map(r => {
+    const detail = r.details.find(d => d.id === qid);
+    if (!detail) return '';
+    const isBest = isBestResult(r);
+    const kw = detail.keyword_coverage;
+    const kwCls = kw >= 0.9 ? 'good' : kw >= 0.6 ? 'warn' : 'bad';
+    return `
+      <div class="answer-card ${isBest ? 'is-best' : ''}">
+        <div class="card-header">
+          <span class="param-tag">k=<span>${r.k}</span></span>
+          <span class="param-tag">top_k=<span>${r.top_k}</span></span>
+          <span class="param-tag">temp=<span>${r.temperature.toFixed(1)}</span></span>
+          ${isBest ? '<span class="best-tag">BEST</span>' : ''}
+          <div class="card-metrics">
+            <span class="metric-pill ${detail.intent_correct ? 'good' : 'bad'}" title="Intent">
+              Intent ${detail.intent_correct ? '✓' : '✗'}
+            </span>
+            <span class="metric-pill ${detail.risk_correct ? 'good' : 'bad'}" title="Risk">
+              Risk ${detail.risk_correct ? '✓' : '✗'}
+            </span>
+            <span class="metric-pill ${kwCls}" title="Keyword Coverage">
+              KW ${(kw*100).toFixed(0)}%
+            </span>
+            <span class="metric-pill ${detail.safety_compliance ? 'good' : 'bad'}" title="Safety">
+              Safe ${detail.safety_compliance ? '✓' : '✗'}
+            </span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="answer-text">${renderMarkdown(detail.answer)}</div>
+          <div class="rewrite-chip">🔄 재작성 쿼리: ${escHtml(detail.rewritten_query)}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  content.innerHTML = qHeader + `<div class="cards-grid">${cards}</div>`;
+}
+
+// ── Markdown renderer ──
+function renderMarkdown(text) {
+  if (!text) return '';
+  let html = escHtml(text);
+
+  // Danger/warning blocks
+  html = html.replace(/^중요:\s(.+)/gm, '<div class="highlight-danger">⚠️ $1</div>');
+
+  // Newlines to paragraphs (keep structure)
+  const lines = html.split('\n');
+  let result = '';
+  let inList = false;
+
+  for (let i = 0; i < lines.length; i++) {
+    let line = lines[i];
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      if (inList) { result += '</ul>'; inList = false; }
+      result += '<br>';
+      continue;
+    }
+
+    // Section headers (lines ending with colon, no list marker)
+    if (/^[^\-\*].+:$/.test(trimmed) && !trimmed.startsWith('-')) {
+      if (inList) { result += '</ul>'; inList = false; }
+      result += `<h4>${processBold(trimmed.slice(0,-1))}</h4>`;
+      continue;
+    }
+
+    // List items
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      if (!inList) { result += '<ul>'; inList = true; }
+      result += `<li>${processBold(trimmed.slice(2))}</li>`;
+      continue;
+    }
+    // Indented list items
+    if (/^\s{2,}[-*]/.test(line)) {
+      if (!inList) { result += '<ul>'; inList = true; }
+      result += `<li style="margin-left:16px">${processBold(trimmed.replace(/^[-*]\s/, ''))}</li>`;
+      continue;
+    }
+
+    if (inList) { result += '</ul>'; inList = false; }
+    result += `<p>${processBold(trimmed)}</p>`;
+  }
+
+  if (inList) result += '</ul>';
+  return result;
+}
+
+function processBold(text) {
+  return text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+            .replace(/"/g,'&quot;');
+}
+
+// ── Tab Switching ──
+function showTab(tab) {
+  document.getElementById('tab-overview').style.display = tab === 'overview' ? 'block' : 'none';
+  document.getElementById('tab-compare').style.display = tab === 'compare' ? 'flex' : 'none';
+  document.getElementById('sidebar').style.display = tab === 'compare' ? 'flex' : 'none';
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i === 0 && tab === 'overview') || (i === 1 && tab === 'compare'));
+  });
+}
+
+// ── Helpers ──
+function intentColor(intent) {
+  const map = {
+    medical_basic: '#60a5fa', development: '#4ade80', vaccination: '#fb923c',
+    policy: '#c084fc', daily_parenting: '#facc15', hospital_locator: '#38bdf8', unknown: '#94a3b8'
+  };
+  return map[intent] || '#94a3b8';
+}
+function intentBadgeClass(intent) {
+  const map = {
+    medical_basic: 'badge-medical', development: 'badge-development',
+    vaccination: 'badge-vaccination', policy: 'badge-policy',
+    daily_parenting: 'badge-daily', hospital_locator: 'badge-hospital', unknown: 'badge-unknown'
+  };
+  return map[intent] || 'badge-unknown';
+}
+function intentLabel(intent) {
+  const map = {
+    medical_basic: '의료', development: '발달', vaccination: '예방접종',
+    policy: '정책', daily_parenting: '육아', hospital_locator: '병원', unknown: '미분류'
+  };
+  return map[intent] || intent;
+}
+function riskBadgeClass(risk) {
+  return { high: 'badge-high', medium: 'badge-medium', low: 'badge-low' }[risk] || 'badge-unknown';
+}
+</script>
+</body>
+</html>
