@@ -72,8 +72,10 @@ def get_ai_response(
     try:
         if provider == "gemini":
             from services.ai_service_gemini import get_ai_response_gemini
-            # Gemini 는 현재 history 미지원 — 추후 확장 가능
-            answer = get_ai_response_gemini(question, context, child_info)
+            answer = get_ai_response_gemini(question, context, child_info, history=history)
+        elif provider == "openai":
+            from services.ai_service_openai import get_ai_response_openai
+            answer = get_ai_response_openai(question, context, child_info, history=history)
         else:
             # 기본값: Claude (history 멀티턴 지원)
             from services.ai_service_claude import get_ai_response_claude
