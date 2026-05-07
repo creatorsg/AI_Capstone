@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date, DateTime, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
 
@@ -18,6 +19,8 @@ class HealthLog(Base):
     note = Column(String, nullable=True)
     recorded_at = Column(DateTime, server_default=func.now(), nullable=False)
 
+    child = relationship("Child", back_populates="health_logs")
+
 
 class VaccinationRecord(Base):
     """예방접종 기록"""
@@ -29,3 +32,5 @@ class VaccinationRecord(Base):
     vaccinated_at = Column(Date, nullable=True)     # 접종일
     next_due = Column(Date, nullable=True)          # 다음 접종 예정일
     note = Column(String, nullable=True)
+
+    child = relationship("Child", back_populates="vaccinations")
