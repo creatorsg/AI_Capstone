@@ -60,4 +60,14 @@ def get_ai_response_claude(
     import anthropic
     client = anthropic.Anthropic(api_key=api_key)
 
-    message = client
+    message = client.messages.create(
+        model=model_name,
+        max_tokens=max_tokens,
+        system=system_prompt,
+        messages=messages,
+    )
+
+    if not message.content:
+        raise RuntimeError("Claude 응답이 비어있습니다.")
+
+    return message.content[0].text
