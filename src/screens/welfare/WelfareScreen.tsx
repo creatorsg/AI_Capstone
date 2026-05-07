@@ -28,16 +28,22 @@ export default function WelfareScreen() {
     ? differenceInMonths(new Date(), parseISO(selectedChild.birth_date))
     : null;
 
+  const extractPolicies = (resData: any): WelfarePolicy[] => {
+    if (Array.isArray(resData)) return resData;
+    // 백엔드 응답: { total_count, policies: [...] } 또는 { policies: [...] }
+    return resData.policies || resData.items || [];
+  };
+
   const load = useCallback(async () => {
     setLoading(true);
     try {
       let data: WelfarePolicy[] = [];
       if (filter === 'child' && childAgeMonths !== null) {
         const res = await welfareAPI.byAge(childAgeMonths);
-        data = Array.isArray(res.data) ? res.data : res.data.items || [];
+        data = extractPolicies(res.data);
       } else {
         const res = await welfareAPI.list(0, 50);
-        data = Array.isArray(res.data) ? res.data : res.data.items || [];
+        data = extractPolicies(res.data);
       }
       setPolicies(data);
     } catch {
@@ -54,7 +60,7 @@ export default function WelfareScreen() {
     setLoading(true);
     try {
       const res = await welfareAPI.search(searchQuery.trim());
-      const data = Array.isArray(res.data) ? res.data : res.data.items || [];
+      const data = extractPolicies(res.data);
       setPolicies(data);
     } catch {
       Alert.alert('오류', '검색에 실패했습니다.');
@@ -101,9 +107,41 @@ export default function WelfareScreen() {
           />
         </View>
         <Text style={styles.policyTitle}>{item.title}</Text>
+        {item.category && <Text style={styles.categoryText}>{item.category}</Text>}
         {isExpanded && (
           <>
             <Text style={styles.policyContent}>{item.content}</Text>
+
+            {/* 혜택 정보 */}
+            {item.benefit && (
+              <View style={styles.infoBox}>
+                <View style={styles.infoBoxHeader}>
+                  <Ionicons name="gift-outline" size={14} color={Colors.success} />
+                  <Text style={styles.infoBoxTitle}>혜택</Text>
+                </View>
+                <Text style={styles.infoBoxContent}>{item.benefit}</Text>
+              </View>
+            )}
+
+            {/* 신청 방법 */}
+            {item.how_to_apply && (
+              <View style={styles.infoBox}>
+                <View style={styles.infoBoxHeader}>
+                  <Ionicons name="clipboard-outline" size={14} color={Colors.primary} />
+                  <Text style={styles.infoBoxTitle}>신청 방법</Text>
+                </View>
+                <Text style={styles.infoBoxContent}>{item.how_to_apply}</Text>
+              </View>
+            )}
+
+            {/* 대상 */}
+            {item.target && (
+              <View style={styles.infoRow}>
+                <Ionicons name="people-outline" size={14} color={Colors.textSecondary} />
+                <Text style={styles.infoText}>대상: {item.target}</Text>
+              </View>
+            )}
+
             {item.contact && (
               <View style={styles.infoRow}>
                 <Ionicons name="call-outline" size={14} color={Colors.primary} />
@@ -170,6 +208,9 @@ export default function WelfareScreen() {
             </Text>
           </TouchableOpacity>
         ))}
+        {filter === 'child' && !selectedChild && (
+          <Text style={styles.noChildHint}>챗봇에서 아이를 선택해주세요</Text>
+        )}
       </View>
 
       {loading ? (
@@ -215,11 +256,12 @@ const styles = StyleSheet.create({
   searchInput: { flex: 1, fontSize: 14, color: Colors.text },
   searchButton: { backgroundColor: Colors.primary, borderRadius: 12, paddingHorizontal: 16, justifyContent: 'center' },
   searchButtonText: { color: '#fff', fontWeight: '700', fontSize: 14 },
-  filterRow: { flexDirection: 'row', paddingHorizontal: 16, paddingVertical: 10, gap: 8, backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border },
+  filterRow: { flexDirection: 'row', alignItems: 'center', paddingHorizontal: 16, paddingVertical: 10, gap: 8, backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border },
   filterTab: { flexDirection: 'row', alignItems: 'center', gap: 5, paddingHorizontal: 14, paddingVertical: 7, borderRadius: 20, backgroundColor: Colors.surfaceVariant, borderWidth: 1.5, borderColor: Colors.border },
   filterTabActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
   filterText: { fontSize: 12, fontWeight: '600', color: Colors.textSecondary },
   filterTextActive: { color: '#fff' },
+  noChildHint: { fontSize: 11, color: Colors.textTertiary, fontStyle: 'italic' },
   loadingContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
   loadingText: { color: Colors.textSecondary, fontSize: 14 },
   emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 32 },
@@ -239,9 +281,16 @@ const styles = StyleSheet.create({
   ageBadge: { flexDirection: 'row', alignItems: 'center', gap: 3, alignSelf: 'flex-start', backgroundColor: Colors.primaryLight + '30', borderRadius: 8, paddingHorizontal: 7, paddingVertical: 2 },
   ageText: { fontSize: 11, color: Colors.primary, fontWeight: '600' },
   policyTitle: { fontSize: 15, fontWeight: '700', color: Colors.text, lineHeight: 22 },
+  categoryText: { fontSize: 11, color: Colors.accent, fontWeight: '600', marginTop: 4 },
   policyContent: { fontSize: 14, color: Colors.textSecondary, lineHeight: 22, marginTop: 10 },
+  infoBox: {
+    backgroundColor: Colors.surfaceVariant, borderRadius: 10, padding: 12, marginTop: 10,
+  },
+  infoBoxHeader: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 },
+  infoBoxTitle: { fontSize: 12, fontWeight: '700', color: Colors.text },
+  infoBoxContent: { fontSize: 13, color: Colors.textSecondary, lineHeight: 20 },
   infoRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 10 },
-  infoText: { fontSize: 13, color: Colors.primary },
+  infoText: { fontSize: 13, color: Colors.textSecondary },
   linkButton: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 12, alignSelf: 'flex-start', backgroundColor: Colors.surfaceVariant, borderRadius: 10, paddingHorizontal: 14, paddingVertical: 8 },
   linkText: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
 });

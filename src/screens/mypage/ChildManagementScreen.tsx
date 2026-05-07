@@ -45,8 +45,9 @@ export default function ChildManagementScreen() {
     return `${Math.floor(months / 12)}세 ${months % 12}개월`;
   };
 
+  // 백엔드 gender: 'male' | 'female'
   const genderEmoji = (gender: string | null) =>
-    gender === '남' ? '👦' : gender === '여' ? '👧' : '👶';
+    gender === 'male' ? '👦' : gender === 'female' ? '👧' : '👶';
 
   const renderChild = ({ item }: { item: Child }) => (
     <View style={styles.childCard}>
@@ -57,6 +58,13 @@ export default function ChildManagementScreen() {
         <Text style={styles.childName}>{item.name}</Text>
         <Text style={styles.childAge}>{getAgeLabel(item.birth_date)}</Text>
         <Text style={styles.childBirth}>{item.birth_date}</Text>
+        {(item.height_cm || item.weight_kg) && (
+          <Text style={styles.detail}>
+            {item.height_cm ? `키 ${item.height_cm}cm` : ''}
+            {item.height_cm && item.weight_kg ? '  ' : ''}
+            {item.weight_kg ? `몸무게 ${item.weight_kg}kg` : ''}
+          </Text>
+        )}
         {item.allergies.length > 0 && (
           <Text style={styles.detail} numberOfLines={1}>알레르기: {item.allergies.join(', ')}</Text>
         )}
@@ -65,6 +73,12 @@ export default function ChildManagementScreen() {
         )}
       </View>
       <View style={styles.actions}>
+        <TouchableOpacity
+          style={styles.healthBtn}
+          onPress={() => navigation.navigate('HealthRecord', { childId: item.id })}
+        >
+          <Ionicons name="heart-outline" size={18} color={Colors.error} />
+        </TouchableOpacity>
         <TouchableOpacity
           style={styles.editBtn}
           onPress={() => navigation.navigate('AddChild', { childId: item.id })}
@@ -151,6 +165,7 @@ const styles = StyleSheet.create({
   childBirth: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
   detail: { fontSize: 12, color: Colors.textSecondary, marginTop: 4 },
   actions: { gap: 8 },
+  healthBtn: { width: 36, height: 36, borderRadius: 10, backgroundColor: Colors.error + '15', justifyContent: 'center', alignItems: 'center' },
   editBtn: { width: 36, height: 36, borderRadius: 10, backgroundColor: Colors.surfaceVariant, justifyContent: 'center', alignItems: 'center' },
   deleteBtn: { width: 36, height: 36, borderRadius: 10, backgroundColor: Colors.error + '15', justifyContent: 'center', alignItems: 'center' },
   emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 32 },

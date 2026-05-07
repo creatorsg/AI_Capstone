@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList,
-  KeyboardAvoidingView, Platform, ActivityIndicator, Alert, Pressable,
+  KeyboardAvoidingView, Platform, ActivityIndicator, Alert,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -61,6 +61,7 @@ export default function ChatScreen() {
         role: 'assistant',
         content: data.message,
         is_emergency: data.is_emergency,
+        needs_more_context: data.needs_more_context,
       };
       setMessages((prev) => [...prev, aiMsg]);
     } catch (err: any) {
@@ -93,6 +94,10 @@ export default function ChatScreen() {
       })()
     : '';
 
+  // 백엔드 gender: 'male' | 'female'
+  const genderEmoji = (child: Child) =>
+    child.gender === 'male' ? '👦' : child.gender === 'female' ? '👧' : '👶';
+
   const renderMessage = ({ item }: { item: ChatMessage }) => (
     <View style={[styles.messageRow, item.role === 'user' ? styles.userRow : styles.aiRow]}>
       {item.role === 'assistant' && (
@@ -109,6 +114,13 @@ export default function ChatScreen() {
           <View style={styles.emergencyTag}>
             <Ionicons name="warning" size={14} color={Colors.emergency} />
             <Text style={styles.emergencyTagText}>응급 상황 주의</Text>
+          </View>
+        )}
+        {/* 역질문 중임을 표시 */}
+        {item.needs_more_context && (
+          <View style={styles.contextTag}>
+            <Ionicons name="chatbubble-ellipses-outline" size={12} color={Colors.primary} />
+            <Text style={styles.contextTagText}>추가 정보 확인 중</Text>
           </View>
         )}
         <Text style={[
@@ -161,7 +173,7 @@ export default function ChatScreen() {
                 onPress={() => { selectChild(child); setShowChildPicker(false); }}
               >
                 <View style={styles.childIcon}>
-                  <Text style={styles.childIconText}>{child.gender === '남' ? '👦' : child.gender === '여' ? '👧' : '👶'}</Text>
+                  <Text style={styles.childIconText}>{genderEmoji(child)}</Text>
                 </View>
                 <View>
                   <Text style={styles.childName}>{child.name}</Text>
@@ -207,6 +219,19 @@ export default function ChatScreen() {
             contentContainerStyle={styles.messageList}
             onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
           />
+        )}
+
+        {/* 전송 중 로딩 표시 */}
+        {sending && (
+          <View style={styles.typingRow}>
+            <View style={styles.avatar}>
+              <Ionicons name="happy" size={18} color={Colors.primary} />
+            </View>
+            <View style={styles.typingBubble}>
+              <ActivityIndicator size="small" color={Colors.primary} />
+              <Text style={styles.typingText}>답변을 생성하고 있습니다...</Text>
+            </View>
+          </View>
         )}
 
         {/* 입력창 */}
@@ -293,10 +318,15 @@ const styles = StyleSheet.create({
   emergencyBubble: { backgroundColor: Colors.emergencyLight, borderWidth: 1.5, borderColor: Colors.emergency },
   emergencyTag: { flexDirection: 'row', alignItems: 'center', gap: 4, marginBottom: 6 },
   emergencyTagText: { fontSize: 12, fontWeight: '700', color: Colors.emergency },
+  contextTag: { flexDirection: 'row', alignItems: 'center', gap: 4, marginBottom: 6 },
+  contextTagText: { fontSize: 11, fontWeight: '600', color: Colors.primary },
   bubbleText: { fontSize: 15, lineHeight: 22 },
   userBubbleText: { color: Colors.userBubbleText },
   aiBubbleText: { color: Colors.aiBubbleText },
   emergencyText: { color: Colors.emergency },
+  typingRow: { flexDirection: 'row', alignItems: 'center', gap: 8, paddingHorizontal: 16, paddingVertical: 8 },
+  typingBubble: { flexDirection: 'row', alignItems: 'center', gap: 8, backgroundColor: Colors.aiBubble, borderRadius: 18, padding: 12 },
+  typingText: { fontSize: 13, color: Colors.textSecondary },
   inputBar: { paddingHorizontal: 16, paddingVertical: 12, backgroundColor: Colors.surface, borderTopWidth: 1, borderTopColor: Colors.border },
   inputContainer: { flexDirection: 'row', alignItems: 'flex-end', gap: 10 },
   textInput: {

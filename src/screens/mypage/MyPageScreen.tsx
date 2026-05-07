@@ -32,8 +32,9 @@ export default function MyPageScreen() {
     return `${Math.floor(months / 12)}세 ${months % 12}개월`;
   };
 
+  // 백엔드 gender: 'male' | 'female'
   const genderEmoji = (gender: string | null) =>
-    gender === '남' ? '👦' : gender === '여' ? '👧' : '👶';
+    gender === 'male' ? '👦' : gender === 'female' ? '👧' : '👶';
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
@@ -77,6 +78,7 @@ export default function MyPageScreen() {
                 key={child.id}
                 style={[styles.childCard, selectedChild?.id === child.id && styles.childCardActive]}
                 onPress={() => selectChild(child)}
+                activeOpacity={0.85}
               >
                 <View style={styles.childEmoji}>
                   <Text style={styles.emojiText}>{genderEmoji(child.gender)}</Text>
@@ -84,6 +86,14 @@ export default function MyPageScreen() {
                 <View style={styles.childDetails}>
                   <Text style={styles.childName}>{child.name}</Text>
                   <Text style={styles.childAge}>{getAgeLabel(child.birth_date)}</Text>
+                  {/* 키/몸무게 표시 */}
+                  {(child.height_cm || child.weight_kg) && (
+                    <Text style={styles.childStats}>
+                      {child.height_cm ? `키 ${child.height_cm}cm` : ''}
+                      {child.height_cm && child.weight_kg ? '  ' : ''}
+                      {child.weight_kg ? `몸무게 ${child.weight_kg}kg` : ''}
+                    </Text>
+                  )}
                   {(child.allergies.length > 0 || child.conditions.length > 0) && (
                     <View style={styles.tagRow}>
                       {child.allergies.slice(0, 2).map((a, i) => (
@@ -99,11 +109,19 @@ export default function MyPageScreen() {
                     </View>
                   )}
                 </View>
-                {selectedChild?.id === child.id && (
-                  <View style={styles.selectedBadge}>
-                    <Ionicons name="checkmark-circle" size={24} color={Colors.primary} />
-                  </View>
-                )}
+                <View style={styles.childActions}>
+                  {selectedChild?.id === child.id && (
+                    <Ionicons name="checkmark-circle" size={22} color={Colors.primary} />
+                  )}
+                  {/* 건강기록 바로가기 */}
+                  <TouchableOpacity
+                    style={styles.healthBtn}
+                    onPress={() => navigation.navigate('HealthRecord', { childId: child.id })}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  >
+                    <Ionicons name="heart-outline" size={20} color={Colors.error} />
+                  </TouchableOpacity>
+                </View>
               </TouchableOpacity>
             ))
           )}
@@ -176,12 +194,14 @@ const styles = StyleSheet.create({
   childDetails: { flex: 1 },
   childName: { fontSize: 17, fontWeight: '700', color: Colors.text },
   childAge: { fontSize: 13, color: Colors.primary, fontWeight: '600', marginTop: 2 },
+  childStats: { fontSize: 12, color: Colors.textSecondary, marginTop: 2 },
   tagRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginTop: 8 },
   tag: { backgroundColor: Colors.error + '15', borderRadius: 8, paddingHorizontal: 8, paddingVertical: 3 },
   tagWarning: { backgroundColor: Colors.warning + '30' },
   tagText: { fontSize: 11, color: Colors.error, fontWeight: '600' },
   tagTextWarning: { color: Colors.warning },
-  selectedBadge: {},
+  childActions: { alignItems: 'center', gap: 8 },
+  healthBtn: { padding: 4 },
   menuCard: { backgroundColor: Colors.surface, borderRadius: 16, overflow: 'hidden', shadowColor: Colors.shadow, shadowOffset: { width: 0, height: 2 }, shadowOpacity: 1, shadowRadius: 8, elevation: 3 },
   menuItem: { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 16 },
   menuBorder: { borderBottomWidth: 1, borderBottomColor: Colors.border },

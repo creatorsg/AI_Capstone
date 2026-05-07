@@ -1,13 +1,14 @@
 // Android 에뮬레이터: http://10.0.2.2:8000
 // iOS 시뮬레이터: http://localhost:8000
 // 실제 기기(Expo Go): http://<컴퓨터의 로컬 IP>:8000
-export const API_BASE_URL = 'http://192.168.123.109:8000';
+export const API_BASE_URL = 'http://192.168.123.105:8000';
 
 export const HOSPITAL_CATEGORIES = [
   { key: '소아청소년과', label: '소아청소년과' },
   { key: '야간소아과', label: '야간소아과' },
   { key: '예방접종병원', label: '예방접종' },
   { key: '아이돌봄센터', label: '아이돌봄' },
+  { key: '약국', label: '약국' },
 ] as const;
 
 export const EXAMPLE_QUESTIONS = [

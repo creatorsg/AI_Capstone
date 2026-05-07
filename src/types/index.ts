@@ -8,7 +8,9 @@ export interface Child {
   id: number;
   name: string;
   birth_date: string;
-  gender: '남' | '여' | null;
+  gender: 'male' | 'female' | null;
+  height_cm?: number | null;
+  weight_kg?: number | null;
   allergies: string[];
   conditions: string[];
   notes: string;
@@ -19,6 +21,7 @@ export interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
   is_emergency?: boolean;
+  needs_more_context?: boolean;
 }
 
 export interface ChatResponse {
@@ -34,10 +37,13 @@ export interface Hospital {
   place_name?: string;
   address?: string;
   road_address?: string;
+  address_name?: string;
   phone?: string;
   distance?: number | string;
   lat?: number;
   lon?: number;
+  x?: string;
+  y?: string;
   category?: string;
   location?: {
     type: string;
@@ -54,6 +60,27 @@ export interface WelfarePolicy {
   target_age_max_months?: number;
   category?: string;
   contact?: string;
+  benefit?: string;
+  how_to_apply?: string;
+  target?: string;
+}
+
+export interface HealthLog {
+  id: number;
+  child_id: number;
+  log_type: 'fever' | 'meal' | 'sleep' | 'breastfeed' | 'formula';
+  value?: string;
+  note?: string;
+  recorded_at: string;
+}
+
+export interface VaccinationRecord {
+  id: number;
+  child_id: number;
+  vaccine_name: string;
+  vaccinated_at?: string;
+  next_due?: string;
+  note?: string;
 }
 
 export type RootStackParamList = {
@@ -61,6 +88,7 @@ export type RootStackParamList = {
   Main: undefined;
   ChildManagement: undefined;
   AddChild: { childId?: number };
+  HealthRecord: { childId: number };
 };
 
 export type AuthStackParamList = {

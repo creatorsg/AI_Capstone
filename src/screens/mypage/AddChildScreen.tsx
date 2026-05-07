@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet,
   ScrollView, KeyboardAvoidingView, Platform, ActivityIndicator, Alert,
@@ -25,12 +25,13 @@ export default function AddChildScreen() {
 
   const [name, setName] = useState(existing?.name || '');
   const [birthDate, setBirthDate] = useState(existing?.birth_date || '');
-  const [gender, setGender] = useState<'남' | '여' | null>(
-    existing?.gender === 'male' ? '남' : existing?.gender === 'female' ? '여' : null
-  );
+  // gender는 백엔드와 동일하게 'male'/'female' 사용
+  const [gender, setGender] = useState<'male' | 'female' | null>(existing?.gender || null);
   const [allergiesInput, setAllergiesInput] = useState(existing?.allergies.join(', ') || '');
   const [conditionsInput, setConditionsInput] = useState(existing?.conditions.join(', ') || '');
   const [notes, setNotes] = useState(existing?.notes || '');
+  const [heightInput, setHeightInput] = useState(existing?.height_cm?.toString() || '');
+  const [weightInput, setWeightInput] = useState(existing?.weight_kg?.toString() || '');
   const [loading, setLoading] = useState(false);
 
   const validateDate = (val: string) => /^\d{4}-\d{2}-\d{2}$/.test(val);
@@ -46,14 +47,24 @@ export default function AddChildScreen() {
       Alert.alert('입력 오류', '생년월일은 오늘 이전이어야 합니다.');
       return;
     }
+    if (heightInput && isNaN(parseFloat(heightInput))) {
+      Alert.alert('입력 오류', '키는 숫자로 입력해주세요. 예: 65.5');
+      return;
+    }
+    if (weightInput && isNaN(parseFloat(weightInput))) {
+      Alert.alert('입력 오류', '몸무게는 숫자로 입력해주세요. 예: 7.2');
+      return;
+    }
 
     const data = {
       name: name.trim(),
       birth_date: birthDate,
-      gender: gender === '남' ? 'male' : gender === '여' ? 'female' : null,
+      gender,
       allergies: allergiesInput.split(',').map((s) => s.trim()).filter(Boolean),
       conditions: conditionsInput.split(',').map((s) => s.trim()).filter(Boolean),
       notes: notes.trim(),
+      height_cm: heightInput ? parseFloat(heightInput) : null,
+      weight_kg: weightInput ? parseFloat(weightInput) : null,
     };
 
     setLoading(true);
@@ -122,7 +133,10 @@ export default function AddChildScreen() {
             <View style={styles.field}>
               <Text style={styles.label}>성별</Text>
               <View style={styles.genderRow}>
-                {[{ label: '남아', value: '남' as const, emoji: '👦' }, { label: '여아', value: '여' as const, emoji: '👧' }].map((g) => (
+                {[
+                  { label: '남아', value: 'male' as const, emoji: '👦' },
+                  { label: '여아', value: 'female' as const, emoji: '👧' },
+                ].map((g) => (
                   <TouchableOpacity
                     key={g.value}
                     style={[styles.genderBtn, gender === g.value && styles.genderBtnActive]}
@@ -134,6 +148,32 @@ export default function AddChildScreen() {
                     </Text>
                   </TouchableOpacity>
                 ))}
+              </View>
+            </View>
+
+            {/* 키 / 몸무게 */}
+            <View style={styles.rowFields}>
+              <View style={[styles.field, { flex: 1 }]}>
+                <Text style={styles.label}>키 (cm)</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="예: 65.5"
+                  placeholderTextColor={Colors.textTertiary}
+                  value={heightInput}
+                  onChangeText={setHeightInput}
+                  keyboardType="decimal-pad"
+                />
+              </View>
+              <View style={[styles.field, { flex: 1 }]}>
+                <Text style={styles.label}>몸무게 (kg)</Text>
+                <TextInput
+                  style={styles.input}
+                  placeholder="예: 7.2"
+                  placeholderTextColor={Colors.textTertiary}
+                  value={weightInput}
+                  onChangeText={setWeightInput}
+                  keyboardType="decimal-pad"
+                />
               </View>
             </View>
 
@@ -214,6 +254,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   field: { marginBottom: 20 },
+  rowFields: { flexDirection: 'row', gap: 12 },
   label: { fontSize: 14, fontWeight: '700', color: Colors.text, marginBottom: 8 },
   required: { color: Colors.error },
   hint: { fontSize: 12, color: Colors.textSecondary, marginBottom: 6 },

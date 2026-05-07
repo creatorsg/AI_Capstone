@@ -31,6 +31,7 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   logout: async () => {
+    try { await authAPI.logout(); } catch {}
     await AsyncStorage.removeItem('access_token');
     await AsyncStorage.removeItem('refresh_token');
     set({ user: null, isAuthenticated: false });

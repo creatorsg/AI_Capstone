@@ -46,6 +46,7 @@ export const authAPI = {
   register: (email: string, password: string, nickname: string) =>
     api.post('/auth/register', { email, password, nickname }),
   me: () => api.get('/auth/me'),
+  logout: () => api.post('/auth/logout'),
 };
 
 export const childrenAPI = {
@@ -61,20 +62,45 @@ export const chatAPI = {
   history: (childId: number) => api.get(`/chat/history/${childId}`),
 };
 
+// 백엔드 파라미터: lat, lng (lon 아님), radius, category
 export const hospitalsAPI = {
-  nearbyStatic: (lat: number, lon: number, radius = 5000, category?: string) =>
-    api.get('/hospitals/static/nearby', { params: { lat, lon, radius, category } }),
-  search: (query: string) =>
-    api.get('/hospitals/static/search', { params: { query } }),
+  nearbyStatic: (lat: number, lng: number, radius = 5000, category?: string) =>
+    api.get('/hospitals/static/nearby', { params: { lat, lng, radius, category } }),
+  search: (keyword: string, sido?: string, sggu?: string, category?: string) =>
+    api.get('/hospitals/static/search', { params: { keyword, sido, sggu, category } }),
 };
 
+// 백엔드 파라미터: keyword (query 아님)
 export const welfareAPI = {
   list: (offset = 0, limit = 20) =>
     api.get('/welfare/', { params: { offset, limit } }),
-  search: (query: string) =>
-    api.get('/welfare/search', { params: { query } }),
+  search: (keyword: string) =>
+    api.get('/welfare/search', { params: { keyword } }),
   byAge: (months: number) =>
     api.get(`/welfare/age/${months}`),
+  categories: () => api.get('/welfare/categories'),
+};
+
+export const healthAPI = {
+  getLogs: (childId: number) =>
+    api.get(`/health/logs/${childId}`),
+  getLogsByType: (childId: number, logType: string) =>
+    api.get(`/health/logs/${childId}/type/${logType}`),
+  addLog: (data: {
+    child_id: number;
+    log_type: string;
+    value?: string;
+    note?: string;
+  }) => api.post('/health/logs/', data),
+  getVaccinations: (childId: number) =>
+    api.get(`/health/vaccinations/${childId}`),
+  addVaccination: (data: {
+    child_id: number;
+    vaccine_name: string;
+    vaccinated_at?: string;
+    next_due?: string;
+    note?: string;
+  }) => api.post('/health/vaccinations/', data),
 };
 
 export default api;

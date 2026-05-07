@@ -18,6 +18,7 @@ import WelfareScreen from '../screens/welfare/WelfareScreen';
 import MyPageScreen from '../screens/mypage/MyPageScreen';
 import ChildManagementScreen from '../screens/mypage/ChildManagementScreen';
 import AddChildScreen from '../screens/mypage/AddChildScreen';
+import HealthRecordScreen from '../screens/health/HealthRecordScreen';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -92,6 +93,11 @@ export default function AppNavigator() {
             <RootStack.Screen
               name="AddChild"
               component={AddChildScreen}
+              options={{ presentation: 'modal', headerShown: false }}
+            />
+            <RootStack.Screen
+              name="HealthRecord"
+              component={HealthRecordScreen}
               options={{ presentation: 'modal', headerShown: false }}
             />
           </>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet,
   FlatList, ActivityIndicator, Alert, Linking,
@@ -18,12 +18,12 @@ export default function HospitalsScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>(HOSPITAL_CATEGORIES[0].key);
   const [hasLocation, setHasLocation] = useState(false);
-  const [userLocation, setUserLocation] = useState<{ lat: number; lon: number } | null>(null);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
 
-  const fetchNearby = async (lat: number, lon: number, category: string) => {
+  const fetchNearby = async (lat: number, lng: number, category: string) => {
     setLoading(true);
     try {
-      const { data } = await hospitalsAPI.nearbyStatic(lat, lon, 5000, category);
+      const { data } = await hospitalsAPI.nearbyStatic(lat, lng, 5000, category);
       const list = Array.isArray(data) ? data : data.hospitals || data.results || [];
       setHospitals(list);
     } catch {
@@ -43,7 +43,7 @@ export default function HospitalsScreen() {
       }
       const location = await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Balanced });
       const { latitude, longitude } = location.coords;
-      setUserLocation({ lat: latitude, lon: longitude });
+      setUserLocation({ lat: latitude, lng: longitude });
       setHasLocation(true);
       fetchNearby(latitude, longitude, selectedCategory);
     } catch {
@@ -56,7 +56,7 @@ export default function HospitalsScreen() {
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     if (userLocation) {
-      fetchNearby(userLocation.lat, userLocation.lon, category);
+      fetchNearby(userLocation.lat, userLocation.lng, category);
     }
   };
 
@@ -64,7 +64,7 @@ export default function HospitalsScreen() {
     if (!searchQuery.trim()) return;
     setLoading(true);
     try {
-      const { data } = await hospitalsAPI.search(searchQuery.trim());
+      const { data } = await hospitalsAPI.search(searchQuery.trim(), undefined, undefined, selectedCategory);
       const list = Array.isArray(data) ? data : data.hospitals || data.results || [];
       setHospitals(list);
     } catch {
@@ -82,8 +82,11 @@ export default function HospitalsScreen() {
     return meters >= 1000 ? `${(meters / 1000).toFixed(1)}km` : `${Math.round(meters)}m`;
   };
 
-  const getAddress = (h: Hospital) => h.address || h.road_address || '주소 정보 없음';
-  const getTitle = (h: Hospital) => h.title || h.place_name || '병원';
+  // 백엔드 응답: address_name 우선, 그 다음 address, road_address
+  const getAddress = (h: Hospital) =>
+    h.address_name || h.address || h.road_address || '주소 정보 없음';
+
+  const getTitle = (h: Hospital) => h.place_name || h.title || '병원';
 
   const renderHospital = ({ item }: { item: Hospital }) => (
     <View style={styles.card}>
@@ -101,6 +104,9 @@ export default function HospitalsScreen() {
           )}
         </View>
       </View>
+      {item.category && (
+        <Text style={styles.categoryBadgeText}>{item.category}</Text>
+      )}
       <Text style={styles.address} numberOfLines={2}>{getAddress(item)}</Text>
       {item.phone && (
         <TouchableOpacity
@@ -146,18 +152,24 @@ export default function HospitalsScreen() {
       </View>
 
       {/* 카테고리 탭 */}
-      <View style={styles.categoryRow}>
-        {HOSPITAL_CATEGORIES.map((cat) => (
-          <TouchableOpacity
-            key={cat.key}
-            style={[styles.categoryTab, selectedCategory === cat.key && styles.categoryTabActive]}
-            onPress={() => handleCategoryChange(cat.key)}
-          >
-            <Text style={[styles.categoryText, selectedCategory === cat.key && styles.categoryTextActive]}>
-              {cat.label}
-            </Text>
-          </TouchableOpacity>
-        ))}
+      <View style={styles.categoryScrollView}>
+        <FlatList
+          horizontal
+          data={HOSPITAL_CATEGORIES}
+          keyExtractor={(item) => item.key}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.categoryRow}
+          renderItem={({ item: cat }) => (
+            <TouchableOpacity
+              style={[styles.categoryTab, selectedCategory === cat.key && styles.categoryTabActive]}
+              onPress={() => handleCategoryChange(cat.key)}
+            >
+              <Text style={[styles.categoryText, selectedCategory === cat.key && styles.categoryTextActive]}>
+                {cat.label}
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
       </View>
 
       {/* 내 위치 기반 검색 */}
@@ -223,7 +235,8 @@ const styles = StyleSheet.create({
   searchInput: { flex: 1, fontSize: 14, color: Colors.text },
   searchButton: { backgroundColor: Colors.primary, borderRadius: 12, paddingHorizontal: 16, justifyContent: 'center' },
   searchButtonText: { color: '#fff', fontWeight: '700', fontSize: 14 },
-  categoryRow: { flexDirection: 'row', paddingHorizontal: 16, paddingVertical: 10, gap: 8, backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border },
+  categoryScrollView: { backgroundColor: Colors.surface, borderBottomWidth: 1, borderBottomColor: Colors.border },
+  categoryRow: { paddingHorizontal: 16, paddingVertical: 10, gap: 8 },
   categoryTab: { paddingHorizontal: 12, paddingVertical: 7, borderRadius: 20, backgroundColor: Colors.surfaceVariant, borderWidth: 1.5, borderColor: Colors.border },
   categoryTabActive: { backgroundColor: Colors.primary, borderColor: Colors.primary },
   categoryText: { fontSize: 12, fontWeight: '600', color: Colors.textSecondary },
@@ -250,12 +263,13 @@ const styles = StyleSheet.create({
     shadowColor: Colors.shadow, shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 1, shadowRadius: 8, elevation: 3,
   },
-  cardHeader: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 8 },
+  cardHeader: { flexDirection: 'row', alignItems: 'center', gap: 12, marginBottom: 6 },
   cardIcon: { width: 40, height: 40, borderRadius: 12, backgroundColor: Colors.surfaceVariant, justifyContent: 'center', alignItems: 'center' },
   cardInfo: { flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   hospitalName: { fontSize: 15, fontWeight: '700', color: Colors.text, flex: 1 },
   distanceBadge: { flexDirection: 'row', alignItems: 'center', gap: 3, backgroundColor: Colors.primaryLight + '30', borderRadius: 10, paddingHorizontal: 8, paddingVertical: 3 },
   distanceText: { fontSize: 12, color: Colors.primary, fontWeight: '600' },
+  categoryBadgeText: { fontSize: 11, color: Colors.textSecondary, fontWeight: '600', marginBottom: 4 },
   address: { fontSize: 13, color: Colors.textSecondary, lineHeight: 18 },
   phoneRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 8 },
   phone: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
