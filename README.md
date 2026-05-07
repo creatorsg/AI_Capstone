@@ -11,16 +11,16 @@
     │
     ▼
 [의도 분석 (LLM)]  ──────────────────────────────────────────────
-    │  intent / topic / risk_level / needs_clarification          │
-    ▼                                                             │
-[쿼리 재작성 (LLM)]                                                  │
-    │  아이 프로필 반영, 벡터 검색에 최적화된 문장                          │
-    ▼                                                             │
-[벡터 검색 (ChromaDB)]                                              │
-    │  knowledge 컬렉션 또는 facility 컬렉션 라우팅                     │
-    ▼                                                             │
-[Reranking]  ── category / topic / age_group / curated 가중치      │
-    ▼                                                             │
+    │  intent / topic / risk_level / needs_clarification      │
+    ▼                                                         │
+[쿼리 재작성 (LLM)]                                              │
+    │  아이 프로필 반영, 벡터 검색에 최적화된 문장                      │
+    ▼                                                         │
+[벡터 검색 (ChromaDB)]                                          │
+    │  knowledge 컬렉션 또는 facility 컬렉션 라우팅                 │
+    ▼                                                         │
+[Reranking]  ── category / topic / age_group / curated 가중치   │
+    ▼                                                         │
 [답변 생성 (LLM)]  ◄────────────────────────────────────────────┘
     │  인텐트별 프롬프트 템플릿 + 안전 경고 prefix
     ▼
