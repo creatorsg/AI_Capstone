@@ -239,6 +239,17 @@ def main():
         default=1.0,
         help="질문 간 API 호출 딜레이(초), 기본 1.0",
     )
+    parser.add_argument(
+        "--intent",
+        default=None,
+        help="특정 인텐트 질문만 평가 (예: --intent hospital_locator)",
+    )
+    parser.add_argument(
+        "--ids",
+        nargs="+",
+        default=None,
+        help="특정 질문 ID만 평가 (예: --ids pha_001 pha_002 pha_003)",
+    )
     args = parser.parse_args()
 
     questions_path = Path(args.questions)
@@ -246,6 +257,13 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     questions = load_questions(questions_path)
+
+    if args.ids:
+        id_set = set(args.ids)
+        questions = [q for q in questions if q["id"] in id_set]
+    elif args.intent:
+        questions = [q for q in questions if q["expected_intent"] == args.intent]
+
     if args.subset:
         questions = questions[: args.subset]
 
@@ -272,6 +290,8 @@ def main():
         "timestamp": timestamp,
         "config": {
             "questions_file": str(questions_path),
+            "filter_intent": args.intent,
+            "filter_ids": args.ids,
             "total_questions": len(questions),
             "judge_model": JUDGE_MODEL if use_judge else None,
         },

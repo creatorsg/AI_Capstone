@@ -622,5 +622,77 @@
     "needs_clarification": true,
     "golden_keywords": [],
     "notes": "clarification needed, 완전히 맥락 없는 질문"
+  },
+  {
+    "id": "pha_001",
+    "question": "근처 약국을 찾고 싶어요. 어디서 확인할 수 있나요?",
+    "child_profile": {"name": "민준", "birth_date": "2024-11-06", "sex": "M", "allergies": [], "conditions": [], "notes": ""},
+    "recent_logs": {"sleep": [], "food": [], "fever": []},
+    "expected_intent": "hospital_locator",
+    "expected_topic": "pharmacy",
+    "expected_risk_level": "low",
+    "needs_clarification": false,
+    "golden_keywords": ["약국", "운영시간", "주소"],
+    "notes": "low-risk, 기본 약국 위치 문의"
+  },
+  {
+    "id": "pha_002",
+    "question": "야간에도 운영하는 약국이 있나요? 밤에 아이 해열제가 필요해요.",
+    "child_profile": {"name": "서연", "birth_date": "2024-05-06", "sex": "F", "allergies": [], "conditions": [], "notes": ""},
+    "recent_logs": {"sleep": [], "food": [], "fever": ["밤 38.9도"]},
+    "expected_intent": "hospital_locator",
+    "expected_topic": "pharmacy",
+    "expected_risk_level": "low",
+    "needs_clarification": false,
+    "golden_keywords": ["약국", "야간", "운영시간"],
+    "notes": "low-risk, 야간 운영 약국 문의"
+  },
+  {
+    "id": "pha_003",
+    "question": "주말에 여는 약국을 찾고 있어요. 일요일에도 여는 곳이 있나요?",
+    "child_profile": {"name": "지우", "birth_date": "2023-05-06", "sex": "M", "allergies": [], "conditions": [], "notes": ""},
+    "recent_logs": {"sleep": [], "food": [], "fever": []},
+    "expected_intent": "hospital_locator",
+    "expected_topic": "pharmacy",
+    "expected_risk_level": "low",
+    "needs_clarification": false,
+    "golden_keywords": ["약국", "주말", "일요일", "운영시간"],
+    "notes": "low-risk, 주말 운영 약국 문의"
+  },
+  {
+    "id": "pha_004",
+    "question": "아이 해열제를 처방전 없이 살 수 있는 약국이 있나요?",
+    "child_profile": {"name": "하은", "birth_date": "2024-11-06", "sex": "F", "allergies": [], "conditions": [], "notes": ""},
+    "recent_logs": {"sleep": [], "food": [], "fever": ["38.1도"]},
+    "expected_intent": "hospital_locator",
+    "expected_topic": "pharmacy",
+    "expected_risk_level": "low",
+    "needs_clarification": false,
+    "golden_keywords": ["약국", "해열제", "처방전"],
+    "notes": "low-risk, OTC 해열제 구매 가능 약국 문의"
+  },
+  {
+    "id": "pha_005",
+    "question": "우리 동네 약국 운영시간을 알고 싶어요. 몇 시까지 여나요?",
+    "child_profile": null,
+    "recent_logs": null,
+    "expected_intent": "hospital_locator",
+    "expected_topic": "pharmacy",
+    "expected_risk_level": "low",
+    "needs_clarification": false,
+    "golden_keywords": ["약국", "운영시간"],
+    "notes": "low-risk, 약국 운영시간 문의"
+  },
+  {
+    "id": "pha_006",
+    "question": "어린이 감기약 살 수 있는 약국 찾아줘요.",
+    "child_profile": {"name": "시우", "birth_date": "2022-05-06", "sex": "M", "allergies": [], "conditions": [], "notes": ""},
+    "recent_logs": {"sleep": [], "food": [], "fever": []},
+    "expected_intent": "hospital_locator",
+    "expected_topic": "pharmacy",
+    "expected_risk_level": "low",
+    "needs_clarification": false,
+    "golden_keywords": ["약국", "감기약", "어린이"],
+    "notes": "low-risk, 어린이 의약품 구매 약국 문의"
   }
 ]
