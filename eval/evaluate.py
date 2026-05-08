@@ -108,11 +108,13 @@ def evaluate_one(item: dict, use_judge: bool, judge_llm: ChatOpenAI | None) -> d
     recent_logs = item.get("recent_logs")
 
     try:
+        t0 = time.perf_counter()
         answer, docs, debug_info = answer_question(
             question=question,
             child_profile=child_profile,
             recent_logs=recent_logs,
         )
+        latency = round(time.perf_counter() - t0, 3)
     except Exception as e:
         return {
             "id": item["id"],
@@ -137,6 +139,7 @@ def evaluate_one(item: dict, use_judge: bool, judge_llm: ChatOpenAI | None) -> d
         "needs_clarification_expected": item.get("needs_clarification", False),
         "answer_preview": answer[:300],
         "retrieved_docs_count": debug_info["retrieved_docs_count"],
+        "latency_sec": latency,
     }
 
     if use_judge and judge_llm is not None:
@@ -169,6 +172,9 @@ def aggregate(results: list[dict]) -> dict:
         "answer_faithfulness_avg": avg("answer_faithfulness"),
         "answer_relevance_avg": avg("answer_relevance"),
         "completeness_avg": avg("completeness"),
+        "latency_avg_sec": avg("latency_sec"),
+        "latency_min_sec": round(min(r["latency_sec"] for r in valid if r.get("latency_sec") is not None), 3) if any(r.get("latency_sec") is not None for r in valid) else None,
+        "latency_max_sec": round(max(r["latency_sec"] for r in valid if r.get("latency_sec") is not None), 3) if any(r.get("latency_sec") is not None for r in valid) else None,
     }
 
 
@@ -272,13 +278,18 @@ def main():
 
     print(f"평가 시작: {len(questions)}개 질문 | LLM Judge: {'ON' if use_judge else 'OFF'}")
 
+    total_start = time.perf_counter()
     results = []
     for i, item in enumerate(questions, start=1):
         print(f"  [{i}/{len(questions)}] {item['id']}: {item['question'][:50]}...")
         result = evaluate_one(item, use_judge=use_judge, judge_llm=judge_llm)
         results.append(result)
+        lat = result.get("latency_sec")
+        if lat is not None:
+            print(f"    ⏱ {lat:.1f}s")
         if args.delay > 0:
             time.sleep(args.delay)
+    total_elapsed = round(time.perf_counter() - total_start, 1)
 
     overall = aggregate(results)
     by_intent = aggregate_by_intent(results)
@@ -288,6 +299,7 @@ def main():
 
     report = {
         "timestamp": timestamp,
+        "total_runtime_sec": total_elapsed,
         "config": {
             "questions_file": str(questions_path),
             "filter_intent": args.intent,
