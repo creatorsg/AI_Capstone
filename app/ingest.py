@@ -73,6 +73,12 @@ JSON_DATASETS = {
         "source": "아이돌봄서비스",
         "topic": "childcare_service",
     },
+    "data8_national_pharmacies_full.json": {
+        "collection": "facility",
+        "doc_type": "pharmacy_facility",
+        "source": "응급의료정보센터",
+        "topic": "pharmacy",
+    },
 }
 
 AGE_GROUP_PATTERNS = [
@@ -177,6 +183,7 @@ def normalize_category_and_topic(
         "data2_geocoded_night_hospitals.json",
         "data4_geocoded_national_vaccine_hospitals_final.json",
         "data6_geocoded_childcare_facilities_final.json",
+        "data8_national_pharmacies_full.json",
     }:
         return "hospital_locator", base_topic or "hospital"
 

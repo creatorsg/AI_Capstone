@@ -23,7 +23,7 @@ QUERY_ANALYZER_PROMPT = ChatPromptTemplate.from_template(
 - medical_basic: 열, 기침, 콧물, 구토, 설사, 기본 증상
 - vaccination: 예방접종 일정, 접종 여부, 접종 시기
 - policy: 정부지원, 복지, 지원금, 바우처
-- hospital_locator: 병원, 소아과, 발달센터, 위치, 운영시간
+- hospital_locator: 병원, 소아과, 발달센터, 약국, 위치, 운영시간
 
 high risk 예시:
 - 경련
