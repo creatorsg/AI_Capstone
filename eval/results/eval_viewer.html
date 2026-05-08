@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eval Results Viewer</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface2: #222535;
+    --border: #2e3148; --accent: #6366f1; --accent2: #818cf8;
+    --text: #e2e8f0; --text-muted: #94a3b8; --text-dim: #64748b;
+    --green: #22c55e; --red: #ef4444; --yellow: #f59e0b;
+    --blue: #3b82f6; --purple: #a855f7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 14px; }
+
+  /* ── Upload Screen ── */
+  #upload-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; gap: 24px; padding: 24px; }
+  .upload-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 48px 56px; text-align: center; max-width: 480px; width: 100%; }
+  .upload-card h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .upload-card p { color: var(--text-muted); margin-bottom: 32px; line-height: 1.6; }
+  .upload-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 12px 28px; font-size: 15px; font-weight: 600; cursor: pointer; transition: background 0.2s; }
+  .upload-btn:hover { background: var(--accent2); }
+  #file-input { display: none; }
+
+  /* ── Main App ── */
+  #app { display: none; flex-direction: column; height: 100vh; overflow: hidden; }
+
+  /* Header */
+  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+  .header-title { font-size: 16px; font-weight: 700; color: var(--accent2); }
+  .header-meta { font-size: 12px; color: var(--text-dim); }
+  .header-tabs { display: flex; gap: 4px; margin-left: auto; }
+  .tab-btn { padding: 7px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 13px; font-weight: 500; background: transparent; color: var(--text-muted); transition: all 0.15s; }
+  .tab-btn.active { background: var(--accent); color: #fff; }
+  .tab-btn:hover:not(.active) { background: var(--surface2); color: var(--text); }
+
+  /* Layout */
+  .app-body { display: flex; flex: 1; overflow: hidden; }
+
+  /* Sidebar */
+  .sidebar { width: 300px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  .sidebar-header { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+  .sidebar-header h3 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 8px; }
+  .sidebar-controls { display: flex; gap: 6px; }
+  .sidebar-search { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 6px 10px; color: var(--text); font-size: 12px; outline: none; }
+  .sidebar-search:focus { border-color: var(--accent); }
+  .sort-select { background: var(--surface2); border: 1px solid var(--border); border-radius: 7px; padding: 6px 8px; color: var(--text-muted); font-size: 12px; outline: none; cursor: pointer; }
+  .question-list { overflow-y: auto; flex: 1; padding: 6px; }
+
+  .question-item { padding: 10px 12px; border-radius: 8px; cursor: pointer; margin-bottom: 3px; border-left: 3px solid transparent; transition: all 0.15s; }
+  .question-item:hover { background: var(--surface2); }
+  .question-item.active { background: #1e2047; border-color: var(--accent); }
+  .question-item.status-good { border-left-color: var(--green); }
+  .question-item.status-warn { border-left-color: var(--yellow); }
+  .question-item.status-bad  { border-left-color: var(--red); }
+  .q-item-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+  .q-id { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .q-dots { display: flex; gap: 3px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot-green { background: var(--green); }
+  .dot-yellow { background: var(--yellow); }
+  .dot-red { background: var(--red); }
+  .dot-gray { background: var(--text-dim); }
+  .q-text { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-bottom: 5px; }
+  .q-badges { display: flex; gap: 4px; flex-wrap: wrap; }
+
+  /* Badges */
+  .badge { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .badge-medical   { background: #1e3a5f; color: #60a5fa; }
+  .badge-development { background: #1a3a2e; color: #4ade80; }
+  .badge-vaccination { background: #3a2a1e; color: #fb923c; }
+  .badge-policy    { background: #2d1f3d; color: #c084fc; }
+  .badge-daily     { background: #2a2a1e; color: #facc15; }
+  .badge-hospital  { background: #1e2a3a; color: #38bdf8; }
+  .badge-unknown   { background: #2a2a2a; color: #94a3b8; }
+  .badge-high { background: #3b1111; color: #f87171; }
+  .badge-medium { background: #3b2b0a; color: #fbbf24; }
+  .badge-low  { background: #0f2d1e; color: #4ade80; }
+
+  /* Main Panel */
+  .main-panel { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* ── Overview Tab ── */
+  #tab-overview { padding: 24px; overflow-y: auto; height: 100%; }
+  .section-title { font-size: 12px; font-weight: 600; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 12px; margin-top: 24px; }
+  .section-title:first-child { margin-top: 0; }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-bottom: 4px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+  .stat-card.highlight { border-color: var(--accent); background: #1a1d3a; }
+  .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .stat-value { font-size: 26px; font-weight: 700; line-height: 1; }
+  .stat-sub { font-size: 11px; color: var(--text-muted); margin-top: 5px; }
+  .stat-na { font-size: 14px; color: var(--text-dim); }
+
+  /* Judge score bar in stat card */
+  .judge-bar-wrap { margin-top: 6px; background: var(--surface2); border-radius: 3px; height: 5px; overflow: hidden; }
+  .judge-bar-fill { height: 100%; border-radius: 3px; transition: width 0.5s; }
+
+  /* By-intent table */
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; }
+  th { padding: 9px 14px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); background: var(--surface2); border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--surface2); }
+
+  .config-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 20px; }
+  .config-item { font-size: 12px; }
+  .config-key { color: var(--text-dim); margin-bottom: 3px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .config-val { color: var(--text); font-weight: 500; }
+
+  /* ── Details Tab ── */
+  #tab-details { display: none; flex: 1; overflow: hidden; flex-direction: column; }
+  .detail-content { flex: 1; overflow-y: auto; padding: 20px; }
+
+  .empty-state { text-align: center; color: var(--text-dim); padding: 80px 20px; }
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+
+  /* Detail panel */
+  .detail-question-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; margin-bottom: 16px; }
+  .detail-q-id { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 6px; }
+  .detail-q-text { font-size: 17px; font-weight: 600; line-height: 1.5; margin-bottom: 12px; }
+  .detail-q-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .meta-chip { font-size: 11px; color: var(--text-muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 3px 9px; }
+
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+  @media (max-width: 900px) { .detail-grid { grid-template-columns: 1fr; } }
+
+  .detail-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .detail-section-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); margin-bottom: 12px; }
+
+  /* Metric rows */
+  .metric-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 0; border-bottom: 1px solid var(--border); }
+  .metric-row:last-child { border-bottom: none; }
+  .metric-name { font-size: 13px; color: var(--text-muted); }
+  .metric-val { font-size: 13px; font-weight: 600; }
+  .metric-sub { font-size: 11px; color: var(--text-dim); }
+  .pass { color: var(--green); }
+  .fail { color: var(--red); }
+  .neutral { color: var(--text-dim); }
+
+  /* Judge score rows */
+  .judge-row { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .judge-row:last-child { border-bottom: none; }
+  .judge-row-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .judge-label { font-size: 13px; color: var(--text-muted); }
+  .judge-score-num { font-size: 13px; font-weight: 700; }
+  .judge-bar { background: var(--surface2); border-radius: 4px; height: 7px; overflow: hidden; }
+  .judge-bar-inner { height: 100%; border-radius: 4px; transition: width 0.4s; }
+
+  /* Answer preview */
+  .answer-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; }
+  .answer-title { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-dim); margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .answer-note { font-size: 10px; color: var(--text-dim); font-weight: 400; text-transform: none; letter-spacing: 0; }
+  .answer-body { line-height: 1.8; color: var(--text); font-size: 13.5px; white-space: pre-wrap; word-break: break-word; }
+  .answer-body h4 { font-size: 13px; font-weight: 700; color: var(--accent2); margin: 12px 0 5px; }
+
+  /* Score bars for table */
+  .score-bar { position: relative; height: 5px; background: var(--surface2); border-radius: 3px; width: 70px; overflow: hidden; display: inline-block; vertical-align: middle; margin-left: 5px; }
+  .score-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 3px; }
+
+  .c-green { color: var(--green); } .c-yellow { color: var(--yellow); } .c-red { color: var(--red); }
+  .c-blue { color: var(--blue); } .c-purple { color: var(--purple); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<!-- Upload Screen -->
+<div id="upload-screen">
+  <div class="upload-card">
+    <div style="font-size:48px; margin-bottom:16px;">📋</div>
+    <h1>Eval Results Viewer</h1>
+    <p>evaluate.py 결과 JSON 파일을 로드해서<br>질문별 평가 결과를 확인합니다.</p>
+    <label for="file-input" class="upload-btn">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+      </svg>
+      JSON 파일 열기
+    </label>
+    <input type="file" id="file-input" accept=".json">
+    <p style="margin-top:16px; font-size:12px; color:var(--text-dim);">eval_*.json 파일을 선택하세요</p>
+  </div>
+</div>
+
+<!-- Main App -->
+<div id="app">
+  <div class="header">
+    <div>
+      <div class="header-title">Eval Results Viewer</div>
+      <div class="header-meta" id="header-meta">—</div>
+    </div>
+    <div class="header-tabs">
+      <button class="tab-btn active" onclick="showTab('overview')">📊 전체 요약</button>
+      <button class="tab-btn" onclick="showTab('details')">📋 질문별 결과</button>
+    </div>
+  </div>
+
+  <div class="app-body">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar" style="display:none">
+      <div class="sidebar-header">
+        <h3>질문 목록 (<span id="q-count">0</span>개)</h3>
+        <div class="sidebar-controls">
+          <input type="text" class="sidebar-search" id="q-search" placeholder="검색..." oninput="filterSidebar(this.value)">
+          <select class="sort-select" onchange="setSortMode(this.value)">
+            <option value="id">ID순</option>
+            <option value="worst">오류순</option>
+            <option value="kw">키워드↑</option>
+          </select>
+        </div>
+      </div>
+      <div class="question-list" id="question-list"></div>
+    </div>
+
+    <!-- Main Panel -->
+    <div class="main-panel">
+
+      <!-- Overview Tab -->
+      <div id="tab-overview" style="display:block; padding:24px; overflow-y:auto; height:100%;">
+
+        <div class="section-title">Rule-based 메트릭</div>
+        <div class="stats-grid" id="rule-grid"></div>
+
+        <div class="section-title" id="judge-section-title" style="display:none">LLM Judge 메트릭 (1–5점)</div>
+        <div class="stats-grid" id="judge-grid"></div>
+
+        <div class="section-title" id="latency-section-title" style="display:none">응답시간</div>
+        <div class="stats-grid" id="latency-grid"></div>
+
+        <div class="section-title">인텐트별 분석</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>인텐트</th>
+                <th>질문 수</th>
+                <th>Intent 정확도</th>
+                <th>Risk 정확도</th>
+                <th>키워드 커버리지</th>
+              </tr>
+            </thead>
+            <tbody id="intent-tbody"></tbody>
+          </table>
+        </div>
+
+        <div class="section-title">실행 설정</div>
+        <div class="config-card" id="config-card"></div>
+
+      </div>
+
+      <!-- Details Tab -->
+      <div id="tab-details" style="display:none; flex:1; overflow:hidden;">
+        <div class="detail-content" id="detail-content">
+          <div class="empty-state">
+            <div class="icon">←</div>
+            <p>왼쪽에서 질문을 선택하세요</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+let data = null;
+let allDetails = [];
+let selectedId = null;
+let sortMode = 'id';
+let searchQuery = '';
+
+// ── File Load ──
+document.getElementById('file-input').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      data = JSON.parse(ev.target.result);
+      initApp(file.name);
+    } catch (err) {
+      alert('JSON 파싱 오류: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+});
+
+function initApp(filename) {
+  document.getElementById('upload-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+
+  allDetails = data.details || [];
+  const overall = data.overall || {};
+  const cfg = data.config || {};
+
+  const judgeOn = overall.context_relevance_avg != null;
+  const runtimeStr = data.total_runtime_sec != null ? `  ·  총 ${data.total_runtime_sec}초` : '';
+  const judgeStr = judgeOn ? '  ·  Judge ON' : '  ·  Judge OFF';
+  document.getElementById('header-meta').textContent =
+    `${filename}  ·  ${overall.valid || allDetails.length}개 질문${judgeStr}${runtimeStr}`;
+
+  document.getElementById('q-count').textContent = allDetails.length;
+  buildOverview(overall, cfg, judgeOn);
+  buildSidebar();
+}
+
+// ── Overview ──
+function buildOverview(overall, cfg, judgeOn) {
+  const pct = v => v != null ? `${(v * 100).toFixed(1)}%` : null;
+  const scoreColor = v => v >= 0.9 ? 'var(--green)' : v >= 0.7 ? 'var(--yellow)' : 'var(--red)';
+  const scoreClass = v => v >= 0.9 ? 'c-green' : v >= 0.7 ? 'c-yellow' : 'c-red';
+
+  // Rule-based
+  const ruleCards = [
+    { label: 'Intent 정확도', val: overall.intent_accuracy, fmt: pct, color: scoreClass(overall.intent_accuracy), sub: `${overall.valid}개 질문 기준` },
+    { label: 'Risk 정확도', val: overall.risk_level_accuracy, fmt: pct, color: scoreClass(overall.risk_level_accuracy) },
+    { label: '키워드 커버리지', val: overall.keyword_coverage_avg, fmt: pct, color: scoreClass(overall.keyword_coverage_avg) },
+    { label: 'Safety 준수율', val: overall.safety_compliance_rate, fmt: pct, color: scoreClass(overall.safety_compliance_rate) },
+    { label: '오류', val: overall.errors, fmt: v => `${v}건`, color: overall.errors > 0 ? 'c-red' : 'c-green', sub: `전체 ${overall.total}개 중` },
+  ];
+
+  document.getElementById('rule-grid').innerHTML = ruleCards.map(c => `
+    <div class="stat-card ${c.val != null && c.val === Math.max(...ruleCards.filter(x=>x.fmt===pct).map(x=>x.val)) ? '' : ''}">
+      <div class="stat-label">${c.label}</div>
+      <div class="stat-value ${c.color || ''}">${c.fmt(c.val)}</div>
+      ${c.sub ? `<div class="stat-sub">${c.sub}</div>` : ''}
+    </div>
+  `).join('');
+
+  // LLM Judge
+  if (judgeOn) {
+    document.getElementById('judge-section-title').style.display = '';
+    const j5color = v => v >= 4 ? 'var(--green)' : v >= 3 ? 'var(--yellow)' : 'var(--red)';
+    const j5cls   = v => v >= 4 ? 'c-green' : v >= 3 ? 'c-yellow' : 'c-red';
+    const judgeCards = [
+      { label: '문맥 관련성', val: overall.context_relevance_avg },
+      { label: '답변 충실도', val: overall.answer_faithfulness_avg },
+      { label: '답변 관련성', val: overall.answer_relevance_avg },
+      { label: '완결성',     val: overall.completeness_avg },
+    ];
+    document.getElementById('judge-grid').innerHTML = judgeCards.map(c => `
+      <div class="stat-card">
+        <div class="stat-label">${c.label}</div>
+        <div class="stat-value ${j5cls(c.val)}" style="font-size:22px">${c.val != null ? c.val.toFixed(2) : 'N/A'} <span style="font-size:13px; color:var(--text-dim)">/ 5</span></div>
+        <div class="judge-bar-wrap">
+          <div class="judge-bar-fill" style="width:${c.val ? (c.val/5*100).toFixed(1) : 0}%; background:${j5color(c.val)}"></div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Latency
+  const latAvg = overall.latency_avg_sec;
+  if (latAvg != null) {
+    document.getElementById('latency-section-title').style.display = '';
+    const latCls = s => s < 3 ? 'c-green' : s < 8 ? 'c-yellow' : 'c-red';
+    document.getElementById('latency-grid').innerHTML = `
+      <div class="stat-card">
+        <div class="stat-label">평균 응답시간</div>
+        <div class="stat-value ${latCls(latAvg)}">${latAvg.toFixed(1)}s</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">최소 응답시간</div>
+        <div class="stat-value ${latCls(overall.latency_min_sec)}">${overall.latency_min_sec?.toFixed(1) ?? '-'}s</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">최대 응답시간</div>
+        <div class="stat-value ${latCls(overall.latency_max_sec)}">${overall.latency_max_sec?.toFixed(1) ?? '-'}s</div>
+      </div>
+      ${data.total_runtime_sec != null ? `
+      <div class="stat-card">
+        <div class="stat-label">총 실행시간</div>
+        <div class="stat-value c-blue">${data.total_runtime_sec}s</div>
+      </div>` : ''}
+    `;
+  }
+
+  // By-intent table
+  const byIntent = data.by_intent || {};
+  document.getElementById('intent-tbody').innerHTML = Object.entries(byIntent).map(([intent, s]) => `
+    <tr>
+      <td><span class="badge ${intentBadgeClass(intent)}">${intentLabel(intent)}</span></td>
+      <td>${s.count}</td>
+      <td>${scoreCell(s.intent_accuracy)}</td>
+      <td>${scoreCell(s.risk_accuracy)}</td>
+      <td>${scoreCell(s.keyword_coverage_avg)}</td>
+    </tr>
+  `).join('') || '<tr><td colspan="5" style="color:var(--text-dim); text-align:center; padding:20px">데이터 없음</td></tr>';
+
+  // Config
+  document.getElementById('config-card').innerHTML = [
+    ['파일', cfg.questions_file?.split(/[/\\]/).pop() ?? '-'],
+    ['필터 (인텐트)', cfg.filter_intent ?? '전체'],
+    ['필터 (ID)', cfg.filter_ids ? cfg.filter_ids.join(', ') : '전체'],
+    ['질문 수', cfg.total_questions ?? allDetails.length],
+    ['Judge 모델', cfg.judge_model ?? 'OFF'],
+    ['타임스탬프', data.timestamp ?? '-'],
+  ].map(([k, v]) => `
+    <div class="config-item">
+      <div class="config-key">${k}</div>
+      <div class="config-val">${v}</div>
+    </div>
+  `).join('');
+}
+
+function scoreCell(v) {
+  if (v == null) return '<span style="color:var(--text-dim)">-</span>';
+  const pct = (v * 100).toFixed(1);
+  const color = v >= 0.9 ? 'var(--green)' : v >= 0.7 ? 'var(--yellow)' : 'var(--red)';
+  return `<span style="color:${color}">${pct}%</span>
+    <span class="score-bar"><span class="score-fill" style="width:${pct}%; background:${color}"></span></span>`;
+}
+
+// ── Sidebar ──
+function questionStatus(d) {
+  if ('error' in d) return 'bad';
+  const pass = [d.intent_correct, d.risk_correct, d.safety_compliance, d.keyword_coverage >= 0.5].filter(Boolean).length;
+  return pass === 4 ? 'good' : pass >= 2 ? 'warn' : 'bad';
+}
+
+function getSortedDetails() {
+  let list = [...allDetails];
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    list = list.filter(d => d.id.toLowerCase().includes(q) || d.question.toLowerCase().includes(q));
+  }
+  if (sortMode === 'worst') {
+    list.sort((a, b) => {
+      const order = { bad: 0, warn: 1, good: 2 };
+      return order[questionStatus(a)] - order[questionStatus(b)];
+    });
+  } else if (sortMode === 'kw') {
+    list.sort((a, b) => (a.keyword_coverage ?? 0) - (b.keyword_coverage ?? 0));
+  } else {
+    list.sort((a, b) => a.id.localeCompare(b.id));
+  }
+  return list;
+}
+
+function buildSidebar() {
+  renderSidebar();
+}
+
+function renderSidebar() {
+  const list = getSortedDetails();
+  document.getElementById('question-list').innerHTML = list.map(d => {
+    const status = questionStatus(d);
+    const dots = [
+      d.intent_correct ? 'dot-green' : 'dot-red',
+      d.risk_correct ? 'dot-green' : 'dot-red',
+      d.keyword_coverage >= 0.5 ? 'dot-green' : 'dot-red',
+      d.safety_compliance ? 'dot-green' : 'dot-red',
+    ];
+    return `
+      <div class="question-item status-${status} ${d.id === selectedId ? 'active' : ''}" onclick="selectQuestion('${d.id}')">
+        <div class="q-item-top">
+          <span class="q-id" style="color:${intentColor(d.expected_intent)}">${d.id}</span>
+          <span class="q-dots">${dots.map(c => `<span class="dot ${c}" title=""></span>`).join('')}</span>
+        </div>
+        <div class="q-text">${escHtml(d.question)}</div>
+        <div class="q-badges">
+          <span class="badge ${intentBadgeClass(d.expected_intent)}">${intentLabel(d.expected_intent)}</span>
+          <span class="badge ${riskBadgeClass(d.expected_risk)}">${d.expected_risk}</span>
+          ${d.latency_sec != null ? `<span class="badge" style="background:#1a1a2e; color:${latColor(d.latency_sec)}">⏱${d.latency_sec.toFixed(1)}s</span>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterSidebar(q) {
+  searchQuery = q;
+  renderSidebar();
+}
+
+function setSortMode(mode) {
+  sortMode = mode;
+  renderSidebar();
+}
+
+function selectQuestion(id) {
+  selectedId = id;
+  renderSidebar();
+  renderDetail(id);
+}
+
+// ── Detail View ──
+function renderDetail(id) {
+  const d = allDetails.find(x => x.id === id);
+  if (!d) return;
+  const content = document.getElementById('detail-content');
+
+  const judgeAvail = d.context_relevance != null;
+  const j5color = v => v >= 4 ? 'var(--green)' : v >= 3 ? 'var(--yellow)' : 'var(--red)';
+  const j5cls   = v => v >= 4 ? 'c-green' : v >= 3 ? 'c-yellow' : 'c-red';
+
+  const passIcon = b => b
+    ? `<span class="pass">✓ 맞음</span>`
+    : `<span class="fail">✗ 틀림</span>`;
+
+  const kwColor = v => v >= 0.9 ? 'var(--green)' : v >= 0.6 ? 'var(--yellow)' : 'var(--red)';
+
+  // Judge scores section
+  const judgeSection = judgeAvail ? `
+    <div class="detail-section">
+      <div class="detail-section-title">LLM Judge 점수</div>
+      ${[
+        ['문맥 관련성', d.context_relevance],
+        ['답변 충실도', d.answer_faithfulness],
+        ['답변 관련성', d.answer_relevance],
+        ['완결성', d.completeness],
+      ].map(([label, score]) => score != null ? `
+        <div class="judge-row">
+          <div class="judge-row-top">
+            <span class="judge-label">${label}</span>
+            <span class="judge-score-num ${j5cls(score)}">${score} / 5</span>
+          </div>
+          <div class="judge-bar">
+            <div class="judge-bar-inner" style="width:${(score/5*100).toFixed(0)}%; background:${j5color(score)}"></div>
+          </div>
+        </div>
+      ` : `
+        <div class="judge-row">
+          <div class="judge-row-top">
+            <span class="judge-label">${label}</span>
+            <span class="neutral" style="font-size:12px">N/A</span>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  ` : `
+    <div class="detail-section">
+      <div class="detail-section-title">LLM Judge 점수</div>
+      <div style="color:var(--text-dim); font-size:13px; padding:8px 0">Judge 비활성화 (--no-judge)</div>
+    </div>
+  `;
+
+  content.innerHTML = `
+    <!-- Question Card -->
+    <div class="detail-question-card">
+      <div class="detail-q-id">${d.id}</div>
+      <div class="detail-q-text">${escHtml(d.question)}</div>
+      <div class="detail-q-meta">
+        <span class="badge ${intentBadgeClass(d.expected_intent)}">${intentLabel(d.expected_intent)}</span>
+        <span class="badge ${riskBadgeClass(d.expected_risk)}">risk: ${d.expected_risk}</span>
+        <span class="meta-chip">검색 문서 ${d.retrieved_docs_count ?? '-'}개</span>
+        ${d.latency_sec != null ? `<span class="meta-chip" style="color:${latColor(d.latency_sec)}">⏱ ${d.latency_sec.toFixed(1)}s</span>` : ''}
+      </div>
+    </div>
+
+    <!-- Metrics + Judge grid -->
+    <div class="detail-grid">
+
+      <!-- Rule-based metrics -->
+      <div class="detail-section">
+        <div class="detail-section-title">Rule-based 메트릭</div>
+
+        <div class="metric-row">
+          <span class="metric-name">Intent</span>
+          <div style="text-align:right">
+            ${passIcon(d.intent_correct)}
+            <div class="metric-sub">${d.expected_intent} → ${d.predicted_intent}</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <span class="metric-name">Risk Level</span>
+          <div style="text-align:right">
+            ${passIcon(d.risk_correct)}
+            <div class="metric-sub">${d.expected_risk} → ${d.predicted_risk}</div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <span class="metric-name">키워드 커버리지</span>
+          <div style="text-align:right">
+            <span class="metric-val" style="color:${kwColor(d.keyword_coverage)}">${((d.keyword_coverage ?? 0) * 100).toFixed(0)}%</span>
+            <div class="judge-bar" style="width:80px; margin-top:4px; margin-left:auto">
+              <div class="judge-bar-inner" style="width:${((d.keyword_coverage??0)*100).toFixed(0)}%; background:${kwColor(d.keyword_coverage)}"></div>
+            </div>
+          </div>
+        </div>
+        <div class="metric-row">
+          <span class="metric-name">Safety 준수</span>
+          ${passIcon(d.safety_compliance)}
+        </div>
+        <div class="metric-row">
+          <span class="metric-name">명확화 필요</span>
+          <div style="text-align:right">
+            <span class="metric-val ${d.needs_clarification_predicted === d.needs_clarification_expected ? 'pass' : 'fail'}">
+              ${d.needs_clarification_predicted === d.needs_clarification_expected ? '✓ 일치' : '✗ 불일치'}
+            </span>
+            <div class="metric-sub">예측 ${d.needs_clarification_predicted ? 'T' : 'F'} · 기대 ${d.needs_clarification_expected ? 'T' : 'F'}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Judge scores -->
+      ${judgeSection}
+    </div>
+
+    <!-- Answer Preview -->
+    <div class="answer-card">
+      <div class="answer-title">
+        답변 미리보기
+        <span class="answer-note">300자 미리보기</span>
+      </div>
+      <div class="answer-body">${renderAnswerPreview(d.answer_preview)}</div>
+    </div>
+  `;
+}
+
+function renderAnswerPreview(text) {
+  if (!text) return '<span style="color:var(--text-dim)">없음</span>';
+  let html = escHtml(text);
+  // Section headers (e.g. "요약:", "증상 해석:")
+  html = html.replace(/^([^\-\n].+):$/gm, '<span style="color:var(--accent2); font-weight:700">$1</span>');
+  // List items
+  html = html.replace(/^- (.+)/gm, '<span style="color:var(--text-dim)">·</span> $1');
+  // Bold
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong style="color:#c4b5fd">$1</strong>');
+  return html;
+}
+
+// ── Tab Switching ──
+function showTab(tab) {
+  document.getElementById('tab-overview').style.display = tab === 'overview' ? 'block' : 'none';
+  const detailEl = document.getElementById('tab-details');
+  detailEl.style.display = tab === 'details' ? 'flex' : 'none';
+  document.getElementById('sidebar').style.display = tab === 'details' ? 'flex' : 'none';
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i === 0 && tab === 'overview') || (i === 1 && tab === 'details'));
+  });
+}
+
+// ── Helpers ──
+function escHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function intentColor(intent) {
+  return { medical_basic:'#60a5fa', development:'#4ade80', vaccination:'#fb923c', policy:'#c084fc', daily_parenting:'#facc15', hospital_locator:'#38bdf8' }[intent] || '#94a3b8';
+}
+function intentBadgeClass(intent) {
+  return { medical_basic:'badge-medical', development:'badge-development', vaccination:'badge-vaccination', policy:'badge-policy', daily_parenting:'badge-daily', hospital_locator:'badge-hospital' }[intent] || 'badge-unknown';
+}
+function intentLabel(intent) {
+  return { medical_basic:'의료', development:'발달', vaccination:'예방접종', policy:'정책', daily_parenting:'육아', hospital_locator:'병원/약국' }[intent] || intent;
+}
+function riskBadgeClass(risk) {
+  return { high:'badge-high', medium:'badge-medium', low:'badge-low' }[risk] || 'badge-unknown';
+}
+function latColor(sec) {
+  if (sec < 3) return '#22c55e';
+  if (sec < 8) return '#f59e0b';
+  return '#ef4444';
+}
+</script>
+</body>
+</html>
