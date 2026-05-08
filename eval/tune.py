@@ -84,7 +84,10 @@ def evaluate_config(
     errors = 0
     details = []
 
+    latencies = []
+
     for item in questions:
+        t0 = time.perf_counter()
         try:
             answer, docs, debug_info = answer_question(
                 question=item["question"],
@@ -94,6 +97,7 @@ def evaluate_config(
                 top_k=top_k,
                 temperature=temperature,
             )
+            latency = round(time.perf_counter() - t0, 3)
         except Exception as e:
             errors += 1
             print(f"    [오류] {item['id']}: {type(e).__name__}: {e}")
@@ -101,6 +105,7 @@ def evaluate_config(
                 "id": item["id"],
                 "question": item["question"],
                 "error": f"{type(e).__name__}: {e}",
+                "latency_sec": None,
             })
             continue
 
@@ -113,6 +118,7 @@ def evaluate_config(
         risk_hits.append(risk_correct)
         keyword_covs.append(kw_cov)
         safety_hits.append(safe)
+        latencies.append(latency)
 
         details.append({
             "id": item["id"],
@@ -128,6 +134,7 @@ def evaluate_config(
             "safety_compliance": safe,
             "rewritten_query": debug_info.get("rewritten_query", ""),
             "retrieved_docs_count": debug_info.get("retrieved_docs_count", 0),
+            "latency_sec": latency,
         })
 
         if delay > 0:
@@ -155,8 +162,82 @@ def evaluate_config(
             + (sum(safety_hits) / n) * 0.15,
             3,
         ),
+        "latency_avg_sec": round(sum(latencies) / len(latencies), 3) if latencies else None,
+        "latency_min_sec": round(min(latencies), 3) if latencies else None,
+        "latency_max_sec": round(max(latencies), 3) if latencies else None,
         "details": details,
     }
+
+
+def recalculate_metrics(k: int, top_k: int, temperature: float, details: list[dict]) -> dict:
+    valid = [d for d in details if "error" not in d]
+    errors = len(details) - len(valid)
+    n = len(valid)
+    if n == 0:
+        return {"k": k, "top_k": top_k, "temperature": temperature,
+                "error": "모든 질문 실패", "details": details}
+
+    intent_hits = [d["intent_correct"] for d in valid]
+    risk_hits = [d["risk_correct"] for d in valid]
+    keyword_covs = [d["keyword_coverage"] for d in valid]
+    safety_hits = [d["safety_compliance"] for d in valid]
+    latencies = [d["latency_sec"] for d in valid if d.get("latency_sec") is not None]
+
+    return {
+        "k": k,
+        "top_k": top_k,
+        "temperature": temperature,
+        "n_evaluated": n,
+        "errors": errors,
+        "intent_accuracy": round(sum(intent_hits) / n, 3),
+        "risk_accuracy": round(sum(risk_hits) / n, 3),
+        "keyword_coverage": round(sum(keyword_covs) / n, 3),
+        "safety_compliance": round(sum(safety_hits) / n, 3),
+        "composite_score": round(
+            (sum(intent_hits) / n) * 0.35
+            + (sum(risk_hits) / n) * 0.25
+            + (sum(keyword_covs) / n) * 0.25
+            + (sum(safety_hits) / n) * 0.15,
+            3,
+        ),
+        "latency_avg_sec": round(sum(latencies) / len(latencies), 3) if latencies else None,
+        "latency_min_sec": round(min(latencies), 3) if latencies else None,
+        "latency_max_sec": round(max(latencies), 3) if latencies else None,
+        "details": details,
+    }
+
+
+def merge_results(existing_path: Path, new_all_results: list[dict]) -> list[dict]:
+    with existing_path.open("r", encoding="utf-8") as f:
+        existing_report = json.load(f)
+
+    existing_by_key: dict[tuple, dict] = {}
+    for r in existing_report.get("all_results", []):
+        key = (r["k"], r["top_k"], r["temperature"])
+        existing_by_key[key] = r
+
+    merged = []
+    new_keys: set[tuple] = set()
+
+    for new_r in new_all_results:
+        key = (new_r["k"], new_r["top_k"], new_r["temperature"])
+        new_keys.add(key)
+        old_r = existing_by_key.get(key)
+        if old_r is None:
+            merged.append(new_r)
+            continue
+
+        old_details = old_r.get("details", [])
+        new_details = new_r.get("details", [])
+        new_ids = {d["id"] for d in new_details}
+        combined = new_details + [d for d in old_details if d["id"] not in new_ids]
+        merged.append(recalculate_metrics(new_r["k"], new_r["top_k"], new_r["temperature"], combined))
+
+    for key, old_r in existing_by_key.items():
+        if key not in new_keys:
+            merged.append(old_r)
+
+    return merged
 
 
 def print_results_table(results: list[dict]) -> None:
@@ -231,23 +312,39 @@ def main():
         default=PARAM_GRID["temperature"],
         help="탐색할 temperature 값들 (예: --temp-values 0.0 0.2)",
     )
+    parser.add_argument(
+        "--ids",
+        nargs="+",
+        default=None,
+        help="평가할 질문 ID 지정 (예: --ids pha_001 pha_002). 지정 시 --subset 무시.",
+    )
+    parser.add_argument(
+        "--merge",
+        default=None,
+        help="기존 튜닝 결과 JSON 경로. 지정 시 새 결과를 기존 결과에 병합.",
+    )
     args = parser.parse_args()
 
     output_dir = Path(args.output)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     questions = load_questions(Path(args.questions))
-    # 인텐트 균형을 위해 인텐트별로 골고루 샘플
-    from collections import defaultdict
-    by_intent: dict[str, list] = defaultdict(list)
-    for q in questions:
-        by_intent[q["expected_intent"]].append(q)
 
-    subset: list[dict] = []
-    per_intent = max(1, args.subset // len(by_intent))
-    for items in by_intent.values():
-        subset.extend(items[:per_intent])
-    subset = subset[: args.subset]
+    if args.ids:
+        id_set = set(args.ids)
+        subset = [q for q in questions if q["id"] in id_set]
+        print(f"ID 필터 적용: {sorted(id_set)} → {len(subset)}개 질문")
+    else:
+        from collections import defaultdict
+        by_intent: dict[str, list] = defaultdict(list)
+        for q in questions:
+            by_intent[q["expected_intent"]].append(q)
+
+        subset = []
+        per_intent = max(1, args.subset // len(by_intent))
+        for items in by_intent.values():
+            subset.extend(items[:per_intent])
+        subset = subset[: args.subset]
 
     param_combinations = list(
         itertools.product(args.k_values, args.top_k_values, args.temp_values)
@@ -257,6 +354,7 @@ def main():
     print(f"튜닝 시작: {total}개 조합 × {len(subset)}개 질문 = {total * len(subset)}번 RAG 호출")
     print(f"파라미터 그리드: k={args.k_values}, top_k={args.top_k_values}, temperature={args.temp_values}")
 
+    total_start = time.perf_counter()
     all_results = []
     for idx, (k, top_k, temperature) in enumerate(param_combinations, start=1):
         print(f"\n[{idx}/{total}] k={k}, top_k={top_k}, temperature={temperature}")
@@ -268,7 +366,17 @@ def main():
             delay=args.delay,
         )
         all_results.append(result)
-        print(f"  → composite={result.get('composite_score', 'N/A')}")
+        lat = result.get("latency_avg_sec")
+        lat_str = f" | avg {lat:.1f}s/질문" if lat is not None else ""
+        print(f"  → composite={result.get('composite_score', 'N/A')}{lat_str}")
+    total_elapsed = round(time.perf_counter() - total_start, 1)
+    print(f"\n총 실행시간: {total_elapsed}초")
+
+    if args.merge:
+        merge_path = Path(args.merge)
+        print(f"\n기존 결과 병합 중: {merge_path}")
+        all_results = merge_results(merge_path, all_results)
+        print(f"병합 완료: {len(all_results)}개 조합")
 
     print_results_table(all_results)
 
@@ -283,8 +391,11 @@ def main():
 
     report = {
         "timestamp": timestamp,
+        "total_runtime_sec": total_elapsed,
         "config": {
             "questions_file": args.questions,
+            "new_ids": args.ids,
+            "merged_from": args.merge,
             "subset_size": len(subset),
             "param_grid": {
                 "k": args.k_values,

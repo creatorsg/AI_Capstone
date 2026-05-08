@@ -308,6 +308,7 @@
                 <th onclick="sortTable('keyword_coverage')">키워드<span class="sort-icon">↕</span></th>
                 <th onclick="sortTable('safety_compliance')">안전<span class="sort-icon">↕</span></th>
                 <th>오류</th>
+                <th onclick="sortTable('latency_avg_sec')">응답시간(avg)<span class="sort-icon">↕</span></th>
               </tr>
             </thead>
             <tbody id="table-body"></tbody>
@@ -373,8 +374,9 @@ function initApp(filename) {
 
   const ts = data.timestamp || filename;
   const cfg = data.config || {};
+  const runtimeStr = data.total_runtime_sec != null ? `  ·  총 ${data.total_runtime_sec}초` : '';
   document.getElementById('header-meta').textContent =
-    `${filename}  ·  ${data.all_results.length}가지 조합  ·  질문 ${data.all_results[0].n_evaluated}개`;
+    `${filename}  ·  ${data.all_results.length}가지 조합  ·  질문 ${data.all_results[0].n_evaluated}개${runtimeStr}`;
 
   // Extract unique param values
   allVals.k = [...new Set(data.all_results.map(r => r.k))].sort((a,b)=>a-b);
@@ -433,6 +435,18 @@ function buildOverview() {
       <div class="stat-value c-blue">${data.all_results.length}</div>
       <div class="stat-sub">k×top_k×temperature</div>
     </div>
+    ${best.latency_avg_sec != null ? `
+    <div class="stat-card">
+      <div class="stat-label">Best 평균 응답시간</div>
+      <div class="stat-value ${latColor(best.latency_avg_sec) === '#22c55e' ? 'c-green' : latColor(best.latency_avg_sec) === '#f59e0b' ? 'c-yellow' : 'c-red'}">${best.latency_avg_sec.toFixed(1)}s</div>
+      <div class="stat-sub">min ${best.latency_min_sec?.toFixed(1)}s / max ${best.latency_max_sec?.toFixed(1)}s</div>
+    </div>` : ''}
+    ${data.total_runtime_sec != null ? `
+    <div class="stat-card">
+      <div class="stat-label">총 실행시간</div>
+      <div class="stat-value c-blue">${data.total_runtime_sec}s</div>
+      <div class="stat-sub">${data.all_results.length}개 조합 전체</div>
+    </div>` : ''}
   `;
   renderTable();
 }
@@ -468,6 +482,7 @@ function renderTable() {
       <td>${scoreCell(r.keyword_coverage)}</td>
       <td>${scoreCell(r.safety_compliance)}</td>
       <td>${r.errors > 0 ? `<span class="c-red">${r.errors}</span>` : '<span class="c-green">0</span>'}</td>
+      <td>${r.latency_avg_sec != null ? `<span style="color:${latColor(r.latency_avg_sec)}">${r.latency_avg_sec.toFixed(1)}s</span><br><span style="font-size:11px;color:var(--text-dim)">${r.latency_min_sec?.toFixed(1)}–${r.latency_max_sec?.toFixed(1)}s</span>` : '<span style="color:var(--text-dim)">-</span>'}</td>
     </tr>
   `).join('');
 
@@ -651,6 +666,7 @@ function renderCompare(qid) {
             <span class="metric-pill ${detail.safety_compliance ? 'good' : 'bad'}" title="Safety">
               Safe ${detail.safety_compliance ? '✓' : '✗'}
             </span>
+            ${detail.latency_sec != null ? `<span class="metric-pill" title="응답시간" style="border-color:#2e3148; color:${latColor(detail.latency_sec)}">⏱ ${detail.latency_sec.toFixed(1)}s</span>` : ''}
           </div>
         </div>
         <div class="card-body">
@@ -760,6 +776,11 @@ function intentLabel(intent) {
 }
 function riskBadgeClass(risk) {
   return { high: 'badge-high', medium: 'badge-medium', low: 'badge-low' }[risk] || 'badge-unknown';
+}
+function latColor(sec) {
+  if (sec < 3) return '#22c55e';
+  if (sec < 8) return '#f59e0b';
+  return '#ef4444';
 }
 </script>
 </body>
