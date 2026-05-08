@@ -25,7 +25,7 @@ load_dotenv()
 
 DEFAULT_MODEL = "gpt-5.4-mini"
 DEFAULT_K = 6
-DEFAULT_TOP_K = 4
+DEFAULT_TOP_K = 5
 
 
 # ---------------------------
