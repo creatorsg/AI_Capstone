@@ -1,38 +1,64 @@
-# AI_Capstone — 초보 부모를 위한 육아 RAG 챗봇
+# 육아 RAG 챗봇 — 초보 부모를 위한 AI 육아 도우미
 
-한성대학교 AI 캡스톤 프로젝트 — 0\~5세 자녀를 둔 초보 부모가 아이의 증상·발달·예방접종·복지정책·병원·약국 정보를 손쉽게 확인할 수 있는 **RAG(Retrieval-Augmented Generation) 기반 챗봇**입니다.
+한성대학교 AI 캡스톤 프로젝트  
+0~5세 자녀를 둔 초보 부모가 아이의 **증상·발달·예방접종·복지정책·병원·약국** 정보를 손쉽게 확인할 수 있는 RAG(Retrieval-Augmented Generation) 기반 챗봇입니다.
 
 ---
 
-## 시스템 개요
+## 빠른 시작
+
+```bash
+# 1. 의존성 설치
+pip install -r requirements.txt
+
+# 2. 환경 변수 설정
+echo "OPENAI_API_KEY=sk-..." > .env
+
+# 3. 벡터 DB 구축 (최초 1회)
+cd app && python ingest.py
+
+# 4-A. 웹 데모 실행 (권장)
+python api.py          # http://localhost:8000
+
+# 4-B. Streamlit UI 실행
+streamlit run main.py  # http://localhost:8501
+```
+
+---
+
+## 시스템 아키텍처
 
 ```
 사용자 질문
     │
     ▼
-[의도 분석 (LLM)]  ─────────────────────────────────────────────────────
-    │  intent / topic / risk_level / needs_clarification               │
-    ▼                                                                  │
-[쿼리 재작성 (LLM)]                                                       │
-    │  아이 프로필 + 채팅 히스토리 반영, 벡터 검색 최적화 문장               │
-    ▼                                                                  │
-[벡터 검색 (ChromaDB)]                                                   │
-    │  knowledge 컬렉션 또는 facility 컬렉션 인텐트 기반 라우팅            │
-    ▼                                                                  │
-[Reranking]  ── category / topic / age_group / curated 가중치            │
-    ▼                                                                  │
-[답변 생성 (LLM)]  ◄──────────────────────────────────────────────────── ┘
-    │  인텐트별 프롬프트 템플릿 + 안전 경고 prefix
+[의도 분석 (LLM)]
+    │  intent / topic / risk_level / needs_clarification
     ▼
-최종 답변 (Streamlit 채팅 UI)
+[쿼리 재작성 (LLM)]
+    │  아이 프로필 + 채팅 히스토리 반영, 벡터 검색 최적화 문장
+    ▼
+[벡터 검색 (ChromaDB)]
+    │  hospital_locator → facility 컬렉션
+    │  그 외            → knowledge 컬렉션
+    ▼
+[Reranking]
+    │  category / topic / age_group / curated 가중치 적용
+    ▼
+[답변 생성 (LLM)]
+    │  인텐트별 전용 프롬프트 템플릿
+    │  high-risk 질문 → 응급 안내 prefix 자동 추가
+    ▼
+최종 답변
 ```
 
 **주요 특징**
-- 아이 프로필(이름·생년월일·성별·알레르기·기저질환) 및 최근 기록(수면·식사·발열)을 컨텍스트로 주입
-- 채팅 히스토리(최근 3턴)를 프롬프트에 반영해 맥락 있는 대화 지원
-- `medical_basic` / `development` / `vaccination` / `policy` / `hospital_locator` / `daily_parenting` 6가지 인텐트별 전용 답변 템플릿
-- 경련·호흡 곤란 등 위험 키워드 감지 시 즉시 응급 안내 prefix 추가
-- 임베딩 모델과 인제스트 하이퍼파라미터를 `ingest_manifest.json`으로 추적, 기동 시 불일치 자동 감지
+
+- 아이 프로필(이름·생년월일·성별·알레르기·기저질환)과 최근 기록(수면·식사·발열)을 컨텍스트로 주입해 맞춤형 답변 생성
+- 채팅 히스토리(최근 3턴)를 프롬프트에 반영해 맥락 있는 다중 턴 대화 지원
+- 6가지 인텐트(`medical_basic` / `development` / `vaccination` / `policy` / `hospital_locator` / `daily_parenting`)별 전용 답변 템플릿
+- 경련·호흡 곤란 등 위험 키워드 감지 시 응급 안내 prefix 자동 추가
+- 인제스트 파라미터를 `ingest_manifest.json`으로 추적, 임베딩 모델 불일치 시 즉시 오류 발생
 
 ---
 
@@ -40,53 +66,18 @@
 
 | 구분 | 사용 기술 |
 |------|-----------|
-| LLM | OpenAI GPT-5.4-mini (`ChatOpenAI`) |
+| LLM | OpenAI GPT-5.4-mini |
 | 임베딩 | OpenAI `text-embedding-3-large` (3072차원) |
 | 벡터 DB | ChromaDB |
 | RAG 프레임워크 | LangChain |
-| UI | Streamlit |
+| 웹 API 서버 | FastAPI + Uvicorn |
+| Streamlit UI | Streamlit |
 | 데이터 수집 | 공공데이터포털 API, BeautifulSoup 웹 크롤링 |
 | 지오코딩 | Kakao Developers API |
 
 ---
 
-## 실행 환경 및 실행법
-
-### Windows
-
-```powershell
-# Python 3.10 가상환경 생성
-py -3.10 -m venv .venv
-
-# 가상환경 활성화
-.venv\Scripts\Activate.ps1
-# 실행 오류 시: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-
-# 필요 라이브러리 설치
-pip install -r requirements.txt
-
-# 환경 변수 설정 (.env 파일 생성)
-# OPENAI_API_KEY=sk-...
-
-# 벡터 DB 생성 (최초 1회 또는 데이터 변경 시)
-cd app
-py ingest.py
-
-# 챗봇 실행 (app/ 디렉토리에서)
-streamlit run main.py
-```
-
-### macOS / Linux
-
-```bash
-python3.10 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-cd app
-python ingest.py
-streamlit run main.py
-```
+## 실행 방법
 
 ### 환경 변수 (`.env`)
 
@@ -96,6 +87,49 @@ streamlit run main.py
 OPENAI_API_KEY=sk-...
 ```
 
+### 가상환경 설정
+
+**macOS / Linux**
+```bash
+python3.10 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+**Windows**
+```powershell
+py -3.10 -m venv .venv
+.venv\Scripts\Activate.ps1   # 오류 시: Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+pip install -r requirements.txt
+```
+
+### 벡터 DB 구축 (최초 1회)
+
+```bash
+cd app
+python ingest.py
+```
+
+5단계 진행 상황이 터미널에 출력되며, 완료 후 `chroma_db/`가 생성됩니다.
+
+### 웹 데모 서버 (FastAPI)
+
+```bash
+cd app
+python api.py
+# → http://localhost:8000
+```
+
+브라우저에서 채팅 UI, 아이 프로필 입력, 답변 분석 정보(intent·위험도·참고 문서)를 확인할 수 있습니다.
+
+### Streamlit UI
+
+```bash
+cd app
+streamlit run main.py
+# → http://localhost:8501
+```
+
 ---
 
 ## 폴더 구조
@@ -103,12 +137,15 @@ OPENAI_API_KEY=sk-...
 ```
 AI_Capstone/
 ├── app/                        # 서비스 소스코드
+│   ├── api.py                  # FastAPI 웹 데모 서버
 │   ├── main.py                 # Streamlit 채팅 UI 진입점
 │   ├── rag.py                  # RAG 파이프라인 핵심 로직
 │   ├── ingest.py               # 데이터 → ChromaDB 적재 파이프라인
 │   ├── prompts.py              # 인텐트별 LLM 프롬프트 템플릿
 │   ├── vector_config.py        # 벡터 DB 경로·컬렉션명·임베딩 모델 설정
-│   └── curated_docs.py         # 직접 작성한 curated knowledge 샘플
+│   ├── curated_docs.py         # 직접 작성한 curated knowledge 샘플
+│   └── static/
+│       └── index.html          # 웹 데모 프론트엔드 (단일 파일 SPA)
 │
 ├── data/                       # 원본 데이터 및 전처리 스크립트
 │   ├── README_DATA.md
@@ -139,12 +176,29 @@ AI_Capstone/
 
 ## 코드 설명
 
-### `app/main.py` — Streamlit 채팅 UI
+### `app/api.py` — FastAPI 웹 데모 서버
 
-- 사이드바에서 아이 프로필(이름·생년월일·성별·알레르기·기저질환)과 최근 기록(수면·식사·발열) 입력
-- `st.chat_input` + `st.session_state.messages`로 다중 턴 채팅 히스토리 관리
-- 답변·참고 문서·디버그 정보를 각 메시지 아래 expander로 확인 가능
-- 사이드바의 **대화 초기화** 버튼으로 세션 리셋
+`POST /chat` 엔드포인트가 `answer_question()`을 호출하고, `GET /`에서 채팅 UI HTML을 서빙합니다.
+
+**요청 스펙:**
+
+```json
+{
+  "question": "아이가 38.5도 열이 나요",
+  "child_profile": { "name": "민준", "birth_date": "2023-09-01", "sex": "남아", "allergies": [] },
+  "chat_history": [{ "role": "user", "content": "..." }, { "role": "assistant", "content": "..." }]
+}
+```
+
+**응답 스펙:**
+
+```json
+{
+  "answer": "...",
+  "debug_info": { "intent": "medical_basic", "topic": "fever", "risk_level": "medium", "rewritten_query": "..." },
+  "retrieved_docs": [{ "content": "...", "metadata": { "category": "...", "source": "..." } }]
+}
+```
 
 ### `app/rag.py` — RAG 파이프라인
 
@@ -161,37 +215,18 @@ AI_Capstone/
 
 ### `app/ingest.py` — 데이터 적재 파이프라인
 
-실행하면 5단계 진행 상황이 터미널에 출력됩니다.
-
 ```
-[1/5] JSON 파일 로딩...      ← 파일별 로드 결과 출력
-[2/5] 큐레이션 문서 로딩...
-[3/5] knowledge 문서 청킹...
-[4/5] 메타데이터 처리 및 중복 제거...
-[5/5] ChromaDB 업로드...     ← tqdm 진행 바
+[1/5] JSON 파일 로딩
+[2/5] 큐레이션 문서 로딩
+[3/5] knowledge 문서 청킹  (chunk_size=800, overlap=120)
+[4/5] 메타데이터 처리 및 중복 제거
+[5/5] ChromaDB 업로드      (batch_size=500)
 ```
 
-완료 후 `chroma_db/ingest_manifest.json`에 아래 정보가 저장됩니다.
+완료 후 `chroma_db/ingest_manifest.json`에 모델·파라미터·컬렉션 통계가 기록됩니다.
 
-```json
-{
-  "embedding_model": "text-embedding-3-large",
-  "ingested_at": "2026-05-06T15:30:00",
-  "hyperparameters": {
-    "chunk_size": 800,
-    "chunk_overlap": 120,
-    "batch_size": 500
-  },
-  "collections": {
-    "parenting_knowledge": { "doc_count": 1200 },
-    "parenting_facility":  { "doc_count": 3100 }
-  }
-}
-```
-
-> **임베딩 모델 변경 시**: `app/vector_config.py`의 `EMBEDDING_MODEL` 상수를 수정하고 `chroma_db/`를 삭제한 후 `ingest.py`를 재실행하세요.
-
-> **청킹 파라미터 변경 시**: `ingest.py`의 `CHUNK_SIZE` / `CHUNK_OVERLAP` 상수를 수정하고 동일하게 재실행하세요.
+> **임베딩 모델 변경 시:** `app/vector_config.py`의 `EMBEDDING_MODEL`을 수정 → `chroma_db/` 삭제 → `ingest.py` 재실행  
+> **청킹 파라미터 변경 시:** `ingest.py`의 `CHUNK_SIZE` / `CHUNK_OVERLAP` 수정 → `ingest.py` 재실행
 
 ### `app/prompts.py` — LLM 프롬프트 템플릿
 
@@ -208,10 +243,6 @@ AI_Capstone/
 | `ANSWER_PROMPT_DEFAULT` | 위 인텐트에 해당하지 않는 경우의 범용 템플릿 |
 
 `get_answer_prompt(intent)` 함수가 인텐트를 받아 해당 템플릿을 반환합니다.
-
-### `app/vector_config.py` — 중앙 설정
-
-임베딩 모델명·컬렉션명·경로·manifest 경로를 한 곳에서 관리합니다. **모델 변경은 반드시 이 파일의 `EMBEDDING_MODEL`만 수정하세요.**
 
 ---
 
@@ -244,17 +275,17 @@ cd eval
 # 전체 58개 질문 평가 (LLM Judge 포함)
 python evaluate.py
 
-# LLM Judge 없이 빠르게 (rule-based 메트릭만)
+# LLM Judge 없이 빠르게
 python evaluate.py --no-judge
 
-# 특정 인텐트만 평가
+# 특정 인텐트만
 python evaluate.py --intent hospital_locator --no-judge
 
-# 특정 질문 ID만 평가
-python evaluate.py --ids pha_001 pha_002 pha_003 --no-judge
-
-# 앞에서 N개만 평가
+# 앞에서 N개만
 python evaluate.py --subset 20 --no-judge
+
+# 특정 질문 ID만
+python evaluate.py --ids pha_001 pha_002 --no-judge
 ```
 
 **테스트 질문 구성 (총 58개)**
@@ -298,11 +329,9 @@ python tune.py --subset 10 --k-values 4 6 --top-k-values 3 4 --temp-values 0.0
 
 | 파라미터 | 기본 탐색 범위 | 설명 |
 |----------|---------------|------|
-| `k` | 4 / 6 / 8 | 벡터DB에서 가져오는 문서 수 |
+| `k` | 4 / 6 / 8 | 벡터 DB에서 가져오는 문서 수 |
 | `top_k` | 3 / 4 / 5 | reranking 후 LLM에 전달하는 문서 수 |
 | `temperature` | 0.0 / 0.2 | LLM 생성 온도 |
-
-결과 JSON에는 조합별 집계 메트릭과 **질문별 전체 답변**이 모두 저장되어 직접 품질을 확인할 수 있습니다.
 
 최적 파라미터는 `app/rag.py`의 `DEFAULT_K` / `DEFAULT_TOP_K` 상수에 반영하거나 `answer_question()` 호출 시 직접 전달합니다.
 
@@ -311,6 +340,6 @@ python tune.py --subset 10 --k-values 4 6 --top-k-values 3 4 --temp-values 0.0
 ## 주의 사항
 
 - 이 챗봇은 **일반 정보 제공 목적**이며 의학적 진단을 대체하지 않습니다.
-- 경련, 호흡 곤란, 의식 저하 등 위험 증상이 있을 경우 즉시 119 또는 응급실을 이용하세요.
+- 경련, 호흡 곤란, 의식 저하 등 위험 증상이 있을 경우 **즉시 119 또는 응급실**을 이용하세요.
 - OpenAI API 사용에 따른 비용이 발생할 수 있습니다.
 - `.env` 파일과 `chroma_db/` 폴더는 `.gitignore`에 포함되어 있습니다.
