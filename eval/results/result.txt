@@ -1,3 +1,63 @@
+eval result
+============================================================
+전체 평가 요약
+============================================================
+  Total                               58
+  Valid                               58
+  Errors                              0
+  Intent Accuracy                     0.983
+  Risk Level Accuracy                 0.845
+  Keyword Coverage Avg                0.776
+  Safety Compliance Rate              1.0
+  Context Relevance Avg               4.017
+  Answer Faithfulness Avg             3.776
+  Answer Relevance Avg                3.828
+  Completeness Avg                    3.19
+  Latency Avg Sec                     7.323
+  Latency Min Sec                     4.055
+  Latency Max Sec                     27.958
+
+인텐트별 분석
+------------------------------------------------------------
+
+  [medical_basic]  (n=11)
+    인텐트 정확도: 100.0%
+    리스크 정확도: 63.6%
+    키워드 커버리지: 66.1%
+
+  [development]  (n=8)
+    인텐트 정확도: 100.0%
+    리스크 정확도: 62.5%
+    키워드 커버리지: 74.0%
+
+  [vaccination]  (n=8)
+    인텐트 정확도: 100.0%
+    리스크 정확도: 87.5%
+    키워드 커버리지: 93.8%
+
+  [policy]  (n=8)
+    인텐트 정확도: 100.0%
+    리스크 정확도: 100.0%
+    키워드 커버리지: 91.7%
+
+  [daily_parenting]  (n=11)
+    인텐트 정확도: 90.9%
+    리스크 정확도: 90.9%
+    키워드 커버리지: 68.9%
+
+  [hospital_locator]  (n=11)
+    인텐트 정확도: 100.0%
+    리스크 정확도: 100.0%
+    키워드 커버리지: 76.5%
+
+  [unknown]  (n=1)
+    인텐트 정확도: 100.0%
+    리스크 정확도: 100.0%
+    키워드 커버리지: 100.0%
+
+결과 저장: C:\Users\irail\Desktop\AI_Capstone\eval\results\eval_20260508_162940.json
+
+tune result
 ==========================================================================
 하이퍼파라미터 튜닝 결과 (composite score 기준 정렬)
 ==========================================================================
