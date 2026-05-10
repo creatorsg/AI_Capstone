@@ -38,7 +38,7 @@ def get_ai_response_claude(
     if not api_key:
         raise ValueError("ANTHROPIC_API_KEY가 설정되지 않았습니다. .env 파일을 확인하세요.")
 
-    model_name        = os.getenv("CLAUDE_MODEL", "claude-haiku-4-5-20251001")
+    model_name        = os.getenv("CLAUDE_MODEL", "claude-sonnet-4-6")
     max_tokens        = int(os.getenv("CLAUDE_MAX_TOKENS", "1024"))
     max_history_turns = int(os.getenv("CHAT_HISTORY_TURNS", "10"))
 
