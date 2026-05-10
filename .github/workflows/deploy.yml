@@ -93,7 +93,8 @@ jobs:
     name: Build & Deploy
     runs-on: ubuntu-latest
     needs: test           # test 잡 성공 후에만 실행
-    if: github.ref == 'refs/heads/inseon'
+    # AWS Secrets 가 설정된 경우에만 실행 (미설정 시 CI 실패 방지)
+    if: ${{ github.ref == 'refs/heads/inseon' && secrets.AWS_REGION != '' }}
 
     steps:
       - name: Checkout code

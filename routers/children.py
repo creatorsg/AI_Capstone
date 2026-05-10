@@ -8,7 +8,7 @@ from models.child import Child, ChildProfile
 from models.user import User
 from schemas.child import (
     ChildCreate, ChildUpdate, ChildResponse,
-    ChildProfileCreate, ChildProfileResponse
+    ChildProfileCreate, ChildProfileUpdate, ChildProfileResponse
 )
 from services.auth_service import get_current_user
 
@@ -151,6 +151,28 @@ def _get_owned_profile(profile_id: int, db: Session, current_user: User) -> Chil
     return profile
 
 
+@router.get(
+    "/{child_id}/profile",
+    response_model=ChildProfileResponse,
+    summary="child_id 로 민감 정보 조회",
+)
+def get_profile_by_child(
+    child_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    child_id 로 해당 아이의 민감 정보(혈액형, 의료메모 등)를 조회합니다.
+    프로필이 아직 등록되지 않은 경우 404를 반환합니다.
+    """
+    _get_owned_child(child_id, db, current_user)  # 소유권 검증
+
+    profile = db.query(ChildProfile).filter(ChildProfile.child_id == child_id).first()
+    if not profile:
+        raise HTTPException(status_code=404, detail="등록된 민감 정보가 없습니다.")
+    return profile
+
+
 @router.post(
     "/profiles/",
     response_model=ChildProfileResponse,
@@ -187,6 +209,33 @@ def get_profile(
     current_user: User = Depends(get_current_user),
 ):
     return _get_owned_profile(profile_id, db, current_user)
+
+
+@router.patch(
+    "/profiles/{profile_id}",
+    response_model=ChildProfileResponse,
+    summary="민감 정보 수정 (변경 필드만 전송)",
+)
+def update_profile(
+    profile_id: int,
+    profile: ChildProfileUpdate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    바뀐 필드만 포함해서 전송하면 됩니다 (PATCH 방식).
+
+    예시: `{ "blood_type": "A+", "medical_notes": "페니실린 알레르기" }`
+    """
+    db_profile = _get_owned_profile(profile_id, db, current_user)
+
+    update_data = profile.model_dump(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_profile, key, value)
+
+    db.commit()
+    db.refresh(db_profile)
+    return db_profile
 
 
 @router.delete(

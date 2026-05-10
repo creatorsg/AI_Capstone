@@ -51,13 +51,16 @@ app = FastAPI(
 # CORS 미들웨어
 # 프론트엔드(React 등)에서 API 호출 시 반드시 필요합니다.
 # 프로덕션 환경에서는 ALLOWED_ORIGINS를 실제 도메인으로 제한하세요.
+# ⚠️ allow_origins=["*"] + allow_credentials=True 는 브라우저 스펙상 금지 조합입니다.
+#    ALLOWED_ORIGINS="*" 일 때는 allow_credentials=False 로 자동 처리합니다.
 import os
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
+_is_wildcard = ALLOWED_ORIGINS == ["*"]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
-    allow_credentials=True,
+    allow_credentials=not _is_wildcard,   # "*" 일 땐 False, 명시적 도메인일 땐 True
     allow_methods=["*"],
     allow_headers=["*"],
 )

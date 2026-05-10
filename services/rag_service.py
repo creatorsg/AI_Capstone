@@ -2,7 +2,11 @@
 
 흐름:
   질문 → analyze_query() → rewrite_query() → Chroma 검색 → simple_rerank()
-  → 문서 텍스트 리스트 반환 → ai_service_claude.py 에서 Claude로 최종 답변 생성
+  → 문서 텍스트 리스트 반환 → ai_service_*.py 에서 최종 답변 생성
+
+retrieve_relevant_docs() : 기존 인터페이스 유지 (텍스트 리스트 반환)
+retrieve_with_analysis()  : 신규 — (Document 리스트, analysis dict, risk_level, child_profile) 반환
+                            ai_service_openai/claude.py 에서 인텐트 기반 프롬프트 선택에 사용
 
 ChromaDB / OpenAI API 가 설정되지 않은 경우 빈 리스트 반환 (graceful fallback).
 """
@@ -78,6 +82,74 @@ def retrieve_relevant_docs(
     except Exception as exc:
         logger.warning("RAG 검색 실패, 빈 결과로 fallback: %s", exc)
         return []
+
+
+def retrieve_with_analysis(
+    query: str,
+    child_info: Optional[dict] = None,
+    child_age_months: Optional[int] = None,
+    top_k: int = 5,
+) -> tuple[list, dict, str, Optional[dict]]:
+    """
+    RAG 파이프라인 전체를 실행하고 Document 객체·분석 결과·위험도를 반환합니다.
+    ai_service_openai/claude.py 에서 인텐트 기반 프롬프트 선택에 사용합니다.
+
+    Returns:
+        (docs, analysis, risk_level, child_profile)
+        - docs         : LangChain Document 객체 리스트 (page_content + metadata)
+        - analysis     : {"intent": ..., "topic": ..., "risk_level": ..., ...}
+        - risk_level   : "low" | "medium" | "high"  (keyword 보정 적용)
+        - child_profile: sex 필드로 변환된 아이 정보 (없으면 None)
+    """
+    try:
+        from services.rag.rag_core import (
+            analyze_query,
+            rewrite_query,
+            get_retriever,
+            simple_rerank,
+            calculate_age_months,
+            age_group_from_months,
+            normalize_risk_level,
+        )
+
+        # fount-project 'gender' → juhyeong 'sex' 필드 변환
+        child_profile: Optional[dict] = None
+        if child_info:
+            child_profile = dict(child_info)
+            if "gender" in child_profile and "sex" not in child_profile:
+                child_profile["sex"] = child_profile.pop("gender")
+
+        # 1. 쿼리 의도 분석
+        analysis = analyze_query(query)
+
+        # 2. 검색용 쿼리 재작성
+        rewritten = rewrite_query(query, child_profile, analysis)
+
+        # 3. 인텐트 기반 리트리버 라우팅 + 문서 검색
+        retriever = get_retriever(analysis.get("intent", "unknown"))
+        docs = retriever.invoke(rewritten)
+
+        # 4. 월령 기반 리랭킹
+        age_months = (
+            calculate_age_months(child_profile.get("birth_date")) if child_profile
+            else child_age_months
+        )
+        age_group = age_group_from_months(age_months)
+        docs = simple_rerank(
+            docs,
+            intent=analysis.get("intent", "unknown"),
+            topic=analysis.get("topic"),
+            age_group=age_group,
+        )
+
+        # 5. 위험도 보정 (키워드 기반 override)
+        risk_level = normalize_risk_level(query, analysis)
+
+        return docs[:top_k], analysis, risk_level, child_profile
+
+    except Exception as exc:
+        logger.warning("RAG retrieve_with_analysis 실패, fallback: %s", exc)
+        return [], {"intent": "unknown", "topic": None, "risk_level": "low"}, "low", None
 
 
 def build_rag_prompt(
