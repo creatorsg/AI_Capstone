@@ -117,6 +117,26 @@ export default function HospitalsScreen() {
           <Text style={styles.phone}>{item.phone}</Text>
         </TouchableOpacity>
       )}
+      {item.operating_hours ? (
+        <View style={styles.hoursRow}>
+          <Ionicons name="time-outline" size={14} color={Colors.textSecondary} />
+          <Text style={styles.hoursText} numberOfLines={2}>{item.operating_hours}</Text>
+        </View>
+      ) : item.hours_structured && Object.keys(item.hours_structured).length > 0 ? (
+        <View style={styles.hoursRow}>
+          <Ionicons name="time-outline" size={14} color={Colors.textSecondary} />
+          <Text style={styles.hoursText} numberOfLines={2}>
+            {Object.entries(item.hours_structured)
+              .map(([day, val]) => {
+                if (typeof val === 'string') return `${day} ${val}`;
+                const h = val as { start: number; end: number };
+                const fmt = (n: number) => `${Math.floor(n / 100).toString().padStart(2, '0')}:${(n % 100).toString().padStart(2, '0')}`;
+                return `${day} ${fmt(h.start)}~${fmt(h.end)}`;
+              })
+              .join(' / ')}
+          </Text>
+        </View>
+      ) : null}
     </View>
   );
 
@@ -273,4 +293,6 @@ const styles = StyleSheet.create({
   address: { fontSize: 13, color: Colors.textSecondary, lineHeight: 18 },
   phoneRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginTop: 8 },
   phone: { fontSize: 13, color: Colors.primary, fontWeight: '600' },
+  hoursRow: { flexDirection: 'row', alignItems: 'flex-start', gap: 6, marginTop: 6 },
+  hoursText: { fontSize: 12, color: Colors.textSecondary, flex: 1, lineHeight: 17 },
 });

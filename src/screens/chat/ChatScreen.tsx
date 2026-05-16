@@ -2,15 +2,18 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
   View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList,
   KeyboardAvoidingView, Platform, ActivityIndicator, Alert,
+  ScrollView, Animated, Dimensions,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../../constants/Colors';
 import { useChildStore } from '../../store/childStore';
 import { chatAPI } from '../../services/api';
-import { ChatMessage, Child } from '../../types';
+import { ChatMessage, Child, ChatHistoryItem, SessionHistory } from '../../types';
 import { EXAMPLE_QUESTIONS } from '../../constants/Config';
 import { differenceInMonths, parseISO } from '../../utils/dateUtils';
+
+const SIDEBAR_WIDTH = Dimensions.get('window').width * 0.82;
 
 export default function ChatScreen() {
   const { children, selectedChild, selectChild, fetchChildren } = useChildStore();
@@ -19,7 +22,15 @@ export default function ChatScreen() {
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [showChildPicker, setShowChildPicker] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const [historyItems, setHistoryItems] = useState<ChatHistoryItem[]>([]);
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [resumeLoading, setResumeLoading] = useState(false);
   const flatListRef = useRef<FlatList>(null);
+
+  // 사이드바 애니메이션
+  const sidebarAnim = useRef(new Animated.Value(-SIDEBAR_WIDTH)).current;
+  const overlayAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     fetchChildren();
@@ -87,6 +98,91 @@ export default function ChatScreen() {
     }
   };
 
+  const openHistory = async () => {
+    if (!selectedChild) {
+      Alert.alert('아이 선택', '대화할 아이를 먼저 선택해주세요.');
+      setShowChildPicker(true);
+      return;
+    }
+    setShowHistory(true);
+    setHistoryLoading(true);
+    Animated.parallel([
+      Animated.spring(sidebarAnim, {
+        toValue: 0,
+        useNativeDriver: true,
+        damping: 20,
+        stiffness: 180,
+        mass: 1,
+      }),
+      Animated.timing(overlayAnim, {
+        toValue: 1,
+        duration: 220,
+        useNativeDriver: true,
+      }),
+    ]).start();
+    try {
+      const { data } = await chatAPI.history(selectedChild.id, 30);
+      setHistoryItems(Array.isArray(data) ? data : []);
+    } catch {
+      Alert.alert('오류', '채팅 기록을 불러오지 못했습니다.');
+    } finally {
+      setHistoryLoading(false);
+    }
+  };
+
+  const closeHistory = () => {
+    Animated.parallel([
+      Animated.timing(sidebarAnim, {
+        toValue: -SIDEBAR_WIDTH,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+      Animated.timing(overlayAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: true,
+      }),
+    ]).start(() => setShowHistory(false));
+  };
+
+  const resumeSession = async (targetSessionId: string) => {
+    setResumeLoading(true);
+    try {
+      const { data }: { data: SessionHistory } = await chatAPI.sessionHistory(targetSessionId);
+      const loaded: ChatMessage[] = [];
+      for (const turn of data.turns) {
+        if (turn.question) {
+          loaded.push({ id: `h-q-${turn.id}`, role: 'user', content: turn.question });
+        }
+        if (turn.answer) {
+          loaded.push({ id: `h-a-${turn.id}`, role: 'assistant', content: turn.answer });
+        }
+      }
+      setMessages(loaded);
+      setSessionId(targetSessionId);
+      closeHistory();
+    } catch {
+      Alert.alert('오류', '대화 기록을 불러오지 못했습니다.');
+    } finally {
+      setResumeLoading(false);
+    }
+  };
+
+  const groupedSessions = (() => {
+    const seen = new Set<string>();
+    return historyItems.filter((item) => {
+      if (seen.has(item.session_id)) return false;
+      seen.add(item.session_id);
+      return true;
+    });
+  })();
+
+  const formatHistoryDate = (isoStr: string) => {
+    const d = new Date(isoStr);
+    const pad = (n: number) => n.toString().padStart(2, '0');
+    return `${d.getFullYear()}.${pad(d.getMonth() + 1)}.${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  };
+
   const ageLabel = selectedChild
     ? (() => {
         const months = differenceInMonths(new Date(), parseISO(selectedChild.birth_date));
@@ -94,7 +190,6 @@ export default function ChatScreen() {
       })()
     : '';
 
-  // 백엔드 gender: 'male' | 'female'
   const genderEmoji = (child: Child) =>
     child.gender === 'male' ? '👦' : child.gender === 'female' ? '👧' : '👶';
 
@@ -116,7 +211,6 @@ export default function ChatScreen() {
             <Text style={styles.emergencyTagText}>응급 상황 주의</Text>
           </View>
         )}
-        {/* 역질문 중임을 표시 */}
         {item.needs_more_context && (
           <View style={styles.contextTag}>
             <Ionicons name="chatbubble-ellipses-outline" size={12} color={Colors.primary} />
@@ -136,66 +230,73 @@ export default function ChatScreen() {
 
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
-      {/* 헤더 */}
-      <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          <Text style={styles.headerTitle}>아이톡 챗봇</Text>
-          {selectedChild && (
-            <Text style={styles.headerSub}>{selectedChild.name} · {ageLabel}</Text>
-          )}
-        </View>
-        <View style={styles.headerRight}>
-          <TouchableOpacity style={styles.headerBtn} onPress={() => setShowChildPicker(true)}>
-            <Ionicons name="people-outline" size={22} color={Colors.primary} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.headerBtn} onPress={resetChat}>
-            <Ionicons name="refresh-outline" size={22} color={Colors.primary} />
-          </TouchableOpacity>
-        </View>
-      </View>
-
-      {/* 아이 선택 패널 */}
-      {showChildPicker && (
-        <View style={styles.childPicker}>
-          <View style={styles.childPickerHeader}>
-            <Text style={styles.childPickerTitle}>대화할 아이 선택</Text>
-            <TouchableOpacity onPress={() => setShowChildPicker(false)}>
-              <Ionicons name="close" size={22} color={Colors.textSecondary} />
-            </TouchableOpacity>
-          </View>
-          {children.length === 0 ? (
-            <Text style={styles.noChildText}>등록된 아이가 없습니다. 마이페이지에서 추가해주세요.</Text>
-          ) : (
-            children.map((child) => (
-              <TouchableOpacity
-                key={child.id}
-                style={[styles.childItem, selectedChild?.id === child.id && styles.childItemActive]}
-                onPress={() => { selectChild(child); setShowChildPicker(false); }}
-              >
-                <View style={styles.childIcon}>
-                  <Text style={styles.childIconText}>{genderEmoji(child)}</Text>
-                </View>
-                <View>
-                  <Text style={styles.childName}>{child.name}</Text>
-                  <Text style={styles.childBirth}>{child.birth_date}</Text>
-                </View>
-                {selectedChild?.id === child.id && (
-                  <Ionicons name="checkmark-circle" size={20} color={Colors.primary} style={{ marginLeft: 'auto' }} />
-                )}
-              </TouchableOpacity>
-            ))
-          )}
-        </View>
-      )}
-
+      {/* 헤더와 메시지 영역을 KeyboardAvoidingView로 감싸서 키보드 이슈 방지 */}
       <KeyboardAvoidingView
         style={styles.flex}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={0}
       >
+        {/* 헤더 */}
+        <View style={styles.header}>
+          <View style={styles.headerLeft}>
+            <Text style={styles.headerTitle}>아이톡 챗봇</Text>
+            {selectedChild && (
+              <Text style={styles.headerSub}>{selectedChild.name} · {ageLabel}</Text>
+            )}
+          </View>
+          <View style={styles.headerRight}>
+            <TouchableOpacity style={styles.headerBtn} onPress={openHistory}>
+              <Ionicons name="time-outline" size={22} color={Colors.primary} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.headerBtn} onPress={() => setShowChildPicker(true)}>
+              <Ionicons name="people-outline" size={22} color={Colors.primary} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.headerBtn} onPress={resetChat}>
+              <Ionicons name="refresh-outline" size={22} color={Colors.primary} />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* 아이 선택 패널 */}
+        {showChildPicker && (
+          <View style={styles.childPicker}>
+            <View style={styles.childPickerHeader}>
+              <Text style={styles.childPickerTitle}>대화할 아이 선택</Text>
+              <TouchableOpacity onPress={() => setShowChildPicker(false)}>
+                <Ionicons name="close" size={22} color={Colors.textSecondary} />
+              </TouchableOpacity>
+            </View>
+            {children.length === 0 ? (
+              <Text style={styles.noChildText}>등록된 아이가 없습니다. 마이페이지에서 추가해주세요.</Text>
+            ) : (
+              children.map((child) => (
+                <TouchableOpacity
+                  key={child.id}
+                  style={[styles.childItem, selectedChild?.id === child.id && styles.childItemActive]}
+                  onPress={() => { selectChild(child); setShowChildPicker(false); }}
+                >
+                  <View style={styles.childIcon}>
+                    <Text style={styles.childIconText}>{genderEmoji(child)}</Text>
+                  </View>
+                  <View>
+                    <Text style={styles.childName}>{child.name}</Text>
+                    <Text style={styles.childBirth}>{child.birth_date}</Text>
+                  </View>
+                  {selectedChild?.id === child.id && (
+                    <Ionicons name="checkmark-circle" size={20} color={Colors.primary} style={{ marginLeft: 'auto' }} />
+                  )}
+                </TouchableOpacity>
+              ))
+            )}
+          </View>
+        )}
+
         {/* 메시지 목록 */}
         {messages.length === 0 ? (
-          <View style={styles.emptyContainer}>
+          <ScrollView
+            style={styles.flex}
+            contentContainerStyle={styles.emptyContainer}
+            keyboardShouldPersistTaps="handled"
+          >
             <Ionicons name="chatbubbles-outline" size={56} color={Colors.primaryLight} />
             <Text style={styles.emptyTitle}>
               {selectedChild ? `${selectedChild.name}에 대해 물어보세요` : '아이를 선택하고 질문해보세요'}
@@ -209,7 +310,7 @@ export default function ChatScreen() {
                 </TouchableOpacity>
               ))}
             </View>
-          </View>
+          </ScrollView>
         ) : (
           <FlatList
             ref={flatListRef}
@@ -218,6 +319,7 @@ export default function ChatScreen() {
             renderItem={renderMessage}
             contentContainerStyle={styles.messageList}
             onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+            keyboardShouldPersistTaps="handled"
           />
         )}
 
@@ -260,6 +362,96 @@ export default function ChatScreen() {
           </View>
         </View>
       </KeyboardAvoidingView>
+
+      {/* 왼쪽 슬라이드 채팅 기록 사이드바 */}
+      {showHistory && (
+        <View style={StyleSheet.absoluteFill} pointerEvents="box-none">
+          {/* 배경 오버레이 */}
+          <Animated.View
+            style={[StyleSheet.absoluteFill, styles.sidebarBackdrop, { opacity: overlayAnim }]}
+            pointerEvents="auto"
+          >
+            <TouchableOpacity style={StyleSheet.absoluteFill} onPress={closeHistory} activeOpacity={1} />
+          </Animated.View>
+
+          {/* 사이드바 패널 */}
+          <Animated.View
+            style={[styles.sidebar, { transform: [{ translateX: sidebarAnim }] }]}
+            pointerEvents="auto"
+          >
+            <SafeAreaView style={styles.sidebarInner} edges={['top', 'bottom']}>
+              {/* 사이드바 헤더 */}
+              <View style={styles.sidebarHeader}>
+                <Text style={styles.sidebarTitle}>채팅 기록</Text>
+                <TouchableOpacity style={styles.sidebarCloseBtn} onPress={closeHistory}>
+                  <Ionicons name="close" size={22} color={Colors.text} />
+                </TouchableOpacity>
+              </View>
+
+              {/* 현재 선택된 아이 표시 */}
+              {selectedChild && (
+                <View style={styles.sidebarChildBadge}>
+                  <Ionicons name="person-circle-outline" size={16} color={Colors.primary} />
+                  <Text style={styles.sidebarChildName}>{selectedChild.name}의 대화</Text>
+                </View>
+              )}
+
+              {/* 기록 목록 */}
+              {historyLoading ? (
+                <View style={styles.sidebarLoading}>
+                  <ActivityIndicator size="large" color={Colors.primary} />
+                  <Text style={styles.sidebarLoadingText}>불러오는 중...</Text>
+                </View>
+              ) : groupedSessions.length === 0 ? (
+                <View style={styles.sidebarEmpty}>
+                  <Ionicons name="chatbubbles-outline" size={44} color={Colors.primaryLight} />
+                  <Text style={styles.sidebarEmptyText}>채팅 기록이 없습니다</Text>
+                </View>
+              ) : (
+                <ScrollView contentContainerStyle={styles.sidebarList} showsVerticalScrollIndicator={false}>
+                  {groupedSessions.map((item) => (
+                    <TouchableOpacity
+                      key={item.session_id}
+                      style={[
+                        styles.sidebarCard,
+                        sessionId === item.session_id && styles.sidebarCardActive,
+                      ]}
+                      onPress={() => resumeSession(item.session_id)}
+                      disabled={resumeLoading}
+                      activeOpacity={0.75}
+                    >
+                      <View style={styles.sidebarCardRow}>
+                        <Ionicons
+                          name="chatbubble-outline"
+                          size={14}
+                          color={sessionId === item.session_id ? Colors.primary : Colors.textSecondary}
+                        />
+                        <Text style={styles.sidebarDate}>{formatHistoryDate(item.created_at)}</Text>
+                        {sessionId === item.session_id && (
+                          <View style={styles.currentBadge}>
+                            <Text style={styles.currentBadgeText}>현재</Text>
+                          </View>
+                        )}
+                      </View>
+                      <Text style={styles.sidebarQuestion} numberOfLines={2}>{item.question}</Text>
+                      <Text style={styles.sidebarAnswer} numberOfLines={1}>{item.answer}</Text>
+                    </TouchableOpacity>
+                  ))}
+                </ScrollView>
+              )}
+
+              {/* 새 대화 버튼 */}
+              <TouchableOpacity
+                style={styles.newChatButton}
+                onPress={() => { resetChat(); closeHistory(); }}
+              >
+                <Ionicons name="add-circle-outline" size={18} color="#fff" />
+                <Text style={styles.newChatButtonText}>새 대화 시작</Text>
+              </TouchableOpacity>
+            </SafeAreaView>
+          </Animated.View>
+        </View>
+      )}
     </SafeAreaView>
   );
 }
@@ -294,7 +486,7 @@ const styles = StyleSheet.create({
   childIconText: { fontSize: 20 },
   childName: { fontSize: 15, fontWeight: '700', color: Colors.text },
   childBirth: { fontSize: 12, color: Colors.textSecondary },
-  emptyContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 32 },
+  emptyContainer: { flexGrow: 1, justifyContent: 'center', alignItems: 'center', padding: 32 },
   emptyTitle: { fontSize: 18, fontWeight: '700', color: Colors.text, marginTop: 16, textAlign: 'center' },
   emptySubtitle: { fontSize: 14, color: Colors.textSecondary, marginTop: 8, textAlign: 'center' },
   exampleList: { width: '100%', marginTop: 24, gap: 8 },
@@ -342,4 +534,54 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.4, shadowRadius: 8, elevation: 4,
   },
   sendButtonDisabled: { backgroundColor: Colors.textTertiary, shadowOpacity: 0 },
+  // 사이드바
+  sidebarBackdrop: { backgroundColor: 'rgba(0,0,0,0.45)' },
+  sidebar: {
+    position: 'absolute', top: 0, left: 0, bottom: 0,
+    width: SIDEBAR_WIDTH,
+    backgroundColor: Colors.surface,
+    shadowColor: '#000', shadowOffset: { width: 4, height: 0 },
+    shadowOpacity: 0.18, shadowRadius: 16, elevation: 12,
+  },
+  sidebarInner: { flex: 1 },
+  sidebarHeader: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
+    paddingHorizontal: 20, paddingVertical: 14,
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
+  },
+  sidebarTitle: { fontSize: 18, fontWeight: '800', color: Colors.text },
+  sidebarCloseBtn: { padding: 4 },
+  sidebarChildBadge: {
+    flexDirection: 'row', alignItems: 'center', gap: 6,
+    paddingHorizontal: 20, paddingVertical: 10,
+    backgroundColor: Colors.primaryLight + '20',
+    borderBottomWidth: 1, borderBottomColor: Colors.border,
+  },
+  sidebarChildName: { fontSize: 13, color: Colors.primary, fontWeight: '700' },
+  sidebarLoading: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12 },
+  sidebarLoadingText: { color: Colors.textSecondary, fontSize: 14 },
+  sidebarEmpty: { flex: 1, justifyContent: 'center', alignItems: 'center', gap: 12, paddingHorizontal: 24 },
+  sidebarEmptyText: { fontSize: 14, color: Colors.textSecondary, fontWeight: '600', textAlign: 'center' },
+  sidebarList: { padding: 12, gap: 8, paddingBottom: 16 },
+  sidebarCard: {
+    backgroundColor: Colors.surfaceVariant, borderRadius: 14, padding: 14,
+    borderWidth: 1, borderColor: Colors.border,
+  },
+  sidebarCardActive: {
+    backgroundColor: Colors.primaryLight + '20',
+    borderColor: Colors.primary,
+  },
+  sidebarCardRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 6 },
+  sidebarDate: { fontSize: 11, color: Colors.textTertiary, fontWeight: '600', flex: 1 },
+  currentBadge: { backgroundColor: Colors.primary, borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2 },
+  currentBadgeText: { fontSize: 10, color: '#fff', fontWeight: '700' },
+  sidebarQuestion: { fontSize: 13, fontWeight: '700', color: Colors.text, marginBottom: 4, lineHeight: 18 },
+  sidebarAnswer: { fontSize: 12, color: Colors.textSecondary, lineHeight: 17 },
+  newChatButton: {
+    flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8,
+    margin: 16, backgroundColor: Colors.primary, borderRadius: 14, paddingVertical: 14,
+    shadowColor: Colors.primary, shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.35, shadowRadius: 8, elevation: 4,
+  },
+  newChatButtonText: { color: '#fff', fontSize: 15, fontWeight: '700' },
 });

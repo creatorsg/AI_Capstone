@@ -49,6 +49,32 @@ export interface Hospital {
     type: string;
     coordinates: [number, number];
   };
+  operating_hours?: string;
+  hours_structured?: Record<string, { start: number; end: number } | string>;
+}
+
+export interface ChatHistoryItem {
+  id: number;
+  child_id: number;
+  session_id: string;
+  question: string;
+  answer: string;
+  created_at: string;
+}
+
+export interface SessionHistoryTurn {
+  id: number;
+  question: string;
+  answer: string;
+  created_at: string;
+}
+
+export interface SessionHistory {
+  session_id: string;
+  child_id: number;
+  status: string;
+  created_at: string;
+  turns: SessionHistoryTurn[];
 }
 
 export interface WelfarePolicy {

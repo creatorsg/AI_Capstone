@@ -59,7 +59,10 @@ export const childrenAPI = {
 export const chatAPI = {
   send: (childId: number, message: string, sessionId?: string | null) =>
     api.post('/chat/', { child_id: childId, message, session_id: sessionId }),
-  history: (childId: number) => api.get(`/chat/history/${childId}`),
+  history: (childId: number, limit = 20, offset = 0) =>
+    api.get(`/chat/history/${childId}`, { params: { limit, offset } }),
+  sessionHistory: (sessionId: string) =>
+    api.get(`/chat/sessions/${sessionId}/history`),
 };
 
 // 백엔드 파라미터: lat, lng (lon 아님), radius, category
