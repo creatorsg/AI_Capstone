@@ -1,6 +1,7 @@
 # app/rag.py
 
 import json
+import time
 from datetime import date
 from dotenv import load_dotenv
 
@@ -343,18 +344,27 @@ def answer_question(
     top_k: int = DEFAULT_TOP_K,
     rerank_weights: dict | None = None,
 ):
+    timings = {}
+    t0 = time.perf_counter()
+
     analysis = analyze_query(question, model=model)
+    timings["analyze_query_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+
+    t = time.perf_counter()
     risk_level = normalize_risk_level(question, analysis)
     intent = analysis.get("intent", "unknown")
-
     rewritten_query = rewrite_query(question, child_profile, analysis, model=model)
+    timings["rewrite_query_ms"] = round((time.perf_counter() - t) * 1000, 1)
 
+    t = time.perf_counter()
     retriever = get_retriever(intent, k=k)
     docs = retriever.invoke(rewritten_query)
+    timings["retrieval_ms"] = round((time.perf_counter() - t) * 1000, 1)
 
     age_months = calculate_age_months(child_profile.get("birth_date")) if child_profile else None
     age_group = age_group_from_months(age_months)
 
+    t = time.perf_counter()
     docs = simple_rerank(
         docs,
         intent=intent,
@@ -362,9 +372,9 @@ def answer_question(
         age_group=age_group,
         weights=rerank_weights,
     )
-
     top_docs = docs[:top_k]
     context = build_context(top_docs)
+    timings["rerank_build_ms"] = round((time.perf_counter() - t) * 1000, 1)
 
     child_context = format_child_context(child_profile)
     logs_context = format_recent_logs(recent_logs)
@@ -380,7 +390,13 @@ def answer_question(
         context=context,
         question=question,
     )
+
+    t = time.perf_counter()
     response = llm.invoke(prompt)
+    timings["generate_ms"] = round((time.perf_counter() - t) * 1000, 1)
+
+    timings["total_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+
     answer = apply_safety_prefix(response.content, risk_level)
 
     debug_info = {
@@ -392,6 +408,7 @@ def answer_question(
         "retrieved_docs_count": len(docs),
         "top_k_used": top_k,
         "model": model,
+        "timings": timings,
     }
 
     return answer, top_docs, debug_info

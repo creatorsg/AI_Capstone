@@ -142,11 +142,22 @@ def evaluate_one(item: dict, use_judge: bool, judge_llm: ChatOpenAI | None) -> d
         "latency_sec": latency,
     }
 
+    result["timings"] = debug_info.get("timings", {})
+
     if use_judge and judge_llm is not None:
         scores = llm_judge(question, context_str, answer, judge_llm)
         result.update(scores)
 
     return result
+
+
+def percentile(values: list, p: float):
+    if not values:
+        return None
+    s = sorted(values)
+    k = (len(s) - 1) * p / 100
+    f, c = int(k), min(int(k) + 1, len(s) - 1)
+    return round(s[f] + (s[c] - s[f]) * (k - f), 1)
 
 
 def aggregate(results: list[dict]) -> dict:
@@ -158,7 +169,7 @@ def aggregate(results: list[dict]) -> dict:
         vals = [r[key] for r in valid if r.get(key) is not None and isinstance(r[key], (int, float))]
         return round(sum(vals) / len(vals), 3) if vals else None
 
-    return {
+    overall = {
         "total": len(results),
         "valid": len(valid),
         "errors": len(results) - len(valid),
@@ -176,6 +187,23 @@ def aggregate(results: list[dict]) -> dict:
         "latency_min_sec": round(min(r["latency_sec"] for r in valid if r.get("latency_sec") is not None), 3) if any(r.get("latency_sec") is not None for r in valid) else None,
         "latency_max_sec": round(max(r["latency_sec"] for r in valid if r.get("latency_sec") is not None), 3) if any(r.get("latency_sec") is not None for r in valid) else None,
     }
+
+    stage_keys = ["analyze_query_ms", "rewrite_query_ms", "retrieval_ms",
+                  "rerank_build_ms", "generate_ms", "total_ms"]
+    stage_stats = {}
+    for stage_key in stage_keys:
+        vals = [r["timings"].get(stage_key) for r in valid
+                if r.get("timings", {}).get(stage_key) is not None]
+        if vals:
+            stage_stats[stage_key] = {
+                "avg": round(sum(vals) / len(vals), 1),
+                "p50": percentile(vals, 50),
+                "p95": percentile(vals, 95),
+                "p99": percentile(vals, 99),
+            }
+    overall["stage_stats"] = stage_stats
+
+    return overall
 
 
 def aggregate_by_intent(results: list[dict]) -> dict:
