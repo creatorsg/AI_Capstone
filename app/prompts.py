@@ -137,6 +137,8 @@ ANSWER_PROMPT_MEDICAL = ChatPromptTemplate.from_template(
 
 주의:
 - 이 답변은 일반 정보이며 진단이 아닙니다.
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 
@@ -182,6 +184,8 @@ ANSWER_PROMPT_DEVELOPMENT = ChatPromptTemplate.from_template(
 
 전문가 상담을 고려할 때:
 - 아래와 같은 경우에는 소아과나 발달 전문가 상담을 고려하세요
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 
@@ -226,6 +230,8 @@ ANSWER_PROMPT_VACCINATION = ChatPromptTemplate.from_template(
 
 추가 문의:
 - 정확한 접종 일정은 소아과 또는 보건소에서 확인하세요.
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 
@@ -270,6 +276,8 @@ ANSWER_PROMPT_POLICY = ChatPromptTemplate.from_template(
 
 문의처:
 - 관련 기관 또는 공식 사이트 안내
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 
@@ -309,6 +317,8 @@ ANSWER_PROMPT_HOSPITAL = ChatPromptTemplate.from_template(
 
 참고사항:
 - 방문 전 전화로 운영 여부를 확인하세요.
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 
@@ -350,6 +360,8 @@ ANSWER_PROMPT_DAILY = ChatPromptTemplate.from_template(
 
 언제 전문가 도움을 받을지:
 - 아래 경우에는 소아과 또는 전문가 상담을 고려하세요
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 
@@ -399,6 +411,8 @@ ANSWER_PROMPT_DEFAULT = ChatPromptTemplate.from_template(
 
 주의:
 - 이 답변은 일반 정보이며 진단이 아닙니다.
+
+답변은 핵심만 6문장 이내, 불릿 최대 5개로 작성.
 """
 )
 

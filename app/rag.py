@@ -71,8 +71,11 @@ def _check_embedding_model() -> None:
 # ---------------------------
 
 @lru_cache(maxsize=8)
-def get_llm(model: str = DEFAULT_MODEL, temperature: float = 0.0):
-    return ChatOpenAI(model=model, temperature=temperature)
+def get_llm(model: str = DEFAULT_MODEL, temperature: float = 0.0, max_tokens: int | None = None):
+    kwargs = {"model": model, "temperature": temperature}
+    if max_tokens is not None:
+        kwargs["max_tokens"] = max_tokens
+    return ChatOpenAI(**kwargs)
 
 
 @lru_cache(maxsize=1)
@@ -173,7 +176,7 @@ def format_recent_logs(recent_logs: dict | None) -> str:
 # ---------------------------
 
 def analyze_query(question: str, model: str = DEFAULT_MODEL) -> dict:
-    llm = get_llm(model=model)
+    llm = get_llm(model=model, max_tokens=150)
 
     prompt = QUERY_ANALYZER_PROMPT.format(question=question)
     response = llm.invoke(prompt)
@@ -199,7 +202,7 @@ def rewrite_query(
     analysis: dict,
     model: str = DEFAULT_MODEL,
 ) -> str:
-    llm = get_llm(model=model)
+    llm = get_llm(model=model, max_tokens=80)
 
     child_context = format_child_context(child_profile)
     prompt = QUERY_REWRITE_PROMPT.format(
@@ -384,7 +387,7 @@ def answer_question(
     logs_context = format_recent_logs(recent_logs)
     history_text = format_chat_history(chat_history or [])
 
-    llm = get_llm(model=model, temperature=temperature)
+    llm = get_llm(model=model, temperature=temperature, max_tokens=600)
     answer_prompt = get_answer_prompt(intent)
 
     prompt = answer_prompt.format(

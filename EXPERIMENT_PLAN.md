@@ -1118,7 +1118,7 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 | E1 | streaming | | | | | | |
 | E2 | LLM cache | 5356ms (−4.7%) | 6846ms (−12.0%) | 0.966† | N/A | 1.0 | 채택 |
 | E3 | prompt diet | | | | | | |
-| E4 | max_tokens | | | | | | |
+| E4 | max_tokens (gen=600, analyze=150, rewrite=80) + 6문장 캡 | 4770ms (−15.2%) | 6356ms (−18.3%) | 1.000 | 3.97 | 1.0 | 채택 |
 | E5 | analyze+rewrite 통합 | | | | | | |
 | E6 | fast path | | | | | | |
 | E7 | semantic cache | | | | | | |
@@ -1135,6 +1135,8 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 | Final | 종합 | | | | | | |
 
 > † E2 intent_accuracy 0.966(−3.4%p): lru_cache는 LLM 인스턴스만 캐시하며 API 호출은 매번 실행됨. 다른 시점 측정에 따른 LLM 랜덤성 노이즈로 판단(코드 변경이 출력에 영향 없음). retrieval_ms −61%(510→200ms)가 주효과.
+>
+> ‡ E4 max_tokens=500 초기 시도에서 keyword_coverage 0.737 < 임계값 0.747로 실패. 600으로 상향 후 모든 가드레일 통과(keyword=0.764, completeness=3.155 > 2.838). generate_ms −16.3%(3316→2777ms)가 주효과. context_relevance 3.97은 baseline(3.83) 대비 상승.
 >
 > Phase 2.5 (E5.1~E5.5)의 경우 `personalization_score` / `appropriate_specificity_avg` / `profile_utilization_rate` / `risk_modifiers` 사용 통계도 결과 JSON에서 별도 추적. "결정" 열에 그 수치를 같이 기록한다.
 
