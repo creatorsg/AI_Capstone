@@ -144,6 +144,8 @@ def evaluate_one(item: dict, use_judge: bool, judge_llm: ChatOpenAI | None) -> d
 
     result["timings"] = debug_info.get("timings", {})
     result["json_fallback"] = debug_info.get("json_fallback", False)
+    result["preprocess_model"] = debug_info.get("preprocess_model")
+    result["generator_model"] = debug_info.get("generator_model")
 
     if use_judge and judge_llm is not None:
         scores = llm_judge(question, context_str, answer, judge_llm)

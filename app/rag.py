@@ -1,6 +1,7 @@
 # app/rag.py
 
 import json
+import os
 import time
 from datetime import date
 from functools import lru_cache
@@ -32,6 +33,10 @@ DEFAULT_TOP_K = 5
 
 # E5 토글: True = analyze+rewrite 통합 1회 호출, False = 기존 2회 호출
 USE_UNIFIED_PREPROCESS = True
+
+# P3.5.1: env-driven model selection
+CLASSIFIER_MODEL = os.getenv("CLASSIFIER_MODEL", DEFAULT_MODEL)
+GENERATOR_MODEL  = os.getenv("GENERATOR_MODEL",  DEFAULT_MODEL)
 
 
 # ---------------------------
@@ -182,7 +187,7 @@ def format_recent_logs(recent_logs: dict | None) -> str:
 def preprocess_query(
     question: str,
     child_profile: dict | None,
-    model: str = DEFAULT_MODEL,
+    model: str = CLASSIFIER_MODEL,
 ) -> dict:
     """analyze + rewrite 통합 1회 호출 (E5). _fallback=True 이면 JSON 파싱 실패."""
     llm = get_llm(model=model, max_tokens=200)
@@ -391,7 +396,7 @@ def answer_question(
     json_fallback = False
 
     if USE_UNIFIED_PREPROCESS:
-        preprocessed = preprocess_query(question, child_profile, model=model)
+        preprocessed = preprocess_query(question, child_profile)  # uses CLASSIFIER_MODEL
         json_fallback = preprocessed.get("_fallback", False)
         rewritten_query = preprocessed.get("rewritten_query", question)
         analysis = {
@@ -434,7 +439,7 @@ def answer_question(
     logs_context = format_recent_logs(recent_logs)
     history_text = format_chat_history(chat_history or [])
 
-    llm = get_llm(model=model, temperature=temperature, max_tokens=600)
+    llm = get_llm(model=GENERATOR_MODEL, temperature=temperature, max_tokens=600)
     answer_prompt = get_answer_prompt(intent)
 
     prompt = answer_prompt.format(
@@ -462,6 +467,8 @@ def answer_question(
         "retrieved_docs_count": len(docs),
         "top_k_used": top_k,
         "model": model,
+        "preprocess_model": CLASSIFIER_MODEL,
+        "generator_model": GENERATOR_MODEL,
         "json_fallback": json_fallback,
         "timings": timings,
     }
