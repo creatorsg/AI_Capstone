@@ -1,0 +1,3213 @@
+{
+  "timestamp": "20260520_105958",
+  "tag": "baseline",
+  "config": {
+    "questions_file": "C:\\Users\\irail\\Desktop\\AI_Capstone\\eval\\test_questions.json",
+    "n_questions": 58,
+    "repeat": 3,
+    "delay_sec": 1.0,
+    "intent_filter": null
+  },
+  "overall": {
+    "n_total": 174,
+    "n_ok": 174,
+    "stage_stats": {
+      "analyze_query_ms": {
+        "n": 174,
+        "avg": 860.3,
+        "p50": 758.2,
+        "p95": 1277.6,
+        "p99": 1860.1,
+        "min": 580.3,
+        "max": 7605.9
+      },
+      "rewrite_query_ms": {
+        "n": 174,
+        "avg": 935.1,
+        "p50": 845.0,
+        "p95": 1370.6,
+        "p99": 2386.1,
+        "min": 552.5,
+        "max": 6432.0
+      },
+      "retrieval_ms": {
+        "n": 174,
+        "avg": 510.1,
+        "p50": 453.9,
+        "p95": 853.2,
+        "p99": 1242.5,
+        "min": 415.7,
+        "max": 1429.0
+      },
+      "rerank_build_ms": {
+        "n": 174,
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "generate_ms": {
+        "n": 174,
+        "avg": 3316.3,
+        "p50": 3156.5,
+        "p95": 4850.9,
+        "p99": 6866.8,
+        "min": 1516.0,
+        "max": 9468.9
+      },
+      "total_ms": {
+        "n": 174,
+        "avg": 5622.2,
+        "p50": 5406.1,
+        "p95": 7777.6,
+        "p99": 11145.3,
+        "min": 3399.3,
+        "max": 11395.3
+      }
+    }
+  },
+  "rounds": [
+    {
+      "n_total": 58,
+      "n_ok": 58,
+      "stage_stats": {
+        "analyze_query_ms": {
+          "n": 58,
+          "avg": 857.0,
+          "p50": 788.5,
+          "p95": 1275.4,
+          "p99": 1888.0,
+          "min": 587.9,
+          "max": 1987.3
+        },
+        "rewrite_query_ms": {
+          "n": 58,
+          "avg": 882.5,
+          "p50": 826.6,
+          "p95": 1314.8,
+          "p99": 1839.6,
+          "min": 566.6,
+          "max": 2356.8
+        },
+        "retrieval_ms": {
+          "n": 58,
+          "avg": 516.2,
+          "p50": 449.4,
+          "p95": 863.9,
+          "p99": 1329.1,
+          "min": 415.7,
+          "max": 1429.0
+        },
+        "rerank_build_ms": {
+          "n": 58,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 58,
+          "avg": 3458.5,
+          "p50": 3367.6,
+          "p95": 4862.5,
+          "p99": 6945.8,
+          "min": 1529.7,
+          "max": 8803.4
+        },
+        "total_ms": {
+          "n": 58,
+          "avg": 5714.6,
+          "p50": 5646.9,
+          "p95": 7938.3,
+          "p99": 10028.0,
+          "min": 3579.1,
+          "max": 11065.1
+        }
+      }
+    },
+    {
+      "n_total": 58,
+      "n_ok": 58,
+      "stage_stats": {
+        "analyze_query_ms": {
+          "n": 58,
+          "avg": 966.0,
+          "p50": 811.8,
+          "p95": 1356.4,
+          "p99": 4159.2,
+          "min": 591.4,
+          "max": 7605.9
+        },
+        "rewrite_query_ms": {
+          "n": 58,
+          "avg": 911.4,
+          "p50": 839.0,
+          "p95": 1298.5,
+          "p99": 1943.3,
+          "min": 588.5,
+          "max": 2465.2
+        },
+        "retrieval_ms": {
+          "n": 58,
+          "avg": 490.4,
+          "p50": 445.4,
+          "p95": 747.5,
+          "p99": 864.7,
+          "min": 415.9,
+          "max": 886.9
+        },
+        "rerank_build_ms": {
+          "n": 58,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 58,
+          "avg": 3292.5,
+          "p50": 3164.9,
+          "p95": 4612.4,
+          "p99": 7263.2,
+          "min": 1757.7,
+          "max": 9468.9
+        },
+        "total_ms": {
+          "n": 58,
+          "avg": 5660.7,
+          "p50": 5346.8,
+          "p95": 7657.2,
+          "p99": 11376.5,
+          "min": 3399.3,
+          "max": 11395.3
+        }
+      }
+    },
+    {
+      "n_total": 58,
+      "n_ok": 58,
+      "stage_stats": {
+        "analyze_query_ms": {
+          "n": 58,
+          "avg": 757.8,
+          "p50": 698.0,
+          "p95": 1151.6,
+          "p99": 1250.4,
+          "min": 580.3,
+          "max": 1267.9
+        },
+        "rewrite_query_ms": {
+          "n": 58,
+          "avg": 1011.4,
+          "p50": 881.0,
+          "p95": 1483.0,
+          "p99": 3774.9,
+          "min": 552.5,
+          "max": 6432.0
+        },
+        "retrieval_ms": {
+          "n": 58,
+          "avg": 523.7,
+          "p50": 464.1,
+          "p95": 894.0,
+          "p99": 1069.3,
+          "min": 424.9,
+          "max": 1238.3
+        },
+        "rerank_build_ms": {
+          "n": 58,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 58,
+          "avg": 3198.0,
+          "p50": 2951.2,
+          "p95": 4803.2,
+          "p99": 5735.8,
+          "min": 1516.0,
+          "max": 6150.5
+        },
+        "total_ms": {
+          "n": 58,
+          "avg": 5491.3,
+          "p50": 5235.9,
+          "p95": 7276.0,
+          "p99": 9935.3,
+          "min": 3423.7,
+          "max": 10755.6
+        }
+      }
+    }
+  ],
+  "records": [
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 6861.9,
+      "answer_len": 678,
+      "timings": {
+        "analyze_query_ms": 1813.1,
+        "rewrite_query_ms": 959.4,
+        "retrieval_ms": 1253.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2835.1,
+        "total_ms": 6861.9
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 7909.8,
+      "answer_len": 933,
+      "timings": {
+        "analyze_query_ms": 978.2,
+        "rewrite_query_ms": 1367.5,
+        "retrieval_ms": 811.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4752.2,
+        "total_ms": 7909.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 6613.1,
+      "answer_len": 895,
+      "timings": {
+        "analyze_query_ms": 866.4,
+        "rewrite_query_ms": 1046.3,
+        "retrieval_ms": 449.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4250.4,
+        "total_ms": 6613.1
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_004",
+      "ok": true,
+      "wall_ms": 6674.9,
+      "answer_len": 920,
+      "timings": {
+        "analyze_query_ms": 1655.5,
+        "rewrite_query_ms": 881.8,
+        "retrieval_ms": 435.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3701.3,
+        "total_ms": 6674.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_005",
+      "ok": true,
+      "wall_ms": 6208.9,
+      "answer_len": 745,
+      "timings": {
+        "analyze_query_ms": 713.0,
+        "rewrite_query_ms": 762.1,
+        "retrieval_ms": 436.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4297.4,
+        "total_ms": 6208.9
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_006",
+      "ok": true,
+      "wall_ms": 5825.8,
+      "answer_len": 612,
+      "timings": {
+        "analyze_query_ms": 1059.9,
+        "rewrite_query_ms": 988.7,
+        "retrieval_ms": 434.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3341.8,
+        "total_ms": 5825.7
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_007",
+      "ok": true,
+      "wall_ms": 5239.7,
+      "answer_len": 748,
+      "timings": {
+        "analyze_query_ms": 793.3,
+        "rewrite_query_ms": 842.9,
+        "retrieval_ms": 434.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3169.0,
+        "total_ms": 5239.6
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_008",
+      "ok": true,
+      "wall_ms": 5864.1,
+      "answer_len": 710,
+      "timings": {
+        "analyze_query_ms": 728.8,
+        "rewrite_query_ms": 916.8,
+        "retrieval_ms": 465.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3752.9,
+        "total_ms": 5864.0
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_009",
+      "ok": true,
+      "wall_ms": 6213.9,
+      "answer_len": 683,
+      "timings": {
+        "analyze_query_ms": 724.0,
+        "rewrite_query_ms": 1161.1,
+        "retrieval_ms": 429.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3898.9,
+        "total_ms": 6213.9
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_010",
+      "ok": true,
+      "wall_ms": 5981.4,
+      "answer_len": 795,
+      "timings": {
+        "analyze_query_ms": 762.4,
+        "rewrite_query_ms": 868.2,
+        "retrieval_ms": 692.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3657.7,
+        "total_ms": 5981.3
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_001",
+      "ok": true,
+      "wall_ms": 7339.3,
+      "answer_len": 1016,
+      "timings": {
+        "analyze_query_ms": 1032.8,
+        "rewrite_query_ms": 782.5,
+        "retrieval_ms": 449.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 5074.3,
+        "total_ms": 7339.2
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_002",
+      "ok": true,
+      "wall_ms": 5649.9,
+      "answer_len": 859,
+      "timings": {
+        "analyze_query_ms": 636.2,
+        "rewrite_query_ms": 1182.2,
+        "retrieval_ms": 441.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3390.0,
+        "total_ms": 5649.9
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_003",
+      "ok": true,
+      "wall_ms": 6628.8,
+      "answer_len": 860,
+      "timings": {
+        "analyze_query_ms": 1058.7,
+        "rewrite_query_ms": 988.8,
+        "retrieval_ms": 495.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4085.5,
+        "total_ms": 6628.7
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_004",
+      "ok": true,
+      "wall_ms": 6610.4,
+      "answer_len": 736,
+      "timings": {
+        "analyze_query_ms": 931.3,
+        "rewrite_query_ms": 893.5,
+        "retrieval_ms": 448.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4336.5,
+        "total_ms": 6610.4
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_005",
+      "ok": true,
+      "wall_ms": 6829.0,
+      "answer_len": 1158,
+      "timings": {
+        "analyze_query_ms": 712.1,
+        "rewrite_query_ms": 930.9,
+        "retrieval_ms": 473.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4712.2,
+        "total_ms": 6829.0
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_006",
+      "ok": true,
+      "wall_ms": 7350.9,
+      "answer_len": 1127,
+      "timings": {
+        "analyze_query_ms": 601.7,
+        "rewrite_query_ms": 750.8,
+        "retrieval_ms": 453.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 5544.4,
+        "total_ms": 7350.9
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_007",
+      "ok": true,
+      "wall_ms": 5306.1,
+      "answer_len": 901,
+      "timings": {
+        "analyze_query_ms": 845.2,
+        "rewrite_query_ms": 688.1,
+        "retrieval_ms": 427.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3345.1,
+        "total_ms": 5306.1
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_008",
+      "ok": true,
+      "wall_ms": 6675.5,
+      "answer_len": 1055,
+      "timings": {
+        "analyze_query_ms": 754.0,
+        "rewrite_query_ms": 1001.6,
+        "retrieval_ms": 434.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4485.2,
+        "total_ms": 6675.5
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_001",
+      "ok": true,
+      "wall_ms": 5795.2,
+      "answer_len": 842,
+      "timings": {
+        "analyze_query_ms": 817.1,
+        "rewrite_query_ms": 770.9,
+        "retrieval_ms": 466.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3740.6,
+        "total_ms": 5795.2
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_002",
+      "ok": true,
+      "wall_ms": 5643.9,
+      "answer_len": 729,
+      "timings": {
+        "analyze_query_ms": 995.4,
+        "rewrite_query_ms": 912.6,
+        "retrieval_ms": 461.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3273.6,
+        "total_ms": 5643.9
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_003",
+      "ok": true,
+      "wall_ms": 5270.1,
+      "answer_len": 663,
+      "timings": {
+        "analyze_query_ms": 888.3,
+        "rewrite_query_ms": 929.8,
+        "retrieval_ms": 506.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2944.8,
+        "total_ms": 5270.1
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_004",
+      "ok": true,
+      "wall_ms": 5782.6,
+      "answer_len": 581,
+      "timings": {
+        "analyze_query_ms": 868.8,
+        "rewrite_query_ms": 1305.5,
+        "retrieval_ms": 448.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3159.2,
+        "total_ms": 5782.6
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_005",
+      "ok": true,
+      "wall_ms": 5798.8,
+      "answer_len": 675,
+      "timings": {
+        "analyze_query_ms": 734.0,
+        "rewrite_query_ms": 1086.9,
+        "retrieval_ms": 543.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3433.9,
+        "total_ms": 5798.7
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_006",
+      "ok": true,
+      "wall_ms": 4745.0,
+      "answer_len": 630,
+      "timings": {
+        "analyze_query_ms": 1208.3,
+        "rewrite_query_ms": 796.8,
+        "retrieval_ms": 448.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2291.5,
+        "total_ms": 4744.9
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_007",
+      "ok": true,
+      "wall_ms": 3966.0,
+      "answer_len": 479,
+      "timings": {
+        "analyze_query_ms": 980.1,
+        "rewrite_query_ms": 670.5,
+        "retrieval_ms": 428.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1886.8,
+        "total_ms": 3966.0
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_008",
+      "ok": true,
+      "wall_ms": 5980.9,
+      "answer_len": 737,
+      "timings": {
+        "analyze_query_ms": 1058.6,
+        "rewrite_query_ms": 755.4,
+        "retrieval_ms": 432.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3734.3,
+        "total_ms": 5980.9
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_001",
+      "ok": true,
+      "wall_ms": 5017.1,
+      "answer_len": 588,
+      "timings": {
+        "analyze_query_ms": 977.8,
+        "rewrite_query_ms": 719.3,
+        "retrieval_ms": 438.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2881.1,
+        "total_ms": 5017.1
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_002",
+      "ok": true,
+      "wall_ms": 4590.2,
+      "answer_len": 741,
+      "timings": {
+        "analyze_query_ms": 745.2,
+        "rewrite_query_ms": 716.8,
+        "retrieval_ms": 444.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2683.3,
+        "total_ms": 4590.2
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_003",
+      "ok": true,
+      "wall_ms": 4781.0,
+      "answer_len": 527,
+      "timings": {
+        "analyze_query_ms": 785.7,
+        "rewrite_query_ms": 1077.3,
+        "retrieval_ms": 415.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2502.0,
+        "total_ms": 4781.0
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_004",
+      "ok": true,
+      "wall_ms": 4007.8,
+      "answer_len": 493,
+      "timings": {
+        "analyze_query_ms": 602.2,
+        "rewrite_query_ms": 894.1,
+        "retrieval_ms": 441.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2070.0,
+        "total_ms": 4007.7
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_005",
+      "ok": true,
+      "wall_ms": 4389.5,
+      "answer_len": 658,
+      "timings": {
+        "analyze_query_ms": 715.2,
+        "rewrite_query_ms": 709.1,
+        "retrieval_ms": 433.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2531.0,
+        "total_ms": 4389.4
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_006",
+      "ok": true,
+      "wall_ms": 4191.6,
+      "answer_len": 665,
+      "timings": {
+        "analyze_query_ms": 633.1,
+        "rewrite_query_ms": 758.8,
+        "retrieval_ms": 445.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2354.1,
+        "total_ms": 4191.6
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_007",
+      "ok": true,
+      "wall_ms": 4539.3,
+      "answer_len": 722,
+      "timings": {
+        "analyze_query_ms": 879.3,
+        "rewrite_query_ms": 566.6,
+        "retrieval_ms": 473.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2619.5,
+        "total_ms": 4539.2
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_008",
+      "ok": true,
+      "wall_ms": 6385.3,
+      "answer_len": 1368,
+      "timings": {
+        "analyze_query_ms": 786.2,
+        "rewrite_query_ms": 827.5,
+        "retrieval_ms": 427.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4343.4,
+        "total_ms": 6385.3
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_001",
+      "ok": true,
+      "wall_ms": 5265.7,
+      "answer_len": 710,
+      "timings": {
+        "analyze_query_ms": 824.1,
+        "rewrite_query_ms": 858.5,
+        "retrieval_ms": 428.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3153.8,
+        "total_ms": 5265.6
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_002",
+      "ok": true,
+      "wall_ms": 4724.3,
+      "answer_len": 654,
+      "timings": {
+        "analyze_query_ms": 616.6,
+        "rewrite_query_ms": 859.6,
+        "retrieval_ms": 486.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2761.0,
+        "total_ms": 4724.3
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_003",
+      "ok": true,
+      "wall_ms": 6195.5,
+      "answer_len": 944,
+      "timings": {
+        "analyze_query_ms": 933.5,
+        "rewrite_query_ms": 701.8,
+        "retrieval_ms": 478.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4081.3,
+        "total_ms": 6195.5
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_004",
+      "ok": true,
+      "wall_ms": 9245.7,
+      "answer_len": 894,
+      "timings": {
+        "analyze_query_ms": 634.4,
+        "rewrite_query_ms": 2356.8,
+        "retrieval_ms": 1429.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4825.1,
+        "total_ms": 9245.6
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_005",
+      "ok": true,
+      "wall_ms": 5954.3,
+      "answer_len": 791,
+      "timings": {
+        "analyze_query_ms": 906.0,
+        "rewrite_query_ms": 976.2,
+        "retrieval_ms": 482.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3589.6,
+        "total_ms": 5954.3
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_006",
+      "ok": true,
+      "wall_ms": 5902.9,
+      "answer_len": 748,
+      "timings": {
+        "analyze_query_ms": 800.2,
+        "rewrite_query_ms": 846.6,
+        "retrieval_ms": 446.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3809.0,
+        "total_ms": 5902.9
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_007",
+      "ok": true,
+      "wall_ms": 8100.0,
+      "answer_len": 916,
+      "timings": {
+        "analyze_query_ms": 1987.3,
+        "rewrite_query_ms": 825.7,
+        "retrieval_ms": 760.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4525.6,
+        "total_ms": 8099.9
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dai_008",
+      "ok": true,
+      "wall_ms": 6097.6,
+      "answer_len": 902,
+      "timings": {
+        "analyze_query_ms": 696.0,
+        "rewrite_query_ms": 592.7,
+        "retrieval_ms": 476.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4332.0,
+        "total_ms": 6097.6
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "hos_001",
+      "ok": true,
+      "wall_ms": 5412.2,
+      "answer_len": 606,
+      "timings": {
+        "analyze_query_ms": 790.9,
+        "rewrite_query_ms": 640.0,
+        "retrieval_ms": 1160.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2820.0,
+        "total_ms": 5412.1
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "hos_002",
+      "ok": true,
+      "wall_ms": 4616.5,
+      "answer_len": 504,
+      "timings": {
+        "analyze_query_ms": 689.8,
+        "rewrite_query_ms": 627.5,
+        "retrieval_ms": 432.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2865.8,
+        "total_ms": 4616.4
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "hos_003",
+      "ok": true,
+      "wall_ms": 3675.8,
+      "answer_len": 405,
+      "timings": {
+        "analyze_query_ms": 644.4,
+        "rewrite_query_ms": 707.2,
+        "retrieval_ms": 437.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1886.7,
+        "total_ms": 3675.7
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "hos_004",
+      "ok": true,
+      "wall_ms": 4459.5,
+      "answer_len": 665,
+      "timings": {
+        "analyze_query_ms": 749.9,
+        "rewrite_query_ms": 705.2,
+        "retrieval_ms": 460.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2543.6,
+        "total_ms": 4459.4
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "hos_005",
+      "ok": true,
+      "wall_ms": 3579.2,
+      "answer_len": 358,
+      "timings": {
+        "analyze_query_ms": 706.5,
+        "rewrite_query_ms": 822.8,
+        "retrieval_ms": 444.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1604.8,
+        "total_ms": 3579.1
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "unk_001",
+      "ok": true,
+      "wall_ms": 5484.4,
+      "answer_len": 772,
+      "timings": {
+        "analyze_query_ms": 587.9,
+        "rewrite_query_ms": 804.0,
+        "retrieval_ms": 491.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3601.1,
+        "total_ms": 5484.4
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "unk_002",
+      "ok": true,
+      "wall_ms": 5622.1,
+      "answer_len": 854,
+      "timings": {
+        "analyze_query_ms": 903.7,
+        "rewrite_query_ms": 625.3,
+        "retrieval_ms": 464.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3628.5,
+        "total_ms": 5622.1
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "unk_003",
+      "ok": true,
+      "wall_ms": 6659.8,
+      "answer_len": 991,
+      "timings": {
+        "analyze_query_ms": 830.4,
+        "rewrite_query_ms": 980.8,
+        "retrieval_ms": 477.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4370.6,
+        "total_ms": 6659.8
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "unk_004",
+      "ok": true,
+      "wall_ms": 4382.5,
+      "answer_len": 560,
+      "timings": {
+        "analyze_query_ms": 977.9,
+        "rewrite_query_ms": 711.2,
+        "retrieval_ms": 477.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2215.7,
+        "total_ms": 4382.5
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "unk_005",
+      "ok": true,
+      "wall_ms": 11065.1,
+      "answer_len": 1098,
+      "timings": {
+        "analyze_query_ms": 744.8,
+        "rewrite_query_ms": 823.2,
+        "retrieval_ms": 693.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 8803.4,
+        "total_ms": 11065.1
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pha_001",
+      "ok": true,
+      "wall_ms": 4074.2,
+      "answer_len": 531,
+      "timings": {
+        "analyze_query_ms": 644.4,
+        "rewrite_query_ms": 675.0,
+        "retrieval_ms": 495.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2258.5,
+        "total_ms": 4074.1
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pha_002",
+      "ok": true,
+      "wall_ms": 4460.1,
+      "answer_len": 573,
+      "timings": {
+        "analyze_query_ms": 659.6,
+        "rewrite_query_ms": 1100.3,
+        "retrieval_ms": 459.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2240.2,
+        "total_ms": 4460.0
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pha_003",
+      "ok": true,
+      "wall_ms": 4131.8,
+      "answer_len": 329,
+      "timings": {
+        "analyze_query_ms": 699.5,
+        "rewrite_query_ms": 1449.5,
+        "retrieval_ms": 452.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1529.7,
+        "total_ms": 4131.8
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pha_004",
+      "ok": true,
+      "wall_ms": 5273.4,
+      "answer_len": 1002,
+      "timings": {
+        "analyze_query_ms": 891.5,
+        "rewrite_query_ms": 655.7,
+        "retrieval_ms": 430.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3294.8,
+        "total_ms": 5273.3
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pha_005",
+      "ok": true,
+      "wall_ms": 5102.4,
+      "answer_len": 904,
+      "timings": {
+        "analyze_query_ms": 762.9,
+        "rewrite_query_ms": 697.5,
+        "retrieval_ms": 422.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3219.0,
+        "total_ms": 5102.4
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pha_006",
+      "ok": true,
+      "wall_ms": 5294.5,
+      "answer_len": 1045,
+      "timings": {
+        "analyze_query_ms": 682.9,
+        "rewrite_query_ms": 630.8,
+        "retrieval_ms": 428.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3552.1,
+        "total_ms": 5294.5
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 5277.9,
+      "answer_len": 755,
+      "timings": {
+        "analyze_query_ms": 654.1,
+        "rewrite_query_ms": 1035.0,
+        "retrieval_ms": 437.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3151.4,
+        "total_ms": 5277.9
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 6433.9,
+      "answer_len": 914,
+      "timings": {
+        "analyze_query_ms": 664.8,
+        "rewrite_query_ms": 1376.5,
+        "retrieval_ms": 440.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3952.2,
+        "total_ms": 6433.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 5925.1,
+      "answer_len": 618,
+      "timings": {
+        "analyze_query_ms": 1006.9,
+        "rewrite_query_ms": 1086.0,
+        "retrieval_ms": 734.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3097.2,
+        "total_ms": 5925.1
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_004",
+      "ok": true,
+      "wall_ms": 5028.6,
+      "answer_len": 788,
+      "timings": {
+        "analyze_query_ms": 893.2,
+        "rewrite_query_ms": 877.5,
+        "retrieval_ms": 572.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2685.2,
+        "total_ms": 5028.5
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_005",
+      "ok": true,
+      "wall_ms": 6264.8,
+      "answer_len": 750,
+      "timings": {
+        "analyze_query_ms": 821.7,
+        "rewrite_query_ms": 1086.5,
+        "retrieval_ms": 415.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3940.2,
+        "total_ms": 6264.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_006",
+      "ok": true,
+      "wall_ms": 4796.3,
+      "answer_len": 663,
+      "timings": {
+        "analyze_query_ms": 619.4,
+        "rewrite_query_ms": 864.3,
+        "retrieval_ms": 429.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2883.0,
+        "total_ms": 4796.3
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_007",
+      "ok": true,
+      "wall_ms": 5810.4,
+      "answer_len": 871,
+      "timings": {
+        "analyze_query_ms": 780.2,
+        "rewrite_query_ms": 724.2,
+        "retrieval_ms": 430.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3875.2,
+        "total_ms": 5810.3
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_008",
+      "ok": true,
+      "wall_ms": 5076.2,
+      "answer_len": 705,
+      "timings": {
+        "analyze_query_ms": 629.6,
+        "rewrite_query_ms": 914.0,
+        "retrieval_ms": 443.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3088.3,
+        "total_ms": 5076.1
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_009",
+      "ok": true,
+      "wall_ms": 6378.8,
+      "answer_len": 852,
+      "timings": {
+        "analyze_query_ms": 1496.4,
+        "rewrite_query_ms": 668.6,
+        "retrieval_ms": 450.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3763.1,
+        "total_ms": 6378.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_010",
+      "ok": true,
+      "wall_ms": 5639.2,
+      "answer_len": 950,
+      "timings": {
+        "analyze_query_ms": 691.4,
+        "rewrite_query_ms": 938.4,
+        "retrieval_ms": 426.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3583.0,
+        "total_ms": 5639.2
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_001",
+      "ok": true,
+      "wall_ms": 5418.7,
+      "answer_len": 790,
+      "timings": {
+        "analyze_query_ms": 897.6,
+        "rewrite_query_ms": 890.6,
+        "retrieval_ms": 444.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3186.0,
+        "total_ms": 5418.7
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_002",
+      "ok": true,
+      "wall_ms": 6564.4,
+      "answer_len": 960,
+      "timings": {
+        "analyze_query_ms": 934.5,
+        "rewrite_query_ms": 1284.7,
+        "retrieval_ms": 469.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3875.6,
+        "total_ms": 6564.3
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_003",
+      "ok": true,
+      "wall_ms": 6270.5,
+      "answer_len": 908,
+      "timings": {
+        "analyze_query_ms": 903.1,
+        "rewrite_query_ms": 901.0,
+        "retrieval_ms": 476.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3990.0,
+        "total_ms": 6270.5
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_004",
+      "ok": true,
+      "wall_ms": 6339.7,
+      "answer_len": 972,
+      "timings": {
+        "analyze_query_ms": 801.8,
+        "rewrite_query_ms": 767.0,
+        "retrieval_ms": 445.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4325.3,
+        "total_ms": 6339.7
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_005",
+      "ok": true,
+      "wall_ms": 7287.6,
+      "answer_len": 1224,
+      "timings": {
+        "analyze_query_ms": 1229.3,
+        "rewrite_query_ms": 738.1,
+        "retrieval_ms": 421.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4898.8,
+        "total_ms": 7287.6
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_006",
+      "ok": true,
+      "wall_ms": 6397.4,
+      "answer_len": 1012,
+      "timings": {
+        "analyze_query_ms": 824.6,
+        "rewrite_query_ms": 754.4,
+        "retrieval_ms": 444.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4373.6,
+        "total_ms": 6397.3
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_007",
+      "ok": true,
+      "wall_ms": 5751.1,
+      "answer_len": 906,
+      "timings": {
+        "analyze_query_ms": 891.0,
+        "rewrite_query_ms": 1015.4,
+        "retrieval_ms": 477.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3367.0,
+        "total_ms": 5751.1
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_008",
+      "ok": true,
+      "wall_ms": 6690.6,
+      "answer_len": 1092,
+      "timings": {
+        "analyze_query_ms": 914.0,
+        "rewrite_query_ms": 725.4,
+        "retrieval_ms": 488.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4561.9,
+        "total_ms": 6690.5
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_001",
+      "ok": true,
+      "wall_ms": 5277.4,
+      "answer_len": 861,
+      "timings": {
+        "analyze_query_ms": 703.3,
+        "rewrite_query_ms": 789.7,
+        "retrieval_ms": 463.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3320.4,
+        "total_ms": 5277.3
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_002",
+      "ok": true,
+      "wall_ms": 4687.1,
+      "answer_len": 526,
+      "timings": {
+        "analyze_query_ms": 867.8,
+        "rewrite_query_ms": 790.0,
+        "retrieval_ms": 685.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2343.5,
+        "total_ms": 4687.1
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_003",
+      "ok": true,
+      "wall_ms": 11395.4,
+      "answer_len": 666,
+      "timings": {
+        "analyze_query_ms": 7605.9,
+        "rewrite_query_ms": 796.5,
+        "retrieval_ms": 464.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2528.1,
+        "total_ms": 11395.3
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_004",
+      "ok": true,
+      "wall_ms": 4464.3,
+      "answer_len": 579,
+      "timings": {
+        "analyze_query_ms": 847.5,
+        "rewrite_query_ms": 955.9,
+        "retrieval_ms": 442.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2218.4,
+        "total_ms": 4464.2
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_005",
+      "ok": true,
+      "wall_ms": 6551.7,
+      "answer_len": 831,
+      "timings": {
+        "analyze_query_ms": 1295.5,
+        "rewrite_query_ms": 878.5,
+        "retrieval_ms": 435.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3941.9,
+        "total_ms": 6551.7
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_006",
+      "ok": true,
+      "wall_ms": 4107.4,
+      "answer_len": 665,
+      "timings": {
+        "analyze_query_ms": 668.0,
+        "rewrite_query_ms": 756.9,
+        "retrieval_ms": 434.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2247.8,
+        "total_ms": 4107.3
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_007",
+      "ok": true,
+      "wall_ms": 4301.6,
+      "answer_len": 511,
+      "timings": {
+        "analyze_query_ms": 663.2,
+        "rewrite_query_ms": 1074.0,
+        "retrieval_ms": 471.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2093.0,
+        "total_ms": 4301.6
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_008",
+      "ok": true,
+      "wall_ms": 4940.1,
+      "answer_len": 631,
+      "timings": {
+        "analyze_query_ms": 690.0,
+        "rewrite_query_ms": 834.5,
+        "retrieval_ms": 448.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2967.1,
+        "total_ms": 4940.0
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_001",
+      "ok": true,
+      "wall_ms": 4798.5,
+      "answer_len": 585,
+      "timings": {
+        "analyze_query_ms": 969.6,
+        "rewrite_query_ms": 817.7,
+        "retrieval_ms": 441.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2568.9,
+        "total_ms": 4798.4
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_002",
+      "ok": true,
+      "wall_ms": 4593.6,
+      "answer_len": 625,
+      "timings": {
+        "analyze_query_ms": 863.3,
+        "rewrite_query_ms": 883.1,
+        "retrieval_ms": 417.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2429.6,
+        "total_ms": 4593.6
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_003",
+      "ok": true,
+      "wall_ms": 5012.0,
+      "answer_len": 597,
+      "timings": {
+        "analyze_query_ms": 626.6,
+        "rewrite_query_ms": 1549.6,
+        "retrieval_ms": 484.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2351.0,
+        "total_ms": 5012.0
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_004",
+      "ok": true,
+      "wall_ms": 5197.0,
+      "answer_len": 569,
+      "timings": {
+        "analyze_query_ms": 728.4,
+        "rewrite_query_ms": 792.7,
+        "retrieval_ms": 430.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3245.4,
+        "total_ms": 5196.9
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_005",
+      "ok": true,
+      "wall_ms": 5182.6,
+      "answer_len": 614,
+      "timings": {
+        "analyze_query_ms": 1329.8,
+        "rewrite_query_ms": 1279.5,
+        "retrieval_ms": 448.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2124.7,
+        "total_ms": 5182.6
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_006",
+      "ok": true,
+      "wall_ms": 4130.9,
+      "answer_len": 640,
+      "timings": {
+        "analyze_query_ms": 591.4,
+        "rewrite_query_ms": 815.3,
+        "retrieval_ms": 441.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2282.3,
+        "total_ms": 4130.9
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_007",
+      "ok": true,
+      "wall_ms": 5081.5,
+      "answer_len": 584,
+      "timings": {
+        "analyze_query_ms": 952.0,
+        "rewrite_query_ms": 825.2,
+        "retrieval_ms": 424.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2879.7,
+        "total_ms": 5081.5
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_008",
+      "ok": true,
+      "wall_ms": 6129.4,
+      "answer_len": 1634,
+      "timings": {
+        "analyze_query_ms": 659.0,
+        "rewrite_query_ms": 645.4,
+        "retrieval_ms": 427.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4397.5,
+        "total_ms": 6129.3
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_001",
+      "ok": true,
+      "wall_ms": 7706.4,
+      "answer_len": 937,
+      "timings": {
+        "analyze_query_ms": 906.9,
+        "rewrite_query_ms": 2465.2,
+        "retrieval_ms": 432.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3901.7,
+        "total_ms": 7706.4
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_002",
+      "ok": true,
+      "wall_ms": 5214.5,
+      "answer_len": 816,
+      "timings": {
+        "analyze_query_ms": 716.1,
+        "rewrite_query_ms": 812.1,
+        "retrieval_ms": 441.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3243.9,
+        "total_ms": 5214.4
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_003",
+      "ok": true,
+      "wall_ms": 6035.9,
+      "answer_len": 907,
+      "timings": {
+        "analyze_query_ms": 1034.4,
+        "rewrite_query_ms": 679.8,
+        "retrieval_ms": 440.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3880.6,
+        "total_ms": 6035.8
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_004",
+      "ok": true,
+      "wall_ms": 6256.0,
+      "answer_len": 1046,
+      "timings": {
+        "analyze_query_ms": 933.5,
+        "rewrite_query_ms": 830.8,
+        "retrieval_ms": 445.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4045.6,
+        "total_ms": 6255.9
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_005",
+      "ok": true,
+      "wall_ms": 4922.7,
+      "answer_len": 596,
+      "timings": {
+        "analyze_query_ms": 595.7,
+        "rewrite_query_ms": 1281.4,
+        "retrieval_ms": 475.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2569.8,
+        "total_ms": 4922.7
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_006",
+      "ok": true,
+      "wall_ms": 5415.7,
+      "answer_len": 749,
+      "timings": {
+        "analyze_query_ms": 973.4,
+        "rewrite_query_ms": 595.9,
+        "retrieval_ms": 440.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3405.6,
+        "total_ms": 5415.6
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_007",
+      "ok": true,
+      "wall_ms": 11362.3,
+      "answer_len": 949,
+      "timings": {
+        "analyze_query_ms": 699.1,
+        "rewrite_query_ms": 757.3,
+        "retrieval_ms": 436.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 9468.9,
+        "total_ms": 11362.3
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dai_008",
+      "ok": true,
+      "wall_ms": 4975.9,
+      "answer_len": 835,
+      "timings": {
+        "analyze_query_ms": 654.8,
+        "rewrite_query_ms": 717.3,
+        "retrieval_ms": 468.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3135.3,
+        "total_ms": 4975.8
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "hos_001",
+      "ok": true,
+      "wall_ms": 4807.3,
+      "answer_len": 566,
+      "timings": {
+        "analyze_query_ms": 1098.6,
+        "rewrite_query_ms": 905.7,
+        "retrieval_ms": 445.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2356.8,
+        "total_ms": 4807.2
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "hos_002",
+      "ok": true,
+      "wall_ms": 3748.6,
+      "answer_len": 378,
+      "timings": {
+        "analyze_query_ms": 656.0,
+        "rewrite_query_ms": 786.2,
+        "retrieval_ms": 435.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1870.1,
+        "total_ms": 3748.5
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "hos_003",
+      "ok": true,
+      "wall_ms": 3399.4,
+      "answer_len": 340,
+      "timings": {
+        "analyze_query_ms": 613.2,
+        "rewrite_query_ms": 588.5,
+        "retrieval_ms": 439.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1757.7,
+        "total_ms": 3399.3
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "hos_004",
+      "ok": true,
+      "wall_ms": 4917.7,
+      "answer_len": 672,
+      "timings": {
+        "analyze_query_ms": 981.8,
+        "rewrite_query_ms": 843.5,
+        "retrieval_ms": 441.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2650.6,
+        "total_ms": 4917.7
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "hos_005",
+      "ok": true,
+      "wall_ms": 5502.0,
+      "answer_len": 779,
+      "timings": {
+        "analyze_query_ms": 1559.0,
+        "rewrite_query_ms": 894.7,
+        "retrieval_ms": 469.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2578.6,
+        "total_ms": 5501.9
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "unk_001",
+      "ok": true,
+      "wall_ms": 4631.7,
+      "answer_len": 587,
+      "timings": {
+        "analyze_query_ms": 774.8,
+        "rewrite_query_ms": 758.1,
+        "retrieval_ms": 676.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2421.8,
+        "total_ms": 4631.7
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "unk_002",
+      "ok": true,
+      "wall_ms": 5554.3,
+      "answer_len": 766,
+      "timings": {
+        "analyze_query_ms": 750.5,
+        "rewrite_query_ms": 1066.2,
+        "retrieval_ms": 441.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3295.6,
+        "total_ms": 5554.2
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "unk_003",
+      "ok": true,
+      "wall_ms": 6429.1,
+      "answer_len": 936,
+      "timings": {
+        "analyze_query_ms": 1028.6,
+        "rewrite_query_ms": 730.8,
+        "retrieval_ms": 527.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4142.3,
+        "total_ms": 6429.0
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "unk_004",
+      "ok": true,
+      "wall_ms": 5656.8,
+      "answer_len": 608,
+      "timings": {
+        "analyze_query_ms": 1331.7,
+        "rewrite_query_ms": 996.6,
+        "retrieval_ms": 821.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2507.0,
+        "total_ms": 5656.8
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "unk_005",
+      "ok": true,
+      "wall_ms": 6043.8,
+      "answer_len": 1054,
+      "timings": {
+        "analyze_query_ms": 734.7,
+        "rewrite_query_ms": 759.0,
+        "retrieval_ms": 587.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3961.8,
+        "total_ms": 6043.7
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pha_001",
+      "ok": true,
+      "wall_ms": 6278.3,
+      "answer_len": 1003,
+      "timings": {
+        "analyze_query_ms": 686.5,
+        "rewrite_query_ms": 904.7,
+        "retrieval_ms": 508.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4178.2,
+        "total_ms": 6278.3
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pha_002",
+      "ok": true,
+      "wall_ms": 4446.6,
+      "answer_len": 528,
+      "timings": {
+        "analyze_query_ms": 717.2,
+        "rewrite_query_ms": 940.3,
+        "retrieval_ms": 462.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2325.3,
+        "total_ms": 4446.5
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pha_003",
+      "ok": true,
+      "wall_ms": 4360.6,
+      "answer_len": 351,
+      "timings": {
+        "analyze_query_ms": 643.4,
+        "rewrite_query_ms": 911.4,
+        "retrieval_ms": 886.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1918.4,
+        "total_ms": 4360.5
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pha_004",
+      "ok": true,
+      "wall_ms": 4574.2,
+      "answer_len": 485,
+      "timings": {
+        "analyze_query_ms": 705.8,
+        "rewrite_query_ms": 986.1,
+        "retrieval_ms": 848.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2033.9,
+        "total_ms": 4574.2
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pha_005",
+      "ok": true,
+      "wall_ms": 5233.8,
+      "answer_len": 965,
+      "timings": {
+        "analyze_query_ms": 695.6,
+        "rewrite_query_ms": 751.1,
+        "retrieval_ms": 608.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3178.5,
+        "total_ms": 5233.8
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pha_006",
+      "ok": true,
+      "wall_ms": 7648.6,
+      "answer_len": 1015,
+      "timings": {
+        "analyze_query_ms": 822.5,
+        "rewrite_query_ms": 769.0,
+        "retrieval_ms": 457.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 5599.2,
+        "total_ms": 7648.5
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 5463.4,
+      "answer_len": 700,
+      "timings": {
+        "analyze_query_ms": 765.9,
+        "rewrite_query_ms": 1105.3,
+        "retrieval_ms": 456.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3135.6,
+        "total_ms": 5463.3
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 5362.1,
+      "answer_len": 807,
+      "timings": {
+        "analyze_query_ms": 818.0,
+        "rewrite_query_ms": 1306.7,
+        "retrieval_ms": 595.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2641.4,
+        "total_ms": 5362.1
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 5271.6,
+      "answer_len": 721,
+      "timings": {
+        "analyze_query_ms": 705.6,
+        "rewrite_query_ms": 878.5,
+        "retrieval_ms": 459.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3227.3,
+        "total_ms": 5271.6
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_004",
+      "ok": true,
+      "wall_ms": 4905.2,
+      "answer_len": 696,
+      "timings": {
+        "analyze_query_ms": 728.5,
+        "rewrite_query_ms": 927.0,
+        "retrieval_ms": 467.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2782.0,
+        "total_ms": 4905.1
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_005",
+      "ok": true,
+      "wall_ms": 5439.6,
+      "answer_len": 690,
+      "timings": {
+        "analyze_query_ms": 659.5,
+        "rewrite_query_ms": 904.0,
+        "retrieval_ms": 451.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3424.5,
+        "total_ms": 5439.6
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_006",
+      "ok": true,
+      "wall_ms": 4755.7,
+      "answer_len": 609,
+      "timings": {
+        "analyze_query_ms": 599.2,
+        "rewrite_query_ms": 749.9,
+        "retrieval_ms": 474.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2931.6,
+        "total_ms": 4755.7
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_007",
+      "ok": true,
+      "wall_ms": 5986.7,
+      "answer_len": 921,
+      "timings": {
+        "analyze_query_ms": 650.1,
+        "rewrite_query_ms": 871.2,
+        "retrieval_ms": 907.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3557.0,
+        "total_ms": 5986.7
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_008",
+      "ok": true,
+      "wall_ms": 5481.3,
+      "answer_len": 681,
+      "timings": {
+        "analyze_query_ms": 952.2,
+        "rewrite_query_ms": 1041.5,
+        "retrieval_ms": 529.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2958.1,
+        "total_ms": 5481.2
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_009",
+      "ok": true,
+      "wall_ms": 10755.7,
+      "answer_len": 753,
+      "timings": {
+        "analyze_query_ms": 699.5,
+        "rewrite_query_ms": 6432.0,
+        "retrieval_ms": 486.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3137.5,
+        "total_ms": 10755.6
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "med_010",
+      "ok": true,
+      "wall_ms": 4936.5,
+      "answer_len": 762,
+      "timings": {
+        "analyze_query_ms": 701.9,
+        "rewrite_query_ms": 646.0,
+        "retrieval_ms": 463.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3124.6,
+        "total_ms": 4936.4
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_001",
+      "ok": true,
+      "wall_ms": 6848.2,
+      "answer_len": 848,
+      "timings": {
+        "analyze_query_ms": 644.0,
+        "rewrite_query_ms": 622.2,
+        "retrieval_ms": 450.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 5130.9,
+        "total_ms": 6848.2
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_002",
+      "ok": true,
+      "wall_ms": 5528.1,
+      "answer_len": 907,
+      "timings": {
+        "analyze_query_ms": 588.4,
+        "rewrite_query_ms": 1196.1,
+        "retrieval_ms": 443.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3299.4,
+        "total_ms": 5528.0
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_003",
+      "ok": true,
+      "wall_ms": 6351.7,
+      "answer_len": 1018,
+      "timings": {
+        "analyze_query_ms": 788.1,
+        "rewrite_query_ms": 787.4,
+        "retrieval_ms": 445.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4330.5,
+        "total_ms": 6351.7
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_004",
+      "ok": true,
+      "wall_ms": 5913.9,
+      "answer_len": 844,
+      "timings": {
+        "analyze_query_ms": 580.3,
+        "rewrite_query_ms": 883.6,
+        "retrieval_ms": 434.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4015.1,
+        "total_ms": 5913.9
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_005",
+      "ok": true,
+      "wall_ms": 8057.3,
+      "answer_len": 1270,
+      "timings": {
+        "analyze_query_ms": 1193.3,
+        "rewrite_query_ms": 998.4,
+        "retrieval_ms": 442.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 5422.9,
+        "total_ms": 8057.3
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_006",
+      "ok": true,
+      "wall_ms": 6786.2,
+      "answer_len": 1188,
+      "timings": {
+        "analyze_query_ms": 726.3,
+        "rewrite_query_ms": 938.4,
+        "retrieval_ms": 455.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4665.6,
+        "total_ms": 6786.2
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_007",
+      "ok": true,
+      "wall_ms": 5104.0,
+      "answer_len": 792,
+      "timings": {
+        "analyze_query_ms": 796.7,
+        "rewrite_query_ms": 1041.2,
+        "retrieval_ms": 511.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2754.0,
+        "total_ms": 5104.0
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dev_008",
+      "ok": true,
+      "wall_ms": 6934.8,
+      "answer_len": 995,
+      "timings": {
+        "analyze_query_ms": 1144.2,
+        "rewrite_query_ms": 822.8,
+        "retrieval_ms": 476.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4490.7,
+        "total_ms": 6934.8
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_001",
+      "ok": true,
+      "wall_ms": 6303.5,
+      "answer_len": 816,
+      "timings": {
+        "analyze_query_ms": 814.5,
+        "rewrite_query_ms": 639.8,
+        "retrieval_ms": 453.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4395.0,
+        "total_ms": 6303.5
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_002",
+      "ok": true,
+      "wall_ms": 4699.9,
+      "answer_len": 629,
+      "timings": {
+        "analyze_query_ms": 859.9,
+        "rewrite_query_ms": 739.0,
+        "retrieval_ms": 449.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2651.2,
+        "total_ms": 4699.8
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_003",
+      "ok": true,
+      "wall_ms": 6632.6,
+      "answer_len": 560,
+      "timings": {
+        "analyze_query_ms": 961.7,
+        "rewrite_query_ms": 1770.4,
+        "retrieval_ms": 941.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2958.3,
+        "total_ms": 6632.5
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_004",
+      "ok": true,
+      "wall_ms": 6024.4,
+      "answer_len": 652,
+      "timings": {
+        "analyze_query_ms": 1267.9,
+        "rewrite_query_ms": 1727.0,
+        "retrieval_ms": 465.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2563.6,
+        "total_ms": 6024.4
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_005",
+      "ok": true,
+      "wall_ms": 9316.5,
+      "answer_len": 665,
+      "timings": {
+        "analyze_query_ms": 984.6,
+        "rewrite_query_ms": 942.8,
+        "retrieval_ms": 1238.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 6150.5,
+        "total_ms": 9316.5
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_006",
+      "ok": true,
+      "wall_ms": 4785.6,
+      "answer_len": 673,
+      "timings": {
+        "analyze_query_ms": 614.0,
+        "rewrite_query_ms": 850.4,
+        "retrieval_ms": 455.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2865.2,
+        "total_ms": 4785.5
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_007",
+      "ok": true,
+      "wall_ms": 5107.0,
+      "answer_len": 531,
+      "timings": {
+        "analyze_query_ms": 1237.2,
+        "rewrite_query_ms": 1215.4,
+        "retrieval_ms": 500.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2153.3,
+        "total_ms": 5107.0
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "vac_008",
+      "ok": true,
+      "wall_ms": 5027.0,
+      "answer_len": 682,
+      "timings": {
+        "analyze_query_ms": 841.1,
+        "rewrite_query_ms": 751.7,
+        "retrieval_ms": 448.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2985.5,
+        "total_ms": 5027.0
+      },
+      "intent": "vaccination",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_001",
+      "ok": true,
+      "wall_ms": 3968.7,
+      "answer_len": 588,
+      "timings": {
+        "analyze_query_ms": 797.7,
+        "rewrite_query_ms": 552.5,
+        "retrieval_ms": 465.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2152.2,
+        "total_ms": 3968.7
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_002",
+      "ok": true,
+      "wall_ms": 4231.0,
+      "answer_len": 661,
+      "timings": {
+        "analyze_query_ms": 612.0,
+        "rewrite_query_ms": 792.3,
+        "retrieval_ms": 438.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2388.1,
+        "total_ms": 4231.0
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_003",
+      "ok": true,
+      "wall_ms": 4740.2,
+      "answer_len": 652,
+      "timings": {
+        "analyze_query_ms": 671.2,
+        "rewrite_query_ms": 786.5,
+        "retrieval_ms": 454.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2828.1,
+        "total_ms": 4740.1
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_004",
+      "ok": true,
+      "wall_ms": 4225.6,
+      "answer_len": 545,
+      "timings": {
+        "analyze_query_ms": 604.0,
+        "rewrite_query_ms": 830.5,
+        "retrieval_ms": 863.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1927.8,
+        "total_ms": 4225.6
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_005",
+      "ok": true,
+      "wall_ms": 4433.1,
+      "answer_len": 603,
+      "timings": {
+        "analyze_query_ms": 949.8,
+        "rewrite_query_ms": 583.3,
+        "retrieval_ms": 465.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2434.1,
+        "total_ms": 4433.1
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_006",
+      "ok": true,
+      "wall_ms": 4246.9,
+      "answer_len": 602,
+      "timings": {
+        "analyze_query_ms": 682.3,
+        "rewrite_query_ms": 749.8,
+        "retrieval_ms": 441.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2373.4,
+        "total_ms": 4246.9
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_007",
+      "ok": true,
+      "wall_ms": 4693.9,
+      "answer_len": 643,
+      "timings": {
+        "analyze_query_ms": 908.6,
+        "rewrite_query_ms": 888.7,
+        "retrieval_ms": 480.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2415.9,
+        "total_ms": 4693.8
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pol_008",
+      "ok": true,
+      "wall_ms": 6279.1,
+      "answer_len": 1028,
+      "timings": {
+        "analyze_query_ms": 696.6,
+        "rewrite_query_ms": 1246.0,
+        "retrieval_ms": 487.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3848.7,
+        "total_ms": 6279.0
+      },
+      "intent": "policy",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_001",
+      "ok": true,
+      "wall_ms": 5632.0,
+      "answer_len": 824,
+      "timings": {
+        "analyze_query_ms": 637.5,
+        "rewrite_query_ms": 898.9,
+        "retrieval_ms": 445.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3649.5,
+        "total_ms": 5632.0
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_002",
+      "ok": true,
+      "wall_ms": 5200.2,
+      "answer_len": 692,
+      "timings": {
+        "analyze_query_ms": 625.1,
+        "rewrite_query_ms": 1062.2,
+        "retrieval_ms": 448.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3063.8,
+        "total_ms": 5200.1
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_003",
+      "ok": true,
+      "wall_ms": 6438.2,
+      "answer_len": 990,
+      "timings": {
+        "analyze_query_ms": 800.2,
+        "rewrite_query_ms": 678.3,
+        "retrieval_ms": 451.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4507.4,
+        "total_ms": 6438.1
+      },
+      "intent": "development",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_004",
+      "ok": true,
+      "wall_ms": 5596.6,
+      "answer_len": 919,
+      "timings": {
+        "analyze_query_ms": 676.2,
+        "rewrite_query_ms": 992.8,
+        "retrieval_ms": 453.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3473.8,
+        "total_ms": 5596.5
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_005",
+      "ok": true,
+      "wall_ms": 4549.3,
+      "answer_len": 643,
+      "timings": {
+        "analyze_query_ms": 627.2,
+        "rewrite_query_ms": 694.0,
+        "retrieval_ms": 461.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2766.5,
+        "total_ms": 4549.3
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_006",
+      "ok": true,
+      "wall_ms": 5400.3,
+      "answer_len": 708,
+      "timings": {
+        "analyze_query_ms": 659.5,
+        "rewrite_query_ms": 716.3,
+        "retrieval_ms": 604.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3420.1,
+        "total_ms": 5400.2
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_007",
+      "ok": true,
+      "wall_ms": 6218.5,
+      "answer_len": 855,
+      "timings": {
+        "analyze_query_ms": 717.1,
+        "rewrite_query_ms": 1150.0,
+        "retrieval_ms": 573.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3777.7,
+        "total_ms": 6218.4
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "dai_008",
+      "ok": true,
+      "wall_ms": 6369.3,
+      "answer_len": 1104,
+      "timings": {
+        "analyze_query_ms": 829.4,
+        "rewrite_query_ms": 714.4,
+        "retrieval_ms": 483.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4341.4,
+        "total_ms": 6369.3
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "hos_001",
+      "ok": true,
+      "wall_ms": 5510.9,
+      "answer_len": 495,
+      "timings": {
+        "analyze_query_ms": 689.1,
+        "rewrite_query_ms": 1440.0,
+        "retrieval_ms": 436.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2944.4,
+        "total_ms": 5510.8
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "hos_002",
+      "ok": true,
+      "wall_ms": 4263.4,
+      "answer_len": 417,
+      "timings": {
+        "analyze_query_ms": 880.6,
+        "rewrite_query_ms": 630.8,
+        "retrieval_ms": 603.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2148.0,
+        "total_ms": 4263.3
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "hos_003",
+      "ok": true,
+      "wall_ms": 4631.1,
+      "answer_len": 452,
+      "timings": {
+        "analyze_query_ms": 896.4,
+        "rewrite_query_ms": 934.3,
+        "retrieval_ms": 634.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2166.0,
+        "total_ms": 4631.1
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "hos_004",
+      "ok": true,
+      "wall_ms": 4877.1,
+      "answer_len": 748,
+      "timings": {
+        "analyze_query_ms": 667.4,
+        "rewrite_query_ms": 1017.1,
+        "retrieval_ms": 469.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2722.3,
+        "total_ms": 4877.0
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "hos_005",
+      "ok": true,
+      "wall_ms": 4574.9,
+      "answer_len": 675,
+      "timings": {
+        "analyze_query_ms": 656.2,
+        "rewrite_query_ms": 895.8,
+        "retrieval_ms": 891.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2130.9,
+        "total_ms": 4574.8
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "unk_001",
+      "ok": true,
+      "wall_ms": 4568.8,
+      "answer_len": 613,
+      "timings": {
+        "analyze_query_ms": 642.6,
+        "rewrite_query_ms": 627.2,
+        "retrieval_ms": 444.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2853.9,
+        "total_ms": 4568.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "unk_002",
+      "ok": true,
+      "wall_ms": 4991.0,
+      "answer_len": 639,
+      "timings": {
+        "analyze_query_ms": 718.3,
+        "rewrite_query_ms": 695.4,
+        "retrieval_ms": 697.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2879.6,
+        "total_ms": 4991.0
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "unk_003",
+      "ok": true,
+      "wall_ms": 5397.5,
+      "answer_len": 900,
+      "timings": {
+        "analyze_query_ms": 656.2,
+        "rewrite_query_ms": 750.2,
+        "retrieval_ms": 438.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3552.8,
+        "total_ms": 5397.5
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "unk_004",
+      "ok": true,
+      "wall_ms": 4735.0,
+      "answer_len": 561,
+      "timings": {
+        "analyze_query_ms": 816.1,
+        "rewrite_query_ms": 967.7,
+        "retrieval_ms": 424.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2526.0,
+        "total_ms": 4734.9
+      },
+      "intent": "daily_parenting",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "unk_005",
+      "ok": true,
+      "wall_ms": 6349.9,
+      "answer_len": 1098,
+      "timings": {
+        "analyze_query_ms": 615.3,
+        "rewrite_query_ms": 1039.7,
+        "retrieval_ms": 445.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4249.0,
+        "total_ms": 6349.8
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pha_001",
+      "ok": true,
+      "wall_ms": 4005.0,
+      "answer_len": 488,
+      "timings": {
+        "analyze_query_ms": 651.6,
+        "rewrite_query_ms": 723.1,
+        "retrieval_ms": 591.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2038.4,
+        "total_ms": 4004.9
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pha_002",
+      "ok": true,
+      "wall_ms": 7138.2,
+      "answer_len": 620,
+      "timings": {
+        "analyze_query_ms": 646.5,
+        "rewrite_query_ms": 1281.1,
+        "retrieval_ms": 464.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4745.4,
+        "total_ms": 7138.1
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pha_003",
+      "ok": true,
+      "wall_ms": 3423.8,
+      "answer_len": 292,
+      "timings": {
+        "analyze_query_ms": 654.8,
+        "rewrite_query_ms": 762.2,
+        "retrieval_ms": 490.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 1516.0,
+        "total_ms": 3423.7
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pha_004",
+      "ok": true,
+      "wall_ms": 4969.4,
+      "answer_len": 650,
+      "timings": {
+        "analyze_query_ms": 694.4,
+        "rewrite_query_ms": 1137.7,
+        "retrieval_ms": 443.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2693.8,
+        "total_ms": 4969.4
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pha_005",
+      "ok": true,
+      "wall_ms": 4787.6,
+      "answer_len": 708,
+      "timings": {
+        "analyze_query_ms": 623.4,
+        "rewrite_query_ms": 805.4,
+        "retrieval_ms": 512.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2845.6,
+        "total_ms": 4787.5
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    },
+    {
+      "id": "pha_006",
+      "ok": true,
+      "wall_ms": 4274.4,
+      "answer_len": 663,
+      "timings": {
+        "analyze_query_ms": 628.5,
+        "rewrite_query_ms": 830.1,
+        "retrieval_ms": 460.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2354.4,
+        "total_ms": 4274.4
+      },
+      "intent": "hospital_locator",
+      "model": "gpt-5.4-mini",
+      "round": 3
+    }
+  ]
+}
