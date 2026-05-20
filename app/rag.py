@@ -3,6 +3,7 @@
 import json
 import time
 from datetime import date
+from functools import lru_cache
 from dotenv import load_dotenv
 
 from langchain_chroma import Chroma
@@ -69,14 +70,17 @@ def _check_embedding_model() -> None:
 # LLM / Embeddings
 # ---------------------------
 
+@lru_cache(maxsize=8)
 def get_llm(model: str = DEFAULT_MODEL, temperature: float = 0.0):
     return ChatOpenAI(model=model, temperature=temperature)
 
 
+@lru_cache(maxsize=1)
 def get_embeddings():
     return OpenAIEmbeddings(model=EMBEDDING_MODEL)
 
 
+@lru_cache(maxsize=2)
 def get_vectorstore(collection_name: str):
     _check_embedding_model()
     return Chroma(

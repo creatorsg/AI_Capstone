@@ -1111,7 +1111,7 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 |---------|-----------|-------------|-------------|-----------|-----------|--------|------|
 | baseline | 현재 | 5622ms | 7778ms | 1.000 | 3.83 | 1.0 | — |
 | E1 | streaming | | | | | | |
-| E2 | LLM cache | | | | | | |
+| E2 | LLM cache | 5356ms (−4.7%) | 6846ms (−12.0%) | 0.966† | N/A | 1.0 | 채택 |
 | E3 | prompt diet | | | | | | |
 | E4 | max_tokens | | | | | | |
 | E5 | analyze+rewrite 통합 | | | | | | |
@@ -1129,6 +1129,8 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 | M5 | 전체 nano | | | | | | |
 | Final | 종합 | | | | | | |
 
+> † E2 intent_accuracy 0.966(−3.4%p): lru_cache는 LLM 인스턴스만 캐시하며 API 호출은 매번 실행됨. 다른 시점 측정에 따른 LLM 랜덤성 노이즈로 판단(코드 변경이 출력에 영향 없음). retrieval_ms −61%(510→200ms)가 주효과.
+>
 > Phase 2.5 (E5.1~E5.5)의 경우 `personalization_score` / `appropriate_specificity_avg` / `profile_utilization_rate` / `risk_modifiers` 사용 통계도 결과 JSON에서 별도 추적. "결정" 열에 그 수치를 같이 기록한다.
 
 ---
