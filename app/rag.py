@@ -11,6 +11,7 @@ from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 
 from prompts import (
     QUERY_ANALYZER_PROMPT,
+    QUERY_PREPROCESS_PROMPT,
     QUERY_REWRITE_PROMPT,
     format_chat_history,
     get_answer_prompt,
@@ -28,6 +29,9 @@ load_dotenv()
 DEFAULT_MODEL = "gpt-5.4-mini"
 DEFAULT_K = 6
 DEFAULT_TOP_K = 5
+
+# E5 토글: True = analyze+rewrite 통합 1회 호출, False = 기존 2회 호출
+USE_UNIFIED_PREPROCESS = True
 
 
 # ---------------------------
@@ -174,6 +178,37 @@ def format_recent_logs(recent_logs: dict | None) -> str:
 # ---------------------------
 # Query analysis
 # ---------------------------
+
+def preprocess_query(
+    question: str,
+    child_profile: dict | None,
+    model: str = DEFAULT_MODEL,
+) -> dict:
+    """analyze + rewrite 통합 1회 호출 (E5). _fallback=True 이면 JSON 파싱 실패."""
+    llm = get_llm(model=model, max_tokens=200)
+    child_context = format_child_context(child_profile)
+    prompt = QUERY_PREPROCESS_PROMPT.format(
+        question=question,
+        child_context=child_context,
+    )
+    response = llm.invoke(prompt)
+    text = response.content.strip()
+
+    try:
+        parsed = json.loads(text)
+        parsed.setdefault("_fallback", False)
+    except json.JSONDecodeError:
+        parsed = {
+            "intent": "unknown",
+            "topic": "general",
+            "risk_level": "low",
+            "needs_clarification": False,
+            "rewritten_query": question,
+            "_fallback": True,
+        }
+
+    return parsed
+
 
 def analyze_query(question: str, model: str = DEFAULT_MODEL) -> dict:
     llm = get_llm(model=model, max_tokens=150)
@@ -353,15 +388,27 @@ def answer_question(
 ):
     timings = {}
     t0 = time.perf_counter()
+    json_fallback = False
 
-    analysis = analyze_query(question, model=model)
-    timings["analyze_query_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+    if USE_UNIFIED_PREPROCESS:
+        preprocessed = preprocess_query(question, child_profile, model=model)
+        json_fallback = preprocessed.get("_fallback", False)
+        rewritten_query = preprocessed.get("rewritten_query", question)
+        analysis = {
+            k: preprocessed[k]
+            for k in ("intent", "topic", "risk_level", "needs_clarification")
+            if k in preprocessed
+        }
+        timings["preprocess_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+    else:
+        analysis = analyze_query(question, model=model)
+        timings["analyze_query_ms"] = round((time.perf_counter() - t0) * 1000, 1)
+        t = time.perf_counter()
+        rewritten_query = rewrite_query(question, child_profile, analysis, model=model)
+        timings["rewrite_query_ms"] = round((time.perf_counter() - t) * 1000, 1)
 
-    t = time.perf_counter()
     risk_level = normalize_risk_level(question, analysis)
     intent = analysis.get("intent", "unknown")
-    rewritten_query = rewrite_query(question, child_profile, analysis, model=model)
-    timings["rewrite_query_ms"] = round((time.perf_counter() - t) * 1000, 1)
 
     t = time.perf_counter()
     retriever = get_retriever(intent, k=k)
@@ -415,6 +462,7 @@ def answer_question(
         "retrieved_docs_count": len(docs),
         "top_k_used": top_k,
         "model": model,
+        "json_fallback": json_fallback,
         "timings": timings,
     }
 

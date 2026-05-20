@@ -143,6 +143,7 @@ def evaluate_one(item: dict, use_judge: bool, judge_llm: ChatOpenAI | None) -> d
     }
 
     result["timings"] = debug_info.get("timings", {})
+    result["json_fallback"] = debug_info.get("json_fallback", False)
 
     if use_judge and judge_llm is not None:
         scores = llm_judge(question, context_str, answer, judge_llm)
@@ -188,8 +189,8 @@ def aggregate(results: list[dict]) -> dict:
         "latency_max_sec": round(max(r["latency_sec"] for r in valid if r.get("latency_sec") is not None), 3) if any(r.get("latency_sec") is not None for r in valid) else None,
     }
 
-    stage_keys = ["analyze_query_ms", "rewrite_query_ms", "retrieval_ms",
-                  "rerank_build_ms", "generate_ms", "total_ms"]
+    stage_keys = ["preprocess_ms", "analyze_query_ms", "rewrite_query_ms",
+                  "retrieval_ms", "rerank_build_ms", "generate_ms", "total_ms"]
     stage_stats = {}
     for stage_key in stage_keys:
         vals = [r["timings"].get(stage_key) for r in valid

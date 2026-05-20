@@ -1119,7 +1119,7 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 | E2 | LLM cache | 5356ms (−4.7%) | 6846ms (−12.0%) | 0.966† | N/A | 1.0 | 채택 |
 | E3 | prompt diet | | | | | | |
 | E4 | max_tokens (gen=600, analyze=150, rewrite=80) + 6문장 캡 | 4770ms (−15.2%) | 6356ms (−18.3%) | 1.000 | 3.97 | 1.0 | 채택 |
-| E5 | analyze+rewrite 통합 | | | | | | |
+| E5 | analyze+rewrite 통합 (preprocess 1회) | 4139ms (−26.4%) | 5902ms (−24.1%) | 0.983 | 4.21 | 1.0 | 채택 |
 | E6 | fast path | | | | | | |
 | E7 | semantic cache | | | | | | |
 | E5.1 | preprocess v2 (구조화 신호) | | | | | | |
@@ -1137,6 +1137,8 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 > † E2 intent_accuracy 0.966(−3.4%p): lru_cache는 LLM 인스턴스만 캐시하며 API 호출은 매번 실행됨. 다른 시점 측정에 따른 LLM 랜덤성 노이즈로 판단(코드 변경이 출력에 영향 없음). retrieval_ms −61%(510→200ms)가 주효과.
 >
 > ‡ E4 max_tokens=500 초기 시도에서 keyword_coverage 0.737 < 임계값 0.747로 실패. 600으로 상향 후 모든 가드레일 통과(keyword=0.764, completeness=3.155 > 2.838). generate_ms −16.3%(3316→2777ms)가 주효과. context_relevance 3.97은 baseline(3.83) 대비 상승.
+>
+> § E5 preprocess_ms avg 1172ms: baseline analyze(860ms)+rewrite(935ms) 합산 1795ms 대비 −34.7%(임계 < 1257ms 통과). JSON fallback 0/58(0%). 오분류 1건(hos_004→development). intent_accuracy 0.983 ≥ 0.95 통과. context_relevance 4.21로 baseline(3.83) 대비 최대 상승.
 >
 > Phase 2.5 (E5.1~E5.5)의 경우 `personalization_score` / `appropriate_specificity_avg` / `profile_utilization_rate` / `risk_modifiers` 사용 통계도 결과 JSON에서 별도 추적. "결정" 열에 그 수치를 같이 기록한다.
 
