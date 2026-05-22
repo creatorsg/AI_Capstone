@@ -1,0 +1,297 @@
+{
+  "timestamp": "20260519_235243",
+  "tag": "smoke",
+  "config": {
+    "questions_file": "C:\\Users\\irail\\Desktop\\AI_Capstone\\eval\\test_questions.json",
+    "n_questions": 3,
+    "repeat": 2,
+    "delay_sec": 1.0,
+    "intent_filter": null
+  },
+  "overall": {
+    "n_total": 6,
+    "n_ok": 6,
+    "stage_stats": {
+      "analyze_query_ms": {
+        "n": 6,
+        "avg": 932.8,
+        "p50": 812.8,
+        "p95": 1461.8,
+        "p99": 1490.4,
+        "min": 558.4,
+        "max": 1497.5
+      },
+      "rewrite_query_ms": {
+        "n": 6,
+        "avg": 798.4,
+        "p50": 777.2,
+        "p95": 1010.5,
+        "p99": 1038.7,
+        "min": 599.7,
+        "max": 1045.7
+      },
+      "retrieval_ms": {
+        "n": 6,
+        "avg": 536.0,
+        "p50": 454.8,
+        "p95": 826.3,
+        "p99": 912.0,
+        "min": 423.7,
+        "max": 933.4
+      },
+      "rerank_build_ms": {
+        "n": 6,
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "generate_ms": {
+        "n": 6,
+        "avg": 3820.3,
+        "p50": 3790.1,
+        "p95": 4551.6,
+        "p99": 4626.8,
+        "min": 3170.2,
+        "max": 4645.6
+      },
+      "total_ms": {
+        "n": 6,
+        "avg": 6087.9,
+        "p50": 5738.1,
+        "p95": 7576.3,
+        "p99": 8013.3,
+        "min": 5383.1,
+        "max": 8122.6
+      }
+    }
+  },
+  "rounds": [
+    {
+      "n_total": 3,
+      "n_ok": 3,
+      "stage_stats": {
+        "analyze_query_ms": {
+          "n": 3,
+          "avg": 1200.5,
+          "p50": 1354.7,
+          "p95": 1483.2,
+          "p99": 1494.6,
+          "min": 749.2,
+          "max": 1497.5
+        },
+        "rewrite_query_ms": {
+          "n": 3,
+          "avg": 818.5,
+          "p50": 810.1,
+          "p95": 1022.1,
+          "p99": 1041.0,
+          "min": 599.7,
+          "max": 1045.7
+        },
+        "retrieval_ms": {
+          "n": 3,
+          "avg": 609.6,
+          "p50": 451.4,
+          "p95": 885.2,
+          "p99": 923.8,
+          "min": 443.9,
+          "max": 933.4
+        },
+        "rerank_build_ms": {
+          "n": 3,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 3,
+          "avg": 3904.0,
+          "p50": 3896.3,
+          "p95": 4570.7,
+          "p99": 4630.6,
+          "min": 3170.2,
+          "max": 4645.6
+        },
+        "total_ms": {
+          "n": 3,
+          "avg": 6532.9,
+          "p50": 5786.8,
+          "p95": 7889.0,
+          "p99": 8075.9,
+          "min": 5689.4,
+          "max": 8122.6
+        }
+      }
+    },
+    {
+      "n_total": 3,
+      "n_ok": 3,
+      "stage_stats": {
+        "analyze_query_ms": {
+          "n": 3,
+          "avg": 665.2,
+          "p50": 560.7,
+          "p95": 844.8,
+          "p99": 870.1,
+          "min": 558.4,
+          "max": 876.4
+        },
+        "rewrite_query_ms": {
+          "n": 3,
+          "avg": 778.2,
+          "p50": 744.3,
+          "p95": 888.7,
+          "p99": 901.5,
+          "min": 685.6,
+          "max": 904.7
+        },
+        "retrieval_ms": {
+          "n": 3,
+          "avg": 462.3,
+          "p50": 458.1,
+          "p95": 500.5,
+          "p99": 504.3,
+          "min": 423.7,
+          "max": 505.2
+        },
+        "rerank_build_ms": {
+          "n": 3,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 3,
+          "avg": 3736.7,
+          "p50": 3683.8,
+          "p95": 4210.8,
+          "p99": 4257.7,
+          "min": 3256.8,
+          "max": 4269.4
+        },
+        "total_ms": {
+          "n": 3,
+          "avg": 5642.8,
+          "p50": 5607.7,
+          "p95": 5904.5,
+          "p99": 5930.9,
+          "min": 5383.1,
+          "max": 5937.5
+        }
+      }
+    }
+  ],
+  "records": [
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 8122.7,
+      "answer_len": 799,
+      "timings": {
+        "analyze_query_ms": 1497.5,
+        "rewrite_query_ms": 1045.7,
+        "retrieval_ms": 933.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4645.6,
+        "total_ms": 8122.6
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 5786.9,
+      "answer_len": 857,
+      "timings": {
+        "analyze_query_ms": 1354.7,
+        "rewrite_query_ms": 810.1,
+        "retrieval_ms": 451.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3170.2,
+        "total_ms": 5786.8
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 5689.4,
+      "answer_len": 835,
+      "timings": {
+        "analyze_query_ms": 749.2,
+        "rewrite_query_ms": 599.7,
+        "retrieval_ms": 443.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3896.3,
+        "total_ms": 5689.4
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 5607.7,
+      "answer_len": 741,
+      "timings": {
+        "analyze_query_ms": 560.7,
+        "rewrite_query_ms": 904.7,
+        "retrieval_ms": 458.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3683.8,
+        "total_ms": 5607.7
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 5937.5,
+      "answer_len": 1059,
+      "timings": {
+        "analyze_query_ms": 558.4,
+        "rewrite_query_ms": 685.6,
+        "retrieval_ms": 423.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4269.4,
+        "total_ms": 5937.5
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 5383.1,
+      "answer_len": 808,
+      "timings": {
+        "analyze_query_ms": 876.4,
+        "rewrite_query_ms": 744.3,
+        "retrieval_ms": 505.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3256.8,
+        "total_ms": 5383.1
+      },
+      "intent": "medical_basic",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "timestamp": "20260520_191944",
+  "total_runtime_sec": 41.4,
+  "config": {
+    "questions_file": "C:\\Users\\irail\\Desktop\\AI_Capstone\\eval\\test_questions.json",
+    "filter_intent": null,
+    "filter_ids": null,
+    "total_questions": 5,
+    "judge_model": null
+  },
+  "overall": {
+    "total": 5,
+    "valid": 5,
+    "errors": 0,
+    "intent_accuracy": 1.0,
+    "risk_level_accuracy": 0.6,
+    "keyword_coverage_avg": 0.597,
+    "safety_compliance_rate": 1.0,
+    "context_relevance_avg": null,
+    "answer_faithfulness_avg": null,
+    "answer_relevance_avg": null,
+    "completeness_avg": null,
+    "latency_avg_sec": 6.778,
+    "latency_min_sec": 3.613,
+    "latency_max_sec": 17.275,
+    "stage_stats": {
+      "preprocess_ms": {
+        "avg": 1234.9,
+        "p50": 1103.9,
+        "p95": 1744.4,
+        "p99": 1855.8
+      },
+      "retrieval_ms": {
+        "avg": 656.2,
+        "p50": 177.4,
+        "p95": 1705.6,
+        "p99": 1861.3
+      },
+      "rerank_build_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "generate_ms": {
+        "avg": 4886.8,
+        "p50": 2758.8,
+        "p95": 11406.9,
+        "p99": 13073.7
+      },
+      "total_ms": {
+        "avg": 6778.1,
+        "p50": 4437.7,
+        "p95": 14771.2,
+        "p99": 16774.0
+      }
+    }
+  },
+  "by_intent": {
+    "medical_basic": {
+      "count": 5,
+      "intent_accuracy": 1.0,
+      "risk_accuracy": 0.6,
+      "keyword_coverage_avg": 0.597
+    }
+  },
+  "details": [
+    {
+      "id": "med_001",
+      "question": "38.5도 열이 3시간째 내리지 않아요. 해열제를 줬는데도 효과가 없어요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "medium",
+      "predicted_risk": "medium",
+      "risk_correct": true,
+      "keyword_coverage": 0.4,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "요약:\n- 민준이는 38.5도 열이 3시간째 있고 해열제에도 잘 안 떨어져서, 열의 원인과 아이의 전반 상태를 같이 봐야 합니다.\n- 지금은 집에서 경과를 보되, 위험 신호가 있으면 바로 병원/응급실 진료가 우선입니다.\n\n증상 해석:\n- 열은 감기 같은 바이러스 감염이나 장염처럼 몸에 염증이 있을 때 나타날 수 있습니다.\n- 부모가 확인할 점은 기침/콧물/구토/설사 여부, 물을 잘 마시는지, 평소보다 축 처지는지, 숨쉬기 힘들어 보이는지입니다.\n\n집에서 할 수 있는 것:\n- 옷을 너무 두껍게 입히지 말고 방은 시원하게 유지하세요.\n",
+      "retrieved_docs_count": 6,
+      "latency_sec": 17.275,
+      "timings": {
+        "preprocess_ms": 1883.6,
+        "retrieval_ms": 1900.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 13490.4,
+        "total_ms": 17274.7
+      }
+    },
+    {
+      "id": "med_002",
+      "question": "아이가 갑자기 경련을 일으켜요. 몸이 떨리고 눈이 돌아가요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "high",
+      "predicted_risk": "high",
+      "risk_correct": true,
+      "keyword_coverage": 0.75,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "중요: 현재 설명만으로는 응급 가능성을 배제할 수 없습니다. 아이 상태가 나쁘거나 질문에 포함된 위험 신호가 실제로 있다면, 즉시 소아과 또는 응급실 진료를 우선적으로 고려하세요.\n\n요약:\n- 서연이가 몸이 떨리고 눈이 돌아가면 **경련 가능성**이 있어요. 이런 경우는 **즉시 병원 또는 응급실 진료가 우선**입니다.\n\n증상 해석:\n- 열이 있을 때 경련이 동반될 수 있고, 문서상 **발열이 심한 장염**에서도 열성 경련이 생길 수 있어요.\n- 부모가 확인할 점은 **열이 있었는지, 의식이 있는지, 숨쉬기 힘들어 보이는지, 구토·",
+      "retrieved_docs_count": 6,
+      "latency_sec": 4.757,
+      "timings": {
+        "preprocess_ms": 1071.2,
+        "retrieval_ms": 927.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2758.8,
+        "total_ms": 4757.4
+      }
+    },
+    {
+      "id": "med_003",
+      "question": "기침을 3일째 하고 있어요. 밤에 더 심해지고 콧물도 나와요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "low",
+      "predicted_risk": "low",
+      "risk_correct": true,
+      "keyword_coverage": 0.75,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "요약:\n- 지우가 3일째 기침하고, 밤에 더 심해지며 콧물도 있다면 감기 같은 상기도 증상과 함께 나타날 수 있습니다.\n- 현재 기록만으로는 진단할 수 없고, 전반 상태와 위험 신호를 함께 보는 것이 중요합니다.\n\n증상 해석:\n- 기침과 콧물은 같이 나타날 수 있으며, 밤에 누우면 기침이 더 도드라질 수 있습니다.\n- 부모는 열이 있는지, 숨쉬기 힘들어 보이는지, 물을 잘 마시는지, 평소보다 축 처지는지, 구토가 있는지 확인해보세요.\n\n집에서 할 수 있는 것:\n- 방을 너무 건조하지 않게 하고, 밤에 아이가 편하게 잘 수 있도록 조",
+      "retrieved_docs_count": 6,
+      "latency_sec": 4.438,
+      "timings": {
+        "preprocess_ms": 1187.4,
+        "retrieval_ms": 177.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3072.8,
+        "total_ms": 4437.7
+      }
+    },
+    {
+      "id": "med_004",
+      "question": "오늘 구토를 4번이나 했어요. 물도 못 넘기고 계속 토해요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "medium",
+      "predicted_risk": "high",
+      "risk_correct": false,
+      "keyword_coverage": 0.75,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "중요: 현재 설명만으로는 응급 가능성을 배제할 수 없습니다. 아이 상태가 나쁘거나 질문에 포함된 위험 신호가 실제로 있다면, 즉시 소아과 또는 응급실 진료를 우선적으로 고려하세요.\n\n요약:\n- 하은이가 오늘 구토를 4번 하고 물도 못 넘긴다면, 수분 부족(탈수) 위험이 있어 바로 진료가 우선입니다.\n- 장염처럼 구토를 동반하는 경우가 있을 수 있지만, 지금은 원인보다 탈수 여부를 먼저 봐야 합니다.\n\n증상 해석:\n- 갑작스러운 구토는 장염 등에서 나타날 수 있고, 물도 못 마시면 탈수가 빨리 올 수 있습니다.\n- 부모가 확인할 점은",
+      "retrieved_docs_count": 6,
+      "latency_sec": 3.613,
+      "timings": {
+        "preprocess_ms": 1103.9,
+        "retrieval_ms": 146.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2362.8,
+        "total_ms": 3613.1
+      }
+    },
+    {
+      "id": "med_005",
+      "question": "콧물이 2주 넘게 계속 나와요. 색이 노랗게 변했어요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "low",
+      "predicted_risk": "medium",
+      "risk_correct": false,
+      "keyword_coverage": 0.333,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "요약:\n- 콧물이 2주 이상 계속되고 노랗게 변했다면 감기 이후 오래 가거나 다른 원인이 있을 수 있어요.\n- 제공된 문서에는 콧물 자체의 자세한 기준은 없지만, 오래 지속되는 증상은 상태 확인을 위해 진료를 고려하는 것이 좋아요.\n\n증상 해석:\n- 노란 콧물은 몸이 감염에 반응하는 과정에서 보일 수 있어요.\n- 부모가 확인해볼 점은 열이 있는지, 기침·호흡곤란이 있는지, 잘 먹는지, 평소보다 처지지 않는지예요.\n\n집에서 할 수 있는 것:\n- 실내를 너무 건조하지 않게 하고, 아이가 물을 충분히 마시게 해주세요.\n- 코 주변이 자극",
+      "retrieved_docs_count": 6,
+      "latency_sec": 3.808,
+      "timings": {
+        "preprocess_ms": 928.4,
+        "retrieval_ms": 130.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2749.4,
+        "total_ms": 3807.8
+      }
+    }
+  ]
+}

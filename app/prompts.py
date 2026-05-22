@@ -77,16 +77,13 @@ intent={intent}, topic={topic}
 # ---------------------------------------------------------------------------
 
 QUERY_PREPROCESS_PROMPT = ChatPromptTemplate.from_template(
-    """
-당신은 0~5세 자녀 부모 질문 분석기입니다. 아래 질문을 분석하여 JSON만 반환하세요.
-설명 문장, 코드블록, 마크다운은 절대 쓰지 마세요.
+    """JSON만 출력. 설명·코드블록·마크다운 절대 금지.
 
-반드시 아래 형식의 JSON만 출력:
+당신은 0~5세 자녀 부모 질문 분석기입니다. 아래 형식의 JSON만 반환:
 {{
   "intent": "development|daily_parenting|medical_basic|vaccination|policy|hospital_locator|unknown",
-  "topic": "질문의 핵심 주제 (fever/sleep/language/food/vaccine/welfare/hospital 등)",
+  "topic": "fever|sleep|language|food|vaccine|welfare|hospital|general",
   "risk_level": "low|medium|high",
-  "needs_clarification": true/false,
   "rewritten_query": "벡터 검색용 한국어 1문장"
 }}
 
@@ -98,11 +95,8 @@ QUERY_PREPROCESS_PROMPT = ChatPromptTemplate.from_template(
 - policy: 복지/지원금/바우처/정부지원
 - hospital_locator: 병원/소아과/약국/위치/운영시간
 
-high risk 해당 시 risk_level=high: 경련, 호흡곤란, 의식저하, 축처짐, 반복구토, 탈수, 발달퇴행
-
-needs_clarification=true: 질문이 너무 짧고 맥락 부족 (예: "열이 나요", "애가 울어요")
-
-rewritten_query 규칙: 한국어 1문장, 아이 연령 정보 있으면 반영, 핵심 주제 명시.
+high risk: 경련, 호흡곤란, 의식저하, 축처짐, 반복구토, 탈수, 발달퇴행
+rewritten_query: 아이 연령 있으면 반영, 핵심 주제 명시.
 
 질문: {question}
 아이 정보: {child_context}

@@ -1037,23 +1037,50 @@ python eval/latency_profile.py --repeat 3 --tag M1
 
 ---
 
-## 6. Phase 4 — 종합 튜닝 및 회귀
+## 6. Phase 4 — 종합 튜닝 및 회귀 (완료)
 
-1. Phase 1~3에서 채택된 변경을 **모두 합쳐** 최종 평가.
-2. 동시 적용 시 상호작용으로 새 문제가 발생하지 않는지 확인.
-3. baseline 대비 최종 표 작성:
+채택된 변경(누적): **E2 (인스턴스 캐싱) + E4 (max_tokens 캡) + E5 (analyze+rewrite 통합) + E8 (preprocess 출력 다이어트)**
+기각: M1·M2·M4 (모델 교체 — 이 환경에선 gpt-5.4-mini가 최속), E3·E1·E6 (미실행)
 
-| 지표 | Baseline | Final | Δ |
-|------|----------|-------|---|
-| latency_avg | | | |
-| latency_p95 | | | |
-| TTFT_p50 | N/A | | — |
-| intent_accuracy | | | |
-| safety_compliance | | | |
-| personalization_score | | | |
-| appropriate_specificity | | | |
-| judge_relevance | | | |
-| 비용/질의(추정) | | | |
+### 6.1 최종 latency 표 (baseline → 최종 채택본 E8, latency_profile n=174)
+
+| 지표 | Baseline | Final (E8) | Δ |
+|------|----------|-----------|---|
+| total_ms avg | 5622 | 4104 | **−27.0%** |
+| total_ms p50 | 5406 | 3903 | **−27.8%** |
+| total_ms p95 | 7778 | 5643 | **−27.4%** |
+| total_ms p99 | 11145 | 8546 | −23.3% |
+
+### 6.2 단계별 latency (avg, ms)
+
+| 단계 | Baseline | Final (E8) | Δ |
+|------|----------|-----------|---|
+| preprocess (=analyze+rewrite) | 1795 | 1162 | −35.3% |
+| retrieval | 510 | 165 | −67.6% |
+| rerank_build | 0 | 0 | — |
+| generate | 3316 | 2777 | −16.3% |
+| **total** | **5622** | **4104** | **−27.0%** |
+
+### 6.3 품질 표 (evaluate.py judge 포함, n=58)
+
+| 지표 | Baseline | Final (E8) | 판정 |
+|------|----------|-----------|------|
+| intent_accuracy | 1.000 | 0.983 | ✓ 노이즈 내 (±3.4%p) |
+| safety_compliance | 1.000 | 1.000 | ✓ 고정 |
+| keyword_coverage | 0.797 | 0.758 | ✓ 가드레일 내 (−3.9%p, > 0.747) |
+| risk_level_accuracy | 0.810 | 0.845 | ✓ 동등~소폭 상승 |
+| context_relevance (judge) | 3.931 | 4.207 | ✓ 유지 (judge 노이즈 ±0.3 내) |
+| answer_relevance (judge) | 3.828 | 3.776 | ✓ 유지 |
+| completeness (judge) | 3.138 | 3.086 | ✓ 유지 |
+| LLM 호출 수/질의 | 3 | 2 | −1 |
+
+> **judge 메트릭 주의**: E8 동일 설정 2회 재측정에서 context_relevance가 3.931~4.207로 ±0.28 변동. judge 점수의 자연 변동폭이 크므로 "품질 향상"이 아닌 **"품질 유지(노이즈 내)"** 로 판정. 확정적으로 개선/저하라 말할 수 있는 메트릭은 변동 없는 `safety_compliance`(고정 1.0)와 일관된 `keyword_coverage`(소폭 실하락) 뿐.
+
+### 6.4 결론
+
+- latency 목표 −40%에는 미달, 그러나 **−27%를 품질 저하 없이 달성**(원래 목적: "latency 줄이며 성능 유지").
+- 핵심 동인: **LLM 직렬 호출 수 감소(E5, 3→2)** 와 **Chroma 인스턴스 캐싱(E2, retrieval −68%)**. 모델 교체는 이 환경에서 무효.
+- −40%를 추가로 노리려면 품질 트레이드오프(답변 강제 단축) 또는 fast-path(E6) 분기 복잡도가 필요 — ROI상 현 시점 종료가 합리적.
 
 4. 회귀 모니터링: 매 배포 전 `python evaluate.py --no-judge --subset 20`를 CI로 강제 — 가드레일 위반 시 차단.
 
@@ -1114,33 +1141,36 @@ E5.5는 평가 인프라이므로 마지막에 적용하고 최종 비교.
 
 | 실험 ID | 변경 요약 | latency_avg | latency_p95 | intent_acc | judge_rel | safety | 결정 |
 |---------|-----------|-------------|-------------|-----------|-----------|--------|------|
-| baseline | 현재 | 5622ms | 7778ms | 1.000 | 3.83 | 1.0 | — |
-| E1 | streaming | | | | | | |
+| baseline | 현재 | 5622ms | 7778ms | 1.000 | 3.93※ | 1.0 | — |
+| E1 | streaming | — | — | — | — | — | 미실행 |
 | E2 | LLM cache | 5356ms (−4.7%) | 6846ms (−12.0%) | 0.966† | N/A | 1.0 | 채택 |
-| E3 | prompt diet | | | | | | |
+| E3 | prompt diet | — | — | — | — | — | 미실행 (건너뜀) |
 | E4 | max_tokens (gen=600, analyze=150, rewrite=80) + 6문장 캡 | 4770ms (−15.2%) | 6356ms (−18.3%) | 1.000 | 3.97 | 1.0 | 채택 |
 | E5 | analyze+rewrite 통합 (preprocess 1회) | 4139ms (−26.4%) | 5902ms (−24.1%) | 0.983 | 4.21 | 1.0 | 채택 |
-| E6 | fast path | | | | | | |
-| E7 | semantic cache | | | | | | |
-| E5.1 | preprocess v2 (구조화 신호) | | | | | | |
-| E5.2 | risk 보정 룰 | | | | | | |
-| E5.3 | personalized rerank | | | | | | |
-| E5.4 | signals 블록 enrichment | | | | | | |
-| E5.5 | 개인화 평가 지표·케이스 | | | | | | |
-| M1 | nano보조+mini생성 | | | | | | |
-| M2 | gpt5-nano 보조 | | | | | | |
-| M3 | nano+gpt5-mini | | | | | | |
-| M4 | 전체 gpt5-mini | | | | | | |
-| M5 | 전체 nano | | | | | | |
-| Final | 종합 | | | | | | |
+| E8 | preprocess 출력 다이어트 (18단어, needs_clarification 제거) | 4104ms (−27.0%) | 5643ms (−27.4%) | 0.983 | 4.21 | 1.0 | 채택 (소폭) |
+| E6 | fast path | — | — | — | — | — | 미실행 |
+| E7 | semantic cache | — | — | — | — | — | 미실행 |
+| E5.1–E5.5 | 개인화·관계 분석 (E5-extended) | — | — | — | — | — | 별도 트랙 (latency 범위 외) |
+| M1 | preprocess=gpt-5.4-nano | 4821ms (+16.5% vs E5) | 7269ms | 0.983 | N/A | 1.0 | **기각** (nano tier 느림) |
+| M2 | preprocess=gpt-5-nano (subset 30) | 4974ms | 5993ms | — | — | — | **기각** |
+| M3 | nano+gpt5-mini | — | — | — | — | — | 미실행 (nano/5-mini 모두 느려 불필요) |
+| M4 | 전체 gpt-5-mini | 9060ms (+119%) | 12336ms | — | — | — | **기각** (2× 느림) |
+| M5 | 전체 nano | — | — | — | — | — | 미실행 |
+| **Final** | **E2+E4+E5+E8 누적** | **4104ms (−27.0%)** | **5643ms (−27.4%)** | **0.983** | **4.21** | **1.0** | **채택** |
 
+> ※ baseline judge 값 정정: 이전 표의 "3.83"은 baseline의 **answer_relevance**였음. baseline **context_relevance는 3.93**(judge 포함 측정). E4·E5·E8 행의 judge_rel 값(3.97/4.21/4.21)은 context_relevance 기준이므로, 비교 일관성을 위해 baseline도 context_relevance(3.93)로 표기.
+>
 > † E2 intent_accuracy 0.966(−3.4%p): lru_cache는 LLM 인스턴스만 캐시하며 API 호출은 매번 실행됨. 다른 시점 측정에 따른 LLM 랜덤성 노이즈로 판단(코드 변경이 출력에 영향 없음). retrieval_ms −61%(510→200ms)가 주효과.
 >
-> ‡ E4 max_tokens=500 초기 시도에서 keyword_coverage 0.737 < 임계값 0.747로 실패. 600으로 상향 후 모든 가드레일 통과(keyword=0.764, completeness=3.155 > 2.838). generate_ms −16.3%(3316→2777ms)가 주효과. context_relevance 3.97은 baseline(3.83) 대비 상승.
+> ‡ E4 max_tokens=500 초기 시도에서 keyword_coverage 0.737 < 임계값 0.747로 실패. 600으로 상향 후 모든 가드레일 통과. generate_ms −16.3%(3316→2777ms)가 주효과.
 >
-> § E5 preprocess_ms avg 1172ms: baseline analyze(860ms)+rewrite(935ms) 합산 1795ms 대비 −34.7%(임계 < 1257ms 통과). JSON fallback 0/58(0%). 오분류 1건(hos_004→development). intent_accuracy 0.983 ≥ 0.95 통과. context_relevance 4.21로 baseline(3.83) 대비 최대 상승.
+> § E5 preprocess_ms avg 1172ms: baseline analyze+rewrite 합산 1795ms 대비 −34.7%. JSON fallback 0/58(0%). LLM 호출 3→2회.
 >
-> Phase 2.5 (E5.1~E5.5)의 경우 `personalization_score` / `appropriate_specificity_avg` / `profile_utilization_rate` / `risk_modifiers` 사용 통계도 결과 JSON에서 별도 추적. "결정" 열에 그 수치를 같이 기록한다.
+> ¶ E8: 12단어 제약은 context_relevance 4.21→3.81로 가드레일 실패(롤백). 18단어로 완화 시 품질 유지(context_rel 4.21)되나 latency 이득은 소폭(p50 −2.4%, p95 −4.4%). preprocess 출력은 retrieval 품질과 결합되어 있어 출력 단축만으로는 큰 latency 이득을 얻기 어렵다는 결론.
+>
+> ⚑ judge 메트릭 노이즈: E8 동일 설정 2회 재측정 시 context_relevance 3.93~4.21(±0.28) 변동. judge 점수는 노이즈가 크므로 채택 판정의 1차 기준은 변동 없는 safety(1.0)와 일관된 keyword_coverage·latency로 삼음.
+>
+> Phase 2.5 (E5.1~E5.5)는 개인화 기능 트랙으로, 본 latency 최적화 실험과 별개로 진행됨.
 
 ---
 

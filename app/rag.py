@@ -207,7 +207,6 @@ def preprocess_query(
             "intent": "unknown",
             "topic": "general",
             "risk_level": "low",
-            "needs_clarification": False,
             "rewritten_query": question,
             "_fallback": True,
         }
@@ -401,7 +400,7 @@ def answer_question(
         rewritten_query = preprocessed.get("rewritten_query", question)
         analysis = {
             k: preprocessed[k]
-            for k in ("intent", "topic", "risk_level", "needs_clarification")
+            for k in ("intent", "topic", "risk_level")
             if k in preprocessed
         }
         timings["preprocess_ms"] = round((time.perf_counter() - t0) * 1000, 1)

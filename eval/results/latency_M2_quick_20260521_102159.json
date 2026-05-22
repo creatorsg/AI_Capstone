@@ -1,0 +1,1128 @@
+{
+  "timestamp": "20260521_102159",
+  "tag": "M2_quick",
+  "config": {
+    "questions_file": "C:\\Users\\irail\\Desktop\\AI_Capstone\\eval\\test_questions.json",
+    "n_questions": 30,
+    "repeat": 2,
+    "delay_sec": 1.0,
+    "intent_filter": null
+  },
+  "overall": {
+    "n_total": 60,
+    "n_ok": 60,
+    "stage_stats": {
+      "preprocess_ms": {
+        "n": 60,
+        "avg": 1909.7,
+        "p50": 1766.9,
+        "p95": 2754.3,
+        "p99": 3261.3,
+        "min": 1550.3,
+        "max": 3624.9
+      },
+      "retrieval_ms": {
+        "n": 60,
+        "avg": 221.0,
+        "p50": 163.7,
+        "p95": 269.1,
+        "p99": 1383.8,
+        "min": 134.6,
+        "max": 2331.5
+      },
+      "rerank_build_ms": {
+        "n": 60,
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "generate_ms": {
+        "n": 60,
+        "avg": 2843.2,
+        "p50": 2806.9,
+        "p95": 3680.7,
+        "p99": 4333.6,
+        "min": 2046.8,
+        "max": 4620.8
+      },
+      "total_ms": {
+        "n": 60,
+        "avg": 4974.1,
+        "p50": 4817.6,
+        "p95": 5992.7,
+        "p99": 7435.2,
+        "min": 3922.0,
+        "max": 9047.0
+      }
+    }
+  },
+  "rounds": [
+    {
+      "n_total": 30,
+      "n_ok": 30,
+      "stage_stats": {
+        "preprocess_ms": {
+          "n": 30,
+          "avg": 2012.9,
+          "p50": 1837.2,
+          "p95": 2892.6,
+          "p99": 3446.2,
+          "min": 1639.1,
+          "max": 3624.9
+        },
+        "retrieval_ms": {
+          "n": 30,
+          "avg": 257.8,
+          "p50": 162.8,
+          "p95": 496.9,
+          "p99": 1865.7,
+          "min": 139.0,
+          "max": 2331.5
+        },
+        "rerank_build_ms": {
+          "n": 30,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 30,
+          "avg": 2784.5,
+          "p50": 2806.9,
+          "p95": 3141.9,
+          "p99": 3632.7,
+          "min": 2154.0,
+          "max": 3826.0
+        },
+        "total_ms": {
+          "n": 30,
+          "avg": 5055.4,
+          "p50": 4956.9,
+          "p95": 5927.8,
+          "p99": 8158.5,
+          "min": 3947.1,
+          "max": 9047.0
+        }
+      }
+    },
+    {
+      "n_total": 30,
+      "n_ok": 30,
+      "stage_stats": {
+        "preprocess_ms": {
+          "n": 30,
+          "avg": 1806.5,
+          "p50": 1716.0,
+          "p95": 2563.6,
+          "p99": 2751.6,
+          "min": 1550.3,
+          "max": 2824.6
+        },
+        "retrieval_ms": {
+          "n": 30,
+          "avg": 184.2,
+          "p50": 165.1,
+          "p95": 257.0,
+          "p99": 386.7,
+          "min": 134.6,
+          "max": 438.4
+        },
+        "rerank_build_ms": {
+          "n": 30,
+          "avg": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "p99": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "generate_ms": {
+          "n": 30,
+          "avg": 2902.0,
+          "p50": 2807.7,
+          "p95": 3926.6,
+          "p99": 4479.6,
+          "min": 2046.8,
+          "max": 4620.8
+        },
+        "total_ms": {
+          "n": 30,
+          "avg": 4892.8,
+          "p50": 4741.4,
+          "p95": 5964.5,
+          "p99": 6274.6,
+          "min": 3922.0,
+          "max": 6315.2
+        }
+      }
+    }
+  ],
+  "records": [
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 9047.0,
+      "answer_len": 641,
+      "timings": {
+        "preprocess_ms": 3624.9,
+        "retrieval_ms": 2331.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3090.0,
+        "total_ms": 9047.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 5344.9,
+      "answer_len": 753,
+      "timings": {
+        "preprocess_ms": 2121.7,
+        "retrieval_ms": 162.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3060.4,
+        "total_ms": 5344.9
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 5376.0,
+      "answer_len": 578,
+      "timings": {
+        "preprocess_ms": 1839.6,
+        "retrieval_ms": 725.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2811.0,
+        "total_ms": 5376.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_004",
+      "ok": true,
+      "wall_ms": 4937.2,
+      "answer_len": 568,
+      "timings": {
+        "preprocess_ms": 1790.9,
+        "retrieval_ms": 157.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2988.6,
+        "total_ms": 4937.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_005",
+      "ok": true,
+      "wall_ms": 5244.0,
+      "answer_len": 562,
+      "timings": {
+        "preprocess_ms": 1906.6,
+        "retrieval_ms": 177.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3159.5,
+        "total_ms": 5244.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_006",
+      "ok": true,
+      "wall_ms": 5451.0,
+      "answer_len": 560,
+      "timings": {
+        "preprocess_ms": 2750.6,
+        "retrieval_ms": 167.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2532.5,
+        "total_ms": 5451.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_007",
+      "ok": true,
+      "wall_ms": 5298.1,
+      "answer_len": 655,
+      "timings": {
+        "preprocess_ms": 2311.3,
+        "retrieval_ms": 164.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2822.4,
+        "total_ms": 5298.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_008",
+      "ok": true,
+      "wall_ms": 5983.1,
+      "answer_len": 600,
+      "timings": {
+        "preprocess_ms": 3008.7,
+        "retrieval_ms": 171.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2802.9,
+        "total_ms": 5983.1
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_009",
+      "ok": true,
+      "wall_ms": 5584.3,
+      "answer_len": 578,
+      "timings": {
+        "preprocess_ms": 2572.7,
+        "retrieval_ms": 157.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2853.7,
+        "total_ms": 5584.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_010",
+      "ok": true,
+      "wall_ms": 4514.1,
+      "answer_len": 606,
+      "timings": {
+        "preprocess_ms": 1978.0,
+        "retrieval_ms": 167.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2368.5,
+        "total_ms": 4514.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_001",
+      "ok": true,
+      "wall_ms": 4914.7,
+      "answer_len": 616,
+      "timings": {
+        "preprocess_ms": 1692.3,
+        "retrieval_ms": 152.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3069.8,
+        "total_ms": 4914.7
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_002",
+      "ok": true,
+      "wall_ms": 3947.1,
+      "answer_len": 596,
+      "timings": {
+        "preprocess_ms": 1650.2,
+        "retrieval_ms": 142.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2154.0,
+        "total_ms": 3947.1
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_003",
+      "ok": true,
+      "wall_ms": 5119.6,
+      "answer_len": 598,
+      "timings": {
+        "preprocess_ms": 1926.7,
+        "retrieval_ms": 194.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2997.9,
+        "total_ms": 5119.6
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_004",
+      "ok": true,
+      "wall_ms": 4568.0,
+      "answer_len": 601,
+      "timings": {
+        "preprocess_ms": 1849.4,
+        "retrieval_ms": 154.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2564.4,
+        "total_ms": 4568.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_005",
+      "ok": true,
+      "wall_ms": 5860.4,
+      "answer_len": 759,
+      "timings": {
+        "preprocess_ms": 1820.4,
+        "retrieval_ms": 213.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3826.0,
+        "total_ms": 5860.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_006",
+      "ok": true,
+      "wall_ms": 4906.5,
+      "answer_len": 645,
+      "timings": {
+        "preprocess_ms": 1767.2,
+        "retrieval_ms": 163.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2976.2,
+        "total_ms": 4906.5
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_007",
+      "ok": true,
+      "wall_ms": 4615.2,
+      "answer_len": 733,
+      "timings": {
+        "preprocess_ms": 1668.5,
+        "retrieval_ms": 172.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2773.6,
+        "total_ms": 4615.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "dev_008",
+      "ok": true,
+      "wall_ms": 4649.2,
+      "answer_len": 585,
+      "timings": {
+        "preprocess_ms": 1755.9,
+        "retrieval_ms": 160.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2732.9,
+        "total_ms": 4649.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_001",
+      "ok": true,
+      "wall_ms": 4976.6,
+      "answer_len": 615,
+      "timings": {
+        "preprocess_ms": 1716.9,
+        "retrieval_ms": 153.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3105.6,
+        "total_ms": 4976.6
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_002",
+      "ok": true,
+      "wall_ms": 5549.1,
+      "answer_len": 589,
+      "timings": {
+        "preprocess_ms": 2414.6,
+        "retrieval_ms": 163.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2971.1,
+        "total_ms": 5549.1
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_003",
+      "ok": true,
+      "wall_ms": 5021.6,
+      "answer_len": 596,
+      "timings": {
+        "preprocess_ms": 2291.6,
+        "retrieval_ms": 179.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2550.6,
+        "total_ms": 5021.6
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_004",
+      "ok": true,
+      "wall_ms": 5097.9,
+      "answer_len": 631,
+      "timings": {
+        "preprocess_ms": 1766.6,
+        "retrieval_ms": 210.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3120.4,
+        "total_ms": 5097.9
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_005",
+      "ok": true,
+      "wall_ms": 4288.0,
+      "answer_len": 566,
+      "timings": {
+        "preprocess_ms": 1834.7,
+        "retrieval_ms": 145.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2308.1,
+        "total_ms": 4288.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_006",
+      "ok": true,
+      "wall_ms": 5049.3,
+      "answer_len": 619,
+      "timings": {
+        "preprocess_ms": 2123.9,
+        "retrieval_ms": 162.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2763.2,
+        "total_ms": 5049.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_007",
+      "ok": true,
+      "wall_ms": 4817.3,
+      "answer_len": 528,
+      "timings": {
+        "preprocess_ms": 1937.8,
+        "retrieval_ms": 217.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2661.6,
+        "total_ms": 4817.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "vac_008",
+      "ok": true,
+      "wall_ms": 4426.9,
+      "answer_len": 525,
+      "timings": {
+        "preprocess_ms": 1677.2,
+        "retrieval_ms": 156.7,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2592.9,
+        "total_ms": 4426.8
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_001",
+      "ok": true,
+      "wall_ms": 4818.0,
+      "answer_len": 584,
+      "timings": {
+        "preprocess_ms": 1654.8,
+        "retrieval_ms": 158.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3004.7,
+        "total_ms": 4818.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_002",
+      "ok": true,
+      "wall_ms": 4059.8,
+      "answer_len": 528,
+      "timings": {
+        "preprocess_ms": 1639.1,
+        "retrieval_ms": 153.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2267.1,
+        "total_ms": 4059.8
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_003",
+      "ok": true,
+      "wall_ms": 4190.6,
+      "answer_len": 528,
+      "timings": {
+        "preprocess_ms": 1646.2,
+        "retrieval_ms": 139.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2405.2,
+        "total_ms": 4190.6
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "pol_004",
+      "ok": true,
+      "wall_ms": 4006.3,
+      "answer_len": 475,
+      "timings": {
+        "preprocess_ms": 1647.8,
+        "retrieval_ms": 157.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2201.4,
+        "total_ms": 4006.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 1
+    },
+    {
+      "id": "med_001",
+      "ok": true,
+      "wall_ms": 4614.0,
+      "answer_len": 678,
+      "timings": {
+        "preprocess_ms": 1604.4,
+        "retrieval_ms": 164.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2845.5,
+        "total_ms": 4614.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_002",
+      "ok": true,
+      "wall_ms": 4614.8,
+      "answer_len": 694,
+      "timings": {
+        "preprocess_ms": 1786.8,
+        "retrieval_ms": 161.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2666.2,
+        "total_ms": 4614.8
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_003",
+      "ok": true,
+      "wall_ms": 4807.2,
+      "answer_len": 605,
+      "timings": {
+        "preprocess_ms": 1647.0,
+        "retrieval_ms": 179.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2980.9,
+        "total_ms": 4807.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_004",
+      "ok": true,
+      "wall_ms": 4739.2,
+      "answer_len": 563,
+      "timings": {
+        "preprocess_ms": 1823.3,
+        "retrieval_ms": 260.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2655.5,
+        "total_ms": 4739.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_005",
+      "ok": true,
+      "wall_ms": 5042.5,
+      "answer_len": 627,
+      "timings": {
+        "preprocess_ms": 1748.4,
+        "retrieval_ms": 170.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3124.0,
+        "total_ms": 5042.5
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_006",
+      "ok": true,
+      "wall_ms": 3922.0,
+      "answer_len": 473,
+      "timings": {
+        "preprocess_ms": 1719.1,
+        "retrieval_ms": 155.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2046.8,
+        "total_ms": 3922.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_007",
+      "ok": true,
+      "wall_ms": 4729.8,
+      "answer_len": 691,
+      "timings": {
+        "preprocess_ms": 1852.7,
+        "retrieval_ms": 134.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2742.4,
+        "total_ms": 4729.8
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_008",
+      "ok": true,
+      "wall_ms": 4644.9,
+      "answer_len": 509,
+      "timings": {
+        "preprocess_ms": 1687.9,
+        "retrieval_ms": 438.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2518.4,
+        "total_ms": 4644.9
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_009",
+      "ok": true,
+      "wall_ms": 4844.5,
+      "answer_len": 674,
+      "timings": {
+        "preprocess_ms": 1864.4,
+        "retrieval_ms": 160.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2819.4,
+        "total_ms": 4844.5
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "med_010",
+      "ok": true,
+      "wall_ms": 4204.0,
+      "answer_len": 645,
+      "timings": {
+        "preprocess_ms": 1671.7,
+        "retrieval_ms": 146.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2385.6,
+        "total_ms": 4204.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_001",
+      "ok": true,
+      "wall_ms": 5116.0,
+      "answer_len": 719,
+      "timings": {
+        "preprocess_ms": 1714.0,
+        "retrieval_ms": 156.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3245.0,
+        "total_ms": 5116.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_002",
+      "ok": true,
+      "wall_ms": 5448.5,
+      "answer_len": 551,
+      "timings": {
+        "preprocess_ms": 2824.6,
+        "retrieval_ms": 209.6,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2414.1,
+        "total_ms": 5448.4
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_003",
+      "ok": true,
+      "wall_ms": 6315.2,
+      "answer_len": 633,
+      "timings": {
+        "preprocess_ms": 1550.3,
+        "retrieval_ms": 144.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4620.8,
+        "total_ms": 6315.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_004",
+      "ok": true,
+      "wall_ms": 4738.0,
+      "answer_len": 602,
+      "timings": {
+        "preprocess_ms": 1688.8,
+        "retrieval_ms": 253.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2796.0,
+        "total_ms": 4738.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_005",
+      "ok": true,
+      "wall_ms": 4743.6,
+      "answer_len": 674,
+      "timings": {
+        "preprocess_ms": 1690.5,
+        "retrieval_ms": 166.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2886.7,
+        "total_ms": 4743.6
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_006",
+      "ok": true,
+      "wall_ms": 4667.2,
+      "answer_len": 652,
+      "timings": {
+        "preprocess_ms": 1590.0,
+        "retrieval_ms": 156.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2920.6,
+        "total_ms": 4667.2
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_007",
+      "ok": true,
+      "wall_ms": 4139.4,
+      "answer_len": 660,
+      "timings": {
+        "preprocess_ms": 1575.9,
+        "retrieval_ms": 177.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2386.2,
+        "total_ms": 4139.4
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "dev_008",
+      "ok": true,
+      "wall_ms": 4774.3,
+      "answer_len": 673,
+      "timings": {
+        "preprocess_ms": 1641.0,
+        "retrieval_ms": 160.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2973.1,
+        "total_ms": 4774.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_001",
+      "ok": true,
+      "wall_ms": 6175.3,
+      "answer_len": 748,
+      "timings": {
+        "preprocess_ms": 1806.1,
+        "retrieval_ms": 235.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 4134.0,
+        "total_ms": 6175.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_002",
+      "ok": true,
+      "wall_ms": 5706.8,
+      "answer_len": 571,
+      "timings": {
+        "preprocess_ms": 2572.8,
+        "retrieval_ms": 149.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2984.6,
+        "total_ms": 5706.8
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_003",
+      "ok": true,
+      "wall_ms": 5585.5,
+      "answer_len": 688,
+      "timings": {
+        "preprocess_ms": 1718.0,
+        "retrieval_ms": 194.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3673.1,
+        "total_ms": 5585.5
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_004",
+      "ok": true,
+      "wall_ms": 5377.9,
+      "answer_len": 662,
+      "timings": {
+        "preprocess_ms": 1806.8,
+        "retrieval_ms": 164.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3406.9,
+        "total_ms": 5377.9
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_005",
+      "ok": true,
+      "wall_ms": 4513.1,
+      "answer_len": 638,
+      "timings": {
+        "preprocess_ms": 1687.3,
+        "retrieval_ms": 147.0,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2678.6,
+        "total_ms": 4513.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_006",
+      "ok": true,
+      "wall_ms": 4474.4,
+      "answer_len": 643,
+      "timings": {
+        "preprocess_ms": 1681.5,
+        "retrieval_ms": 187.2,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2605.6,
+        "total_ms": 4474.4
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_007",
+      "ok": true,
+      "wall_ms": 4448.0,
+      "answer_len": 549,
+      "timings": {
+        "preprocess_ms": 1691.6,
+        "retrieval_ms": 159.8,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2596.5,
+        "total_ms": 4448.0
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "vac_008",
+      "ok": true,
+      "wall_ms": 4416.4,
+      "answer_len": 540,
+      "timings": {
+        "preprocess_ms": 1778.9,
+        "retrieval_ms": 193.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2444.2,
+        "total_ms": 4416.4
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_001",
+      "ok": true,
+      "wall_ms": 5522.9,
+      "answer_len": 618,
+      "timings": {
+        "preprocess_ms": 1816.3,
+        "retrieval_ms": 162.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3544.0,
+        "total_ms": 5522.9
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_002",
+      "ok": true,
+      "wall_ms": 5306.3,
+      "answer_len": 426,
+      "timings": {
+        "preprocess_ms": 2552.4,
+        "retrieval_ms": 169.4,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2584.5,
+        "total_ms": 5306.3
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_003",
+      "ok": true,
+      "wall_ms": 4788.5,
+      "answer_len": 678,
+      "timings": {
+        "preprocess_ms": 1640.3,
+        "retrieval_ms": 177.9,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2970.2,
+        "total_ms": 4788.5
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    },
+    {
+      "id": "pol_004",
+      "ok": true,
+      "wall_ms": 4364.6,
+      "answer_len": 503,
+      "timings": {
+        "preprocess_ms": 1763.6,
+        "retrieval_ms": 191.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2409.3,
+        "total_ms": 4364.6
+      },
+      "intent": "unknown",
+      "model": "gpt-5.4-mini",
+      "round": 2
+    }
+  ]
+}

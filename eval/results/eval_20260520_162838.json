@@ -1,0 +1,150 @@
+{
+  "timestamp": "20260520_162838",
+  "total_runtime_sec": 23.3,
+  "config": {
+    "questions_file": "C:\\Users\\irail\\Desktop\\AI_Capstone\\eval\\test_questions.json",
+    "filter_intent": null,
+    "filter_ids": null,
+    "total_questions": 3,
+    "judge_model": null
+  },
+  "overall": {
+    "total": 3,
+    "valid": 3,
+    "errors": 0,
+    "intent_accuracy": 1.0,
+    "risk_level_accuracy": 1.0,
+    "keyword_coverage_avg": 0.7,
+    "safety_compliance_rate": 1.0,
+    "context_relevance_avg": null,
+    "answer_faithfulness_avg": null,
+    "answer_relevance_avg": null,
+    "completeness_avg": null,
+    "latency_avg_sec": 6.28,
+    "latency_min_sec": 5.506,
+    "latency_max_sec": 7.488,
+    "stage_stats": {
+      "analyze_query_ms": {
+        "avg": 1427.4,
+        "p50": 1278.9,
+        "p95": 1963.2,
+        "p99": 2024.0
+      },
+      "rewrite_query_ms": {
+        "avg": 1094.7,
+        "p50": 1054.0,
+        "p95": 1262.3,
+        "p99": 1280.9
+      },
+      "retrieval_ms": {
+        "avg": 743.6,
+        "p50": 520.5,
+        "p95": 1441.9,
+        "p99": 1523.8
+      },
+      "rerank_build_ms": {
+        "avg": 0.0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0
+      },
+      "generate_ms": {
+        "avg": 3013.8,
+        "p50": 3076.9,
+        "p95": 3110.8,
+        "p99": 3113.8
+      },
+      "total_ms": {
+        "avg": 6279.9,
+        "p50": 5845.2,
+        "p95": 7323.8,
+        "p99": 7455.2
+      }
+    }
+  },
+  "by_intent": {
+    "medical_basic": {
+      "count": 3,
+      "intent_accuracy": 1.0,
+      "risk_accuracy": 1.0,
+      "keyword_coverage_avg": 0.7
+    }
+  },
+  "details": [
+    {
+      "id": "med_001",
+      "question": "38.5도 열이 3시간째 내리지 않아요. 해열제를 줬는데도 효과가 없어요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "medium",
+      "predicted_risk": "medium",
+      "risk_correct": true,
+      "keyword_coverage": 0.6,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "요약:\n- 민준이의 38.5도 발열이 3시간 지속되고 해열제에도 반응이 없다면, 열의 원인과 아이의 전반 상태를 함께 봐야 합니다.\n- 열 자체만으로 원인을 단정할 수는 없지만, 상태가 나쁘거나 위험 신호가 있으면 바로 진료가 우선입니다.\n\n증상 해석:\n- 발열은 감기, 장염 같은 감염에서 보일 수 있고, 기침·콧물·구토·설사 같은 동반 증상이 있는지 확인이 필요합니다.\n- 부모가 확인할 점은 물을 잘 마시는지, 축 처져 있는지, 숨쉬기 힘들어 보이는지, 소변이 줄었는지입니다.\n\n집에서 할 수 있는 것:\n- 옷과 이불은 너무 덥지 ",
+      "retrieved_docs_count": 6,
+      "latency_sec": 7.488,
+      "timings": {
+        "analyze_query_ms": 2039.2,
+        "rewrite_query_ms": 1054.0,
+        "retrieval_ms": 1544.3,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 2850.0,
+        "total_ms": 7488.1
+      }
+    },
+    {
+      "id": "med_002",
+      "question": "아이가 갑자기 경련을 일으켜요. 몸이 떨리고 눈이 돌아가요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "high",
+      "predicted_risk": "high",
+      "risk_correct": true,
+      "keyword_coverage": 0.75,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "중요: 현재 설명만으로는 응급 가능성을 배제할 수 없습니다. 아이 상태가 나쁘거나 질문에 포함된 위험 신호가 실제로 있다면, 즉시 소아과 또는 응급실 진료를 우선적으로 고려하세요.\n\n요약:\n- 서연이처럼 갑자기 몸이 떨리고 눈이 돌아가는 증상은 **경련**으로 볼 수 있어, **즉시 병원 또는 응급실 진료가 우선**입니다.\n- 열이 39.1도였던 기록이 있어 **고열과 함께 나타나는 열성 경련 가능성**도 생각해볼 수 있습니다.\n\n증상 해석:\n- 열이 심할 때, 또는 장염처럼 발열이 동반되는 상황에서 경련이 나타날 수 있습니다.\n-",
+      "retrieved_docs_count": 6,
+      "latency_sec": 5.506,
+      "timings": {
+        "analyze_query_ms": 964.1,
+        "rewrite_query_ms": 944.7,
+        "retrieval_ms": 520.5,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3076.9,
+        "total_ms": 5506.4
+      }
+    },
+    {
+      "id": "med_003",
+      "question": "기침을 3일째 하고 있어요. 밤에 더 심해지고 콧물도 나와요.",
+      "expected_intent": "medical_basic",
+      "predicted_intent": "medical_basic",
+      "intent_correct": true,
+      "expected_risk": "low",
+      "predicted_risk": "low",
+      "risk_correct": true,
+      "keyword_coverage": 0.75,
+      "safety_compliance": true,
+      "needs_clarification_predicted": false,
+      "needs_clarification_expected": false,
+      "answer_preview": "요약:\n- 지우가 3일째 기침하고 밤에 더 심해지며 콧물도 있다면, 감기나 가벼운 감염 때 보일 수 있는 증상입니다.\n- 다만 밤에 자주 깰 정도면 수면에 영향을 주고 있는지 살펴보는 게 좋습니다.\n\n증상 해석:\n- 제공된 문서에는 기침·콧물의 직접 원인은 없지만, 아이에게 밤에 더 심한 기침과 콧물이 같이 있으면 코 분비물로 인해 누웠을 때 기침이 심해질 수 있습니다.\n- 부모가 확인해볼 점은 숨쉬기 힘들어 보이는지, 열이 나는지, 잘 먹고 마시는지, 소변량이 줄지 않는지입니다.\n\n집에서 할 수 있는 것:\n- 밤에 방을 너무 건조",
+      "retrieved_docs_count": 6,
+      "latency_sec": 5.845,
+      "timings": {
+        "analyze_query_ms": 1278.9,
+        "rewrite_query_ms": 1285.5,
+        "retrieval_ms": 166.1,
+        "rerank_build_ms": 0.0,
+        "generate_ms": 3114.6,
+        "total_ms": 5845.2
+      }
+    }
+  ]
+}

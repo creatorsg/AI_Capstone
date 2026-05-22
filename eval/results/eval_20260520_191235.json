@@ -1,0 +1,40 @@
+{
+  "timestamp": "20260520_191235",
+  "total_runtime_sec": 15.2,
+  "config": {
+    "questions_file": "C:\\Users\\irail\\Desktop\\AI_Capstone\\eval\\test_questions.json",
+    "filter_intent": null,
+    "filter_ids": null,
+    "total_questions": 5,
+    "judge_model": null
+  },
+  "overall": {},
+  "by_intent": {},
+  "details": [
+    {
+      "id": "med_001",
+      "question": "38.5도 열이 3시간째 내리지 않아요. 해열제를 줬는데도 효과가 없어요.",
+      "error": "name 'intent' is not defined"
+    },
+    {
+      "id": "med_002",
+      "question": "아이가 갑자기 경련을 일으켜요. 몸이 떨리고 눈이 돌아가요.",
+      "error": "name 'intent' is not defined"
+    },
+    {
+      "id": "med_003",
+      "question": "기침을 3일째 하고 있어요. 밤에 더 심해지고 콧물도 나와요.",
+      "error": "name 'intent' is not defined"
+    },
+    {
+      "id": "med_004",
+      "question": "오늘 구토를 4번이나 했어요. 물도 못 넘기고 계속 토해요.",
+      "error": "name 'intent' is not defined"
+    },
+    {
+      "id": "med_005",
+      "question": "콧물이 2주 넘게 계속 나와요. 색이 노랗게 변했어요.",
+      "error": "name 'intent' is not defined"
+    }
+  ]
+}
