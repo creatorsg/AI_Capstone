@@ -32,33 +32,36 @@ streamlit run main.py  # http://localhost:8501
 사용자 질문
     │
     ▼
-[의도 분석 (LLM)]
-    │  intent / topic / risk_level / needs_clarification
-    ▼
-[쿼리 재작성 (LLM)]
-    │  아이 프로필 + 채팅 히스토리 반영, 벡터 검색 최적화 문장
+[전처리 (preprocess, LLM 1회)]
+    │  intent / topic / risk_level / rewritten_query 를 한 번에 산출
+    │  (분류 + 검색용 쿼리 재작성 통합 — 아이 프로필 반영)
     ▼
 [벡터 검색 (ChromaDB)]
     │  hospital_locator → facility 컬렉션
     │  그 외            → knowledge 컬렉션
+    │  (LLM·임베딩·벡터스토어 인스턴스는 캐싱되어 재사용)
     ▼
 [Reranking]
     │  category / topic / age_group / curated 가중치 적용
     ▼
-[답변 생성 (LLM)]
-    │  인텐트별 전용 프롬프트 템플릿
+[답변 생성 (generate, LLM 1회)]
+    │  인텐트별 전용 프롬프트 템플릿 (max_tokens 캡, 간결 지시)
     │  high-risk 질문 → 응급 안내 prefix 자동 추가
     ▼
 최종 답변
 ```
 
+> **파이프라인 = LLM 2회 직렬 호출** (전처리 1 + 생성 1). 초기 설계는 분석·재작성·생성의 3회 호출이었으나 latency 최적화로 2회로 줄였습니다. 자세한 내용은 [성능 최적화](#성능-최적화-latency) 참고.
+
 **주요 특징**
 
 - 아이 프로필(이름·생년월일·성별·알레르기·기저질환)과 최근 기록(수면·식사·발열)을 컨텍스트로 주입해 맞춤형 답변 생성
 - 채팅 히스토리(최근 3턴)를 프롬프트에 반영해 맥락 있는 다중 턴 대화 지원
-- 6가지 인텐트(`medical_basic` / `development` / `vaccination` / `policy` / `hospital_locator` / `daily_parenting`)별 전용 답변 템플릿
-- 경련·호흡 곤란 등 위험 키워드 감지 시 응급 안내 prefix 자동 추가
+- 분류와 검색 쿼리 재작성을 단일 전처리 호출로 통합해 LLM 직렬 호출을 3→2회로 단축
+- 6가지 인텐트(`medical_basic` / `development` / `vaccination` / `policy` / `hospital_locator` / `daily_parenting`)별 전용 답변 템플릿 (그 외는 `unknown`으로 분류 후 범용 템플릿)
+- 경련·호흡 곤란 등 위험 키워드 감지 시 응급 안내 prefix 자동 추가 (intent 분류와 분리되어 항상 동작)
 - 인제스트 파라미터를 `ingest_manifest.json`으로 추적, 임베딩 모델 불일치 시 즉시 오류 발생
+- `answer_question()`이 단계별 `timings`(preprocess / retrieval / rerank / generate / total)를 `debug_info`에 기록
 
 ---
 
@@ -74,6 +77,53 @@ streamlit run main.py  # http://localhost:8501
 | Streamlit UI | Streamlit |
 | 데이터 수집 | 공공데이터포털 API, BeautifulSoup 웹 크롤링 |
 | 지오코딩 | Kakao Developers API |
+
+> 분류·생성 단계에 사용할 모델은 환경 변수 `CLASSIFIER_MODEL` / `GENERATOR_MODEL`로 단계별 독립 지정할 수 있습니다(미지정 시 기본 `gpt-5.4-mini`).
+
+---
+
+## 성능 최적화 (Latency)
+
+응답 latency를 줄이되 답변 품질(안전성·정확도·관련성)은 유지하는 것을 목표로 5단계 실험을 진행해, **평균 응답 시간을 5,622ms → 4,104ms (−27.0%)**로 단축했습니다. 측정은 58문항 테스트셋을 `--repeat 3`(n=174)으로 반복하고 p50/p95/p99까지 추적했습니다.
+
+### 최종 성과
+
+| 지표 | Baseline | 최종 | Δ |
+|------|----------|------|---|
+| total avg | 5,622ms | 4,104ms | **−27.0%** |
+| total p50 | 5,406ms | 3,903ms | −27.8% |
+| total p95 | 7,778ms | 5,643ms | −27.4% |
+| total p99 | 11,145ms | 8,546ms | −23.3% |
+| LLM 호출 수 / 질의 | 3 | 2 | −1 |
+
+단계별로는 retrieval −67.6%(510→165ms, 인스턴스 캐싱), preprocess −35.3%(1,795→1,162ms, 호출 통합), generate −16.3%(3,316→2,777ms, 출력 캡)의 효과가 있었습니다. 안전성(`safety_compliance` 1.000 고정)과 답변 품질 메트릭은 측정 노이즈 범위 내에서 유지되었습니다.
+
+### 채택된 실험
+
+| ID | 변경 | 누적 Δ | 핵심 효과 |
+|----|------|--------|-----------|
+| E2 | LLM·임베딩·벡터스토어 인스턴스 캐싱(`lru_cache`) | −4.7% | retrieval −68% (Chroma 재초기화 제거) |
+| E4 | `max_tokens` 캡 + "6문장 이내" 지시 | −15.2% | generate −16% (decode 단축) |
+| E5 | analyze+rewrite를 단일 `preprocess` 호출로 통합 | −26.4% | LLM 호출 3→2회 |
+| E8 | preprocess 출력 다이어트 (18단어 제한) | −27.0% | preprocess p50 −12% |
+
+### 핵심 발견
+
+가장 큰 동인은 **LLM 직렬 호출 수 감소(3→2)**와 **벡터스토어 인스턴스 캐싱**이었습니다. 반면 모델 교체(M1 `gpt-5.4-nano`, M2 `gpt-5-nano`, M4 `gpt-5-mini`)는 모두 **기각**되었는데, nano tier는 추론은 빠를지 몰라도 API tail latency가 커서(p99가 16~20초까지 튐) 평균 latency가 오히려 악화되었습니다. 즉 **이 환경의 병목은 모델 선택이 아니라 아키텍처(호출 수)**였습니다.
+
+### latency 측정
+
+```bash
+cd eval
+
+# 단계별 latency 프로파일 (58문항 × 3회 = n=174)
+python latency_profile.py --repeat 3 --tag mytest
+
+# 빠른 확인 (10문항)
+python latency_profile.py --subset 10 --repeat 3
+```
+
+> 상세한 실험 설계·코드 변경안은 [EXPERIMENT_PLAN.md](EXPERIMENT_PLAN.md), 결과 요약은 [RESULTS_SUMMARY.md](RESULTS_SUMMARY.md) 참고.
 
 ---
 
@@ -161,12 +211,15 @@ AI_Capstone/
 │
 ├── eval/                       # RAG 평가 및 하이퍼파라미터 튜닝
 │   ├── evaluate.py             # 배치 평가 (LLM-as-Judge 포함)
+│   ├── latency_profile.py      # 단계별 latency 프로파일러 (p50/p95/p99)
 │   ├── tune.py                 # 하이퍼파라미터 그리드 탐색
 │   ├── test_questions.json     # 테스트 질문 셋 (58개, 8개 인텐트)
-│   └── results/                # 평가·튜닝 결과 JSON 및 뷰어
+│   └── results/                # 평가·튜닝·latency 결과 JSON 및 뷰어
 │
 ├── chroma_db/                  # 벡터화된 데이터 (ingest.py 실행 후 생성)
 │   └── ingest_manifest.json    # 인제스트 시 사용한 모델·파라미터 기록
+├── EXPERIMENT_PLAN.md          # latency 최적화 실험 계획서 (Phase 0~4)
+├── RESULTS_SUMMARY.md          # 실험 결과 요약 (−27% latency)
 ├── requirements.txt
 ├── .env                        # API 키 (git 제외)
 └── README.md
@@ -195,7 +248,11 @@ AI_Capstone/
 ```json
 {
   "answer": "...",
-  "debug_info": { "intent": "medical_basic", "topic": "fever", "risk_level": "medium", "rewritten_query": "..." },
+  "debug_info": {
+    "intent": "medical_basic", "topic": "fever", "risk_level": "medium", "rewritten_query": "...",
+    "preprocess_model": "gpt-5.4-mini", "generator_model": "gpt-5.4-mini",
+    "timings": { "preprocess_ms": 1162, "retrieval_ms": 165, "generate_ms": 2777, "total_ms": 4104 }
+  },
   "retrieved_docs": [{ "content": "...", "metadata": { "category": "...", "source": "..." } }]
 }
 ```
@@ -204,14 +261,17 @@ AI_Capstone/
 
 | 함수 | 역할 |
 |------|------|
-| `analyze_query()` | 질문의 intent·topic·risk_level·needs_clarification 분류 |
-| `rewrite_query()` | 아이 프로필과 분석 결과를 반영해 벡터 검색용 쿼리 재작성 |
+| `preprocess_query()` | **(현행)** 분류와 검색 쿼리 재작성을 1회 호출로 통합 → intent·topic·risk_level·rewritten_query JSON. JSON 파싱 실패 시 안전한 fallback 반환 |
 | `get_retriever()` | `hospital_locator`는 facility 컬렉션, 나머지는 knowledge 컬렉션으로 라우팅 |
 | `simple_rerank()` | category·topic·age_group·curated 가중치 기반 문서 재순위화 |
-| `apply_safety_prefix()` | high risk 판정 시 응급 안내 문구 prefix 추가 |
-| `answer_question()` | 전 단계를 통합한 최종 답변 생성. `chat_history`, `k`, `top_k`, `temperature` 파라미터화 |
+| `apply_safety_prefix()` | high risk 판정 시 응급 안내 문구 prefix 추가 (intent 분류와 분리) |
+| `answer_question()` | 전 단계를 통합한 최종 답변 생성. 단계별 `timings` 기록. `chat_history`, `k`, `top_k`, `temperature` 파라미터화 |
+| `analyze_query()` / `rewrite_query()` | *(레거시)* 분리형 분석·재작성 호출. 롤백용으로 보존 — `USE_UNIFIED_PREPROCESS=False`일 때 사용 |
 
-기동 시 `_check_embedding_model()`이 `ingest_manifest.json`과 현재 코드의 임베딩 모델을 비교해 불일치 시 즉시 오류를 발생시킵니다.
+- `get_llm()` / `get_embeddings()` / `get_vectorstore()`는 `@lru_cache`로 인스턴스를 재사용합니다(프로세스 내 재초기화 비용 제거).
+- `USE_UNIFIED_PREPROCESS`(기본 `True`)로 현행/레거시 전처리 경로를 전환합니다.
+- 분류·생성 모델은 `CLASSIFIER_MODEL` / `GENERATOR_MODEL` 환경 변수로 단계별 지정 가능합니다.
+- 기동 시 `_check_embedding_model()`이 `ingest_manifest.json`과 현재 코드의 임베딩 모델을 비교해 불일치 시 즉시 오류를 발생시킵니다.
 
 ### `app/ingest.py` — 데이터 적재 파이프라인
 
@@ -232,8 +292,8 @@ AI_Capstone/
 
 | 프롬프트 | 역할 |
 |----------|------|
-| `QUERY_ANALYZER_PROMPT` | 질문 → intent·topic·risk_level·needs_clarification JSON |
-| `QUERY_REWRITE_PROMPT` | 벡터 검색에 최적화된 단일 검색 문장 생성 |
+| `QUERY_PREPROCESS_PROMPT` | **(현행)** 질문 → intent·topic·risk_level·rewritten_query JSON (분류+재작성 통합) |
+| `QUERY_ANALYZER_PROMPT` / `QUERY_REWRITE_PROMPT` | *(레거시)* 분리형 분석·재작성 프롬프트. 롤백용으로 보존 |
 | `ANSWER_PROMPT_MEDICAL` | 증상 해석 / 집에서 할 수 있는 것 / 즉시 병원 가야 할 신호 |
 | `ANSWER_PROMPT_DEVELOPMENT` | 정상 발달 범위 / 관찰 포인트 / 놀이 활동 제안 |
 | `ANSWER_PROMPT_VACCINATION` | 접종 정보 / 전후 주의사항 |
@@ -242,7 +302,7 @@ AI_Capstone/
 | `ANSWER_PROMPT_DAILY` | 상황 이해 / 실용적 팁 / 전문가 상담 기준 |
 | `ANSWER_PROMPT_DEFAULT` | 위 인텐트에 해당하지 않는 경우의 범용 템플릿 |
 
-`get_answer_prompt(intent)` 함수가 인텐트를 받아 해당 템플릿을 반환합니다.
+`get_answer_prompt(intent)` 함수가 인텐트를 받아 해당 템플릿을 반환합니다. 모든 답변 템플릿에는 "핵심만 6문장 이내, 불릿 최대 5개" 간결화 지시가 포함되어 generate 단계 decode 시간을 줄입니다.
 
 ---
 
@@ -298,7 +358,7 @@ python evaluate.py --ids pha_001 pha_002 --no-judge
 | policy | 8 | 부모급여, 바우처, 아이돌봄, 육아휴직 |
 | daily_parenting | 8 | 수면, 식사, 떼쓰기, 분리불안 |
 | hospital_locator | 11 | 소아과·야간진료·응급실(5) + 약국(6) |
-| unknown | 5 | 짧고 맥락 없는 질문 (needs_clarification) |
+| unknown | 5 | 짧고 맥락 없는 질문 (`unknown` 분류 → 범용 템플릿) |
 
 **측정 메트릭**
 
@@ -334,6 +394,29 @@ python tune.py --subset 10 --k-values 4 6 --top-k-values 3 4 --temp-values 0.0
 | `temperature` | 0.0 / 0.2 | LLM 생성 온도 |
 
 최적 파라미터는 `app/rag.py`의 `DEFAULT_K` / `DEFAULT_TOP_K` 상수에 반영하거나 `answer_question()` 호출 시 직접 전달합니다.
+
+### latency 프로파일링 (`latency_profile.py`)
+
+품질 메트릭 없이 단계별 응답 시간만 빠르게 측정합니다. 동일 질문 셋을 여러 번 반복(`--repeat`)해 median을 안정화하고 avg/p50/p95/p99를 집계합니다.
+
+```bash
+cd eval
+
+# 전체 58문항 × 3회 (n=174)
+python latency_profile.py --repeat 3 --tag baseline
+
+# 빠른 확인 (10문항)
+python latency_profile.py --subset 10 --repeat 3
+```
+
+| 옵션 | 설명 |
+|------|------|
+| `--repeat` | 동일 질문 셋 반복 횟수 (기본 3) |
+| `--subset` | 앞에서 N개 질문만 측정 |
+| `--tag` | 결과 파일 prefix (예: `baseline`, `E2`) |
+| `--intent` | 특정 인텐트만 측정 |
+
+결과는 `eval/results/latency_<tag>_<timestamp>.json`에 저장됩니다.
 
 ---
 
