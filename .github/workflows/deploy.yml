@@ -138,30 +138,32 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           ENV_PROD_FILE: ${{ secrets.ENV_PROD_FILE }}
+          IMAGE_TAG: ${{ github.sha }}
         with:
           host:        ${{ secrets.EC2_HOST }}
           username:    ${{ secrets.EC2_USERNAME }}
           key:         ${{ secrets.EC2_SSH_KEY }}
-          envs:        ECR_REGISTRY,ECR_REPOSITORY,AWS_REGION,ENV_PROD_FILE
+          envs:        ECR_REGISTRY,ECR_REPOSITORY,AWS_REGION,ENV_PROD_FILE,IMAGE_TAG
           script: |
-            # AWS CLI ECR 로그인 (EC2 IAM Role 또는 자격증명 필요)
+            # AWS CLI ECR 로그인
             aws ecr get-login-password --region $AWS_REGION | \
               docker login --username AWS --password-stdin $ECR_REGISTRY
 
             # 최신 이미지 pull
             docker pull $ECR_REGISTRY/$ECR_REPOSITORY:latest
 
-            # .env.prod 갱신 (Secrets 에서 최신 값 반영)
-            echo "$ENV_PROD_FILE" > /home/$USER/app/.env.prod
+            # .env.prod 갱신
+            echo "$ENV_PROD_FILE" > /home/ubuntu/app/.env.prod
 
-            # 기존 컨테이너 중지 & 새 이미지로 재시작
-            cd /home/$USER/app
-            docker-compose -f docker-compose.prod.yml down --remove-orphans
-            docker-compose -f docker-compose.prod.yml up -d --build
+            # ECR_IMAGE 환경변수 설정 후 docker compose 재시작
+            cd /home/ubuntu/app
+            export ECR_IMAGE=$ECR_REGISTRY/$ECR_REPOSITORY:latest
+            docker compose -f docker-compose.prod.yml down --remove-orphans
+            ECR_IMAGE=$ECR_IMAGE docker compose -f docker-compose.prod.yml up -d
 
             # 30초 후 헬스체크
             sleep 30
-            curl -f http://localhost/  && echo "배포 성공" || echo "헬스체크 실패"
+            curl -f http://localhost/ && echo "배포 성공" || echo "헬스체크 실패"
 
             # 오래된 이미지 정리
             docker image prune -f
