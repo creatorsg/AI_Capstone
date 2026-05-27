@@ -81,6 +81,42 @@ ANSWER_PROMPT = ChatPromptTemplate.from_template(
 
 
 # ---------------------------------------------------------------------------
+# E5/E8: 통합 전처리 프롬프트 (analyze + rewrite 1회 호출)
+# rewritten_query 는 18단어 이내로 제한 (E8 최적화)
+# ---------------------------------------------------------------------------
+
+QUERY_PREPROCESS_PROMPT = ChatPromptTemplate.from_template(
+    """
+당신은 0~5세 자녀 육아 챗봇의 쿼리 전처리기입니다.
+부모의 질문을 분석하고, 벡터 검색용 질의를 동시에 개선하세요.
+
+반드시 JSON 형태로만 답하세요. 코드블록·마크다운 사용 금지.
+
+포함할 키:
+- intent: development / daily_parenting / medical_basic / vaccination / policy / hospital_locator / unknown
+- topic: 질문의 핵심 주제 (예: fever, sleep, language, food, vaccine, welfare, hospital)
+- risk_level: low / medium / high
+- needs_clarification: true / false
+- rewritten_query: 벡터 검색에 최적화된 한국어 검색 질의 (18단어 이내, 아이 연령 반영)
+
+판단 기준:
+- development: 발달, 말, 놀이, 사회성, 언어, 개월수별 성장
+- daily_parenting: 수면, 식사, 떼쓰기, 울음, 생활습관
+- medical_basic: 열, 기침, 콧물, 구토, 설사, 기본 증상
+- vaccination: 예방접종 일정, 접종 여부·시기
+- policy: 정부지원, 복지, 지원금, 바우처
+- hospital_locator: 병원, 소아과, 발달센터, 위치, 운영시간
+
+high risk 예시: 경련 / 호흡 곤란 / 의식 저하 / 축 처짐 / 반복 구토 / 탈수 의심 / 발달 퇴행
+needs_clarification = true: 질문이 너무 짧고 맥락이 부족한 경우
+
+질문: {question}
+아이 정보: {child_context}
+"""
+)
+
+
+# ---------------------------------------------------------------------------
 # 채팅 히스토리 포매터
 # ---------------------------------------------------------------------------
 

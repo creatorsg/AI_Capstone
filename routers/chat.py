@@ -15,6 +15,7 @@ from sqlalchemy.orm import Session
 from database import get_db
 from models.chat import ChatHistory, ConversationSession
 from models.child import Child, ChildProfile
+from models.health import ChildNote
 from models.user import User
 from schemas.chat import ChatMessageRequest, ChatMessageResponse
 from services.ai_service import get_ai_response
@@ -29,11 +30,30 @@ router = APIRouter(
 
 def get_child_info(child_id: int, db: Session) -> dict | None:
     """아이 정보를 AI 프롬프트 컨텍스트용 딕셔너리로 반환."""
+    from datetime import date, timedelta
     child = db.query(Child).filter(Child.id == child_id).first()
     profile = db.query(ChildProfile).filter(ChildProfile.child_id == child_id).first()
 
     if not child and not profile:
         return None
+
+    # 최근 30일 아이 노트 요약 (behavior + symptom 위주로 AI 컨텍스트에 주입)
+    recent_notes: list[str] = []
+    since = date.today() - timedelta(days=30)
+    notes = (
+        db.query(ChildNote)
+        .filter(
+            ChildNote.child_id == child_id,
+            ChildNote.note_date >= since,
+            ChildNote.category.in_(["behavior", "symptom"]),
+        )
+        .order_by(ChildNote.note_date.desc())
+        .limit(5)
+        .all()
+    )
+    for n in notes:
+        val_str = f" ({n.value}{n.unit})" if n.value else ""
+        recent_notes.append(f"[{n.note_date} {n.category}]{val_str} {n.content[:80]}")
 
     return {
         "name":          child.name if child else None,
@@ -46,6 +66,7 @@ def get_child_info(child_id: int, db: Session) -> dict | None:
         "notes":         child.notes if child else "",
         "blood_type":    profile.blood_type if profile else None,
         "medical_notes": profile.medical_notes if profile else None,
+        "recent_child_notes": recent_notes,   # 최근 30일 행동/증상 노트 → RAG 컨텍스트
     }
 
 
@@ -221,6 +242,46 @@ def get_chat_history(
         .limit(limit)
         .all()
     )
+
+
+@router.delete(
+    "/sessions/{session_id}",
+    status_code=status.HTTP_200_OK,
+    summary="세션 대화 기록 전체 삭제",
+)
+def delete_session(
+    session_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """
+    세션과 해당 세션의 모든 대화 기록(ChatHistory)을 삭제합니다.
+
+    - 본인 소유 세션만 삭제 가능
+    - ChatHistory → ConversationSession 순서로 삭제 (FK 제약 방지)
+    """
+    session = db.query(ConversationSession).filter(
+        ConversationSession.id == session_id
+    ).first()
+    if not session:
+        raise HTTPException(status_code=404, detail="세션을 찾을 수 없습니다.")
+
+    if session.child_id is not None:
+        verify_child_ownership(session.child_id, db, current_user)
+
+    # ChatHistory 먼저 삭제 후 세션 삭제
+    deleted_count = (
+        db.query(ChatHistory)
+        .filter(ChatHistory.session_id == session_id)
+        .delete(synchronize_session=False)
+    )
+    db.delete(session)
+    db.commit()
+
+    return {
+        "message": f"세션({session_id}) 및 대화 기록 {deleted_count}건이 삭제되었습니다.",
+        "deleted_turns": deleted_count,
+    }
 
 
 @router.get("/sessions/{session_id}/history", summary="세션별 대화 기록 조회 (오래된 순)")

@@ -40,10 +40,12 @@ def retrieve_relevant_docs(
         from services.rag.rag_core import (
             analyze_query,
             rewrite_query,
+            preprocess_query,
             get_retriever,
             simple_rerank,
             calculate_age_months,
             age_group_from_months,
+            USE_UNIFIED_PREPROCESS,
         )
 
         # fount-project 'gender' → juhyeong 'sex' 필드 변환
@@ -53,11 +55,14 @@ def retrieve_relevant_docs(
             if "gender" in child_profile and "sex" not in child_profile:
                 child_profile["sex"] = child_profile.pop("gender")
 
-        # 1. 쿼리 의도 분석
-        analysis = analyze_query(query)
-
-        # 2. 검색용 쿼리 재작성
-        rewritten = rewrite_query(query, child_profile, analysis)
+        # 1+2. 쿼리 분석 + 재작성 (E5: 통합 1회 or 기존 2회)
+        if USE_UNIFIED_PREPROCESS:
+            preprocess = preprocess_query(query, child_profile)
+            analysis  = preprocess
+            rewritten = preprocess.get("rewritten_query", query)
+        else:
+            analysis  = analyze_query(query)
+            rewritten = rewrite_query(query, child_profile, analysis)
 
         # 3. 인텐트 기반 리트리버 라우팅 + 문서 검색
         retriever = get_retriever(analysis.get("intent", "unknown"))
@@ -105,11 +110,13 @@ def retrieve_with_analysis(
         from services.rag.rag_core import (
             analyze_query,
             rewrite_query,
+            preprocess_query,
             get_retriever,
             simple_rerank,
             calculate_age_months,
             age_group_from_months,
             normalize_risk_level,
+            USE_UNIFIED_PREPROCESS,
         )
 
         # fount-project 'gender' → juhyeong 'sex' 필드 변환
@@ -119,11 +126,14 @@ def retrieve_with_analysis(
             if "gender" in child_profile and "sex" not in child_profile:
                 child_profile["sex"] = child_profile.pop("gender")
 
-        # 1. 쿼리 의도 분석
-        analysis = analyze_query(query)
-
-        # 2. 검색용 쿼리 재작성
-        rewritten = rewrite_query(query, child_profile, analysis)
+        # 1+2. 쿼리 분석 + 재작성 (E5: 통합 1회 or 기존 2회)
+        if USE_UNIFIED_PREPROCESS:
+            preprocess = preprocess_query(query, child_profile)
+            analysis  = preprocess
+            rewritten = preprocess.get("rewritten_query", query)
+        else:
+            analysis  = analyze_query(query)
+            rewritten = rewrite_query(query, child_profile, analysis)
 
         # 3. 인텐트 기반 리트리버 라우팅 + 문서 검색
         retriever = get_retriever(analysis.get("intent", "unknown"))

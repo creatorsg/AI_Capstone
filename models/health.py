@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, DateTime, Float, Text, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from database import Base
@@ -34,3 +34,28 @@ class VaccinationRecord(Base):
     note = Column(String, nullable=True)
 
     child = relationship("Child", back_populates="vaccinations")
+
+
+class ChildNote(Base):
+    """아이 노트 - 날짜별 일기/간식/행동발달/증상 기록"""
+    __tablename__ = "child_notes"
+
+    id        = Column(Integer, primary_key=True, index=True)
+    child_id  = Column(
+        Integer,
+        ForeignKey("children.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+    category  = Column(String(20), nullable=False, index=True)  # diary|snack|behavior|symptom
+    note_date = Column(Date, nullable=False, index=True)
+    title     = Column(String(100), nullable=True)
+    content   = Column(Text, nullable=False)
+    value     = Column(Float, nullable=True)         # 발열: 38.5 / 행동 점수 등
+    unit      = Column(String(20), nullable=True)    # "°C", "회" 등
+    severity  = Column(String(10), nullable=True)    # mild|moderate|severe (symptom 전용)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+
+    child = relationship("Child", back_populates="notes_list")

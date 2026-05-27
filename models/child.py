@@ -52,6 +52,11 @@ class Child(Base):
         back_populates="child",
         cascade="all, delete-orphan",
     )
+    notes_list       = relationship(
+        "ChildNote",
+        back_populates="child",
+        cascade="all, delete-orphan",
+    )
     # chat_histories / conversation_sessions 는 SET NULL 정책이라 cascade 미설정
     # → DB 레벨에서 child_id 만 NULL 로 바뀌고 레코드는 보존됨
 
