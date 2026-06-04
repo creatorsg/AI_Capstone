@@ -1,7 +1,4 @@
-// Android 에뮬레이터: http://10.0.2.2:8000
-// iOS 시뮬레이터: http://localhost:8000
-// 실제 기기(Expo Go): http://<컴퓨터의 로컬 IP>:8000
-export const API_BASE_URL = 'http://192.168.123.105:8000';
+export const API_BASE_URL = 'http://52.65.57.123:8000';
 
 export const HOSPITAL_CATEGORIES = [
   { key: '소아청소년과', label: '소아청소년과' },

@@ -63,6 +63,8 @@ export const chatAPI = {
     api.get(`/chat/history/${childId}`, { params: { limit, offset } }),
   sessionHistory: (sessionId: string) =>
     api.get(`/chat/sessions/${sessionId}/history`),
+  deleteSession: (sessionId: string) =>
+    api.delete(`/chat/sessions/${sessionId}`),
 };
 
 // 백엔드 파라미터: lat, lng (lon 아님), radius, category
@@ -104,6 +106,33 @@ export const healthAPI = {
     next_due?: string;
     note?: string;
   }) => api.post('/health/vaccinations/', data),
+};
+
+export const notesAPI = {
+  list: (childId: number, params?: {
+    category?: string;
+    date_from?: string;
+    date_to?: string;
+    limit?: number;
+    offset?: number;
+  }) => api.get(`/notes/${childId}`, { params }),
+  create: (childId: number, data: {
+    category: 'diary' | 'snack' | 'behavior' | 'symptom';
+    note_date: string;
+    title?: string;
+    content: string;
+    value?: number;
+    unit?: string;
+    severity?: 'mild' | 'moderate' | 'severe';
+  }) => api.post(`/notes/${childId}`, data),
+  get: (childId: number, noteId: number) =>
+    api.get(`/notes/${childId}/${noteId}`),
+  update: (childId: number, noteId: number, data: object) =>
+    api.patch(`/notes/${childId}/${noteId}`, data),
+  delete: (childId: number, noteId: number) =>
+    api.delete(`/notes/${childId}/${noteId}`),
+  analyze: (childId: number, category: string, days: 7 | 30 | 90 = 30) =>
+    api.get(`/notes/${childId}/analysis/${category}`, { params: { days } }),
 };
 
 export default api;

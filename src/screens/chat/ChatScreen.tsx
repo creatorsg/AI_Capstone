@@ -145,6 +145,25 @@ export default function ChatScreen() {
     ]).start(() => setShowHistory(false));
   };
 
+  const deleteSession = (targetSessionId: string) => {
+    Alert.alert('대화 삭제', '이 대화 기록을 삭제할까요?', [
+      { text: '취소', style: 'cancel' },
+      {
+        text: '삭제',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await chatAPI.deleteSession(targetSessionId);
+            setHistoryItems((prev) => prev.filter((h) => h.session_id !== targetSessionId));
+            if (sessionId === targetSessionId) resetChat();
+          } catch {
+            Alert.alert('오류', '대화 삭제에 실패했습니다.');
+          }
+        },
+      },
+    ]);
+  };
+
   const resumeSession = async (targetSessionId: string) => {
     setResumeLoading(true);
     try {
@@ -432,6 +451,12 @@ export default function ChatScreen() {
                             <Text style={styles.currentBadgeText}>현재</Text>
                           </View>
                         )}
+                        <TouchableOpacity
+                          onPress={() => deleteSession(item.session_id)}
+                          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                        >
+                          <Ionicons name="trash-outline" size={14} color={Colors.textTertiary} />
+                        </TouchableOpacity>
                       </View>
                       <Text style={styles.sidebarQuestion} numberOfLines={2}>{item.question}</Text>
                       <Text style={styles.sidebarAnswer} numberOfLines={1}>{item.answer}</Text>

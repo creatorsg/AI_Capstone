@@ -109,12 +109,46 @@ export interface VaccinationRecord {
   note?: string;
 }
 
+export type NoteCategory = 'diary' | 'snack' | 'behavior' | 'symptom';
+export type NoteSeverity = 'mild' | 'moderate' | 'severe';
+
+export interface ChildNote {
+  id: number;
+  child_id: number;
+  category: NoteCategory;
+  note_date: string;
+  title?: string | null;
+  content: string;
+  value?: number | null;
+  unit?: string | null;
+  severity?: NoteSeverity | null;
+  created_at: string;
+  updated_at?: string | null;
+}
+
+export interface SymptomFrequency {
+  date: string;
+  count: number;
+  avg_value?: number | null;
+}
+
+export interface ChildNoteAnalysis {
+  child_id: number;
+  days: number;
+  category: string;
+  total_count: number;
+  daily_breakdown: SymptomFrequency[];
+  peak_date?: string | null;
+  avg_value?: number | null;
+}
+
 export type RootStackParamList = {
   Auth: undefined;
   Main: undefined;
   ChildManagement: undefined;
   AddChild: { childId?: number };
   HealthRecord: { childId: number };
+  ChildNotes: { childId: number };
 };
 
 export type AuthStackParamList = {

@@ -113,6 +113,14 @@ export default function MyPageScreen() {
                   {selectedChild?.id === child.id && (
                     <Ionicons name="checkmark-circle" size={22} color={Colors.primary} />
                   )}
+                  {/* 육아노트 바로가기 */}
+                  <TouchableOpacity
+                    style={styles.healthBtn}
+                    onPress={() => navigation.navigate('ChildNotes', { childId: child.id })}
+                    hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                  >
+                    <Ionicons name="book-outline" size={20} color={Colors.primary} />
+                  </TouchableOpacity>
                   {/* 건강기록 바로가기 */}
                   <TouchableOpacity
                     style={styles.healthBtn}
